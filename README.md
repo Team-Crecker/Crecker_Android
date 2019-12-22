@@ -21,3 +21,18 @@ git을 이용할 때 몇가지 주의사항을 적어놓습니다. (추가할게
 	* 자기 브랜치에서 기능을 완성했을 경우 바로 Merge 시키지말고
 	   반드시 Pull Request 하기
 	* Pull Request시 자기가 작업한 뷰 및 기능 간단하게 설명.
+	
+	
+	
+* # Font Family Weight
+	* ## apple_sd
+		* light -> 200
+		* regular -> 400
+		* medium -> 500
+		* bold -> 700
+		* extrabold -> 900
+	* ## montserrat
+		* regular -> 400
+		* medium -> 500
+		* semibolditalic -> 600
+		* bold -> 700

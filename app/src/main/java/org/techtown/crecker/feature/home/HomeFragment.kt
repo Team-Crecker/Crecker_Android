@@ -1,4 +1,4 @@
-package org.techtown.crecker.fragment
+package org.techtown.crecker.feature.home
 
 
 import android.os.Bundle
