@@ -1,4 +1,4 @@
-package org.techtown.crecker.Fragment
+package org.techtown.crecker.fragment
 
 
 import android.os.Bundle
@@ -9,16 +9,14 @@ import android.view.ViewGroup
 
 import org.techtown.crecker.R
 
-/**
- * A simple [Fragment] subclass.
- */
-class HomeFragment : Fragment() {
+
+class LawFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val V = inflater.inflate(R.layout.fragment_home, container, false)
+        val V = inflater.inflate(R.layout.fragment_law, container, false)
         return V
     }
 

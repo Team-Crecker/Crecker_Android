@@ -1,7 +1,5 @@
-package org.techtown.crecker.Fragment
+package org.techtown.crecker.fragment
 
-import android.content.Context
-import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
