@@ -1,10 +1,15 @@
-package org.techtown.crecker
+package org.techtown.crecker.feature.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
+import org.techtown.crecker.R
 import org.techtown.crecker.adapter.MainViewPagerAdapter
-import org.techtown.crecker.fragment.*
+import org.techtown.crecker.feature.ads.AdsFragment
+import org.techtown.crecker.feature.home.HomeFragment
+import org.techtown.crecker.feature.law.LawFragment
+import org.techtown.crecker.feature.mypage.MyPageFragment
+import org.techtown.crecker.feature.news.NewsFragment
 
 class MainActivity : AppCompatActivity() {
 
