@@ -36,6 +36,13 @@ class NewsFragment : Fragment() {
         bannerAdapter = BannerAdapter(context)
         V.news_banner.adapter = bannerAdapter
 
+        initRecycler(V, context)
+
+        return V
+    }
+
+    private fun initRecycler(V : View, context : Context){
+
         //인기 지원 활동 리사이클러 뷰
         newsAdapter = NewsAdapter(context)
         V.news_popular_rv.adapter = newsAdapter
@@ -63,9 +70,6 @@ class NewsFragment : Fragment() {
         newsAdapter.notifyDataSetChanged()
         newsRecentAdapter.notifyDataSetChanged()
 
-
-
-        return V
     }
 
 }

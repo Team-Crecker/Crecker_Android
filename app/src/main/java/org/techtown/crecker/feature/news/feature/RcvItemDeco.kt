@@ -27,15 +27,6 @@ class RcvItemDeco() : RecyclerView.ItemDecoration() {
             outRect.bottom = size20
         }
 
-        //좌우 설정 spanIndex
-        // 0 : 왼쪽 1 : 오른쪽
-//        val lp  = view.layoutParams as GridLayoutManager.LayoutParams
-//        val spanIndex = lp.spanIndex
-//
-//        if(spanIndex == 0){
-//            outRect.right=size8
-//        }
     }
 
-//    private fun dpToPx(context: Context , dp : Int) : Int = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp as Float  ,context.resources.displayMetrics) as Int
 }
