@@ -4,14 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:orientation="vertical">
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/main_viewPager"
         android:layout_width="match_parent"
         android:layout_height="800dp"
-        android:background="#6D6ACAAC"
         android:layout_above="@id/main_tabLayout">
 
     </androidx.viewpager.widget.ViewPager>
@@ -21,7 +19,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:tabTextColor="#000000">
+        app:tabTextColor="#000000"
+        app:tabIndicatorColor="#00ffffff">
     </com.google.android.material.tabs.TabLayout>
 
 </RelativeLayout>
