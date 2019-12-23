@@ -11,7 +11,7 @@ import java.lang.reflect.Type
 
 class RcvItemDeco() : RecyclerView.ItemDecoration() {
     private var size20 : Int = 20
-    private var size8 : Int = 20
+    private var size8 : Int = 8
 
     override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
         super.getItemOffsets(outRect, view, parent, state)

@@ -1,11 +1,15 @@
 package org.techtown.crecker.feature.main
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
 import androidx.core.view.get
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.custom_tab_button.view.*
 import org.techtown.crecker.R
 import org.techtown.crecker.adapter.MainViewPagerAdapter
 import org.techtown.crecker.feature.home.HomeFragment
@@ -15,10 +19,13 @@ import org.techtown.crecker.fragment.MyPageFragment
 import org.techtown.crecker.fragment.NewsFragment
 
 class MainActivity : AppCompatActivity() {
+    lateinit private var mContext : Context
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        mContext = applicationContext
 
     //뷰페이저와 탭레이아웃 장착
         initViewPager()
@@ -35,31 +42,51 @@ class MainActivity : AppCompatActivity() {
         main_viewPager.adapter = viewPagerAdapter
         main_tabLayout.setupWithViewPager(main_viewPager)
 
-        main_tabLayout.getTabAt(0)?.setIcon(R.drawable.tab_home_filled) // Home 로고
-        main_tabLayout.getTabAt(1)?.setIcon(R.drawable.tab_ad) // Ads 로고
-        main_tabLayout.getTabAt(2)?.setIcon(R.drawable.tab_expert) // Law 로고
-        main_tabLayout.getTabAt(3)?.setIcon(R.drawable.tab_news) // News 로고
-        main_tabLayout.getTabAt(4)?.setIcon(R.drawable.tab_mypage) // Mypage 로고
+        main_tabLayout.getTabAt(0)?.setCustomView(initCustomView(0)) // Home 로고
+        main_tabLayout.getTabAt(1)?.setCustomView(initCustomView(1)) // Ads 로고
+        main_tabLayout.getTabAt(2)?.setCustomView(initCustomView(2)) // Law 로고
+        main_tabLayout.getTabAt(3)?.setCustomView(initCustomView(3)) // News 로고
+        main_tabLayout.getTabAt(4)?.setCustomView(initCustomView(4)) // Mypage 로고
 
         main_viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
             override fun onPageScrollStateChanged(state: Int) {}
 
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
 
-            override fun onPageSelected(position: Int) {
-                main_tabLayout.getTabAt(0)?.setIcon(R.drawable.tab_home) // Home 로고
-                main_tabLayout.getTabAt(1)?.setIcon(R.drawable.tab_ad) // Ads 로고
-                main_tabLayout.getTabAt(2)?.setIcon(R.drawable.tab_expert) // Law 로고
-                main_tabLayout.getTabAt(3)?.setIcon(R.drawable.tab_news) // News 로고
-                main_tabLayout.getTabAt(4)?.setIcon(R.drawable.tab_mypage) // Mypage 로고
+            override fun onPageSelected(position: Int) {}
 
-                when(position){
-                    0 -> main_tabLayout.getTabAt(0)?.setIcon(R.drawable.tab_home_filled)
-                    1 -> main_tabLayout.getTabAt(1)?.setIcon(R.drawable.tab_ad_filled)
-                    3 -> main_tabLayout.getTabAt(3)?.setIcon(R.drawable.tab_news_filled)
-
-                }
-            }
         })
+    }
+
+    private fun initCustomView(position : Int) : View {
+        var tabView = LayoutInflater.from(mContext).inflate(R.layout.custom_tab_button, null)
+
+        when(position){
+            0 ->{
+                tabView.Tab_ic.setImageResource(R.drawable.select_tab_home)
+                return tabView
+            }
+
+            1->{
+                tabView.Tab_ic.setImageResource(R.drawable.select_tab_ads)
+                return tabView
+            }
+            2->{
+                tabView.Tab_ic.setImageResource(R.drawable.select_tab_law)
+                return tabView
+            }
+            3->{
+                tabView.Tab_ic.setImageResource(R.drawable.select_tab_news)
+                return tabView
+
+            }
+            4->{
+                tabView.Tab_ic.setImageResource(R.drawable.select_tab_mypage)
+                return tabView
+            }
+            else ->{
+                return tabView
+            }
+        }
     }
 }

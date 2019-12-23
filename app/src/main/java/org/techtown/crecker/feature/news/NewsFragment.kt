@@ -53,6 +53,7 @@ class NewsFragment : Fragment() {
         newsAdapter.addItem(NewsData(img_url = "", company = "company", title = "title", day = "day"))
         newsAdapter.addItem(NewsData(img_url = "", company = "company", title = "title", day = "day"))
 
+//       최신 지원 활동 리사이클러 뷰
         newsRecentAdapter = NewsAdapter(context)
         V.news_recent_rv.adapter = newsRecentAdapter
         V.news_recent_rv.layoutManager = GridLayoutManager(context,2)
