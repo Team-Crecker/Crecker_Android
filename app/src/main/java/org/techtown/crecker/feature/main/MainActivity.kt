@@ -7,9 +7,9 @@ import org.techtown.crecker.R
 import org.techtown.crecker.adapter.MainViewPagerAdapter
 import org.techtown.crecker.feature.ads.AdsFragment
 import org.techtown.crecker.feature.home.HomeFragment
-import org.techtown.crecker.feature.law.LawFragment
+import org.techtown.crecker.fragment.LawFragment
 import org.techtown.crecker.feature.mypage.MyPageFragment
-import org.techtown.crecker.feature.news.NewsFragment
+import org.techtown.crecker.fragment.NewsFragment
 
 class MainActivity : AppCompatActivity() {
 
