@@ -3,6 +3,7 @@ package org.techtown.crecker.feature.main
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.view.get
+import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
 import org.techtown.crecker.R
@@ -34,44 +35,30 @@ class MainActivity : AppCompatActivity() {
         main_viewPager.adapter = viewPagerAdapter
         main_tabLayout.setupWithViewPager(main_viewPager)
 
-        main_tabLayout.getTabAt(0)?.setIcon(R.drawable.tab_home) // Home 로고
+        main_tabLayout.getTabAt(0)?.setIcon(R.drawable.tab_home_filled) // Home 로고
         main_tabLayout.getTabAt(1)?.setIcon(R.drawable.tab_ad) // Ads 로고
         main_tabLayout.getTabAt(2)?.setIcon(R.drawable.tab_expert) // Law 로고
         main_tabLayout.getTabAt(3)?.setIcon(R.drawable.tab_news) // News 로고
         main_tabLayout.getTabAt(4)?.setIcon(R.drawable.tab_mypage) // Mypage 로고
 
-        main_tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
-            override fun onTabReselected(p0: TabLayout.Tab?) {
-            }
+        main_viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
+            override fun onPageScrollStateChanged(state: Int) {}
 
-            override fun onTabUnselected(p0: TabLayout.Tab?) {
-                when(p0?.position){
-                    0 ->{
-                        main_tabLayout.getTabAt(0)?.setIcon(R.drawable.tab_home)
-                    }
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
 
-                    1 -> {
-                        main_tabLayout.getTabAt(1)?.setIcon(R.drawable.tab_ad)
-                    }
-                    3-> {
-                        main_tabLayout.getTabAt(3)?.setIcon(R.drawable.tab_news)
-                    }
+            override fun onPageSelected(position: Int) {
+                main_tabLayout.getTabAt(0)?.setIcon(R.drawable.tab_home) // Home 로고
+                main_tabLayout.getTabAt(1)?.setIcon(R.drawable.tab_ad) // Ads 로고
+                main_tabLayout.getTabAt(2)?.setIcon(R.drawable.tab_expert) // Law 로고
+                main_tabLayout.getTabAt(3)?.setIcon(R.drawable.tab_news) // News 로고
+                main_tabLayout.getTabAt(4)?.setIcon(R.drawable.tab_mypage) // Mypage 로고
+
+                when(position){
+                    0 -> main_tabLayout.getTabAt(0)?.setIcon(R.drawable.tab_home_filled)
+                    1 -> main_tabLayout.getTabAt(1)?.setIcon(R.drawable.tab_ad_filled)
+                    3 -> main_tabLayout.getTabAt(3)?.setIcon(R.drawable.tab_news_filled)
+
                 }
-            }
-
-            override fun onTabSelected(p0: TabLayout.Tab?) {
-                    when(p0?.position){
-                        0 -> {
-                            main_tabLayout.getTabAt(0)?.setIcon(R.drawable.tab_home_filled)
-                        }
-                        1 ->{
-                            main_tabLayout.getTabAt(1)?.setIcon(R.drawable.tab_ad_filled)
-                        }
-                        3 ->{
-                            main_tabLayout.getTabAt(3)?.setIcon(R.drawable.tab_news_filled)
-                        }
-                    }
-
             }
         })
     }
