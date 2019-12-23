@@ -1,18 +1,22 @@
 package org.techtown.crecker.feature.ads
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.zhpan.bannerview.BannerViewPager
 import com.zhpan.bannerview.constants.IndicatorGravity
 import com.zhpan.bannerview.constants.IndicatorSlideMode
 import com.zhpan.bannerview.constants.IndicatorStyle
 import com.zhpan.bannerview.utils.BannerUtils
+import kotlinx.android.synthetic.main.fragment_ads.*
 import org.techtown.crecker.R
 import java.util.ArrayList
 
@@ -25,6 +29,8 @@ class AdsFragment : Fragment() {
     private val des = arrayOf("크리스마스 비누 2구 세트", "aaa", "bbb","ccc", "ddd")
     private val dday = arrayOf("D-7", "D-1", "D-14","D-2", "D-4")
     private val imgs = arrayOf(R.drawable.img_main_banner, R.drawable.t1, R.drawable.t2, R.drawable.t3, R.drawable.t0)
+
+    lateinit var goDropDown: ImageView
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -72,6 +78,11 @@ class AdsFragment : Fragment() {
             .setRoundCorner(BannerUtils.dp2px(6f))
             .setHolderCreator{ BannerVH() }
         setupIndicator()
+
+        goDropDown = view.findViewById(R.id.dropdown)
+        goDropDown.setOnClickListener {
+            startActivity(Intent(context, CategoryActivity::class.java))
+        }
     }
 
     private fun setupIndicator() {
