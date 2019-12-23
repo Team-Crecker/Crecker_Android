@@ -11,20 +11,30 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_news.view.*
 
 import org.techtown.crecker.R
-import org.techtown.crecker.feature.main.MainActivity
+import org.techtown.crecker.feature.news.adapter.BannerAdapter
 import org.techtown.crecker.feature.news.adapter.NewsAdapter
 import org.techtown.crecker.feature.news.data.NewsData
 
 class NewsFragment : Fragment() {
     lateinit private  var newsAdapter : NewsAdapter
+    lateinit private var bannerAdapter : BannerAdapter
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val V = inflater.inflate(R.layout.fragment_news, container, false)
         val context : Context = V.context
-        newsAdapter = NewsAdapter(context)
 
+        //뉴스 메인 배너
+        bannerAdapter = BannerAdapter(context)
+        V.news_banner.adapter = bannerAdapter
+
+        //인기 지원 활동 리사이클러 뷰
+        newsAdapter = NewsAdapter(context)
         V.news_popular_rv.adapter = newsAdapter
         V.news_popular_rv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         newsAdapter.addItem(NewsData(img_url = "", company = "company", title = "title", day = "day"))
@@ -32,12 +42,10 @@ class NewsFragment : Fragment() {
         newsAdapter.addItem(NewsData(img_url = "", company = "company", title = "title", day = "day"))
         newsAdapter.addItem(NewsData(img_url = "", company = "company", title = "title", day = "day"))
         newsAdapter.addItem(NewsData(img_url = "", company = "company", title = "title", day = "day"))
-
         newsAdapter.notifyDataSetChanged()
 
 
         return V
     }
-
 
 }

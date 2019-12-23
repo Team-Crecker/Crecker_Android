@@ -15,17 +15,18 @@
 
     </com.google.android.material.tabs.TabLayout>
 
-    <com.zhpan.bannerview.BannerViewPager
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/news_banner"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="200dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="57dp"
-        app:layout_constraintBottom_toTopOf="@+id/news_popular_rv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/news_tablayout" />
+        app:layout_constraintTop_toBottomOf="@+id/news_tablayout" >
+
+    </androidx.viewpager.widget.ViewPager>
 
     <TextView
         android:id="@+id/news_title_tv"
