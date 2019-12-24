@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <androidx.viewpager.widget.ViewPager
+    <org.techtown.crecker.module.CustomViewPager
         android:id="@+id/main_viewPager"
         android:layout_width="match_parent"
-        android:layout_height="800dp"
-        android:layout_above="@id/main_tabLayout">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toTopOf="@+id/main_tabLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    </androidx.viewpager.widget.ViewPager>
+    </org.techtown.crecker.module.CustomViewPager>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/main_tabLayout"
+        android:background="#ffffff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:tabIndicatorColor="#00ffffff"
-        app:tabTextColor="#000000">
-    </com.google.android.material.tabs.TabLayout>
+        app:tabTextColor="#000000"></com.google.android.material.tabs.TabLayout>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

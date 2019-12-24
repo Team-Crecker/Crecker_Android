@@ -2,134 +2,49 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ScrollView
+    <org.techtown.crecker.module.CustomViewPager
+        android:id="@+id/news_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="144dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/news_tablayout"></org.techtown.crecker.module.CustomViewPager>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+    <TextView
+            android:id="@+id/news_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="145dp"
+            android:layout_marginTop="42dp"
+            android:layout_marginEnd="145dp"
+            android:fontFamily="@font/montserrat"
+            android:lineSpacingExtra="5sp"
+            android:text="News"
+            android:textColor="#000000"
+            android:textFontWeight="700"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/news_tablayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/news_title_tv"
+            app:tabIndicatorColor="#333333"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorHeight="3dp"
+            app:tabSelectedTextColor="#000000"
+            app:tabTextAppearance="@style/tab_resource">
 
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/news_banner"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/news_tablayout">
-
-            </androidx.viewpager.widget.ViewPager>
-
-            <TextView
-                android:id="@+id/news_popular_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="28dp"
-                android:fontFamily="@font/apple_sd"
-                android:lineSpacingExtra="3sp"
-                android:text="인기 지원 활동"
-                android:textColor="#333333"
-                android:textFontWeight="700"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/news_banner" />
-
-            <TextView
-                android:id="@+id/news_recent_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="39dp"
-                android:fontFamily="@font/apple_sd"
-                android:lineSpacingExtra="3sp"
-                android:text="최신 지원 활동"
-                android:textAlignment="center"
-                android:textColor="#333333"
-                android:textFontWeight="700"
-                android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/news_popular_rv" />
-
-            <TextView
-                android:id="@+id/news_title_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="145dp"
-                android:layout_marginTop="42dp"
-                android:layout_marginEnd="145dp"
-                android:fontFamily="@font/montserrat"
-                android:lineSpacingExtra="5sp"
-                android:text="News"
-                android:textColor="#000000"
-                android:textFontWeight="700"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/news_popular_rv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="10dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/news_popular_tv" />
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/news_tablayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/news_title_tv"
-                app:tabIndicatorColor="#333333"
-                app:tabIndicatorFullWidth="false"
-                app:tabIndicatorHeight="3dp"
-                app:tabSelectedTextColor="#000000"
-                app:tabTextAppearance="@style/tab_resource">
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="전체" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="교육" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="지원금" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="공모전" />
-
-            </com.google.android.material.tabs.TabLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/news_recent_rv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="10dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/news_recent_tv" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+        </com.google.android.material.tabs.TabLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

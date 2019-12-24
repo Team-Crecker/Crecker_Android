@@ -58,11 +58,14 @@
             <org.techtown.crecker.module.CustomViewPager
                 android:id="@+id/news_banner"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
             </org.techtown.crecker.module.CustomViewPager>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:nestedScrollingEnabled="false"
                 android:id="@+id/news_recent_rv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
