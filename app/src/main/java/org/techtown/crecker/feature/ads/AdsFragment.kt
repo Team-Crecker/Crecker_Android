@@ -1,6 +1,5 @@
 package org.techtown.crecker.feature.ads
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -16,7 +15,6 @@ import com.zhpan.bannerview.constants.IndicatorGravity
 import com.zhpan.bannerview.constants.IndicatorSlideMode
 import com.zhpan.bannerview.constants.IndicatorStyle
 import com.zhpan.bannerview.utils.BannerUtils
-import kotlinx.android.synthetic.main.fragment_ads.*
 import org.techtown.crecker.R
 import java.util.ArrayList
 
@@ -35,7 +33,6 @@ class AdsFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         this.mContext = context.applicationContext
-        Log.d("asdf", "어태치")
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

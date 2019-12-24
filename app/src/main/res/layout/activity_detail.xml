@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feature.main.MainActivity">
+    tools:context=".feature.ads.DetailActivity">
+
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbar_datail"
         android:layout_width="match_parent"
         android:layout_height="123dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +25,7 @@
                 android:layout_marginEnd="30dp"
                 android:gravity="center_horizontal"
                 android:lineSpacingExtra="5sp"
-                android:text="Advertise"
+                android:text="Beauty"
                 android:textColor="#000000"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -43,17 +43,4 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
-
-    <com.zhpan.bannerview.BannerViewPager
-        android:id="@+id/ad_view_pager"
-        android:layout_width="335dp"
-        android:layout_height="335dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:bvp_indicator_visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
