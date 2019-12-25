@@ -101,18 +101,15 @@ class AdsMainFragment : Fragment() {
 
     private fun setupIndicator() {
         mViewPager!!.setIndicatorStyle(IndicatorStyle.DASH)
-            .setIndicatorHeight(resources.getDimensionPixelOffset(R.dimen.dp_3))
+            .setIndicatorHeight(5)
             .setIndicatorGravity(IndicatorGravity.CENTER)
-            .setIndicatorSlideMode(IndicatorSlideMode.NORMAL)
-            .setIndicatorGap(resources.getDimensionPixelOffset(R.dimen.dp_3))
-            .setPageMargin(0)
-            .setIndicatorWidth(
-                resources.getDimensionPixelOffset(R.dimen.dp_3),
-                resources.getDimensionPixelOffset(R.dimen.dp_10)
-            )
+            .setIndicatorSlideMode(IndicatorSlideMode.SMOOTH)
+            .setIndicatorGap(0)
+            .setPageMargin(resources.getDimensionPixelOffset(R.dimen.dp_3))
+            .setIndicatorWidth(200)
             .setIndicatorColor(
-                Color.parseColor("#888888"),
-                Color.parseColor("#118EEA")
+                Color.parseColor("#c9cdd2"),
+                Color.parseColor("#000000")
             ).create(mBannerList)
     }
 }

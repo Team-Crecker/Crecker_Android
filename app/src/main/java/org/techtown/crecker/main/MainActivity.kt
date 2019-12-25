@@ -22,6 +22,7 @@ import org.techtown.crecker.news.NewsFragment
 import org.techtown.crecker.home.HomeFragment
 import org.techtown.crecker.main.adapter.MainViewPagerAdapter
 import org.techtown.crecker.ads.category.FragmentCommunicator
+import org.techtown.crecker.ads.fragment.OnBackPressed
 
 
 class MainActivity : AppCompatActivity() {
@@ -40,10 +41,6 @@ class MainActivity : AppCompatActivity() {
         initViewPager()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-    }
-
     private fun initViewPager() {
         fragments = arrayListOf(HomeFragment(), AdsFragment(), LawFragment(), NewsFragment(), MyPageFragment())
 
@@ -60,7 +57,8 @@ class MainActivity : AppCompatActivity() {
         main_tabLayout.getTabAt(4)?.customView = initCustomView(4) // MyPage 로고
 
         main_viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
-            override fun onPageScrollStateChanged(state: Int) {}
+            override fun onPageScrollStateChanged(state: Int) {
+            }
 
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
             }
@@ -94,6 +92,15 @@ class MainActivity : AppCompatActivity() {
 
     fun passVal(fragmentCommunicator: FragmentCommunicator) {
         this.fragmentCommunicator = fragmentCommunicator
+    }
+
+    override fun onBackPressed() {
+        for(i in fragments){
+            if(i is OnBackPressed){
+                if(!i.onBackPressed()) super.onBackPressed()
+            }
+
+        }
     }
 }
 

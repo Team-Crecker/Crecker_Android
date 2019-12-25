@@ -21,7 +21,7 @@ import org.techtown.crecker.ads.category.EventBus
 import org.techtown.crecker.ads.category.FragmentCommunicator
 import org.techtown.crecker.main.MainActivity
 
-class AdsFragment : Fragment() {
+class AdsFragment : Fragment(), OnBackPressed {
     private lateinit var mContext: Context
     private lateinit var goDropDown: ImageView
     private lateinit var  tvTitle: TextView
@@ -105,6 +105,17 @@ class AdsFragment : Fragment() {
                 EventBus.isCtgSelected = true
             }
         }
+    }
+
+    override fun onBackPressed(): Boolean {
+        return if(EventBus.isCtgSelected){
+            EventBus.isCtgSelected = false
+            view?.goBack?.isVisible = false
+            changeFragment(AdsMainFragment())
+            tvTitle.text = "Advertise"
+            true
+        } else
+            false
     }
 }
 fun String.putLog(tag: String = "debugResult"){
