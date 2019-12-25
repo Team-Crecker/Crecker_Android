@@ -15,7 +15,7 @@ class HomeAdsListAdapter(
     var data: List<HomeAdsItem> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeAdsListViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.list_item_home_ads, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.home_ads_item, parent, false)
         return HomeAdsListViewHolder(view)
     }
 
