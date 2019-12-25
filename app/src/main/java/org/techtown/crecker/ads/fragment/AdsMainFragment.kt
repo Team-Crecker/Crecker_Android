@@ -1,19 +1,23 @@
 package org.techtown.crecker.ads.fragment
 
 import android.content.Context
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.zhpan.bannerview.BannerViewPager
 import com.zhpan.bannerview.constants.IndicatorGravity
 import com.zhpan.bannerview.constants.IndicatorSlideMode
 import com.zhpan.bannerview.constants.IndicatorStyle
 import com.zhpan.bannerview.utils.BannerUtils
+import kotlinx.android.synthetic.main.ad_main_fragment.view.*
 import org.techtown.crecker.R
+import org.techtown.crecker.ads.contents.AdsAdapter
+import org.techtown.crecker.ads.contents.AdData
 import org.techtown.crecker.feature.ads.BannerData
 import org.techtown.crecker.feature.ads.BannerVH
 import java.util.ArrayList
@@ -21,6 +25,11 @@ import java.util.ArrayList
 class AdsMainFragment : Fragment() {
     private var mBannerList: MutableList<BannerData> = ArrayList()
     private var mViewPager: BannerViewPager<BannerData, BannerVH>? = null
+
+    private lateinit var rcmdAdapter: AdsAdapter
+    private lateinit var popularAdapter: AdsAdapter
+    private lateinit var recentAdapter: AdsAdapter
+
     private lateinit var mContext: Context
 
     override fun onAttach(context: Context) {
@@ -69,6 +78,25 @@ class AdsMainFragment : Fragment() {
             .setRoundCorner(BannerUtils.dp2px(6f))
             .setHolderCreator{ BannerVH() }
         setupIndicator()
+
+        val dummy = AdData("", R.drawable.img_thum1, "모모스 커피", 10000)
+        val dummy2 = AdData("", R.drawable.img_thum2, "모모스 커피", 10000)
+        val dummy3 = AdData("", R.drawable.img_thum2, "데저트 크림", 8000)
+
+        rcmdAdapter = AdsAdapter(mContext)
+        rcmdAdapter.data = arrayListOf(dummy, dummy2, dummy, dummy2)
+        view.rv_ad_recommend.adapter = rcmdAdapter
+        view.rv_ad_recommend.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
+
+        popularAdapter = AdsAdapter(mContext)
+        popularAdapter.data = arrayListOf(dummy2, dummy, dummy2, dummy)
+        view.rv_ad_popular.adapter = popularAdapter
+        view.rv_ad_popular.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
+
+        recentAdapter = AdsAdapter(mContext)
+        recentAdapter.data = arrayListOf(dummy3, dummy, dummy, dummy2, dummy3, dummy2)
+        view.rv_ad_recent.adapter = recentAdapter
+        view.rv_ad_recent.layoutManager = GridLayoutManager(mContext, 2, GridLayoutManager.VERTICAL, false)
     }
 
     private fun setupIndicator() {

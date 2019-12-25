@@ -12,16 +12,17 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.squareup.otto.Subscribe
-import kotlinx.android.synthetic.main.fragment_ads.view.*
 import org.techtown.crecker.R
-import org.techtown.crecker.ads.CategoryActivity
-import org.techtown.crecker.ads.event.CtgResultEvent
-import org.techtown.crecker.ads.event.FragmentCommunicator
+import org.techtown.crecker.ads.category.CategoryActivity
+import org.techtown.crecker.ads.category.CtgResultEvent
+import org.techtown.crecker.ads.category.EventBus
+import org.techtown.crecker.ads.category.FragmentCommunicator
 import org.techtown.crecker.main.MainActivity
 
 class AdsFragment : Fragment() {
     private lateinit var mContext: Context
     private lateinit var goDropDown: ImageView
+    private lateinit var  tvTitle: TextView
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -34,19 +35,35 @@ class AdsFragment : Fragment() {
         return view
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        EventBus.register(this)
+    }
+
+    override fun onDestroyView() {
+        EventBus.unregister(this)
+        super.onDestroyView()
+    }
+
     private fun initView(view: View) {
+        tvTitle = view.findViewById(R.id.tv_title)
+
         goDropDown = view.findViewById(R.id.dropdown)
         goDropDown.setOnClickListener {
-            activity?.startActivityForResult(Intent(mContext, CategoryActivity::class.java), 7777)
+            activity?.startActivityForResult(Intent(mContext, CategoryActivity::class.java)
+                .apply { putExtra("oldTitle", tvTitle.text.toString()) }, 7777)
         }
 
         (activity as MainActivity).passVal(object : FragmentCommunicator{
             override fun changeText(str: String?) {
-                view.tv_title.text = str
+                tvTitle.text = str
             }
         })
 
-        childFragmentManager.beginTransaction().add(R.id.frame_container, AdsMainFragment()).commit()
+        if(EventBus.isCtgSelected)
+            childFragmentManager.beginTransaction().add(R.id.frame_container, AdsCtgFragment()).commit()
+        else
+            childFragmentManager.beginTransaction().add(R.id.frame_container, AdsMainFragment()).commit()
     }
 
     private fun changeFragment(fragment: Fragment){
@@ -67,7 +84,8 @@ class AdsFragment : Fragment() {
         "나도 받음".putLog()
         if(requestCode == 7777){
             if(resultCode == Activity.RESULT_OK){
-                changeFragment(AdsCtgFragment(data?.getStringExtra("title")))
+                changeFragment(AdsCtgFragment())
+                EventBus.isCtgSelected = true
             }
         }
     }

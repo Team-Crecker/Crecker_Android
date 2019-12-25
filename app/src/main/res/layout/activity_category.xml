@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ads.CategoryActivity">
+    tools:context=".ads.category.CategoryActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
@@ -47,6 +47,8 @@
             android:lineSpacingExtra="5sp"
             android:textColor="#000000"
             android:textSize="24sp"
+            android:fontFamily="@font/montserrat"
+            android:textFontWeight="700"
             android:layout_margin="12dp"/>
         <TextView
             android:id="@+id/tv_restau"
@@ -57,6 +59,8 @@
             android:lineSpacingExtra="5sp"
             android:textColor="#000000"
             android:textSize="24sp"
+            android:fontFamily="@font/montserrat"
+            android:textFontWeight="700"
             android:layout_margin="10dp"/>
         <TextView
             android:id="@+id/tv_travel"
@@ -67,6 +71,8 @@
             android:lineSpacingExtra="5sp"
             android:textColor="#000000"
             android:textSize="24sp"
+            android:fontFamily="@font/montserrat"
+            android:textFontWeight="700"
             android:layout_margin="12dp"/>
         <TextView
             android:id="@+id/tv_culture"
@@ -77,6 +83,8 @@
             android:lineSpacingExtra="5sp"
             android:textColor="#000000"
             android:textSize="24sp"
+            android:fontFamily="@font/montserrat"
+            android:textFontWeight="700"
             android:layout_margin="12dp"/>
         <TextView
             android:id="@+id/tv_other"
@@ -87,6 +95,8 @@
             android:lineSpacingExtra="5sp"
             android:textColor="#000000"
             android:textSize="24sp"
+            android:fontFamily="@font/montserrat"
+            android:textFontWeight="700"
             android:layout_margin="12dp"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

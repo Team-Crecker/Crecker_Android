@@ -1,20 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".main.MainActivity">
 
-    <com.zhpan.bannerview.BannerViewPager
-        android:id="@+id/ad_view_pager"
-        android:layout_width="335dp"
-        android:layout_height="335dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:bvp_indicator_visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.zhpan.bannerview.BannerViewPager
+            android:id="@+id/ad_view_pager"
+            android:layout_width="335dp"
+            android:layout_height="335dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:bvp_indicator_visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_ad_recommend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/apple_sd_gothic_neo_bold"
+            android:lineSpacingExtra="3sp"
+            android:text="이런 광고 어때요?"
+            android:textColor="#333333"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/rv_ad_recommend"
+            app:layout_constraintTop_toBottomOf="@+id/ad_view_pager" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_ad_recommend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_ad_recommend" />
+
+        <TextView
+            android:id="@+id/tv_ad_popular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/apple_sd_gothic_neo_bold"
+            android:lineSpacingExtra="3sp"
+            android:text="인기 광고"
+            android:textColor="#333333"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/rv_ad_popular"
+            app:layout_constraintTop_toBottomOf="@+id/rv_ad_recommend" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_ad_popular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_ad_popular" />
+
+        <TextView
+            android:id="@+id/tv_ad_recent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/apple_sd_gothic_neo_bold"
+            android:lineSpacingExtra="3sp"
+            android:text="최신순"
+            android:textColor="#333333"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/rv_ad_recent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_ad_popular" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_ad_recent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_ad_recent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

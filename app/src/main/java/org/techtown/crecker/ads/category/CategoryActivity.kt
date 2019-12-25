@@ -1,4 +1,4 @@
-package org.techtown.crecker.ads
+package org.techtown.crecker.ads.category
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,7 +17,11 @@ class CategoryActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun init() {
-        btn_quit.setOnClickListener { finish() }
+        btn_quit.setOnClickListener {
+            val i = Intent().apply { putExtra("title", intent.getStringExtra("oldTitle")) }
+            setResult(Activity.RESULT_OK, i)
+            finish()
+        }
 
         tv_beauty.setOnClickListener(this)
         tv_restau.setOnClickListener(this)
@@ -35,8 +39,8 @@ class CategoryActivity : AppCompatActivity(), View.OnClickListener {
             org.techtown.crecker.R.id.tv_other -> "Other"
             else -> ""
         }
-        val intent = Intent().apply { putExtra("title", title) }
-        setResult(Activity.RESULT_OK, intent)
+        val i = Intent().apply { putExtra("title", title) }
+        setResult(Activity.RESULT_OK, i)
         finish()
     }
 }

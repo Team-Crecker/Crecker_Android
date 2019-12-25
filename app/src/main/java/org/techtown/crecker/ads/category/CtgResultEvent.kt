@@ -1,4 +1,4 @@
-package org.techtown.crecker.ads.event
+package org.techtown.crecker.ads.category
 
 import android.content.Intent
 

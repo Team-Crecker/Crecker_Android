@@ -1,4 +1,4 @@
-package org.techtown.crecker.ads.event
+package org.techtown.crecker.ads.category
 
 import android.os.Handler
 import com.squareup.otto.Bus
@@ -14,4 +14,6 @@ object EventBus : Bus() {
             handler.post(Runnable { super@EventBus.post(event) })
         }
     }
+
+    var isCtgSelected = false
 }

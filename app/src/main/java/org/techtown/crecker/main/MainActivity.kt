@@ -13,15 +13,15 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.custom_tab_button.view.*
 import org.techtown.crecker.R
 import org.techtown.crecker.ads.fragment.AdsFragment
-import org.techtown.crecker.ads.event.CtgResultEvent
-import org.techtown.crecker.ads.event.EventBus
+import org.techtown.crecker.ads.category.CtgResultEvent
+import org.techtown.crecker.ads.category.EventBus
 import org.techtown.crecker.mypage.MyPageFragment
 import org.techtown.crecker.law.LawFragment
 import org.techtown.crecker.news.NewsFragment
 
 import org.techtown.crecker.home.HomeFragment
 import org.techtown.crecker.main.adapter.MainViewPagerAdapter
-import org.techtown.crecker.ads.event.FragmentCommunicator
+import org.techtown.crecker.ads.category.FragmentCommunicator
 
 
 class MainActivity : AppCompatActivity() {
@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(org.techtown.crecker.R.layout.activity_main)
+        setContentView(R.layout.activity_main)
 
         mContext = applicationContext
 
@@ -58,25 +58,42 @@ class MainActivity : AppCompatActivity() {
         main_viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
             override fun onPageScrollStateChanged(state: Int) {}
 
-            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+                showFrag(position)
+            }
 
-            override fun onPageSelected(position: Int) {}
+            override fun onPageSelected(position: Int) {
+                showFrag(position)
+            }
         })
     }
 
+    private fun showFrag(idx: Int){
+        for(i in fragments.indices){
+            if(i == idx){
+                if(fragments[i].isHidden)
+                    supportFragmentManager.beginTransaction().show(fragments[i]).commit()
+            }
+            else
+                if(!fragments[i].isHidden)
+                    supportFragmentManager.beginTransaction().hide(fragments[i]).commit()
+        }
+    }
+
     private fun initCustomView(position : Int) : View {
-        val tabView = LayoutInflater.from(mContext).inflate(org.techtown.crecker.R.layout.custom_tab_button, null)
+        val tabView = LayoutInflater.from(mContext).inflate(R.layout.custom_tab_button, null)
 
         when(position){
-            0 -> tabView.Tab_ic.setImageResource(org.techtown.crecker.R.drawable.select_tab_home)
-            1-> tabView.Tab_ic.setImageResource(org.techtown.crecker.R.drawable.select_tab_ads)
-            2-> tabView.Tab_ic.setImageResource(org.techtown.crecker.R.drawable.select_tab_law)
-            3-> tabView.Tab_ic.setImageResource(org.techtown.crecker.R.drawable.select_tab_news)
-            4-> tabView.Tab_ic.setImageResource(org.techtown.crecker.R.drawable.select_tab_mypage)
+            0 -> tabView.Tab_ic.setImageResource(R.drawable.select_tab_home)
+            1-> tabView.Tab_ic.setImageResource(R.drawable.select_tab_ads)
+            2-> tabView.Tab_ic.setImageResource(R.drawable.select_tab_law)
+            3-> tabView.Tab_ic.setImageResource(R.drawable.select_tab_news)
+            4-> tabView.Tab_ic.setImageResource(R.drawable.select_tab_mypage)
         }
         return tabView
     }
 
+    //광고 탭의 내부 프래그먼트 갱신
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         "받음".putLog()

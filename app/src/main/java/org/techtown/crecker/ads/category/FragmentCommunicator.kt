@@ -1,4 +1,4 @@
-package org.techtown.crecker.ads.event
+package org.techtown.crecker.ads.category
 
 interface FragmentCommunicator {
     fun changeText(str: String?)

@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <!--광고-->
-        <activity android:name=".ads.CategoryActivity" />
+        <activity android:name=".ads.category.CategoryActivity" />
 
         <!--메인-->
         <activity android:name=".main.MainActivity">
