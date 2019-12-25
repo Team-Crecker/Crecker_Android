@@ -16,4 +16,5 @@ object EventBus : Bus() {
     }
 
     var isCtgSelected = false
+    var title = "Advertise"
 }

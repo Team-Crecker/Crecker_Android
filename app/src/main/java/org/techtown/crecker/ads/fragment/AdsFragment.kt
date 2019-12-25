@@ -10,8 +10,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.squareup.otto.Subscribe
+import kotlinx.android.synthetic.main.fragment_ads.view.*
 import org.techtown.crecker.R
 import org.techtown.crecker.ads.category.CategoryActivity
 import org.techtown.crecker.ads.category.CtgResultEvent
@@ -47,33 +49,48 @@ class AdsFragment : Fragment() {
 
     private fun initView(view: View) {
         tvTitle = view.findViewById(R.id.tv_title)
+        tvTitle.text = EventBus.title
 
         goDropDown = view.findViewById(R.id.dropdown)
         goDropDown.setOnClickListener {
             activity?.startActivityForResult(Intent(mContext, CategoryActivity::class.java)
-                .apply { putExtra("oldTitle", tvTitle.text.toString()) }, 7777)
+                .apply {
+                        putExtra("oldTitle", tvTitle.text.toString())
+                        .putExtra("oldBool", view.goBack.isVisible)
+                }, 7777)
         }
 
         (activity as MainActivity).passVal(object : FragmentCommunicator{
+            override fun showBack(isShow: Boolean?) {
+                view.goBack.isVisible = isShow!!
+                if(!isShow) changeText("Advertise")
+            }
+
             override fun changeText(str: String?) {
                 tvTitle.text = str
             }
         })
 
-        if(EventBus.isCtgSelected)
-            childFragmentManager.beginTransaction().add(R.id.frame_container, AdsCtgFragment()).commit()
-        else
-            childFragmentManager.beginTransaction().add(R.id.frame_container, AdsMainFragment()).commit()
+        if(EventBus.isCtgSelected){
+            changeFragment(AdsCtgFragment())
+            view.goBack.isVisible = true
+        }
+        else{
+            changeFragment(AdsMainFragment())
+            view.goBack.isVisible = false
+        }
+
+        view.goBack.setOnClickListener {
+            EventBus.isCtgSelected = false
+            view.goBack.isVisible = false
+            changeFragment(AdsMainFragment())
+            tvTitle.text = "Advertise"
+        }
     }
 
     private fun changeFragment(fragment: Fragment){
         this.childFragmentManager.beginTransaction().replace(R.id.frame_container, fragment).commit()
     }
-
-    /*private fun changeTitle(title: String){
-        this.view?.findViewById<TextView>(R.id.tv_title)?.text = title
-        fragmentManager!!.beginTransaction().detach(this).attach(this).commit()
-    }*/
 
     @Subscribe
     fun onActivityResultEvent(event: CtgResultEvent) {

@@ -28,7 +28,7 @@ class AdsCtgFragment : Fragment() {
         val dummy = AdDataWithDay("", R.drawable.img_thum1, "모모스 커피", 10000, 7)
         val dummy2 = AdDataWithDay("", R.drawable.img_thum2, "모모스 커피", 10000, 24)
         val dummy3 = AdDataWithDay("", R.drawable.img_thum2, "데저트 크림", 8000, 30)
-1
+
         adapter = AdsDdayAdapter(mContext)
         adapter.data = arrayListOf(dummy, dummy2, dummy, dummy3, dummy3, dummy, dummy2)
         view.rv_ad_detail.adapter = adapter

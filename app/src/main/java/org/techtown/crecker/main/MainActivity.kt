@@ -40,6 +40,10 @@ class MainActivity : AppCompatActivity() {
         initViewPager()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+    }
+
     private fun initViewPager() {
         fragments = arrayListOf(HomeFragment(), AdsFragment(), LawFragment(), NewsFragment(), MyPageFragment())
 
@@ -59,25 +63,11 @@ class MainActivity : AppCompatActivity() {
             override fun onPageScrollStateChanged(state: Int) {}
 
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-                showFrag(position)
             }
 
             override fun onPageSelected(position: Int) {
-                showFrag(position)
             }
         })
-    }
-
-    private fun showFrag(idx: Int){
-        for(i in fragments.indices){
-            if(i == idx){
-                if(fragments[i].isHidden)
-                    supportFragmentManager.beginTransaction().show(fragments[i]).commit()
-            }
-            else
-                if(!fragments[i].isHidden)
-                    supportFragmentManager.beginTransaction().hide(fragments[i]).commit()
-        }
     }
 
     private fun initCustomView(position : Int) : View {
@@ -98,6 +88,7 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         "받음".putLog()
         fragmentCommunicator?.changeText(data?.getStringExtra("title"))
+        fragmentCommunicator?.showBack(data?.getBooleanExtra("isShow", false))
         EventBus.post(CtgResultEvent(requestCode, resultCode, data))
     }
 

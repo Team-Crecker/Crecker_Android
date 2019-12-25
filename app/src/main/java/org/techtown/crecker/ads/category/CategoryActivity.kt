@@ -18,7 +18,10 @@ class CategoryActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun init() {
         btn_quit.setOnClickListener {
-            val i = Intent().apply { putExtra("title", intent.getStringExtra("oldTitle")) }
+            val i = Intent().apply {
+                    putExtra("title", intent.getStringExtra("oldTitle"))
+                    .putExtra("isShow", intent.getBooleanExtra("oldBool", false))
+            }
             setResult(Activity.RESULT_OK, i)
             finish()
         }
@@ -39,7 +42,8 @@ class CategoryActivity : AppCompatActivity(), View.OnClickListener {
             org.techtown.crecker.R.id.tv_other -> "Other"
             else -> ""
         }
-        val i = Intent().apply { putExtra("title", title) }
+        EventBus.title = title
+        val i = Intent().apply { putExtra("title", title).putExtra("isShow", true) }
         setResult(Activity.RESULT_OK, i)
         finish()
     }

@@ -24,7 +24,7 @@ class AdsDayVH(view : View) : RecyclerView.ViewHolder(view){
         tvPrice.text = "제품 · ${data.price}"
         tvDday.text = "D-${data.dday}"
 
-        if(data.dday <= 7)
+        if(data.dday > 7)
             tvDday.setBackgroundColor(Color.parseColor("#c9cdd2"))
     }
 }
