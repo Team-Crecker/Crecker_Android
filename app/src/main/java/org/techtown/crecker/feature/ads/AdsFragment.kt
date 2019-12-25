@@ -1,5 +1,6 @@
 package org.techtown.crecker.feature.ads
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -78,7 +79,7 @@ class AdsFragment : Fragment() {
 
         goDropDown = view.findViewById(R.id.dropdown)
         goDropDown.setOnClickListener {
-            startActivity(Intent(context, CategoryActivity::class.java))
+            (context as Activity).startActivityForResult(Intent(mContext, CategoryActivity::class.java), 7777)
         }
     }
 

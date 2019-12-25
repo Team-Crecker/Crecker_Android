@@ -20,6 +20,11 @@
         android:fontWeight="500" />
 
     <font
+        android:font="@font/apple_sd_gothic_neo_semibold"
+        android:fontStyle="normal"
+        android:fontWeight="600"/>
+
+    <font
         android:font="@font/apple_sd_gothic_neo_bold"
         android:fontStyle="normal"
         android:fontWeight="700" />

@@ -1,10 +1,8 @@
 package org.techtown.crecker.feature.ads
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_category.*
 import org.techtown.crecker.R
 
@@ -35,7 +33,7 @@ class CategoryActivity : AppCompatActivity(), View.OnClickListener {
             R.id.tv_other -> "Other"
             else -> ""
         }
-        startActivity(Intent(this, DetailActivity::class.java).apply { putExtra("title", title)})
+        CategoryState.category = title
         finish()
     }
 }
