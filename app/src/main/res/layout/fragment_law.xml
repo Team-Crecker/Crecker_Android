@@ -7,6 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
+        android:background="@color/backgroundColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -112,11 +113,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/expert_viewpager" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/expert_must_rd_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="16dp"
+                android:background="#ffffff"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/expert_must_read_tv">
@@ -287,6 +290,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="11dp"
+                    android:layout_marginBottom="28dp"
                     android:fontFamily="@font/apple_sd"
                     android:lineSpacingExtra="7sp"
                     android:maxEms="13"
@@ -294,11 +298,41 @@
                     android:textColor="#000000"
                     android:textFontWeight="200"
                     android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/must_no_4_tv" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/expert_betelang_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="40dp"
+                android:text="전문가 프로필"
+                android:fontFamily="@font/apple_sd"
+                android:textFontWeight="700"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:lineSpacingExtra="19sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/expert_must_rd_layout" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/expert_betelang_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
+                android:nestedScrollingEnabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/expert_betelang_tv"
+                tools:itemCount="3"
+                tools:listitem="@layout/expert_betelang_list_item" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

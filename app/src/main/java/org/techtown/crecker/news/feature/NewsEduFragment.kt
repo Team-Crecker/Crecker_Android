@@ -27,7 +27,7 @@ class NewsEduFragment : Fragment() {
         V.news_edu_rv.adapter = newsEduAdapter
 
         V.news_edu_rv.layoutManager = GridLayoutManager(V.context, 2)
-        V.news_edu_rv.addItemDecoration(RcvItemDeco())
+        V.news_edu_rv.addItemDecoration(RcvItemDeco(V.context))
 
         newsEduAdapter.addItem(
             NewsData(
