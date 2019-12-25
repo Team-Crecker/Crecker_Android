@@ -1,4 +1,4 @@
-package org.techtown.crecker.feature.news.data
+package org.techtown.crecker.news.data
 
 data class NewsData(
     val img_url : String,

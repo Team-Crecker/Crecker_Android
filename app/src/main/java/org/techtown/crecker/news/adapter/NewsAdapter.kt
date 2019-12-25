@@ -1,12 +1,12 @@
-package org.techtown.crecker.feature.news.adapter
+package org.techtown.crecker.news.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import org.techtown.crecker.R
-import org.techtown.crecker.feature.news.data.NewsData
-import org.techtown.crecker.feature.news.viewholder.NewsViewHolder
+import org.techtown.crecker.news.data.NewsData
+import org.techtown.crecker.news.viewholder.NewsViewHolder
 
 class NewsAdapter (private val context : Context) : RecyclerView.Adapter<NewsViewHolder>(){
     var data = arrayListOf<NewsData>()

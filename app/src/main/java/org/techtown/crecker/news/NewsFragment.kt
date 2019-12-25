@@ -11,9 +11,9 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_news.view.*
 
 import org.techtown.crecker.R
-import org.techtown.crecker.feature.news.adapter.NewsViewPagerAdapter
-import org.techtown.crecker.feature.news.feature.NewsAllFragment
-import org.techtown.crecker.feature.news.feature.NewsEduFragment
+import org.techtown.crecker.news.adapter.NewsViewPagerAdapter
+import org.techtown.crecker.news.feature.NewsAllFragment
+import org.techtown.crecker.news.feature.NewsEduFragment
 
 class NewsFragment : Fragment() {
 
@@ -27,7 +27,9 @@ class NewsFragment : Fragment() {
         val V = inflater.inflate(R.layout.fragment_news, container, false)
         val context : Context = V.context
 
-        val allAdapter = NewsViewPagerAdapter(childFragmentManager)
+        val allAdapter = NewsViewPagerAdapter(
+            childFragmentManager
+        )
 
         allAdapter.addItems(NewsAllFragment())
         allAdapter.addItems(NewsEduFragment())
