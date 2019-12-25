@@ -1,5 +1,4 @@
-package org.techtown.crecker.fragment
-
+package org.techtown.crecker.law
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

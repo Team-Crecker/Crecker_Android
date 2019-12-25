@@ -1,17 +1,16 @@
-package org.techtown.crecker.feature.ads
+package org.techtown.crecker.ads.fragment
 
-import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_ad_detail.*
 import org.techtown.crecker.R
 
-class DetailFragment : Fragment() {
+
+class AdsCtgFragment(private val category: String?) : Fragment() {
     private lateinit var mContext: Context
 
     override fun onAttach(context: Context) {
@@ -21,13 +20,7 @@ class DetailFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_ad_detail, container, false)
-
-        val title = CategoryState.category
-        tv_title.text = title
-        dropdown.setOnClickListener {
-            (context as Activity).startActivityForResult(Intent(mContext, CategoryActivity::class.java), 7777)
-        }
-
+        view.findViewById<TextView>(R.id.tv_title).text = category
         return view
     }
 }

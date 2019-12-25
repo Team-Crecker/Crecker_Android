@@ -1,6 +1,5 @@
-package org.techtown.crecker.feature.main
+package org.techtown.crecker.main
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,28 +8,31 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
 import androidx.viewpager.widget.ViewPager
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.custom_tab_button.view.*
 import org.techtown.crecker.R
-import org.techtown.crecker.adapter.MainViewPagerAdapter
-import org.techtown.crecker.feature.ads.AdsFragment
-import org.techtown.crecker.feature.ads.CategoryState
-import org.techtown.crecker.feature.ads.DetailFragment
-import org.techtown.crecker.feature.home.HomeFragment
-import org.techtown.crecker.feature.mypage.MyPageFragment
-import org.techtown.crecker.fragment.LawFragment
-import org.techtown.crecker.fragment.NewsFragment
+import org.techtown.crecker.ads.fragment.AdsFragment
+import org.techtown.crecker.ads.event.CtgResultEvent
+import org.techtown.crecker.ads.event.EventBus
+import org.techtown.crecker.mypage.MyPageFragment
+import org.techtown.crecker.law.LawFragment
+import org.techtown.crecker.news.NewsFragment
+
+import org.techtown.crecker.home.HomeFragment
+import org.techtown.crecker.main.adapter.MainViewPagerAdapter
+import org.techtown.crecker.ads.event.FragmentCommunicator
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var mContext : Context
     private lateinit var viewPagerAdapter: MainViewPagerAdapter
     private lateinit var fragments: ArrayList<Fragment>
+    private var fragmentCommunicator: FragmentCommunicator? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(org.techtown.crecker.R.layout.activity_main)
 
         mContext = applicationContext
 
@@ -63,30 +65,30 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initCustomView(position : Int) : View {
-        val tabView = LayoutInflater.from(mContext).inflate(R.layout.custom_tab_button, null)
+        val tabView = LayoutInflater.from(mContext).inflate(org.techtown.crecker.R.layout.custom_tab_button, null)
 
         when(position){
-            0 -> tabView.Tab_ic.setImageResource(R.drawable.select_tab_home)
-            1-> tabView.Tab_ic.setImageResource(R.drawable.select_tab_ads)
-            2-> tabView.Tab_ic.setImageResource(R.drawable.select_tab_law)
-            3-> tabView.Tab_ic.setImageResource(R.drawable.select_tab_news)
-            4-> tabView.Tab_ic.setImageResource(R.drawable.select_tab_mypage)
+            0 -> tabView.Tab_ic.setImageResource(org.techtown.crecker.R.drawable.select_tab_home)
+            1-> tabView.Tab_ic.setImageResource(org.techtown.crecker.R.drawable.select_tab_ads)
+            2-> tabView.Tab_ic.setImageResource(org.techtown.crecker.R.drawable.select_tab_law)
+            3-> tabView.Tab_ic.setImageResource(org.techtown.crecker.R.drawable.select_tab_news)
+            4-> tabView.Tab_ic.setImageResource(org.techtown.crecker.R.drawable.select_tab_mypage)
         }
         return tabView
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
-        if(requestCode == 7777){
-            if(resultCode == Activity.RESULT_OK){
-                CategoryState.category?.let {
-
-                    val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-                    transaction.detach(fragments[1]).attach(DetailFragment()).commit()
-                    fragments[1] = DetailFragment()
-                }
-            }
-        }
+        "받음".putLog()
+        fragmentCommunicator?.changeText(data?.getStringExtra("title"))
+        EventBus.post(CtgResultEvent(requestCode, resultCode, data))
     }
+
+    fun passVal(fragmentCommunicator: FragmentCommunicator) {
+        this.fragmentCommunicator = fragmentCommunicator
+    }
+}
+
+fun String.putLog(tag: String = "debugResult"){
+    Log.d(tag, this)
 }

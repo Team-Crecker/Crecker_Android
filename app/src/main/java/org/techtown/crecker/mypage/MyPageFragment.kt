@@ -1,4 +1,4 @@
-package org.techtown.crecker.feature.mypage
+package org.techtown.crecker.mypage
 
 
 import android.os.Bundle

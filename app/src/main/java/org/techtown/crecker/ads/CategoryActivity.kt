@@ -1,15 +1,17 @@
-package org.techtown.crecker.feature.ads
+package org.techtown.crecker.ads
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import kotlinx.android.synthetic.main.activity_category.*
-import org.techtown.crecker.R
+import android.content.Intent
+import android.app.Activity
+
 
 class CategoryActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_category)
+        setContentView(org.techtown.crecker.R.layout.activity_category)
 
         init()
     }
@@ -26,14 +28,15 @@ class CategoryActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         val title = when(v?.id){
-            R.id.tv_beauty -> "Beauty"
-            R.id.tv_restau -> "Restaurant"
-            R.id.tv_travel -> "Travel"
-            R.id.tv_culture -> "Culture"
-            R.id.tv_other -> "Other"
+            org.techtown.crecker.R.id.tv_beauty -> "Beauty"
+            org.techtown.crecker.R.id.tv_restau -> "Restaurant"
+            org.techtown.crecker.R.id.tv_travel -> "Travel"
+            org.techtown.crecker.R.id.tv_culture -> "Culture"
+            org.techtown.crecker.R.id.tv_other -> "Other"
             else -> ""
         }
-        CategoryState.category = title
+        val intent = Intent().apply { putExtra("title", title) }
+        setResult(Activity.RESULT_OK, intent)
         finish()
     }
 }
