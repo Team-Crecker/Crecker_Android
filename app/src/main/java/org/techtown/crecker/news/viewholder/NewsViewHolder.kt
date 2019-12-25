@@ -1,11 +1,11 @@
-package org.techtown.crecker.feature.news.viewholder
+package org.techtown.crecker.news.viewholder
 
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import org.techtown.crecker.R
-import org.techtown.crecker.feature.news.data.NewsData
+import org.techtown.crecker.news.data.NewsData
 
 
 class NewsViewHolder(view : View) : RecyclerView.ViewHolder(view){

@@ -1,4 +1,4 @@
-package org.techtown.crecker.feature.news.adapter
+package org.techtown.crecker.news.adapter
 
 import android.content.Context
 import android.content.Context.LAYOUT_INFLATER_SERVICE

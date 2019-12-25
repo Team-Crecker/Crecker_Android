@@ -1,4 +1,4 @@
-package org.techtown.crecker.feature.main
+package org.techtown.crecker.main
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
@@ -11,8 +11,8 @@ import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.custom_tab_button.view.*
 import org.techtown.crecker.R
-import org.techtown.crecker.adapter.MainViewPagerAdapter
-import org.techtown.crecker.feature.home.HomeFragment
+import org.techtown.crecker.main.adapter.MainViewPagerAdapter
+import org.techtown.crecker.home.HomeFragment
 import org.techtown.crecker.fragment.AdsFragment
 import org.techtown.crecker.fragment.LawFragment
 import org.techtown.crecker.fragment.MyPageFragment
@@ -32,7 +32,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initViewPager() {
-        val viewPagerAdapter = MainViewPagerAdapter(supportFragmentManager, this) // MainViewPagerAdapter 생성
+        val viewPagerAdapter =
+            MainViewPagerAdapter(
+                supportFragmentManager,
+                this
+            ) // MainViewPagerAdapter 생성
         viewPagerAdapter.addItems(HomeFragment())
         viewPagerAdapter.addItems(AdsFragment())
         viewPagerAdapter.addItems(LawFragment())

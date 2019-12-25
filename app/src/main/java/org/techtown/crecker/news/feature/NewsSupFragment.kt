@@ -1,4 +1,4 @@
-package org.techtown.crecker.feature.news.feature
+package org.techtown.crecker.news.feature
 
 
 import android.content.Context
