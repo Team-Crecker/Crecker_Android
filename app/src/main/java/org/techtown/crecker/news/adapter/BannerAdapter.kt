@@ -20,7 +20,6 @@ class BannerAdapter(context : Context) : PagerAdapter() {
         var inflater : LayoutInflater = mcontext.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         var V = inflater.inflate(R.layout.news_banner_item, container, false)
 
-        V.textView.text = data[position]
         container.addView(V)
 
         return V
