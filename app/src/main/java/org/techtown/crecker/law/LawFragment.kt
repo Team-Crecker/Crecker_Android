@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_law.view.*
 
 import org.techtown.crecker.R
+import org.techtown.crecker.law.adapter.ExpertBannerAdpater
 
 
 class LawFragment : Fragment() {
@@ -25,19 +26,45 @@ class LawFragment : Fragment() {
     ): View? {
         val V = inflater.inflate(R.layout.fragment_law, container, false)
 
-        initFontChange(V)
+        initFontChange(V) // 필독사항 텍스트 일부분 강조 함수
+        initBanner(V)
         return V
     }
 
     private fun initFontChange(V : View){
         var no1_title = "실명, 개인정보는 NO."
-        var spanTitle_01 = SpannableString(no1_title)
+        var no2_title = "질문은 명확하게 1개만."
+        var no3_title = "설명은 시간순서에 따라 구체적으로."
+        var no4_title = "변호사 답변은 3일 이내에."
 
-        spanTitle_01.setSpan(ForegroundColorSpan(Color.parseColor("#1ec695")),10,12,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-        spanTitle_01.setSpan(StyleSpan(Typeface.BOLD), 10, 12, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        var spanTitle = ArrayList<SpannableString>()
 
-        V.must_no_1_title.text = spanTitle_01
+        spanTitle.add(SpannableString(no1_title))
+        spanTitle.add(SpannableString(no2_title))
+        spanTitle.add(SpannableString(no3_title))
+        spanTitle.add(SpannableString(no4_title))
+
+
+        spanTitle[0].setSpan(ForegroundColorSpan(Color.parseColor("#1ec695")),10,12,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spanTitle[0].setSpan(StyleSpan(Typeface.BOLD), 10, 12, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        spanTitle[1].setSpan(ForegroundColorSpan(Color.parseColor("#1ec695")),9,12,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spanTitle[1].setSpan(StyleSpan(Typeface.BOLD), 10, 12, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        spanTitle[2].setSpan(ForegroundColorSpan(Color.parseColor("#1ec695")),13,18,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spanTitle[2].setSpan(StyleSpan(Typeface.BOLD), 10, 12, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        spanTitle[3].setSpan(ForegroundColorSpan(Color.parseColor("#1ec695")),8,14,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spanTitle[3].setSpan(StyleSpan(Typeface.BOLD), 10, 12, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        V.must_no_1_title_tv.text = spanTitle[0]
+        V.must_no_2_title_tv.text = spanTitle[1]
+        V.must_no_3_title_tv.text = spanTitle[2]
+        V.must_no_4_title_tv.text = spanTitle[3]
     }
-
+    private fun initBanner(V: View){
+        val bannerAdp = ExpertBannerAdpater(V.context)
+        V.expert_viewpager.adapter = bannerAdp
+    }
 
 }
