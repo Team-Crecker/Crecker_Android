@@ -3,15 +3,170 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/test3_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Law"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/expert_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="138dp"
+                android:layout_marginTop="42dp"
+                android:layout_marginEnd="138dp"
+                android:fontFamily="@font/montserrat"
+                android:lineSpacingExtra="5sp"
+                android:text="Expert"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textFontWeight="700"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/expert_subtitle_law_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="42dp"
+                android:layout_marginTop="29dp"
+                android:fontFamily="@font/montserrat"
+                android:textFontWeight="650"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:lineSpacingExtra="17sp"
+                android:text="Law"
+                android:textStyle="italic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/expert_title_tv" />
+
+            <TextView
+                android:id="@+id/expert_subtitle_start_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="68dp"
+                android:layout_marginTop="29dp"
+                android:layout_marginEnd="68dp"
+                android:fontFamily="@font/montserrat"
+                android:lineSpacingExtra="17sp"
+                android:text="Start-up"
+                android:textColor="#000000"
+                android:textFontWeight="650"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toStartOf="@+id/expert_subtitle_shooting_tv"
+                app:layout_constraintStart_toEndOf="@+id/expert_subtitle_law_tv"
+                app:layout_constraintTop_toBottomOf="@+id/expert_title_tv" />
+
+            <TextView
+                android:id="@+id/expert_subtitle_shooting_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="29dp"
+                android:layout_marginEnd="22dp"
+                android:fontFamily="@font/montserrat"
+                android:lineSpacingExtra="17sp"
+                android:text="Shooting"
+                android:textColor="#000000"
+                android:textFontWeight="650"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/expert_title_tv" />
+
+            <org.techtown.crecker.module.CustomViewPager
+                android:id="@+id/expert_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="19dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/expert_subtitle_start_tv" >
+
+            </org.techtown.crecker.module.CustomViewPager>
+
+            <TextView
+                android:id="@+id/expert_must_read_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="28dp"
+                android:text="필독사항"
+                android:fontFamily="@font/apple_sd"
+                android:textFontWeight="700"
+                android:textColor="#333333"
+                android:textSize="16sp"
+                android:lineSpacingExtra="3sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/expert_viewpager" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/expert_must_read_tv">
+
+                <TextView
+                    android:id="@+id/must_no_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="28dp"
+                    android:text="01"
+                    android:fontFamily="@font/montserrat"
+                    android:textFontWeight="400"
+                    android:textSize="16sp"
+                    android:lineSpacingExtra="3sp"
+                    android:textColor="#000000"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/must_no_1_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/apple_sd"
+                    android:text="실명, 개인정보"
+                    android:textColor="#000000"
+                    android:textFontWeight="500"
+                    app:layout_constraintStart_toEndOf="@+id/must_no_1"
+                    app:layout_constraintTop_toTopOf="@+id/must_no_1" />
+
+                <TextView
+                    android:id="@+id/must_no_1_contents"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="11dp"
+                    android:fontFamily="@font/apple_sd"
+                    android:lineSpacingExtra="7sp"
+                    android:maxEms="12"
+                    android:text="개인정보(실명, 상호, 주민번호, 전화번호 등)는 작성하지 말아주세요.변호사의 답변을 받으면, 상담글은 작성자 비공개로 인터넷 상에 검색 및 노출됩니다."
+                    android:textColor="#000000"
+                    android:textFontWeight="200"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/must_no_1" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
