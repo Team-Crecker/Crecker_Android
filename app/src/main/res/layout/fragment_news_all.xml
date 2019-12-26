@@ -68,16 +68,17 @@
             </com.zhpan.bannerview.BannerViewPager>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:nestedScrollingEnabled="false"
                 android:id="@+id/news_recent_rv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
+                android:nestedScrollingEnabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/news_recent_tv"
-                xmlns:tools = "http://schemas.android.com/tools"
-                tools:listitem="@layout/news_list_item"
-                tools:itemCount="5"/>
+                tools:itemCount="2"
+                tools:listitem="@layout/news_list_item" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

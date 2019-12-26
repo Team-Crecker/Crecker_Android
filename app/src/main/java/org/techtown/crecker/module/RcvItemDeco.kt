@@ -34,13 +34,16 @@ class RcvItemDeco(context : Context, size : Int = 20) : RecyclerView.ItemDecorat
         }
 
 
-//        val lp = view.layoutParams as GridLayoutManager.LayoutParams
-////        spanIndex = 0 -> 그리드뷰에서 왼편
-////        sapnIndex = 1 -> 그리드뷰에서 오른편
-//        val spanIndex = lp.spanIndex
-//
-//        if(spanIndex == 0) { }
-//        else{ }
+        val lp = view.layoutParams as GridLayoutManager.LayoutParams
+//        spanIndex = 0 -> 그리드뷰에서 왼편
+//        sapnIndex = 1 -> 그리드뷰에서 오른편
+        val spanIndex = lp.spanIndex
+
+        if(spanIndex == 0) {
+            outRect.right = size_space
+        }
+        else{
+        }
 
     }
 
