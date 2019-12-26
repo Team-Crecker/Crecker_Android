@@ -21,6 +21,7 @@ import org.techtown.crecker.ads.category.EventBus
 import org.techtown.crecker.ads.category.FragmentCommunicator
 import org.techtown.crecker.main.MainActivity
 
+//TODO: 2% 확률로 제목이랑 내용이랑 안맞는 버그 있음
 class AdsFragment : Fragment(), OnBackPressed {
     private lateinit var mContext: Context
     private lateinit var goDropDown: ImageView
@@ -50,15 +51,10 @@ class AdsFragment : Fragment(), OnBackPressed {
     private fun initView(view: View) {
         tvTitle = view.findViewById(R.id.tv_title)
         tvTitle.text = EventBus.title
+        tvTitle.setOnClickListener{ showMenu(view) }
 
         goDropDown = view.findViewById(R.id.dropdown)
-        goDropDown.setOnClickListener {
-            activity?.startActivityForResult(Intent(mContext, CategoryActivity::class.java)
-                .apply {
-                        putExtra("oldTitle", tvTitle.text.toString())
-                        .putExtra("oldBool", view.goBack.isVisible)
-                }, 7777)
-        }
+        goDropDown.setOnClickListener { showMenu(view) }
 
         (activity as MainActivity).passVal(object : FragmentCommunicator{
             override fun showBack(isShow: Boolean?) {
@@ -86,6 +82,15 @@ class AdsFragment : Fragment(), OnBackPressed {
             changeFragment(AdsMainFragment())
             tvTitle.text = "Advertise"
         }
+    }
+
+    private fun showMenu(view: View) {
+        activity?.startActivityForResult(Intent(mContext, CategoryActivity::class.java)
+            .apply {
+                putExtra("oldTitle", tvTitle.text.toString())
+                    .putExtra("oldBool", view.goBack.isVisible)
+            }, 7777
+        )
     }
 
     private fun changeFragment(fragment: Fragment){

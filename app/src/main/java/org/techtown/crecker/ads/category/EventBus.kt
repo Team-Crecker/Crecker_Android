@@ -11,7 +11,7 @@ object EventBus : Bus() {
         if (Looper.myLooper() == Looper.getMainLooper()) {
             super.post(event)
         } else {
-            handler.post(Runnable { super@EventBus.post(event) })
+            handler.post { super@EventBus.post(event) }
         }
     }
 
