@@ -3,6 +3,7 @@ package org.techtown.crecker.law
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.WindowManager
 import android.widget.TextView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_quest.*
@@ -42,6 +43,9 @@ class QuestAcitivy : AppCompatActivity() {
         question_cancle_img.setOnClickListener{
             finish()
         }
+
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN) // 키보드가 UI를 밀고올라는 현상 방지
+        quest_content_tv.setHorizontallyScrolling(false)
     }
 
     private fun changeBack(position : Int) : Int{

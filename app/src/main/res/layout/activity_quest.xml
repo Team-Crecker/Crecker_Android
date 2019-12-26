@@ -162,26 +162,27 @@
 
         <EditText
             android:id="@+id/quest_content_tv"
-            android:scrollbars="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="20dp"
             android:background="@null"
-            android:ems="10"
-            android:hint="무엇이 궁금한가요? (최대 1000자)"
-            android:inputType="textPersonName"
+            android:ems="12"
             android:fontFamily="@font/apple_sd"
+            android:gravity="top"
+            android:hint="무엇이 궁금한가요? (최대 1000자)"
+            android:imeOptions="normal"
+            android:inputType="textMultiLine"
+            android:lineSpacingExtra="6sp"
+            android:maxLength="1000"
+            android:maxLines="10"
             android:textFontWeight="400"
             android:textSize="14sp"
-            android:lineSpacingExtra="20sp"
-            android:lines="10"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -223,7 +224,7 @@
         android:lineSpacingExtra="3sp"
         android:paddingHorizontal="160dp"
         android:paddingTop="19dp"
-        android:paddingBottom="50dp"
+        android:paddingBottom="40dp"
         android:text="확인"
         android:textAlignment="center"
         android:textColor="#ffffff"
