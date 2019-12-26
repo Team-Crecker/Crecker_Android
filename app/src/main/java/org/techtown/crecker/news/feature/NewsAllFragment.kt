@@ -111,12 +111,11 @@ class NewsAllFragment : Fragment() {
         )
 
 //       최신 지원 활동 리사이클러 뷰
-        newsRecentAdapter =
-            NewsAdapter(context)
+        newsRecentAdapter = NewsAdapter(context)
         V.news_recent_rv.adapter = newsRecentAdapter
         V.news_recent_rv.layoutManager = GridLayoutManager(context, 2)
 
-        V.news_recent_rv.addItemDecoration(RcvItemDeco()) // 여백 설정
+        V.news_recent_rv.addItemDecoration(RcvItemDeco(context)) // 여백 설정
 
         newsRecentAdapter.addItem(
             NewsData(
