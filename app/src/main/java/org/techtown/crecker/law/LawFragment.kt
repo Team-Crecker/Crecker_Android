@@ -13,12 +13,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_law.view.*
 
 import org.techtown.crecker.R
 import org.techtown.crecker.law.adapter.ExpertBannerAdpater
 import org.techtown.crecker.law.adapter.Expert_Betelang_Rv_Adp
 import org.techtown.crecker.law.data.ExpertBetelangData
+import org.techtown.crecker.main.MainActivity
 import org.techtown.crecker.module.RcvItemDeco
 import org.techtown.crecker.module.debugLog
 
@@ -36,6 +38,12 @@ class LawFragment : Fragment() {
         initFontChange(V) // 필독사항 텍스트 일부분 강조 함수
         initBanner(V) // Expert 대문 배너 생성 함수
         initBetelangRv(V,mContext) // 전문가 프로필 리사이클러뷰 함수
+
+        V.expert_subtitle_law_tv.setOnClickListener {
+            var activity = activity as MainActivity
+            activity.ExpertChange()
+
+        }
         return V
     }
 
@@ -77,7 +85,7 @@ class LawFragment : Fragment() {
     private fun initBetelangRv(V : View, mContext : Context){
         betelangAdapter = Expert_Betelang_Rv_Adp(mContext)
         V.expert_betelang_rv.adapter = betelangAdapter
-        V.expert_betelang_rv.layoutManager = LinearLayoutManager(mContext)
+        V.expert_betelang_rv.layoutManager = LinearLayoutManager(mContext) as RecyclerView.LayoutManager?
 //        V.expert_betelang_rv.addItemDecoration(RcvItemDeco(mContext,25))
         betelangAdapter.addItem(ExpertBetelangData(betelang_profile = "", betelang_Name = "김필원", betelang_aff = "현 태양 로펌 변호사", betelang_Clear_Num = "5"))
         betelangAdapter.addItem(ExpertBetelangData(betelang_profile = "", betelang_Name = "김필원", betelang_aff = "현 태양 로펌 변호사", betelang_Clear_Num = "5"))

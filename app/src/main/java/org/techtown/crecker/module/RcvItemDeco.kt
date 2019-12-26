@@ -8,7 +8,7 @@ import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class RcvItemDeco(context : Context, size : Int = 20) : RecyclerView.ItemDecoration() {
+class RcvItemDeco(context : Context, size : Int = 10) : RecyclerView.ItemDecoration() {
     private val size_space : Int
 
     init {
@@ -28,9 +28,9 @@ class RcvItemDeco(context : Context, size : Int = 20) : RecyclerView.ItemDecorat
         // 상하 설정
 
         if(position == 0 || position == 1){
-            outRect.bottom = size_space
+            outRect.bottom = size_space*2
         }else{
-            outRect.bottom = size_space
+            outRect.bottom = size_space*2
         }
 
 
@@ -43,6 +43,7 @@ class RcvItemDeco(context : Context, size : Int = 20) : RecyclerView.ItemDecorat
             outRect.right = size_space
         }
         else{
+            outRect.left = size_space
         }
 
     }

@@ -13,15 +13,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <com.zhpan.bannerview.BannerViewPager
+                android:id="@+id/news_banner"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </com.zhpan.bannerview.BannerViewPager>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/news_popular_rv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/news_popular_tv"
-             />
+                app:layout_constraintTop_toBottomOf="@id/news_popular_tv" />
 
             <TextView
                 android:id="@+id/news_recent_tv"
@@ -53,19 +65,6 @@
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/news_banner" />
-
-            <com.zhpan.bannerview.BannerViewPager
-                android:id="@+id/news_banner"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                >
-
-            </com.zhpan.bannerview.BannerViewPager>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/news_recent_rv"

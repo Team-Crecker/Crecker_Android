@@ -23,6 +23,10 @@ import org.techtown.crecker.home.HomeFragment
 import org.techtown.crecker.main.adapter.MainViewPagerAdapter
 import org.techtown.crecker.ads.category.FragmentCommunicator
 import org.techtown.crecker.ads.fragment.OnBackPressed
+import org.techtown.crecker.ads.fragment.putLog
+import org.techtown.crecker.law.E_LawFragment
+import org.techtown.crecker.law.QuestAcitivy
+import org.techtown.crecker.module.debugLog
 
 
 class MainActivity : AppCompatActivity() {
@@ -69,6 +73,14 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onPageSelected(position: Int) {
+//                when (position){
+//                    0 -> refresh()
+//                    1 -> refresh()
+//                    2 -> refresh()
+//                    3 -> refresh()
+//                    4 -> refresh()
+//
+//                }
             }
         })
     }
@@ -107,8 +119,18 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
+
+    // 3번 페이지 교체 작업 함수
+    public fun ExpertChange(){
+        "click".debugLog()
+        val intent = Intent(this, QuestAcitivy::class.java)
+        startActivity(intent)
+//        refresh()
+    }
+
+    //탭이 변경될 때마다 데이터 갱신
+    private fun refresh(){
+        viewPagerAdapter.notifyDataSetChanged()
+    }
 }
 
-fun String.putLog(tag: String = "debugResult"){
-    Log.d(tag, this)
-}
