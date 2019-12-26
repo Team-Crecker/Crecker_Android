@@ -1,5 +1,4 @@
-package org.techtown.crecker.fragment
-
+package org.techtown.crecker.law
 
 import android.content.Context
 import android.graphics.Color
