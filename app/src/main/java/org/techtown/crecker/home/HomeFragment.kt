@@ -67,7 +67,7 @@ class HomeFragment : Fragment() {
         homeSupportAdapter = HomeSupportListAdapter(mContext)
         view.rv_list_home_support.adapter = homeSupportAdapter
         view.rv_list_home_support.layoutManager = GridLayoutManager(mContext, 2)
-        view.rv_list_home_support.addItemDecoration(RcvItemDeco())
+        view.rv_list_home_support.addItemDecoration(RcvItemDeco(mContext))
         homeSupportAdapter.data = listOf<HomeSupportItem>(
             HomeSupportItem(img = "", company = "wework", title = "유튜브 크리에이터 모집", date = "D-7"),
             HomeSupportItem(img = "", company = "wework", title = "유튜브 크리에이터 모집", date = "D-7"),
