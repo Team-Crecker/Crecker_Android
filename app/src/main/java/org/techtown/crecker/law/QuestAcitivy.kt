@@ -19,6 +19,7 @@ class QuestAcitivy : AppCompatActivity() {
     // 카테고리 선택 기준 1 = Law , 2 = Start_up , 3 = Shooting
 //    0일 경우에는 카테고리 선택하라는 토스트를 추가해준다.
     private var check = 0
+    private val categoryList = listOf("Law","Start_up","Shooting")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,8 +45,17 @@ class QuestAcitivy : AppCompatActivity() {
             finish()
         }
 
+        quest_ok_tv.setOnClickListener{
+           if (check_secret.isChecked){
+               Toast.makeText(this,"카테고리 : ${categoryList[check-1]} , 비밀 글", Toast.LENGTH_LONG).show()
+           }
+            else{
+               Toast.makeText(this,"카테고리 : ${categoryList[check-1]} , 공개 글", Toast.LENGTH_LONG).show()
+           }
+        }  // 확인 눌렀을 때 값 전달
+
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN) // 키보드가 UI를 밀고올라는 현상 방지
-        quest_content_tv.setHorizontallyScrolling(false)
+        quest_content_tv.setHorizontallyScrolling(false) // 본문 컨텐츠 가로 스크롤 방지
     }
 
     private fun changeBack(position : Int) : Int{

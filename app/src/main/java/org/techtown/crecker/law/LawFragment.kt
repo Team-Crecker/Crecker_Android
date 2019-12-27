@@ -86,7 +86,7 @@ class LawFragment : Fragment() {
         betelangAdapter = Expert_Betelang_Rv_Adp(mContext)
         V.expert_betelang_rv.adapter = betelangAdapter
         V.expert_betelang_rv.layoutManager = LinearLayoutManager(mContext) as RecyclerView.LayoutManager?
-//        V.expert_betelang_rv.addItemDecoration(RcvItemDeco(mContext,25))
+        V.expert_betelang_rv.addItemDecoration(RcvItemDeco(mContext,false, 14))
         betelangAdapter.addItem(ExpertBetelangData(betelang_profile = "", betelang_Name = "김필원", betelang_aff = "현 태양 로펌 변호사", betelang_Clear_Num = "5"))
         betelangAdapter.addItem(ExpertBetelangData(betelang_profile = "", betelang_Name = "김필원", betelang_aff = "현 태양 로펌 변호사", betelang_Clear_Num = "5"))
         betelangAdapter.addItem(ExpertBetelangData(betelang_profile = "", betelang_Name = "김필원", betelang_aff = "현 태양 로펌 변호사", betelang_Clear_Num = "5"))

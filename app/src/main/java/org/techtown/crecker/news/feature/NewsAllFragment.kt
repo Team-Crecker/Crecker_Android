@@ -23,6 +23,7 @@ import org.techtown.crecker.news.adapter.BannerAdapter
 import org.techtown.crecker.news.adapter.NewsAdapter
 import org.techtown.crecker.news.data.NewsData
 import org.techtown.crecker.module.RcvItemDeco
+import org.techtown.crecker.module.RcvItemHoriDeco
 import org.techtown.crecker.module.debugLog
 import org.techtown.crecker.news.data.NewsBannerData
 import org.techtown.crecker.news.viewholder.NewsBannerVH
@@ -69,6 +70,7 @@ class NewsAllFragment : Fragment() {
         newsAdapter = NewsAdapter(context)
         V.news_popular_rv.adapter = newsAdapter
         V.news_popular_rv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        V.news_popular_rv.addItemDecoration(RcvItemHoriDeco(context))
         newsAdapter.addItem(
             NewsData(
                 img_url = "",
@@ -115,7 +117,7 @@ class NewsAllFragment : Fragment() {
         V.news_recent_rv.adapter = newsRecentAdapter
         V.news_recent_rv.layoutManager = GridLayoutManager(context, 2)
 
-        V.news_recent_rv.addItemDecoration(RcvItemDeco(context)) // 여백 설정
+        V.news_recent_rv.addItemDecoration(RcvItemDeco(context,true)) // 여백 설정
 
         newsRecentAdapter.addItem(
             NewsData(
