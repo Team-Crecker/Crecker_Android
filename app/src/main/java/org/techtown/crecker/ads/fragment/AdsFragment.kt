@@ -21,7 +21,6 @@ import org.techtown.crecker.ads.category.EventBus
 import org.techtown.crecker.ads.category.FragmentCommunicator
 import org.techtown.crecker.main.MainActivity
 
-//TODO: 2% 확률로 제목이랑 내용이랑 안맞는 버그 있음
 class AdsFragment : Fragment(), OnBackPressed {
     private lateinit var mContext: Context
     private lateinit var goDropDown: ImageView
@@ -81,6 +80,7 @@ class AdsFragment : Fragment(), OnBackPressed {
             view.goBack.isVisible = false
             changeFragment(AdsMainFragment())
             tvTitle.text = "Advertise"
+            EventBus.title = "Advertise"
         }
     }
 
@@ -106,8 +106,10 @@ class AdsFragment : Fragment(), OnBackPressed {
         "나도 받음".putLog()
         if(requestCode == 7777){
             if(resultCode == Activity.RESULT_OK){
-                changeFragment(AdsCtgFragment())
-                EventBus.isCtgSelected = true
+                if(EventBus.title != "Advertise"){
+                    changeFragment(AdsCtgFragment())
+                    EventBus.isCtgSelected = true
+                }
             }
         }
     }
@@ -118,6 +120,7 @@ class AdsFragment : Fragment(), OnBackPressed {
             view?.goBack?.isVisible = false
             changeFragment(AdsMainFragment())
             tvTitle.text = "Advertise"
+            EventBus.title = "Advertise"
             true
         } else
             false

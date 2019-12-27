@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/my_menu_tv_news"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/montserrat_semibold"
+        android:lineSpacingExtra="4sp"
+        android:text="News"
+        android:textColor="#333333"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/my_menu_scrap"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/apple_sd_gothic_neo_regular"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="3sp"
+        android:text="스크랩한 활동"
+        android:textColor="#333333"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_menu_tv_news" />
+
+
+    <TextView
+        android:id="@+id/my_menu_tv_expert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat_semibold"
+        android:lineSpacingExtra="4sp"
+        android:text="Expert"
+        android:textColor="#333333"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/my_menu_scrap"
+        app:layout_constraintTop_toBottomOf="@+id/my_menu_scrap" />
+
+    <TextView
+        android:id="@+id/my_menu_q"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/apple_sd_gothic_neo_regular"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="3sp"
+        android:text="작성한 질문"
+        android:textColor="#333333"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/my_menu_scrap"
+        app:layout_constraintStart_toStartOf="@+id/my_menu_scrap"
+        app:layout_constraintTop_toBottomOf="@+id/my_menu_tv_expert" />
+
+    <TextView
+        android:id="@+id/my_menu_q2"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:fontFamily="@font/apple_sd_gothic_neo_regular"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="3sp"
+        android:text="답변 완료 질문"
+        android:textColor="#333333"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/my_menu_q"
+        app:layout_constraintStart_toStartOf="@+id/my_menu_q"
+        app:layout_constraintTop_toBottomOf="@+id/my_menu_q" />
+
+    <TextView
+        android:id="@+id/my_menu_consult_history"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:fontFamily="@font/apple_sd_gothic_neo_regular"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="3sp"
+        android:text="상담 신청 내역"
+        android:textColor="#333333"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/my_menu_q2"
+        app:layout_constraintStart_toStartOf="@+id/my_menu_q2"
+        app:layout_constraintTop_toBottomOf="@+id/my_menu_q2" />
+
+    <TextView
+        android:id="@+id/my_menu_tv_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/montserrat_semibold"
+        android:lineSpacingExtra="4sp"
+        android:text="Customer Service"
+        android:textColor="#333333"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/my_menu_consult_history"
+        app:layout_constraintTop_toBottomOf="@+id/my_menu_consult_history" />
+
+    <TextView
+        android:id="@+id/my_menu_notice"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/apple_sd_gothic_neo_regular"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="3sp"
+        android:text="공지사항"
+        android:textColor="#333333"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/my_menu_consult_history"
+        app:layout_constraintStart_toStartOf="@+id/my_menu_consult_history"
+        app:layout_constraintTop_toBottomOf="@+id/my_menu_tv_service" />
+
+    <TextView
+        android:id="@+id/my_menu_faq"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:fontFamily="@font/apple_sd_gothic_neo_regular"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="3sp"
+        android:text="FAQ"
+        android:textColor="#333333"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/my_menu_notice"
+        app:layout_constraintStart_toStartOf="@+id/my_menu_notice"
+        app:layout_constraintTop_toBottomOf="@+id/my_menu_notice" />
+
+    <TextView
+        android:id="@+id/my_menu_logout"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:fontFamily="@font/apple_sd_gothic_neo_regular"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="3sp"
+        android:text="로그아웃"
+        android:textColor="#333333"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/my_menu_faq"
+        app:layout_constraintStart_toStartOf="@+id/my_menu_faq"
+        app:layout_constraintTop_toBottomOf="@+id/my_menu_faq" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="39dp"
+        app:layout_constraintEnd_toEndOf="@+id/my_menu_faq"
+        app:layout_constraintStart_toStartOf="@+id/my_menu_faq"
+        app:layout_constraintTop_toBottomOf="@+id/my_menu_logout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

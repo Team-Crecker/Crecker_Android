@@ -8,4 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="CustomFullDialog">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
 </resources>
