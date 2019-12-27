@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.activity_cash.*
+import kotlinx.android.synthetic.main.filtering_dialog_layout.*
 import org.techtown.crecker.R
 import org.techtown.crecker.module.NavBarSetting
 import java.util.*
@@ -18,8 +19,7 @@ class CashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cash)
 
-        adapter = UsageAdapter(this)
-        adapter.data = arrayListOf(
+        val init = arrayListOf(
             UsageRecord(
                 "시카솔 클렌징 워터",
                 "입금",
@@ -45,17 +45,41 @@ class CashActivity : AppCompatActivity() {
                 Date()
             )
         )
+
+        adapter = UsageAdapter(this, init)
+
         rv_usage.adapter = this.adapter
         rv_usage.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
         btn_goBack.setOnClickListener { finish() }
 
-        imageView4.setOnClickListener {
-            val dialog = BottomSheetDialog(this)
-                .apply { setContentView(R.layout.filtering_dialog_layout) }
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1)
-                NavBarSetting.setWhite(dialog)
-            dialog.show()
-        }
+        textView7.setOnClickListener { showFilter() }
+        imageView4.setOnClickListener { showFilter() }
+    }
+
+    private fun showFilter() {
+        val dialog = BottomSheetDialog(this)
+            .apply {
+                setContentView(R.layout.filtering_dialog_layout)
+                category_all.setOnClickListener {
+                    adapter.filter.filter("")
+                    this@CashActivity.textView7.text = "전체"
+                    dismiss()
+                }
+                category_deposit.setOnClickListener {
+                    adapter.filter.filter("입금")
+                    this@CashActivity.textView7.text = "입금"
+                    dismiss()
+                }
+                category_withdraw.setOnClickListener {
+                    adapter.filter.filter("출금")
+                    this@CashActivity.textView7.text = "출금"
+                    dismiss()
+                }
+            }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1)
+            NavBarSetting.setWhite(dialog)
+        dialog.show()
     }
 }

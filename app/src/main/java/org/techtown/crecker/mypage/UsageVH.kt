@@ -19,10 +19,12 @@ class UsageVH(view : View) : RecyclerView.ViewHolder(view){
 
         if(data.io == "입금"){
             tvMoney.text = "+${data.money}"
-            tvMoney.setTextColor(itemView.context.resources.getColor(R.color.point))
+            tvMoney.setTextColor(itemView.context.resources.getColor(R.color.plus))
         }
-        else
+        else if(data.io == "출금"){
             tvMoney.text = "-${data.money}"
+            tvMoney.setTextColor(itemView.context.resources.getColor(R.color.minus))
+        }
 
         tvDate.text = SimpleDateFormat("yyyy.MM.dd").format(data.date)
     }

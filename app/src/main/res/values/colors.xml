@@ -5,5 +5,6 @@
     <color name="colorAccent">#D81B60</color>
     <color name="darkMint">#00a575</color>
     <color name="backgroundColor">#f7f8f9</color>
-    <color name="point">#1ec695</color>
+    <color name="plus">#1ec695</color>
+    <color name="minus">#464c53</color>
 </resources>
