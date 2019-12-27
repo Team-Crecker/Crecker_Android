@@ -15,12 +15,17 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 
-import org.techtown.crecker.R
 import org.techtown.crecker.home.adapter.HomeAdsListAdapter
 import org.techtown.crecker.home.adapter.HomeSupportListAdapter
 import org.techtown.crecker.home.data.HomeAdsItem
 import org.techtown.crecker.home.data.HomeSupportItem
 import org.techtown.crecker.module.RcvItemDeco
+import android.text.SpannableString
+import android.graphics.Typeface
+import android.text.Spannable
+import android.text.style.StyleSpan
+import org.techtown.crecker.R
+
 
 /**
  * A simple [Fragment] subclass.
@@ -37,6 +42,16 @@ class HomeFragment : Fragment() {
         val V = inflater.inflate(R.layout.fragment_home, container, false)
         mContext = V.context
 
+        val content = V.tv_home_user_recom.text.toString()
+        val spannableString = SpannableString(content)
+
+        val word = "소식"
+        val start = content.indexOf(word)
+        val end = start + word.length
+
+        spannableString.setSpan( StyleSpan(Typeface.BOLD), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        V.tv_home_user_recom.setText(spannableString)
 
         initHomeAdsList(V)
         initHomeSupportList(V)
