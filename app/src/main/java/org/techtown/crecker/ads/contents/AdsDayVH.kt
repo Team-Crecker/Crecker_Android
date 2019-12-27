@@ -15,7 +15,7 @@ class AdsDayVH(view : View) : RecyclerView.ViewHolder(view){
     private val tvPrice : TextView = view.findViewById(R.id.ad_item_tv_price)
     private val tvDday : TextView = view.findViewById(R.id.item_tv_dday)
 
-    fun bind(data : AdDataWithDay) {
+    fun bind(data : AdData) {
         Glide.with(itemView)
             .load(data.img_local)
             .into(img)
@@ -24,7 +24,7 @@ class AdsDayVH(view : View) : RecyclerView.ViewHolder(view){
         tvPrice.text = "제품 · ${data.price}"
         tvDday.text = "D-${data.dday}"
 
-        if(data.dday > 7)
+        if(data.dday!! > 7)
             tvDday.setBackgroundColor(Color.parseColor("#c9cdd2"))
     }
 }

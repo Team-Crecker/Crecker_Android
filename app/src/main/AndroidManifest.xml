@@ -13,8 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".mypage.CashActivity"></activity>
-        <!-- 광고 -->
+        <activity android:name=".ads.activity.AdsDetailActivity"></activity>
+        <activity android:name=".mypage.CashActivity" /> <!-- 광고 -->
         <activity android:name=".ads.category.CategoryActivity" /> <!-- 메인 -->
         <activity android:name=".main.MainActivity">
             <intent-filter>
