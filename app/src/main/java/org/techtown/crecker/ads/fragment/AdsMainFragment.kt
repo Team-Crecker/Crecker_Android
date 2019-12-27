@@ -58,7 +58,7 @@ class AdsMainFragment : Fragment() {
         val title = arrayOf("Christmas Soap", "aaa", "bbb","ccc", "ddd")
         val des = arrayOf("크리스마스 비누 2구 세트", "aaa", "bbb","ccc", "ddd")
         val dday = arrayOf("D-7", "D-1", "D-14","D-2", "D-4")
-        val imgs = arrayOf(R.drawable.img_main_banner, R.drawable.t1, R.drawable.t2, R.drawable.t3, R.drawable.t0)
+        val imgs = arrayOf(R.drawable.img_main_banner, R.drawable.img_main_banner, R.drawable.img_main_banner, R.drawable.img_main_banner, R.drawable.img_main_banner)
 
         val list = ArrayList<BannerData>()
         for(i in 0..4){
@@ -79,9 +79,9 @@ class AdsMainFragment : Fragment() {
             .setHolderCreator{ BannerVH() }
         setupIndicator()
 
-        val dummy = AdData("", R.drawable.img_thum1, "모모스 커피", 10000)
-        val dummy2 = AdData("", R.drawable.img_thum2, "모모스 커피", 10000)
-        val dummy3 = AdData("", R.drawable.img_thum2, "데저트 크림", 8000)
+        val dummy = AdData("", R.drawable.img_thum1, "모모스 커피", 10000, null)
+        val dummy2 = AdData("", R.drawable.img_thum2, "모모스 커피", 10000, null)
+        val dummy3 = AdData("", R.drawable.img_thum2, "데저트 크림", 8000, null)
 
         rcmdAdapter = AdsAdapter(mContext)
         rcmdAdapter.data = arrayListOf(dummy, dummy2, dummy, dummy2)
