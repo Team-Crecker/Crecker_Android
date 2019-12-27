@@ -1,5 +1,6 @@
 package org.techtown.crecker.mypage
 
+import android.graphics.Typeface
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -75,6 +76,24 @@ class CashActivity : AppCompatActivity() {
                     adapter.filter.filter("출금")
                     this@CashActivity.textView7.text = "출금"
                     dismiss()
+                }
+
+                when(this@CashActivity.textView7.text.toString()){
+                    "전체" -> {
+                        category_all.typeface = Typeface.DEFAULT_BOLD
+                        category_deposit.typeface = Typeface.DEFAULT
+                        category_withdraw.typeface = Typeface.DEFAULT
+                    }
+                    "입금" -> {
+                        category_all.typeface = Typeface.DEFAULT
+                        category_deposit.typeface = Typeface.DEFAULT_BOLD
+                        category_withdraw.typeface = Typeface.DEFAULT
+                    }
+                    "출금" -> {
+                        category_all.typeface = Typeface.DEFAULT
+                        category_deposit.typeface = Typeface.DEFAULT
+                        category_withdraw.typeface = Typeface.DEFAULT_BOLD
+                    }
                 }
             }
 
