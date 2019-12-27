@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -24,7 +23,6 @@ import org.techtown.crecker.main.adapter.MainViewPagerAdapter
 import org.techtown.crecker.ads.category.FragmentCommunicator
 import org.techtown.crecker.ads.fragment.OnBackPressed
 import org.techtown.crecker.ads.fragment.putLog
-import org.techtown.crecker.law.E_LawFragment
 import org.techtown.crecker.law.QuestAcitivy
 import org.techtown.crecker.module.debugLog
 
@@ -116,16 +114,7 @@ class MainActivity : AppCompatActivity() {
             if(i is OnBackPressed){
                 if(!i.onBackPressed()) super.onBackPressed()
             }
-
         }
-    }
-
-    // 3번 페이지 교체 작업 함수
-    public fun ExpertChange(){
-        "click".debugLog()
-        val intent = Intent(this, QuestAcitivy::class.java)
-        startActivity(intent)
-//        refresh()
     }
 
     //탭이 변경될 때마다 데이터 갱신

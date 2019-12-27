@@ -71,46 +71,10 @@ class NewsAllFragment : Fragment() {
         V.news_popular_rv.adapter = newsAdapter
         V.news_popular_rv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         V.news_popular_rv.addItemDecoration(RcvItemHoriDeco(context))
-        newsAdapter.addItem(
-            NewsData(
-                img_url = "",
-                company = "company",
-                title = "title",
-                day = "day"
-            )
-        )
-        newsAdapter.addItem(
-            NewsData(
-                img_url = "",
-                company = "company",
-                title = "title",
-                day = "day"
-            )
-        )
-        newsAdapter.addItem(
-            NewsData(
-                img_url = "",
-                company = "company",
-                title = "title",
-                day = "day"
-            )
-        )
-        newsAdapter.addItem(
-            NewsData(
-                img_url = "",
-                company = "company",
-                title = "title",
-                day = "day"
-            )
-        )
-        newsAdapter.addItem(
-            NewsData(
-                img_url = "",
-                company = "company",
-                title = "title",
-                day = "day"
-            )
-        )
+        newsAdapter.addItem(NewsData(img_url = "", company = "company", title = "title", day = "day", grid = false))
+        newsAdapter.addItem(NewsData(img_url = "", company = "company", title = "title", day = "day", grid = false))
+        newsAdapter.addItem(NewsData(img_url = "", company = "company", title = "title", day = "day", grid = false))
+        newsAdapter.addItem(NewsData(img_url = "", company = "company", title = "title", day = "day", grid = false))
 
 //       최신 지원 활동 리사이클러 뷰
         newsRecentAdapter = NewsAdapter(context)
@@ -124,7 +88,8 @@ class NewsAllFragment : Fragment() {
                 img_url = "",
                 company = "company",
                 title = "title",
-                day = "day"
+                day = "day",
+                grid = true
             )
         )
         newsRecentAdapter.addItem(
@@ -132,7 +97,8 @@ class NewsAllFragment : Fragment() {
                 img_url = "",
                 company = "company",
                 title = "title",
-                day = "day"
+                day = "day",
+                grid = true
             )
         )
         newsRecentAdapter.addItem(
@@ -140,7 +106,8 @@ class NewsAllFragment : Fragment() {
                 img_url = "",
                 company = "company",
                 title = "title",
-                day = "day"
+                day = "day",
+                grid = true
             )
         )
         newsRecentAdapter.addItem(
@@ -148,41 +115,11 @@ class NewsAllFragment : Fragment() {
                 img_url = "",
                 company = "company",
                 title = "title",
-                day = "day"
+                day = "day",
+                grid = true
             )
         )
-        newsRecentAdapter.addItem(
-            NewsData(
-                img_url = "",
-                company = "company",
-                title = "title",
-                day = "day"
-            )
-        )
-        newsRecentAdapter.addItem(
-            NewsData(
-                img_url = "",
-                company = "company",
-                title = "title",
-                day = "day"
-            )
-        )
-        newsRecentAdapter.addItem(
-            NewsData(
-                img_url = "",
-                company = "company",
-                title = "title",
-                day = "day"
-            )
-        )
-        newsRecentAdapter.addItem(
-            NewsData(
-                img_url = "",
-                company = "company",
-                title = "title",
-                day = "day"
-            )
-        )
+
 
         newsAdapter.notifyDataSetChanged()
         newsRecentAdapter.notifyDataSetChanged()

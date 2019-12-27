@@ -40,9 +40,6 @@ class LawFragment : Fragment() {
         initBetelangRv(V,mContext) // 전문가 프로필 리사이클러뷰 함수
 
         V.expert_subtitle_law_tv.setOnClickListener {
-            var activity = activity as MainActivity
-            activity.ExpertChange()
-
         }
         return V
     }
