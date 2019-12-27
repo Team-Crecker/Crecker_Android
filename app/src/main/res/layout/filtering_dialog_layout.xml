@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:textSize="16sp"
+        android:textColor="#000000"
+        android:fontFamily="@font/apple_sd_gothic_neo_regular"
+        android:lineSpacingExtra="4sp"
+        android:gravity="center"
+        android:layout_marginTop="13dp"
+        android:text="전체" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:textSize="16sp"
+        android:textColor="#000000"
+        android:fontFamily="@font/apple_sd_gothic_neo_regular"
+        android:lineSpacingExtra="4sp"
+        android:gravity="center"
+        android:text="입금" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:textSize="16sp"
+        android:textColor="#000000"
+        android:fontFamily="@font/apple_sd_gothic_neo_regular"
+        android:lineSpacingExtra="4sp"
+        android:gravity="center"
+        android:layout_marginBottom="15dp"
+        android:text="출금" />
+
+</LinearLayout>
