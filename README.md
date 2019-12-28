@@ -169,6 +169,10 @@ Crecker_Android파트 git 장소입니다.
 	* contents : 광고 내용(data class + recycleradapter + viewholder)
 	* fragment : 광고 뷰와 관련된 fragment
 * ### home
+	* adapter : 리사이클러뷰 어댑터 관리 패키지
+	* data : home 탭의 리사이클러뷰에서 사용하는 data class 패키지
+	* viewholder : 리사이클러뷰에 사용하는 뷰 홀더 패키지 
+	* fragment : home 뷰와 관련된 fragment
 * ### law
 	* adapter : 배너 및 리사이클러뷰 어댑터 관리 패키지
 	* data : law 탭에서 사용하는 data class 패키지
