@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".login.LogInActivity"></activity>
+        <activity android:name=".Membership.register.SignUpActivity" android:exported="true"></activity>
+        <activity android:name="org.techtown.crecker.Membership.login.LogInActivity" />
         <activity android:name=".ads.activity.AdsDetailActivity" />
         <activity android:name=".mypage.CashActivity" /> <!-- 광고 -->
         <activity android:name=".ads.category.CategoryActivity" /> <!-- 메인 -->

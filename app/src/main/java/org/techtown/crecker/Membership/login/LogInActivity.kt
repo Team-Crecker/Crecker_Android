@@ -1,4 +1,4 @@
-package org.techtown.crecker.login
+package org.techtown.crecker.Membership.login
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
