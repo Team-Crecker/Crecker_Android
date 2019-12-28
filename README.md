@@ -19,28 +19,28 @@ Crecker_Android파트 git 장소입니다.
 
 # 프로그램 구조
 * ### ads
-	* #### activity : 광고 뷰와 관련된 activity
-	* #### banner : 오토스크롤 뷰페이저(배너) 구현과 관련된 것들
-	* #### category : 광고 카테고리 전환과 관련된 것들
-	* #### contents : 광고 내용(data class + recycleradapter + viewholder)
-	* #### fragment : 광고 뷰와 관련된 fragment
+	* activity : 광고 뷰와 관련된 activity
+	* banner : 오토스크롤 뷰페이저(배너) 구현과 관련된 것들
+	* category : 광고 카테고리 전환과 관련된 것들
+	* contents : 광고 내용(data class + recycleradapter + viewholder)
+	* fragment : 광고 뷰와 관련된 fragment
 * ### home
 * ### law
-	* #### adapter : 배너 및 리사이클러뷰 어댑터 관리 패키지
-	* #### data : law 탭에서 사용하는 data class 패키지
-	* #### viewholder : 리사이클러뷰에 사용하는 뷰 홀더 패키지
+	* adapter : 배너 및 리사이클러뷰 어댑터 관리 패키지
+	* data : law 탭에서 사용하는 data class 패키지
+	* viewholder : 리사이클러뷰에 사용하는 뷰 홀더 패키지
 * ### main
 * ### module
 	- 리사이클러뷰 여백설정 기능, 커스텀뷰페이저, 바텀시트 컨트롤러, 익스텐션 함수 등을 보관
 * ### mypage
-	* #### activity : 마이페이지 뷰와 관련된 activity
-	* #### contents : 각종 데이터(data class + recycleradapter + viewholder) ex)이용내역
-	* #### fragment : 마이페이지 뷰와 관련된 fragment
+	* activity : 마이페이지 뷰와 관련된 activity
+	* contents : 각종 데이터(data class + recycleradapter + viewholder) ex)이용내역
+	* fragment : 마이페이지 뷰와 관련된 fragment
 * ### news
-	* #### adapter : 배너 및 리사이클러뷰 어댑터 관리 패키지
-	* #### data : news 탭에서 사용하는 data class 패키지
-	* #### feature : news 프래그먼트 내부 탭에 사용할 프래그먼트 패키지
-	* #### viewholder : 리사이클러뷰에 사용하는 뷰 홀더 패키지
+	* adapter : 배너 및 리사이클러뷰 어댑터 관리 패키지
+	* data : news 탭에서 사용하는 data class 패키지
+	* feature : news 프래그먼트 내부 탭에 사용할 프래그먼트 패키지
+	* viewholder : 리사이클러뷰에 사용하는 뷰 홀더 패키지
 
 # 기타
 
