@@ -8,9 +8,9 @@
     <string name="law">전문가</string>
     <string name="news">뉴스</string>
     <string name="mypage">마이</string>
-    <string name="tmi">포스팅 게시 후 4주간(유료체험 캠페인은 5일간)\n
-        유지해야 캐쉬를 인출할 수 있으며, 필수 해시태그가\n
-        수정/ 삭제되면 누락된 기간만큼 전환 예정일이 연기됩니다.\n</string>
+    <string name="tmi">포스팅 게시 후 4주간(유료체험 캠페인은 5일간)
+        유지해야 캐쉬를 인출할 수 있으며, 필수 해시태그가
+        수정/ 삭제되면 누락된 기간만큼 전환 예정일이 연기됩니다.</string>
 
     <string name="campaign_intro">일반적으로 선정 후 1-2일 이내에 출고가 진행
 되며, 제품수령까지 3-5일 소요될 수 있습니다.

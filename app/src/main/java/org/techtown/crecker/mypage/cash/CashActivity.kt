@@ -61,7 +61,7 @@ class CashActivity : AppCompatActivity() {
         imageView4.setOnClickListener { showFilter() }
 
         btn_info.setOnClickListener {
-            //커스텀 다이얼로그
+            InfoDialog(this).show()
         }
     }
 

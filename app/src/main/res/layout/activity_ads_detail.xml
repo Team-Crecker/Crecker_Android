@@ -162,7 +162,7 @@
     <Button
         android:id="@+id/ad_detail_btn_apply"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:background="#000000"
         android:fontFamily="@font/apple_sd_gothic_neo_bold"
         android:text="신청하기"
