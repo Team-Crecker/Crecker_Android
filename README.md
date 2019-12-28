@@ -21,12 +21,14 @@ Crecker_Android파트 git 장소입니다.
 # 기능 구현 방법
 * ## lottie를 이용한 스플래시 화면
 	- SplashActivity
+	
 	```
 	val animationView = findViewById<LottieAnimationView>(R.id.splash_img)
         animationView.setAnimation("splash.json")
         animationView.playAnimation()
 	```
-LotteAnimationView를 생성하고 애니메이션 파일을 적용
+	
+	* LotteAnimationView를 생성하고 애니메이션 파일을 적용
 	
 	```
 	private fun startLoading(){
@@ -38,12 +40,14 @@ LotteAnimationView를 생성하고 애니메이션 파일을 적용
            	 }
        		},1000)
     	}
-
     	override fun onBackPressed() {}
+	
 	```
-`startLoading()`함수 안에 핸들러 객체를 생성하고 스플래시 화면 효과를 구성
-`onBackPressed()`를 오버라이드 함으로서 스플래시 화면이 나오는 중 뒤로가기 버튼이 동작하지 않도록 설정
+	`startLoading()`함수 안에 핸들러 객체를 생성하고 스플래시 화면 효과를 구성
+	`onBackPressed()`를 오버라이드 함으로서 스플래시 화면이 나오는 중 뒤로가기 버튼이 동작하지 않도록 설정
+
 	- AndroidManifest
+	
 	```
 	<activity
             android:name=".main.SplashActivity"
@@ -57,9 +61,11 @@ LotteAnimationView를 생성하고 애니메이션 파일을 적용
             </intent-filter>
         </activity>
 	```
-manifest 파일에서 가장 처음 나오는 액티비티 구조 변경
+	
+	manifest 파일에서 가장 처음 나오는 액티비티 구조 변경
 
 	- activity_splash.xml
+	
 	```
 	<?xml version="1.0" encoding="utf-8"?>
 	<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -70,7 +76,7 @@ manifest 파일에서 가장 처음 나오는 액티비티 구조 변경
     	tools:context=".main.SplashActivity"
     	android:background="#000000">
 
-    		<com.airbnb.lottie.LottieAnimationView
+    	<com.airbnb.lottie.LottieAnimationView
         	android:id="@+id/splash_img"
         	android:layout_width="0dp"
         	android:layout_height="0dp"
