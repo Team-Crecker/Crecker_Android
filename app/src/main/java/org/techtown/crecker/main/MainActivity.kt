@@ -15,7 +15,7 @@ import org.techtown.crecker.R
 import org.techtown.crecker.ads.fragment.AdsFragment
 import org.techtown.crecker.ads.category.CtgResultEvent
 import org.techtown.crecker.ads.category.EventBus
-import org.techtown.crecker.mypage.MyPageFragment
+import org.techtown.crecker.mypage.main.MyPageFragment
 import org.techtown.crecker.law.LawFragment
 import org.techtown.crecker.news.NewsFragment
 
@@ -47,7 +47,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initViewPager() {
-        fragments = arrayListOf(HomeFragment(), AdsFragment(), LawFragment(), NewsFragment(), MyPageFragment())
+        fragments = arrayListOf(HomeFragment(), AdsFragment(), LawFragment(), NewsFragment(),
+            MyPageFragment()
+        )
 
         viewPagerAdapter = MainViewPagerAdapter(supportFragmentManager, this) // MainViewPagerAdapter 생성
         viewPagerAdapter.fragments = fragments
