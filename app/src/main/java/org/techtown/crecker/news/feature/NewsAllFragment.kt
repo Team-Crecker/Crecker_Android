@@ -149,7 +149,7 @@ class NewsAllFragment : Fragment() {
             .setIndicatorSlideMode(IndicatorSlideMode.SMOOTH)
             .setIndicatorGap(0)
             .setPageMargin(resources.getDimensionPixelOffset(R.dimen.dp_3))
-            .setIndicatorWidth(200)
+            .setIndicatorWidth(150)
             .setIndicatorColor(
                 Color.parseColor("#c9cdd2"),
                 Color.parseColor("#000000")

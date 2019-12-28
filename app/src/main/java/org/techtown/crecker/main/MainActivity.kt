@@ -23,8 +23,6 @@ import org.techtown.crecker.main.adapter.MainViewPagerAdapter
 import org.techtown.crecker.ads.category.FragmentCommunicator
 import org.techtown.crecker.ads.fragment.OnBackPressed
 import org.techtown.crecker.ads.fragment.putLog
-import org.techtown.crecker.law.QuestAcitivy
-import org.techtown.crecker.module.debugLog
 
 
 class MainActivity : AppCompatActivity() {

@@ -13,13 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ads.activity.AdsDetailActivity"></activity>
-        <activity android:name=".mypage.CashActivity" /> <!-- 광고 -->
-        <activity android:name=".ads.category.CategoryActivity" /> <!-- 메인 -->
-        <activity android:name=".law.QuestAcitivy"
-            android:exported="true"></activity>
-        <activity android:name=".main.MainActivity"
-            android:exported="true">
+        <activity android:name=".law.activity.LawActivity" android:exported="true"></activity>
+        <activity android:name=".ads.activity.AdsDetailActivity" android:exported="true"/>
+        <activity android:name=".mypage.CashActivity" android:exported="true"/>
+        <activity android:name=".ads.category.CategoryActivity" android:exported="true"/>
+        <activity android:name=".law.activity.QuestAcitivy" android:exported="true" />
+        <activity android:name=".main.MainActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

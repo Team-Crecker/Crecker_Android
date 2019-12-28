@@ -1,4 +1,4 @@
-package org.techtown.crecker.law
+package org.techtown.crecker.law.activity
 
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
@@ -46,12 +46,24 @@ class QuestAcitivy : AppCompatActivity() {
         }
 
         quest_ok_tv.setOnClickListener{
-           if (check_secret.isChecked){
-               Toast.makeText(this,"카테고리 : ${categoryList[check-1]} , 비밀 글", Toast.LENGTH_LONG).show()
-           }
-            else{
-               Toast.makeText(this,"카테고리 : ${categoryList[check-1]} , 공개 글", Toast.LENGTH_LONG).show()
-           }
+            if(check == 0){
+                Toast.makeText(this,"카테고리를 설정해주세요",Toast.LENGTH_LONG).show()
+            }
+            else {
+                if (check_secret.isChecked) {
+                    Toast.makeText(
+                        this,
+                        "카테고리 : ${categoryList[check - 1]} , 비밀 글",
+                        Toast.LENGTH_LONG
+                    ).show()
+                } else {
+                    Toast.makeText(
+                        this,
+                        "카테고리 : ${categoryList[check - 1]} , 공개 글",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
         }  // 확인 눌렀을 때 값 전달
 
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN) // 키보드가 UI를 밀고올라는 현상 방지

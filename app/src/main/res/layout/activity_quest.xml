@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundColor"
-    tools:context=".law.QuestAcitivy">
+    tools:context=".law.activity.QuestAcitivy">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/top_layout"
@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="43dp"
+            android:layout_marginTop="25dp"
             android:scaleType="fitXY"
             android:src="@drawable/clear_24px"
             app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="124dp"
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="164dp"
             android:fontFamily="@font/montserrat"
             android:lineSpacingExtra="3sp"
@@ -216,7 +216,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
+    <Button
         android:id="@+id/quest_ok_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -224,8 +224,8 @@
         android:fontFamily="@font/apple_sd"
         android:lineSpacingExtra="3sp"
         android:paddingHorizontal="160dp"
-        android:paddingTop="19dp"
-        android:paddingBottom="40dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
         android:text="확인"
         android:textAlignment="center"
         android:textColor="#ffffff"

@@ -1,6 +1,7 @@
 package org.techtown.crecker.law
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
@@ -17,6 +18,8 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_law.view.*
 
 import org.techtown.crecker.R
+import org.techtown.crecker.law.activity.LawActivity
+import org.techtown.crecker.law.activity.QuestAcitivy
 import org.techtown.crecker.law.adapter.ExpertBannerAdpater
 import org.techtown.crecker.law.adapter.Expert_Betelang_Rv_Adp
 import org.techtown.crecker.law.data.ExpertBetelangData
@@ -40,7 +43,15 @@ class LawFragment : Fragment() {
         initBetelangRv(V,mContext) // 전문가 프로필 리사이클러뷰 함수
 
         V.expert_subtitle_law_tv.setOnClickListener {
+            var intent = Intent(activity, LawActivity::class.java)
+            startActivity(intent)
         }
+
+        V.float_writing_btn.setOnClickListener {
+            var intent = Intent(activity, QuestAcitivy::class.java)
+            startActivity(intent)
+        }
+
         return V
     }
 
