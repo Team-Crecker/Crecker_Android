@@ -11,14 +11,13 @@ git을 이용할 때 몇가지 주의사항을 적어놓습니다. (추가할게
 	* 이미지뷰 : ~ _img
 	* 에디트텍스트 : ~ _edit
 * ## 프로그램 구조
-	* ads
-	* home (통신 관련)
-	* law
-	* main
-	* module
-	* mypage
-	* news
-	* 먼가 새로운거
+	* ### ads
+	* ### home (통신 관련)
+	* ### law
+	* ### main
+	* ### module
+	* ### mypage
+	* ### news
 	
 * ## Git 사용 시 주의!
 	* master 브랜치 절대 건들지 말 것!!
