@@ -86,6 +86,80 @@ Crecker_Android파트 git 장소입니다.
         	app:layout_constraintTop_toTopOf="parent" />
 	</androidx.constraintlayout.widget.ConstraintLayout>
 	```
+	
+* ## Custom View로 TabLayout 아이콘 만들기
+	- custom_tab_button.xml
+	
+	```
+	<?xml version="1.0" encoding="utf-8"?>
+	<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    	xmlns:app="http://schemas.android.com/apk/res-auto"
+    	xmlns:tools="http://schemas.android.com/tools"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content">
+
+    	<ImageView
+        android:id="@+id/Tab_ic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+         />
+	</androidx.constraintlayout.widget.ConstraintLayout>
+	```
+	TabLayout에 들어갈 CustomView
+	
+	- MainActivity
+	
+	```
+	override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+	
+	...
+	
+	main_tabLayout.getTabAt(0)?.customView = initCustomView(0) // Home 로고
+        main_tabLayout.getTabAt(1)?.customView = initCustomView(1) // Ads 로고
+        main_tabLayout.getTabAt(2)?.customView = initCustomView(2) // Law 로고
+        main_tabLayout.getTabAt(3)?.customView = initCustomView(3) // News 로고
+        main_tabLayout.getTabAt(4)?.customView = initCustomView(4) // MyPage 로고
+	
+	...
+	
+	}
+	```
+	TabLayout에 커스텀뷰를 넣어준다.
+	
+	```
+	private fun initCustomView(position : Int) : View {
+        val tabView = LayoutInflater.from(mContext).inflate(R.layout.custom_tab_button, null)
+
+        when(position){
+            0 -> tabView.Tab_ic.setImageResource(R.drawable.select_tab_home)
+            1-> tabView.Tab_ic.setImageResource(R.drawable.select_tab_ads)
+            2-> tabView.Tab_ic.setImageResource(R.drawable.select_tab_law)
+            3-> tabView.Tab_ic.setImageResource(R.drawable.select_tab_news)
+            4-> tabView.Tab_ic.setImageResource(R.drawable.select_tab_mypage)
+        }
+        return tabView
+        }
+	
+	```
+	position값에 따라 적절한 이미지를 넣어준다.
+	
+	- select_tab_home.xml
+	
+	```
+	<?xml version="1.0" encoding="utf-8"?>
+	<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    	<item android:drawable="@drawable/tab_home" android:state_selected="false" android:state_focused="false" android:state_pressed="false"/>
+    	<item android:drawable="@drawable/tab_home_filled" android:state_selected="true"/>
+	</selector>
+	
+	```
+	TabLayout에 들어가는 아이콘의 이미지는 drawable객체를 이용해, 체크됨에 따라 이미지를 변경시켜준다.
 
 # 프로그램 구조
 * ### ads
