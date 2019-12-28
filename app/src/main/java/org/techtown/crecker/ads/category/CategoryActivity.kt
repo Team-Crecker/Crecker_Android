@@ -18,12 +18,7 @@ class CategoryActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun init() {
         btn_quit.setOnClickListener {
-            val i = Intent().apply {
-                    putExtra("title", intent.getStringExtra("oldTitle"))
-                    .putExtra("isShow", intent.getBooleanExtra("oldBool", false))
-            }
-            setResult(Activity.RESULT_OK, i)
-            finish()
+            quit()
         }
 
         tv_beauty.setOnClickListener(this)
@@ -31,6 +26,15 @@ class CategoryActivity : AppCompatActivity(), View.OnClickListener {
         tv_travel.setOnClickListener(this)
         tv_culture.setOnClickListener(this)
         tv_other.setOnClickListener(this)
+    }
+
+    private fun quit() {
+        val i = Intent().apply {
+            putExtra("title", intent.getStringExtra("oldTitle"))
+                .putExtra("isShow", intent.getBooleanExtra("oldBool", false))
+        }
+        setResult(Activity.RESULT_OK, i)
+        finish()
     }
 
     override fun onClick(v: View?) {
@@ -44,6 +48,15 @@ class CategoryActivity : AppCompatActivity(), View.OnClickListener {
         }
         EventBus.title = title
         val i = Intent().apply { putExtra("title", title).putExtra("isShow", true) }
+        setResult(Activity.RESULT_OK, i)
+        finish()
+    }
+
+    override fun onBackPressed() {
+        val i = Intent().apply {
+            putExtra("title", intent.getStringExtra("oldTitle"))
+                .putExtra("isShow", intent.getBooleanExtra("oldBool", false))
+        }
         setResult(Activity.RESULT_OK, i)
         finish()
     }
