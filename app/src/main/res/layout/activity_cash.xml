@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mypage.CashActivity">
+    tools:context=".mypage.cash.CashActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar4"
@@ -44,6 +44,16 @@
                 app:layout_constraintTop_toTopOf="@+id/tv_title"
                 app:srcCompat="@drawable/common_back_black" />
 
+            <ImageView
+                android:id="@+id/btn_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_title"
+                app:srcCompat="@drawable/btn_info" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
 
@@ -76,7 +86,7 @@
                 android:layout_marginEnd="16dp"
                 android:background="#ffffff"
                 android:fontFamily="@font/apple_sd_gothic_neo_semibold"
-                android:text="계좌번호 등록하고 인출받기"
+                android:text="인출하기"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

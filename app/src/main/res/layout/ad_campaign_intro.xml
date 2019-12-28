@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/line"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_line" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/img_tag_gray_ad_detail"
+        android:lineSpacingExtra="8sp"
+        android:text="캠페인 안내"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/line"
+        app:layout_constraintTop_toBottomOf="@+id/line" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:lineSpacingExtra="20sp"
+        android:textColor="#000000"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="@+id/textView13"
+        app:layout_constraintTop_toBottomOf="@+id/textView13"
+        android:text="선호 크리에이터" />
+
+    <TextView
+        android:id="@+id/textView115"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:lineSpacingExtra="20sp"
+        android:text="캠페인 안내"
+        android:textColor="#000000"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="@+id/textView14"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:lineSpacingExtra="20sp"
+        android:text="사이트 URL"
+        android:textColor="#000000"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="@+id/textView115"
+        app:layout_constraintTop_toBottomOf="@+id/ad_campaign_tv_campaign_intro" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:lineSpacingExtra="20sp"
+        android:text="제공내역"
+        android:textColor="#000000"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="@+id/textView15"
+        app:layout_constraintTop_toBottomOf="@+id/ad_campaign_tv_site_url" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:lineSpacingExtra="20sp"
+        android:text="검색키워드"
+        android:textColor="#000000"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="@+id/textView16"
+        app:layout_constraintTop_toBottomOf="@+id/ad_campaign_tv_providing" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:lineSpacingExtra="20sp"
+        android:text="캠페인 미션"
+        android:textColor="#000000"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="@+id/textView17"
+        app:layout_constraintTop_toBottomOf="@+id/ad_campaign_tv_search_keyword_additional" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:lineSpacingExtra="20sp"
+        android:text="추가 안내사항"
+        android:textColor="#000000"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="@+id/textView18"
+        app:layout_constraintTop_toBottomOf="@+id/ad_campaign_tv_mission" />
+
+    <TextView
+        android:id="@+id/ad_campaign_tv_creator_prefer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:lineSpacingExtra="20sp"
+        android:textColor="#9fa4aa"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView14"
+        app:layout_constraintStart_toEndOf="@+id/textView14"
+        app:layout_constraintTop_toTopOf="@+id/textView14"
+        android:text="얼굴노출 가능" />
+
+    <TextView
+        android:id="@+id/ad_campaign_tv_campaign_intro"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:lineSpacingExtra="7sp"
+        android:text="@string/campaign_intro"
+        android:textColor="#9fa4aa"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.416"
+        app:layout_constraintStart_toStartOf="@+id/ad_campaign_tv_creator_prefer"
+        app:layout_constraintTop_toBottomOf="@+id/ad_campaign_tv_creator_prefer" />
+
+    <TextView
+        android:id="@+id/ad_campaign_tv_site_url"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="20sp"
+        android:autoLink="web"
+        android:text="http://bitly.kr/X8wcHY"
+        android:textColor="#9fa4aa"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView15"
+        app:layout_constraintStart_toStartOf="@+id/ad_campaign_tv_campaign_intro"
+        app:layout_constraintTop_toTopOf="@+id/textView15" />
+
+    <TextView
+        android:id="@+id/ad_campaign_tv_providing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="20sp"
+        android:text="피부피부 바디워시 1개 · 10,000"
+        android:textColor="#1ec695"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView16"
+        app:layout_constraintStart_toStartOf="@+id/ad_campaign_tv_site_url"
+        app:layout_constraintTop_toTopOf="@+id/textView16" />
+
+    <TextView
+        android:id="@+id/ad_campaign_tv_search_keyword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="20sp"
+        android:text="필수 키워드: #피부피부 #PIBUPIBU"
+        android:textColor="#1ec695"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView17"
+        app:layout_constraintStart_toStartOf="@+id/ad_campaign_tv_providing"
+        app:layout_constraintTop_toTopOf="@+id/textView17" />
+
+    <TextView
+        android:id="@+id/ad_campaign_tv_search_keyword_additional"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:lineSpacingExtra="7sp"
+        android:text="@string/keyword_additional"
+        android:textColor="#9fa4aa"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="@+id/ad_campaign_tv_campaign_intro"
+        app:layout_constraintStart_toStartOf="@+id/ad_campaign_tv_campaign_intro"
+        app:layout_constraintTop_toBottomOf="@+id/ad_campaign_tv_search_keyword" />
+
+    <TextView
+        android:id="@+id/ad_campaign_tv_mission"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="7sp"
+        android:text="@string/campaign_mission"
+        android:textColor="#9fa4aa"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="@+id/ad_campaign_tv_search_keyword_additional"
+        app:layout_constraintStart_toStartOf="@+id/ad_campaign_tv_search_keyword_additional"
+        app:layout_constraintTop_toTopOf="@+id/textView18" />
+
+    <TextView
+        android:id="@+id/ad_campaign_tv_additional"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="7sp"
+        android:text="@string/campaign_additional"
+        android:textColor="#9fa4aa"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="@+id/ad_campaign_tv_mission"
+        app:layout_constraintStart_toStartOf="@+id/ad_campaign_tv_mission"
+        app:layout_constraintTop_toTopOf="@+id/textView19" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
