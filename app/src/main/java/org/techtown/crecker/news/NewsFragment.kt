@@ -27,9 +27,7 @@ class NewsFragment : Fragment() {
         val V = inflater.inflate(R.layout.fragment_news, container, false)
         val context : Context = V.context
 
-        val allAdapter = NewsViewPagerAdapter(
-            childFragmentManager
-        )
+        val allAdapter = NewsViewPagerAdapter(childFragmentManager)
 
         allAdapter.addItems(NewsAllFragment())
         allAdapter.addItems(NewsEduFragment())

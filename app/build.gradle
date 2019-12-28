@@ -27,6 +27,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    dataBinding{
+        enabled = true
+    }
 }
 
 dependencies {
@@ -63,4 +66,7 @@ dependencies {
 
     //Circle ImageView
     implementation 'de.hdodenhof:circleimageview:3.0.1'
+
+    //스플래시화면을 위한 lottie 사용
+    implementation 'com.airbnb.android:lottie:3.3.1'
 }
