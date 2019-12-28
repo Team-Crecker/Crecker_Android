@@ -31,7 +31,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/betelang_name_tv"
+                android:id="@+id/a_betelang_name_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -46,7 +46,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/betelang_class_tv"
+                android:id="@+id/a_betelang_class_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
@@ -57,11 +57,11 @@
                 android:textColor="#000000"
                 android:textFontWeight="200"
                 android:textSize="16sp"
-                app:layout_constraintStart_toEndOf="@+id/betelang_name_tv"
+                app:layout_constraintStart_toEndOf="@+id/a_betelang_name_tv"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/betelang_affiliation_tv"
+                android:id="@+id/a_betelang_affiliation_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -73,7 +73,7 @@
                 android:textFontWeight="200"
                 android:textSize="13sp"
                 app:layout_constraintStart_toEndOf="@+id/betelang_profile_image"
-                app:layout_constraintTop_toBottomOf="@+id/betelang_name_tv" />
+                app:layout_constraintTop_toBottomOf="@+id/a_betelang_name_tv" />
 
             <TextView
                 android:id="@+id/betelang_incident_tv"
@@ -88,7 +88,7 @@
                 android:textFontWeight="200"
                 android:textSize="13sp"
                 app:layout_constraintStart_toEndOf="@+id/betelang_profile_image"
-                app:layout_constraintTop_toBottomOf="@+id/betelang_affiliation_tv" />
+                app:layout_constraintTop_toBottomOf="@+id/a_betelang_affiliation_tv" />
 
             <TextView
                 android:id="@+id/betelang_num_tv"
