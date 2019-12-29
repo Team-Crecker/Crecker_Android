@@ -23,6 +23,7 @@ import org.techtown.crecker.news.adapter.BannerAdapter
 import org.techtown.crecker.news.adapter.NewsAdapter
 import org.techtown.crecker.news.data.NewsData
 import org.techtown.crecker.module.RcvItemDeco
+import org.techtown.crecker.module.RcvItemHoriDeco
 import org.techtown.crecker.module.debugLog
 import org.techtown.crecker.news.data.NewsBannerData
 import org.techtown.crecker.news.viewholder.NewsBannerVH
@@ -69,60 +70,26 @@ class NewsAllFragment : Fragment() {
         newsAdapter = NewsAdapter(context)
         V.news_popular_rv.adapter = newsAdapter
         V.news_popular_rv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        newsAdapter.addItem(
-            NewsData(
-                img_url = "",
-                company = "company",
-                title = "title",
-                day = "day"
-            )
-        )
-        newsAdapter.addItem(
-            NewsData(
-                img_url = "",
-                company = "company",
-                title = "title",
-                day = "day"
-            )
-        )
-        newsAdapter.addItem(
-            NewsData(
-                img_url = "",
-                company = "company",
-                title = "title",
-                day = "day"
-            )
-        )
-        newsAdapter.addItem(
-            NewsData(
-                img_url = "",
-                company = "company",
-                title = "title",
-                day = "day"
-            )
-        )
-        newsAdapter.addItem(
-            NewsData(
-                img_url = "",
-                company = "company",
-                title = "title",
-                day = "day"
-            )
-        )
+        V.news_popular_rv.addItemDecoration(RcvItemHoriDeco(context))
+        newsAdapter.addItem(NewsData(img_url = "", company = "company", title = "title", day = "day", grid = false))
+        newsAdapter.addItem(NewsData(img_url = "", company = "company", title = "title", day = "day", grid = false))
+        newsAdapter.addItem(NewsData(img_url = "", company = "company", title = "title", day = "day", grid = false))
+        newsAdapter.addItem(NewsData(img_url = "", company = "company", title = "title", day = "day", grid = false))
 
 //       최신 지원 활동 리사이클러 뷰
         newsRecentAdapter = NewsAdapter(context)
         V.news_recent_rv.adapter = newsRecentAdapter
         V.news_recent_rv.layoutManager = GridLayoutManager(context, 2)
 
-        V.news_recent_rv.addItemDecoration(RcvItemDeco(context)) // 여백 설정
+        V.news_recent_rv.addItemDecoration(RcvItemDeco(context,true)) // 여백 설정
 
         newsRecentAdapter.addItem(
             NewsData(
                 img_url = "",
                 company = "company",
                 title = "title",
-                day = "day"
+                day = "day",
+                grid = true
             )
         )
         newsRecentAdapter.addItem(
@@ -130,7 +97,8 @@ class NewsAllFragment : Fragment() {
                 img_url = "",
                 company = "company",
                 title = "title",
-                day = "day"
+                day = "day",
+                grid = true
             )
         )
         newsRecentAdapter.addItem(
@@ -138,7 +106,8 @@ class NewsAllFragment : Fragment() {
                 img_url = "",
                 company = "company",
                 title = "title",
-                day = "day"
+                day = "day",
+                grid = true
             )
         )
         newsRecentAdapter.addItem(
@@ -146,41 +115,11 @@ class NewsAllFragment : Fragment() {
                 img_url = "",
                 company = "company",
                 title = "title",
-                day = "day"
+                day = "day",
+                grid = true
             )
         )
-        newsRecentAdapter.addItem(
-            NewsData(
-                img_url = "",
-                company = "company",
-                title = "title",
-                day = "day"
-            )
-        )
-        newsRecentAdapter.addItem(
-            NewsData(
-                img_url = "",
-                company = "company",
-                title = "title",
-                day = "day"
-            )
-        )
-        newsRecentAdapter.addItem(
-            NewsData(
-                img_url = "",
-                company = "company",
-                title = "title",
-                day = "day"
-            )
-        )
-        newsRecentAdapter.addItem(
-            NewsData(
-                img_url = "",
-                company = "company",
-                title = "title",
-                day = "day"
-            )
-        )
+
 
         newsAdapter.notifyDataSetChanged()
         newsRecentAdapter.notifyDataSetChanged()
@@ -210,7 +149,7 @@ class NewsAllFragment : Fragment() {
             .setIndicatorSlideMode(IndicatorSlideMode.SMOOTH)
             .setIndicatorGap(0)
             .setPageMargin(resources.getDimensionPixelOffset(R.dimen.dp_3))
-            .setIndicatorWidth(200)
+            .setIndicatorWidth(150)
             .setIndicatorColor(
                 Color.parseColor("#c9cdd2"),
                 Color.parseColor("#000000")

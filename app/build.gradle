@@ -11,7 +11,7 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "org.techtown.crecker"
-        minSdkVersion 22
+        minSdkVersion 26
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -26,6 +26,9 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    dataBinding{
+        enabled = true
     }
 }
 
@@ -50,6 +53,8 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.10.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
 
+    implementation 'com.google.android.material:material:1.2.0-alpha02'
+
     //View
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
@@ -61,4 +66,10 @@ dependencies {
 
     //Circle ImageView
     implementation 'de.hdodenhof:circleimageview:3.0.1'
+
+    //스플래시화면을 위한 lottie 사용
+    implementation 'com.airbnb.android:lottie:3.3.1'
+
+    // TimePickerDialog
+    implementation 'com.github.michaldrabik:classicmaterialtimepicker:1.1.0'
 }

@@ -8,8 +8,9 @@ import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class RcvItemDeco(context : Context, size : Int = 20) : RecyclerView.ItemDecoration() {
+class RcvItemDeco(context : Context, isGrid : Boolean = false, size : Int = 20) : RecyclerView.ItemDecoration() {
     private val size_space : Int
+    private val checking = isGrid
 
     init {
         size_space = dpToPx(context,size)
@@ -27,21 +28,23 @@ class RcvItemDeco(context : Context, size : Int = 20) : RecyclerView.ItemDecorat
 
         // 상하 설정
 
-        if(position == 0 || position == 1){
-            outRect.bottom = size_space
-        }else{
-            outRect.bottom = size_space
+        outRect.bottom = size_space
+
+
+
+        // 그리드 뷰일 경우만 사용
+        if (checking == true){
+            val lp = view.layoutParams as GridLayoutManager.LayoutParams
+//        spanIndex = 0 -> 그리드뷰에서 왼편
+//        sapnIndex = 1 -> 그리드뷰에서 오른편
+            val spanIndex = lp.spanIndex
+
+            if (spanIndex == 0) {
+                outRect.right = size_space / 2
+            } else {
+                outRect.left = size_space / 2
+            }
         }
-
-
-//        val lp = view.layoutParams as GridLayoutManager.LayoutParams
-////        spanIndex = 0 -> 그리드뷰에서 왼편
-////        sapnIndex = 1 -> 그리드뷰에서 오른편
-//        val spanIndex = lp.spanIndex
-//
-//        if(spanIndex == 0) { }
-//        else{ }
-
     }
 
 }

@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.viewpager.widget.PagerAdapter
 import org.techtown.crecker.R
 
 
@@ -14,4 +15,12 @@ class MainViewPagerAdapter (fm : FragmentManager, val context: Context) : Fragme
     override fun getItem(position: Int): Fragment = fragments[position]
 
     override fun getCount(): Int = fragments.size
+
+    override fun getItemPosition(`object`: Any): Int {
+        return PagerAdapter.POSITION_NONE
+    }
+
+    public fun change(fChange : Fragment , position : Int){
+        fragments.set(position, fChange)
+    }
 }
