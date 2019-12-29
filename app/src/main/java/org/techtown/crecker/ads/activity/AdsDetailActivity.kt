@@ -1,5 +1,6 @@
 package org.techtown.crecker.ads.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_ads_detail.*
@@ -25,6 +26,14 @@ class AdsDetailActivity : AppCompatActivity() {
                 ad_detail_see_more.text = "펼치기"
                 short = true
             }
+        }
+        ad_detail_btn_apply.setOnClickListener {
+            startActivity(
+                Intent(this, ApplyActivity::class.java)
+                .apply {
+                    putExtra("title", ad_detail_title.text.toString())
+                    putExtra("desc", ad_detail_desc.text.toString())
+                })
         }
     }
 }

@@ -23,6 +23,7 @@ import org.techtown.crecker.home.HomeFragment
 import org.techtown.crecker.main.adapter.MainViewPagerAdapter
 import org.techtown.crecker.ads.category.FragmentCommunicator
 import org.techtown.crecker.ads.fragment.OnBackPressed
+import org.techtown.crecker.ads.fragment.putLog
 
 
 class MainActivity : AppCompatActivity() {
@@ -109,8 +110,4 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
-}
-
-fun String.putLog(tag: String = "debugResult"){
-    Log.d(tag, this)
 }
