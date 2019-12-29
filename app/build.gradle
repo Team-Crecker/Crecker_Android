@@ -11,7 +11,7 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "org.techtown.crecker"
-        minSdkVersion 22
+        minSdkVersion 26
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -69,4 +69,7 @@ dependencies {
 
     //스플래시화면을 위한 lottie 사용
     implementation 'com.airbnb.android:lottie:3.3.1'
+
+    // TimePickerDialog
+    implementation 'com.github.michaldrabik:classicmaterialtimepicker:1.1.0'
 }

@@ -4,10 +4,16 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import com.michaldrabik.classicmaterialtimepicker.CmtpTimeDialogFragment
+import com.michaldrabik.classicmaterialtimepicker.model.CmtpTime12
+import com.michaldrabik.classicmaterialtimepicker.utilities.setOnTime12PickedListener
+import com.michaldrabik.classicmaterialtimepicker.utilities.setOnTime24PickedListener
 import kotlinx.android.synthetic.main.activity_schedule.*
 import org.techtown.crecker.R
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.time.hours
 
 class ScheduleActivity : AppCompatActivity() {
     private lateinit var mCurrentTime : Calendar
@@ -23,27 +29,47 @@ class ScheduleActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_schedule)
 
-        editText2.setOnClickListener {
-            DatePickerDialog(this,R.style.CustomDialog, datePicker, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show()
+//        DatePickerDialog 사용
+        schedule_data_edit.setOnClickListener {
+            DatePickerDialog(
+                this,
+                R.style.CustomDialog,
+                datePicker,
+                myCalendar.get(Calendar.YEAR),
+                myCalendar.get(Calendar.MONTH),
+                myCalendar.get(Calendar.DAY_OF_MONTH)
+            ).show()
         }
 
-        editText.setOnClickListener {
+//        TimePickerDialog 사용
+        schedule_time_edit.setOnClickListener {
             mCurrentTime = Calendar.getInstance()
-            var hour = mCurrentTime.get(Calendar.HOUR_OF_DAY) // 현재 시
-            var minute = mCurrentTime.get(Calendar.MINUTE) // 현재 분
 
-            var mTimePiker = TimePickerDialog(this,android.R.style.Theme_DeviceDefault_Dialog_Alert,TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
-                editText.setText("${hourOfDay} : ${minute}")
-            }, hour, minute, false)
-            mTimePiker.setTitle("상담 시간")
-            mTimePiker.show()
+            val timePicker = CmtpTimeDialogFragment.newInstance("확인","취소")
+            timePicker.setInitialTime24(12, 0)
+            timePicker.setOnTime24PickedListener {
+                mCurrentTime.set(Calendar.HOUR_OF_DAY, it.hour)
+                mCurrentTime.set(Calendar.MINUTE, it.minute)
+                updateTimeLabel()
+            }
+
+            timePicker.show(supportFragmentManager,"Tag")
         }
     }
 
+    //날짜 선택시 정해진 형식으로 출력하는 함수
     private fun updateLabel(){
         var format = "yyyy / MM / dd" // 출력 형식
         var changeFormat = SimpleDateFormat(format, Locale.KOREA)
 
-        editText2.setText(changeFormat.format(myCalendar.time))
+        schedule_data_edit.setText(changeFormat.format(myCalendar.time))
+    }
+
+    //시간 선택시 정해진 형식으로 출력하는 함수
+    private fun updateTimeLabel(){
+        var format = "a hh : mm"
+        var changeFormat = SimpleDateFormat(format, Locale.US)
+
+        schedule_time_edit.setText(changeFormat.format(mCurrentTime.time))
     }
 }

@@ -5,4 +5,14 @@
         <item name="colorAccent">#e8ebed</item>
     </style>
 
+    <style name="CmtpDialogPositiveButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">@color/greenish</item>
+    </style>
+
+    <style name="CmtpViewTheme">
+        <item name="cmtpTextFrameDrawable">@drawable/custom_timedialog</item>
+        <item name="cmtpTextColor">#000000</item>
+        <item name="cmtpTextSize">13sp</item>
+    </style>
+
 </resources>
