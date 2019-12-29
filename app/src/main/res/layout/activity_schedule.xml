@@ -1,214 +1,230 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_weight="1">
-
-    <ImageView
-        android:id="@+id/schedule_back_img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="25dp"
-        android:src="@drawable/common_back_black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/schedule_title_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:fontFamily="@font/apple_sd"
-        android:gravity="center"
-        android:lineSpacingExtra="3sp"
-        android:text="상담 신청하기"
-        android:textColor="#000000"
-        android:textFontWeight="600"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/schedule_name_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="45dp"
-        android:fontFamily="@font/apple_sd"
-        android:lineSpacingExtra="3sp"
-        android:text="이름"
-        android:textColor="#000000"
-        android:textFontWeight="500"
-        android:textSize="13sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/schedule_back_img" />
-
-    <TextView
-        android:id="@+id/schedule_date_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:fontFamily="@font/apple_sd"
-        android:lineSpacingExtra="3sp"
-        android:text="상담 신청날짜"
-        android:textColor="#000000"
-        android:textFontWeight="500"
-        android:textSize="13sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/schedule_name_edit" />
-
-    <EditText
-        android:id="@+id/schedule_name_edit"
-        style="@style/EditTextTheme"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:hint="실명을 적어주세요"
-        android:inputType="textPersonName"
-        android:lineSpacingExtra="6sp"
-        android:maxLines="1"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/schedule_name_tv"
-        app:theme="@style/EditTextTheme" />
-
-    <EditText
-        android:id="@+id/schedule_time_edit"
-        style="@style/EditTextTheme"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="16dp"
-        android:drawableLeft="@drawable/ic_time"
-        android:drawablePadding="5dp"
-        android:ems="10"
-        android:focusable="false"
-        android:hint="AM 12:00"
-        android:inputType="none"
-        android:lineSpacingExtra="6sp"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/schedule_time_tv"
-        app:theme="@style/EditTextTheme" />
+        android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/schedule_data_edit"
-        style="@style/EditTextTheme"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="16dp"
-        android:clickable="true"
-        android:drawableLeft="@drawable/ic_date"
-        android:drawablePadding="5dp"
-        android:ems="10"
-        android:focusable="false"
-        android:hint="YYYY / MM / DD"
-        android:inputType="none"
-        android:lineSpacingExtra="6sp"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/schedule_date_tv"
-        app:theme="@style/EditTextTheme" />
+        <ScrollView
+            android:id="@+id/sv_root"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/schedule_time_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:fontFamily="@font/apple_sd"
-        android:lineSpacingExtra="3sp"
-        android:text="상담 신청시간"
-        android:textColor="@color/black"
-        android:textFontWeight="500"
-        android:textSize="13sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/schedule_data_edit" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
 
-    <TextView
-        android:id="@+id/shedule_content_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:fontFamily="@font/apple_sd"
-        android:lineSpacingExtra="3sp"
-        android:text="상담 내용"
-        android:textColor="#000000"
-        android:textFontWeight="500"
-        android:textSize="13sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/schedule_time_edit" />
+                <ImageView
+                    android:id="@+id/schedule_back_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="25dp"
+                    android:src="@drawable/common_back_black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/shedule_content_edit"
-        android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/edit_box_custom"
-        android:ems="10"
-        android:fontFamily="@font/apple_sd"
-        android:gravity="top"
-        android:hint="상담할 내용을 입력해 주세요"
-        android:inputType="textPersonName|textMultiLine"
-        android:lineSpacingExtra="6sp"
-        android:maxLines="10"
-        android:scrollbars="vertical"
-        android:scrollHorizontally="false"
-        android:textColor="@color/charcoal_grey"
-        android:textFontWeight="200"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/shedule_content_tv" />
+                <TextView
+                    android:id="@+id/schedule_title_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/apple_sd"
+                    android:gravity="center"
+                    android:lineSpacingExtra="3sp"
+                    android:text="상담 신청하기"
+                    android:textColor="#000000"
+                    android:textFontWeight="600"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/shedule_notice_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="29dp"
-        android:fontFamily="@font/apple_sd"
-        android:gravity="center"
-        android:lineSpacingExtra="7sp"
-        android:text="크레커의 전문가님이 상담 날짜를 확인하고\n
+                <TextView
+                    android:id="@+id/schedule_name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="40dp"
+                    android:fontFamily="@font/apple_sd"
+                    android:lineSpacingExtra="3sp"
+                    android:text="이름"
+                    android:textColor="#000000"
+                    android:textFontWeight="500"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/schedule_back_img" />
+
+                <TextView
+                    android:id="@+id/schedule_date_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/apple_sd"
+                    android:lineSpacingExtra="3sp"
+                    android:text="상담 신청날짜"
+                    android:textColor="#000000"
+                    android:textFontWeight="500"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/schedule_name_edit" />
+
+                <EditText
+                    android:id="@+id/schedule_name_edit"
+                    style="@style/EditTextTheme"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:ems="10"
+                    android:hint="실명을 적어주세요"
+                    android:inputType="textPersonName"
+                    android:lineSpacingExtra="6sp"
+                    android:maxLines="1"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/schedule_name_tv"
+                    app:theme="@style/EditTextTheme" />
+
+                <EditText
+                    android:id="@+id/schedule_time_edit"
+                    style="@style/EditTextTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:drawableLeft="@drawable/ic_time"
+                    android:drawablePadding="5dp"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:hint="AM 12:00"
+                    android:inputType="none"
+                    android:lineSpacingExtra="6sp"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/schedule_time_tv"
+                    app:theme="@style/EditTextTheme" />
+
+                <EditText
+                    android:id="@+id/schedule_date_edit"
+                    style="@style/EditTextTheme"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:clickable="true"
+                    android:drawableLeft="@drawable/ic_date"
+                    android:drawablePadding="5dp"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:hint="YYYY / MM / DD"
+                    android:inputType="none"
+                    android:lineSpacingExtra="6sp"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/schedule_date_tv"
+                    app:theme="@style/EditTextTheme" />
+
+                <TextView
+                    android:id="@+id/schedule_time_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/apple_sd"
+                    android:lineSpacingExtra="3sp"
+                    android:text="상담 신청시간"
+                    android:textColor="@color/black"
+                    android:textFontWeight="500"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/schedule_date_edit" />
+
+                <TextView
+                    android:id="@+id/schedule_content_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/apple_sd"
+                    android:lineSpacingExtra="3sp"
+                    android:text="상담 내용"
+                    android:textColor="#000000"
+                    android:textFontWeight="500"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/schedule_time_edit" />
+
+                <EditText
+                    android:id="@+id/schedule_content_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="29dp"
+                    android:background="@drawable/edit_box_custom"
+                    android:ems="10"
+                    android:fontFamily="@font/apple_sd"
+                    android:gravity="top"
+                    android:hint="상담할 내용을 입력해 주세요"
+                    android:inputType="textPersonName|textMultiLine"
+                    android:lineSpacingExtra="6sp"
+                    android:maxLines="10"
+                    android:scrollbars="vertical"
+                    android:scrollHorizontally="false"
+                    android:textColor="@color/charcoal_grey"
+                    android:textFontWeight="200"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toTopOf="@+id/shedule_notice_tv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/schedule_content_tv" />
+
+                <TextView
+                    android:id="@+id/shedule_notice_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="532dp"
+                    android:fontFamily="@font/apple_sd"
+                    android:gravity="center"
+                    android:lineSpacingExtra="7sp"
+                    android:text="크레커의 전문가님이 상담 날짜를 확인하고\n
 일정 변경이 필요할 시 미리 연락드리겠습니다."
-        android:textColor="@color/charcoal_grey"
-        android:textFontWeight="200"
-        android:textSize="13sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/shedule_content_edit" />
+                    android:textColor="@color/charcoal_grey"
+                    android:textFontWeight="200"
+                    android:textSize="13sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#000000"
-        android:fontFamily="@font/apple_sd"
-        android:gravity="center"
-        android:lineSpacingExtra="3sp"
-        android:paddingVertical="20dp"
-        android:text="신청하기"
-        android:textColor="#ffffff"
-        android:textFontWeight="500"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+
+
+        <Button
+            android:id="@+id/schedule_ok_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:fontFamily="@font/apple_sd"
+            android:gravity="center"
+            android:lineSpacingExtra="3sp"
+            android:paddingVertical="20dp"
+            android:text="신청하기"
+            android:textColor="#ffffff"
+            android:textFontWeight="500"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>

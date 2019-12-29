@@ -8,6 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_quest.*
 import org.techtown.crecker.R
+import org.techtown.crecker.module.KeyboardVisibilityUtils
 import org.w3c.dom.Text
 import kotlin.properties.Delegates
 
@@ -20,6 +21,7 @@ class QuestAcitivy : AppCompatActivity() {
 //    0일 경우에는 카테고리 선택하라는 토스트를 추가해준다.
     private var check = 0
     private val categoryList = listOf("Law","Start_up","Shooting")
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,9 +67,8 @@ class QuestAcitivy : AppCompatActivity() {
                 }
             }
         }  // 확인 눌렀을 때 값 전달
-
-        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN) // 키보드가 UI를 밀고올라는 현상 방지
         quest_content_tv.setHorizontallyScrolling(false) // 본문 컨텐츠 가로 스크롤 방지
+
     }
 
     private fun changeBack(position : Int) : Int{
