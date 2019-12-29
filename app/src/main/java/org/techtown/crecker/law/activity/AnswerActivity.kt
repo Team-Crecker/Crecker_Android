@@ -1,5 +1,6 @@
 package org.techtown.crecker.law.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -17,7 +18,8 @@ class AnswerActivity : AppCompatActivity() {
         }
 
         counseling_reserv_btn.setOnClickListener {
-            Toast.makeText(this, "상담신청이 되었습니다.",Toast.LENGTH_LONG).show()
+            val intent = Intent(this, ScheduleActivity::class.java)
+            startActivity(intent)
         }
     }
 }

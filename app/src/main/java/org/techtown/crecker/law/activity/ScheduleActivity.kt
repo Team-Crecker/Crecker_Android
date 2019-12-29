@@ -5,6 +5,7 @@ import android.app.TimePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.WindowManager
 import com.michaldrabik.classicmaterialtimepicker.CmtpTimeDialogFragment
 import com.michaldrabik.classicmaterialtimepicker.model.CmtpTime12
 import com.michaldrabik.classicmaterialtimepicker.utilities.setOnTime12PickedListener
@@ -55,6 +56,13 @@ class ScheduleActivity : AppCompatActivity() {
 
             timePicker.show(supportFragmentManager,"Tag")
         }
+
+//        뒤로가기
+        schedule_back_img.setOnClickListener {
+            finish()
+        }
+
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE) // 키보드가 UI를 밀고올리는 현상 방지
     }
 
     //날짜 선택시 정해진 형식으로 출력하는 함수
