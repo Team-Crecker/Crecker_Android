@@ -161,6 +161,34 @@ Crecker_Android파트 git 장소입니다.
 	```
 	TabLayout에 들어가는 아이콘의 이미지는 drawable객체를 이용해, 체크됨에 따라 이미지를 변경시켜준다.
 
+* ## 키보드가 보여질 때 화면 스크롤 기능
+	- MainActivity.kt
+	
+	```
+	class MainActivity : AppCompatActivity() {
+
+    	private lateinit var keyboardVisibilityUtils: KeyboardVisibilityUtils
+
+    	override fun onCreate(savedInstanceState: Bundle?) {
+        	super.onCreate(savedInstanceState)
+        	setContentView(R.layout.activity_main)
+       		keyboardVisibilityUtils = KeyboardVisibilityUtils(window,
+                onShowKeyboard = { keyboardHeight ->
+                    sv_root.run {
+                        smoothScrollTo(scrollX, scrollY + keyboardHeight)
+                    }
+                })
+    	}
+
+    	override fun onDestroy() {
+        	keyboardVisibilityUtils.detachKeyboardListeners()
+        	super.onDestroy()
+    	}
+	```
+	sv_root -> 스크롤뷰 id 값
+	KeyboardVisibilityUtils클래스를 만들 때 인자로 window를 전달하고 onShowKeyboard를 통해 ScroolView를 키보드 높이만큼 스크롤  
+	onShowKeyboard : 키보드가 보여질 때 해당 코드 호출
+
 # 프로그램 구조
 * ### ads
 	* activity : 광고 뷰와 관련된 activity
