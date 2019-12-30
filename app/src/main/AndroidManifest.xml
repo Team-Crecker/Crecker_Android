@@ -13,7 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".main.MainActivity" android:exported="true"></activity>
+        <activity android:name=".mypage.report.ReportActivity" android:exported="true"></activity>
+        <activity
+            android:name=".main.MainActivity"
+            android:exported="true" />
         <activity
             android:name=".law.activity.ScheduleActivity"
             android:exported="true" />
@@ -37,9 +40,9 @@
             android:exported="true" />
         <activity
             android:name=".main.SplashActivity"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:exported="true">
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

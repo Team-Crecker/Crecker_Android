@@ -11,4 +11,6 @@
     <color name="silver">#c9cdd2</color>
     <color name="charcoal_grey">#464c53</color>
     <color name="black">#000000</color>
+    <color name="pale_grey">#f7f8f9</color>
+    <color name="green_blue">#1ec695</color>
 </resources>
