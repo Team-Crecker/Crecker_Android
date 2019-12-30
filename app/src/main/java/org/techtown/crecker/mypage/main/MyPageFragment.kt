@@ -7,7 +7,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.fragment_mypage.*
 import kotlinx.android.synthetic.main.fragment_mypage.view.*
+import kotlinx.android.synthetic.main.fragment_mypage.view.my_tv_cash
 import kotlinx.android.synthetic.main.rectangle.view.*
 
 import org.techtown.crecker.R
@@ -24,6 +26,9 @@ class MyPageFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.fragment_mypage, container, false)
+        v.my_tv_cash.setOnClickListener {
+            startActivity(Intent(mContext, CashActivity::class.java))
+        }
         v.btn_showCash.setOnClickListener {
             startActivity(Intent(mContext, CashActivity::class.java))
         }
@@ -31,8 +36,8 @@ class MyPageFragment : Fragment() {
             startActivity(Intent(mContext, CashActivity::class.java))
         }
 
-        v.my_tv_apply.setOnClickListener { goMyAdvertise(0) }
-        v.my_tv_assign.setOnClickListener { goMyAdvertise(1) }
+        v.my_tv_assign.setOnClickListener { goMyAdvertise(0) }
+        v.my_tv_apply.setOnClickListener { goMyAdvertise(1) }
         v.my_tv_check.setOnClickListener { goMyAdvertise(2) }
         v.my_tv_fin.setOnClickListener { goMyAdvertise(3) }
         return v

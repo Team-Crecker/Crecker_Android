@@ -12,7 +12,6 @@ import org.techtown.crecker.R
 import org.techtown.crecker.ads.contents.AdData
 import org.techtown.crecker.ads.contents.AdsDdayAdapter
 
-
 class AdsCtgFragment : Fragment() {
     private lateinit var mContext: Context
     private lateinit var adapter: AdsDdayAdapter
@@ -25,9 +24,9 @@ class AdsCtgFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_ad_detail, container, false)
 
-        val dummy = AdData("", R.drawable.img_thum1, "모모스 커피", 10000, 7)
-        val dummy2 = AdData("", R.drawable.img_thum2, "모모스 커피", 10000, 24)
-        val dummy3 = AdData("", R.drawable.img_thum2, "데저트 크림", 8000, 30)
+        val dummy = AdData("", R.drawable.img_thum1, "모모스 커피", "Momos Coffee",10000, 7)
+        val dummy2 = AdData("", R.drawable.img_thum2, "모모스 커피", "Momos Coffee",10000, 24)
+        val dummy3 = AdData("", R.drawable.img_thum2, "데저트 크림", "Dessert Cream",8000, 30)
 
         adapter = AdsDdayAdapter(mContext)
         adapter.data = arrayListOf(dummy, dummy2, dummy, dummy3, dummy3, dummy, dummy2)

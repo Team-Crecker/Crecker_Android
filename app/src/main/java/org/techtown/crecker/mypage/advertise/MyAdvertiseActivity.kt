@@ -15,6 +15,8 @@ class MyAdvertiseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_advertise)
 
+        btn_goBack.setOnClickListener { finish() }
+
         viewPagerAdapter = PagerAdapter(supportFragmentManager, this)
 
         ad_pager.apply {
@@ -33,9 +35,5 @@ class MyAdvertiseActivity : AppCompatActivity() {
                 override fun onTabSelected(p0: TabLayout.Tab?) {}
             })
         }
-
-        for(i in 1..advertise_tabLayout.tabCount)
-            advertise_tabLayout.getTabAt(i)?.customView =
-                LayoutInflater.from(this).inflate(R.layout.my_ad_tab_layout, advertise_tabLayout, false)
     }
 }

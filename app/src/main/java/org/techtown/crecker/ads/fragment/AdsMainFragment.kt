@@ -3,9 +3,11 @@ package org.techtown.crecker.ads.fragment
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,10 +18,16 @@ import com.zhpan.bannerview.constants.IndicatorStyle
 import com.zhpan.bannerview.utils.BannerUtils
 import kotlinx.android.synthetic.main.ad_main_fragment.view.*
 import org.techtown.crecker.R
+import org.techtown.crecker.ads.api.AdsServiceImpl
 import org.techtown.crecker.ads.contents.AdsAdapter
 import org.techtown.crecker.ads.contents.AdData
-import org.techtown.crecker.feature.ads.BannerData
-import org.techtown.crecker.feature.ads.BannerVH
+import org.techtown.crecker.ads.contents.data.AdsRandom
+import org.techtown.crecker.ads.banner.BannerData
+import org.techtown.crecker.ads.banner.BannerVH
+import org.techtown.crecker.ads.contents.data.Ads
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.ArrayList
 
 class AdsMainFragment : Fragment() {
@@ -39,7 +47,7 @@ class AdsMainFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.ad_main_fragment, container, false)
-        initData()
+        initRemoteData()
         initView(view)
         return view
     }
@@ -54,7 +62,38 @@ class AdsMainFragment : Fragment() {
         mViewPager?.startLoop()
     }
 
-    private fun initData() {
+    private fun initRemoteData() {
+        AdsServiceImpl.service.getRandomAds().enqueue(
+            object : Callback<AdsRandom> {
+                override fun onFailure(call: Call<AdsRandom>, t: Throwable) {
+                    "실패: $t".putLog("Fail")
+                }
+
+                override fun onResponse(call: Call<AdsRandom>, response: Response<AdsRandom>) {
+                    Log.d("initRemoteData", response.isSuccessful.toString())
+                    response.takeIf { it.isSuccessful }?.body()?.data?.
+                        let {
+                        mBannerList.add(BannerData(it.title, it.subtitle, it.dday, it.thumbnail))
+                    } ?: run{
+                        Toast.makeText(mContext, "서버로부터 정보를 받아올 수 없습니다..", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        )
+
+        AdsServiceImpl.service.getPopularAds().enqueue(object : Callback<Ads>{
+            override fun onFailure(call: Call<Ads>, t: Throwable) {
+                
+            }
+
+            override fun onResponse(call: Call<Ads>, response: Response<Ads>) {
+
+            }
+
+        })
+    }
+
+    private fun initLocalData() {
         val title = arrayOf("Christmas Soap", "aaa", "bbb","ccc", "ddd")
         val des = arrayOf("크리스마스 비누 2구 세트", "aaa", "bbb","ccc", "ddd")
         val dday = arrayOf("D-7", "D-1", "D-14","D-2", "D-4")
@@ -79,9 +118,9 @@ class AdsMainFragment : Fragment() {
             .setHolderCreator{ BannerVH() }
         setupIndicator()
 
-        val dummy = AdData("", R.drawable.img_thum1, "모모스 커피", 10000, null)
-        val dummy2 = AdData("", R.drawable.img_thum2, "모모스 커피", 10000, null)
-        val dummy3 = AdData("", R.drawable.img_thum2, "데저트 크림", 8000, null)
+        val dummy = AdData("", R.drawable.img_thum1, "모모스 커피", "Momos Coffee",10000, 7)
+        val dummy2 = AdData("", R.drawable.img_thum2, "모모스 커피", "Momos Coffee",10000, 24)
+        val dummy3 = AdData("", R.drawable.img_thum2, "데저트 크림", "Desert Cream",8000, 30)
 
         rcmdAdapter = AdsAdapter(mContext)
         rcmdAdapter.data = arrayListOf(dummy, dummy2, dummy, dummy2)

@@ -22,7 +22,7 @@ class AdsDayVH(view : View) : RecyclerView.ViewHolder(view){
             .load(data.img_local)
             .into(img)
 
-        tvTitle.text = data.title
+        tvTitle.text = data.title_kor
         tvPrice.text = "제품 · ${data.price}"
         tvDday.text = "D-${data.dday}"
 
@@ -34,7 +34,7 @@ class AdsDayVH(view : View) : RecyclerView.ViewHolder(view){
                 Intent(it.context, AdsDetailActivity::class.java)
                     .apply {
                         flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                        putExtra("title", data.title)
+                        putExtra("title", data.title_kor)
                     }
             )
         }

@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import org.techtown.crecker.mypage.advertise.fragment.ApplyFragment
 import org.techtown.crecker.mypage.advertise.fragment.AssignFragment
+import org.techtown.crecker.mypage.advertise.fragment.ApplyFragment
 import org.techtown.crecker.mypage.advertise.fragment.CheckFragment
 import org.techtown.crecker.mypage.advertise.fragment.FinFragment
 
@@ -14,12 +14,12 @@ const val TAB_COUNT = 4
 class PagerAdapter (fm : FragmentManager, val context: Context)
     : FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
-    val titles = arrayOf("신청", "배정", "검토", "완료")
+    private val titles = arrayOf("배정", "신청", "검토", "완료")
 
     override fun getItem(position: Int): Fragment{
         return when(position){
-            0 -> ApplyFragment()
-            1 -> AssignFragment()
+            0 -> AssignFragment()
+            1 -> ApplyFragment()
             2 -> CheckFragment()
             else -> FinFragment()
         }

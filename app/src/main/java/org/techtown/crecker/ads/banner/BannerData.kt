@@ -1,4 +1,4 @@
-package org.techtown.crecker.feature.ads
+package org.techtown.crecker.ads.banner
 
 data class BannerData(
     var imageTitle: String? = null,
