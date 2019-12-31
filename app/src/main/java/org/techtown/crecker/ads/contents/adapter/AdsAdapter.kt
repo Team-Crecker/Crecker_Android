@@ -1,10 +1,12 @@
-package org.techtown.crecker.ads.contents
+package org.techtown.crecker.ads.contents.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import org.techtown.crecker.R
+import org.techtown.crecker.ads.contents.AdData
+import org.techtown.crecker.ads.contents.viewholder.AdsVH
 
 class AdsAdapter (private val context : Context) : RecyclerView.Adapter<AdsVH>(){
     var data = arrayListOf<AdData>()

@@ -1,4 +1,4 @@
-package org.techtown.crecker.ads.contents
+package org.techtown.crecker.ads.contents.viewholder
 
 import android.content.Intent
 import android.graphics.Color
@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import org.techtown.crecker.R
 import org.techtown.crecker.ads.activity.AdsDetailActivity
+import org.techtown.crecker.ads.contents.AdData
 
 
 class AdsDayVH(view : View) : RecyclerView.ViewHolder(view){

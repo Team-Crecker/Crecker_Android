@@ -1,4 +1,4 @@
-package org.techtown.crecker.ads.contents
+package org.techtown.crecker.ads.contents.viewholder
 
 import android.content.Intent
 import android.view.View
@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import org.techtown.crecker.R
 import org.techtown.crecker.ads.activity.AdsDetailActivity
+import org.techtown.crecker.ads.contents.AdData
 
 
 class AdsVH(view : View) : RecyclerView.ViewHolder(view){
@@ -17,7 +18,7 @@ class AdsVH(view : View) : RecyclerView.ViewHolder(view){
 
     fun bind(data : AdData) {
         Glide.with(itemView)
-            .load(data.img_local)
+            .load(data.img_url)
             .into(img)
 
         tvTitle.text = data.title_kor

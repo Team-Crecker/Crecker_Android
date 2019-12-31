@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import org.techtown.crecker.R
+import org.techtown.crecker.ads.contents.viewholder.AdsDayVH
 
 class AdsDdayAdapter (private val context : Context) : RecyclerView.Adapter<AdsDayVH>(){
     var data = arrayListOf<AdData>()

@@ -17,7 +17,7 @@ class BannerVH : ViewHolder<BannerData> {
         val ddayView: TextView = itemView.findViewById(R.id.dday)
 
         Glide.with(itemView)
-            .load(data?.imgLocalUrl)
+            .load(data?.imgUrl)
             .into(imageView)
         titleView.text = data?.imageTitle
         descView.text = data?.imageDescription

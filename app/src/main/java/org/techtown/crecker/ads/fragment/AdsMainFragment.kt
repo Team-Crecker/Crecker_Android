@@ -19,24 +19,22 @@ import com.zhpan.bannerview.utils.BannerUtils
 import kotlinx.android.synthetic.main.ad_main_fragment.view.*
 import org.techtown.crecker.R
 import org.techtown.crecker.ads.api.AdsServiceImpl
-import org.techtown.crecker.ads.contents.AdsAdapter
-import org.techtown.crecker.ads.contents.AdData
 import org.techtown.crecker.ads.contents.data.AdsRandom
 import org.techtown.crecker.ads.banner.BannerData
 import org.techtown.crecker.ads.banner.BannerVH
+import org.techtown.crecker.ads.contents.adapter.AdsHorizontalAdapter
 import org.techtown.crecker.ads.contents.data.Ads
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.ArrayList
 
 class AdsMainFragment : Fragment() {
     private var mBannerList: MutableList<BannerData> = ArrayList()
     private var mViewPager: BannerViewPager<BannerData, BannerVH>? = null
 
-    private lateinit var rcmdAdapter: AdsAdapter
-    private lateinit var popularAdapter: AdsAdapter
-    private lateinit var recentAdapter: AdsAdapter
+    private lateinit var rcmdAdapter: AdsHorizontalAdapter
+    private lateinit var popularAdapter: AdsHorizontalAdapter
+    private lateinit var recentAdapter: AdsHorizontalAdapter
 
     private lateinit var mContext: Context
 
@@ -47,8 +45,9 @@ class AdsMainFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.ad_main_fragment, container, false)
+        initAdapter(view)
+        initBanner(view)
         initRemoteData()
-        initView(view)
         return view
     }
 
@@ -73,23 +72,62 @@ class AdsMainFragment : Fragment() {
                     Log.d("initRemoteData", response.isSuccessful.toString())
                     response.takeIf { it.isSuccessful }?.body()?.data?.
                         let {
-                        mBannerList.add(BannerData(it.title, it.subtitle, it.dday, it.thumbnail))
-                    } ?: run{
+                            val list = ArrayList<BannerData>()
+                            list.add(BannerData(it.title, it.subtitle, it.dday, it.thumbnail))
+                            setupIndicator(list)
+                        } ?: run{
                         Toast.makeText(mContext, "서버로부터 정보를 받아올 수 없습니다..", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
         )
 
-        AdsServiceImpl.service.getPopularAds().enqueue(object : Callback<Ads>{
+        AdsServiceImpl.service.getInterestAds().enqueue(object : Callback<Ads>{
             override fun onFailure(call: Call<Ads>, t: Throwable) {
-                
+                "실패: $t".putLog("Fail")
             }
 
             override fun onResponse(call: Call<Ads>, response: Response<Ads>) {
+                response.takeIf { it.isSuccessful }?.body()?.data?.
+                    let {
+                        rcmdAdapter.data = it
+                        rcmdAdapter.notifyDataSetChanged()
+                    } ?: run{
+                    Toast.makeText(mContext, "서버로부터 정보를 받아올 수 없습니다..", Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
 
+        AdsServiceImpl.service.getPopularAds().enqueue(object : Callback<Ads>{
+            override fun onFailure(call: Call<Ads>, t: Throwable) {
+                "실패: $t".putLog("Fail")
             }
 
+            override fun onResponse(call: Call<Ads>, response: Response<Ads>) {
+                response.takeIf { it.isSuccessful }?.body()?.data?.
+                    let {
+                        popularAdapter.data = it
+                        popularAdapter.notifyDataSetChanged()
+                    } ?: run{
+                    Toast.makeText(mContext, "서버로부터 정보를 받아올 수 없습니다..", Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
+
+        AdsServiceImpl.service.getLatestAds().enqueue(object : Callback<Ads>{
+            override fun onFailure(call: Call<Ads>, t: Throwable) {
+                "실패: $t".putLog("Fail")
+            }
+
+            override fun onResponse(call: Call<Ads>, response: Response<Ads>) {
+                response.takeIf { it.isSuccessful }?.body()?.data?.
+                    let {
+                        recentAdapter.data = it
+                        recentAdapter.notifyDataSetChanged()
+                    } ?: run{
+                    Toast.makeText(mContext, "서버로부터 정보를 받아올 수 없습니다..", Toast.LENGTH_SHORT).show()
+                }
+            }
         })
     }
 
@@ -111,34 +149,31 @@ class AdsMainFragment : Fragment() {
         mBannerList = list
     }
 
-    private fun initView(view: View) {
+    private fun initBanner(view: View) {
         mViewPager = view.findViewById(R.id.ad_view_pager)
         mViewPager!!.setIndicatorGap(BannerUtils.dp2px(6f))
             .setRoundCorner(BannerUtils.dp2px(6f))
             .setHolderCreator{ BannerVH() }
-        setupIndicator()
-
-        val dummy = AdData("", R.drawable.img_thum1, "모모스 커피", "Momos Coffee",10000, 7)
-        val dummy2 = AdData("", R.drawable.img_thum2, "모모스 커피", "Momos Coffee",10000, 24)
-        val dummy3 = AdData("", R.drawable.img_thum2, "데저트 크림", "Desert Cream",8000, 30)
-
-        rcmdAdapter = AdsAdapter(mContext)
-        rcmdAdapter.data = arrayListOf(dummy, dummy2, dummy, dummy2)
-        view.rv_ad_recommend.adapter = rcmdAdapter
-        view.rv_ad_recommend.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
-
-        popularAdapter = AdsAdapter(mContext)
-        popularAdapter.data = arrayListOf(dummy2, dummy, dummy2, dummy)
-        view.rv_ad_popular.adapter = popularAdapter
-        view.rv_ad_popular.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
-
-        recentAdapter = AdsAdapter(mContext)
-        recentAdapter.data = arrayListOf(dummy3, dummy, dummy, dummy2, dummy3, dummy2)
-        view.rv_ad_recent.adapter = recentAdapter
-        view.rv_ad_recent.layoutManager = GridLayoutManager(mContext, 2, GridLayoutManager.VERTICAL, false)
     }
 
-    private fun setupIndicator() {
+    private fun initAdapter(view: View) {
+        rcmdAdapter = AdsHorizontalAdapter(mContext)
+        view.rv_ad_recommend.adapter = rcmdAdapter
+        view.rv_ad_recommend.layoutManager =
+            LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
+
+        popularAdapter = AdsHorizontalAdapter(mContext)
+        view.rv_ad_popular.adapter = popularAdapter
+        view.rv_ad_popular.layoutManager =
+            LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
+
+        recentAdapter = AdsHorizontalAdapter(mContext)
+        view.rv_ad_recent.adapter = recentAdapter
+        view.rv_ad_recent.layoutManager =
+            GridLayoutManager(mContext, 2, GridLayoutManager.VERTICAL, false)
+    }
+
+    private fun setupIndicator(list: MutableList<BannerData>) {
         mViewPager!!.setIndicatorStyle(IndicatorStyle.DASH)
             .setIndicatorHeight(5)
             .setIndicatorGravity(IndicatorGravity.CENTER)
@@ -149,6 +184,6 @@ class AdsMainFragment : Fragment() {
             .setIndicatorColor(
                 Color.parseColor("#c9cdd2"),
                 Color.parseColor("#000000")
-            ).create(mBannerList)
+            ).create(list)
     }
 }
