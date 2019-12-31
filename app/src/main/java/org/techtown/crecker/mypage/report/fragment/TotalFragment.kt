@@ -23,6 +23,7 @@ import org.techtown.crecker.module.debugLog
 import com.github.mikephil.charting.formatter.ValueFormatter
 import kotlinx.android.synthetic.main.fragment_total.*
 import org.techtown.crecker.module.RcvItemDeco
+import org.techtown.crecker.module.formatMoney
 import org.techtown.crecker.mypage.report.adapter.RatingRvAdp
 import org.techtown.crecker.mypage.report.data.RatingData
 import java.text.DecimalFormat
@@ -52,10 +53,10 @@ class TotalFragment : Fragment() {
         fun newInstance() = TotalFragment()
     }
     private fun formattingNum(){
-        val formatter : DecimalFormat = DecimalFormat("###,###")
-        mView.total_viewcount_tv.text = formatter.format(1000000)
-        mView.total_like_tv.text = formatter.format(200000)
-        mView.total_money_tv.text = formatter.format(130000)
+         mView.total_viewcount_tv.text = 100000.formatMoney()
+         mView.total_like_tv.text = 200000.formatMoney()
+         mView.total_money_tv.text = 130000.formatMoney()
+
     }
 
     private fun initGraphData() {

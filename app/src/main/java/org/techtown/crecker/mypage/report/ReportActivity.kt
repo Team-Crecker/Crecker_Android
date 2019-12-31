@@ -13,6 +13,9 @@ class ReportActivity : AppCompatActivity() {
         setContentView(R.layout.activity_report)
 
         mountingViewPager()
+        report_back_img.setOnClickListener {
+            finish()
+        }
     }
 
     private fun mountingViewPager(){
