@@ -24,7 +24,7 @@ class ExpertLawRvAdp (private  val context : Context) : RecyclerView.Adapter<Exp
         holder.onBind(data[position],position)
     }
 
-    public fun addItem(item : ExpertLawListData){
+     public fun addItem(item : ExpertLawListData){
         data.add(item)
     }
 

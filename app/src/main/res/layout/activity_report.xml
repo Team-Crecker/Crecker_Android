@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cmtp_white"
     tools:context=".mypage.report.ReportActivity">
 
     <ImageView
@@ -47,27 +48,14 @@
         app:tabTextAppearance="@style/tab_resource"
         style="@style/tab_resource"/>
 
-    <androidx.core.widget.NestedScrollView
+    <org.techtown.crecker.module.CustomViewPager
+        android:id="@+id/report_Vp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="125dp"
-        android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/report_tab">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <org.techtown.crecker.module.CustomViewPager
-                android:id="@+id/report_Vp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
+        app:layout_constraintTop_toBottomOf="@+id/report_tab" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

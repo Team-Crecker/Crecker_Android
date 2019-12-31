@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.Description
@@ -20,20 +21,27 @@ import kotlinx.android.synthetic.main.fragment_total.view.*
 import org.techtown.crecker.R
 import org.techtown.crecker.module.debugLog
 import com.github.mikephil.charting.formatter.ValueFormatter
+import kotlinx.android.synthetic.main.fragment_total.*
+import org.techtown.crecker.module.RcvItemDeco
+import org.techtown.crecker.mypage.report.adapter.RatingRvAdp
+import org.techtown.crecker.mypage.report.data.RatingData
+import java.text.DecimalFormat
 
 class TotalFragment : Fragment() {
 
     private var entries = arrayListOf<Entry>()
     private lateinit var mView : View
     private lateinit var lineData: LineData
-
+    private lateinit var ratingAdp : RatingRvAdp
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         var v = inflater.inflate(R.layout.fragment_total, container, false)
         mView = v
+        formattingNum()
         initGraphData()
+        mountingRv(v.context)
         return v
     }
 
@@ -42,6 +50,12 @@ class TotalFragment : Fragment() {
 
         @JvmStatic
         fun newInstance() = TotalFragment()
+    }
+    private fun formattingNum(){
+        val formatter : DecimalFormat = DecimalFormat("###,###")
+        mView.total_viewcount_tv.text = formatter.format(1000000)
+        mView.total_like_tv.text = formatter.format(200000)
+        mView.total_money_tv.text = formatter.format(130000)
     }
 
     private fun initGraphData() {
@@ -111,7 +125,35 @@ class TotalFragment : Fragment() {
             it.isDoubleTapToZoomEnabled = false
             it.animateY(1000, Easing.EaseInCubic)
             it.legend.setDrawInside(false)
+
         }
 //        mView.lineChart.invalidate()
+    }
+
+    private fun mountingRv(context : Context){
+        ratingAdp = RatingRvAdp(context)
+        mView.report_rating_rv.let {
+            it.adapter = ratingAdp
+            it.layoutManager = LinearLayoutManager(context)
+            it.addItemDecoration(RcvItemDeco(context))
+        }
+        ratingAdp.data = arrayListOf(
+            RatingData(
+                rate = 1,
+                title = "뷰티",
+                viewCount = 186743
+            ),
+            RatingData(
+                rate = 2,
+                title = "맛집",
+                viewCount = 109849
+            ),
+            RatingData(
+                rate = 3,
+                title = "여행",
+                viewCount = 98315
+            )
+        )
+        ratingAdp.notifyDataSetChanged()
     }
 }
