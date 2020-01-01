@@ -13,7 +13,6 @@ import kotlinx.android.synthetic.main.ad_campaign_intro.*
 import kotlinx.android.synthetic.main.ad_detail_schedule.*
 import org.techtown.crecker.R
 import org.techtown.crecker.ads.api.AdsServiceImpl
-import org.techtown.crecker.ads.category.EventBus
 import org.techtown.crecker.ads.contents.data.Detail
 import org.techtown.crecker.ads.fragment.putLog
 import retrofit2.Call
