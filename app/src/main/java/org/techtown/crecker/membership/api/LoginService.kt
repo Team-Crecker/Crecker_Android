@@ -8,6 +8,6 @@ import retrofit2.http.POST
 
 interface LoginService {
     @FormUrlEncoded
-    @POST("/api/auth/login/")
-    fun getUser(@FieldMap map: HashMap<String, Any>):Call<LoginResultData>
+    @POST("auth/login")
+    fun getUser(@FieldMap map: HashMap<String, Any>): Call<LoginResultData>
 }

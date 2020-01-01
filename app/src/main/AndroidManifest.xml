@@ -6,6 +6,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".App"
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -14,18 +16,19 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".membership.register.SignUpActivity" android:exported="true"></activity>
-        <activity android:name="org.techtown.crecker.membership.login.LogInActivity" />
+        <activity android:name="org.techtown.crecker.membership.login.LogInActivity" android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".ads.activity.AdsDetailActivity" />
         <activity android:name=".mypage.cash.CashActivity" /> <!-- 광고 -->
         <activity android:name=".law.activity.LawActivity" android:exported="true"></activity>
         <activity android:name=".ads.category.CategoryActivity" android:exported="true"/>
         <activity android:name=".law.activity.QuestAcitivy" android:exported="true" />
         <activity android:name=".main.MainActivity" android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

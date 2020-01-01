@@ -19,6 +19,13 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sign_up)
         supportFragmentManager.beginTransaction().add(R.id.fl_signup_container, SignUpStep1Frag()).commit()
         setOnClickListener()
+
+        initRegiserUser()
+    }
+
+    private fun initRegiserUser(){
+
+
     }
 
     private fun setOnClickListener() {
