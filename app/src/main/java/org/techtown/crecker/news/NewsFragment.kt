@@ -11,36 +11,34 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_news.view.*
 
 import org.techtown.crecker.R
+import org.techtown.crecker.news.adapter.NewsDailyAdapter
 import org.techtown.crecker.news.adapter.NewsViewPagerAdapter
 import org.techtown.crecker.news.feature.NewsAllFragment
+import org.techtown.crecker.news.feature.NewsDailyFragment
 import org.techtown.crecker.news.feature.NewsEduFragment
 
 class NewsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val V = inflater.inflate(R.layout.fragment_news, container, false)
-        val context : Context = V.context
+        val daily = NewsDailyFragment.newInstance()
 
         val allAdapter = NewsViewPagerAdapter(childFragmentManager)
-
         allAdapter.addItems(NewsAllFragment())
-        allAdapter.addItems(NewsEduFragment())
-        allAdapter.addItems(NewsEduFragment())
+        allAdapter.addItems(daily)
         allAdapter.addItems(NewsEduFragment())
 
         V.news_viewpager.adapter = allAdapter
         V.news_tablayout.setupWithViewPager(V.news_viewpager)
 
-        V.news_tablayout.getTabAt(0)?.setText("전체")
-        V.news_tablayout.getTabAt(1)?.setText("교육")
-        V.news_tablayout.getTabAt(2)?.setText("지원")
-        V.news_tablayout.getTabAt(3)?.setText("공모전")
+        V.news_tablayout.getTabAt(0)?.setText("All")
+        V.news_tablayout.getTabAt(1)?.setText("Daliy")
+        V.news_tablayout.getTabAt(2)?.setText("Support")
 
         return V
     }

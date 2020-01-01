@@ -71,14 +71,6 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onPageSelected(position: Int) {
-//                when (position){
-//                    0 -> refresh()
-//                    1 -> refresh()
-//                    2 -> refresh()
-//                    3 -> refresh()
-//                    4 -> refresh()
-//
-//                }
             }
         })
     }

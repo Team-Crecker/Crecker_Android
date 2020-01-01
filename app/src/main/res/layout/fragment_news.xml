@@ -6,45 +6,55 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <org.techtown.crecker.module.CustomViewPager
-        android:id="@+id/news_viewpager"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/news_top_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="144dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/news_tablayout"></org.techtown.crecker.module.CustomViewPager>
-
-    <TextView
-        android:id="@+id/news_title_tv"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="145dp"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="145dp"
-        android:fontFamily="@font/montserrat"
-        android:lineSpacingExtra="5sp"
-        android:text="News"
-        android:textColor="#000000"
-        android:textFontWeight="700"
-        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/news_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp"
+            android:fontFamily="@font/montserrat"
+            android:lineSpacingExtra="5sp"
+            android:text="News"
+            android:textColor="#000000"
+            android:textFontWeight="700"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/news_tablayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/news_title_tv"
             app:tabIndicatorColor="#333333"
             app:tabIndicatorFullWidth="false"
             app:tabIndicatorHeight="3dp"
             app:tabSelectedTextColor="#000000"
-            app:tabTextAppearance="@style/tab_resource">
+            app:tabTextAppearance="@style/news_tab_resource">
 
         </com.google.android.material.tabs.TabLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <org.techtown.crecker.module.CustomViewPager
+        android:id="@+id/news_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="121dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/news_top_layout"
+        app:layout_constraintVertical_bias="0.0"></org.techtown.crecker.module.CustomViewPager>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
