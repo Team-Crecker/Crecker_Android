@@ -4,9 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Membership.register.SignUpActivity">
+    tools:context=".membership.register.SignUpActivity">
+
+    <FrameLayout
+        android:id="@+id/fl_signup_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_register_next"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
+        tools:layout_editor_absoluteX="16dp">
+
+    </FrameLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
         android:layout_width="match_parent"
         android:layout_height="74dp"
         android:layout_marginTop="24dp"
@@ -19,9 +30,9 @@
             android:id="@+id/tv_register_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sign-up"
             android:fontFamily="@font/montserrat"
             android:lineSpacingExtra="29sp"
+            android:text="Sign-up"
             android:textColor="#000000"
             android:textFontWeight="700"
             android:textSize="24sp"
@@ -38,17 +49,19 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/common_back_black" />
+            android:src="@drawable/common_back_black" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
         android:id="@+id/btn_register_next"
         android:layout_width="0dp"
-        android:layout_height="61dp"
+        android:layout_height="wrap_content"
         android:background="#000000"
         android:fontFamily="@font/apple_sd"
         android:lineSpacingExtra="22sp"
-        android:text="다음"
+        android:text="신청하기"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
         android:textColor="#ffffff"
         android:textFontWeight="700"
         android:textSize="18sp"

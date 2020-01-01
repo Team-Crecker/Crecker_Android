@@ -2,18 +2,15 @@ package org.techtown.crecker.home
 
 
 import android.content.Context
-import android.icu.lang.UCharacter.GraphemeClusterBreak.V
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_home.view.*
+import kotlinx.android.synthetic.main.fragment_home_content.view.*
 
 import org.techtown.crecker.home.adapter.HomeAdsListAdapter
 import org.techtown.crecker.home.adapter.HomeSupportListAdapter

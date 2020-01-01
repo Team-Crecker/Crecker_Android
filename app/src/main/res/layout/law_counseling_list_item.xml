@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardElevation="3dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/law_counseling_lock_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="28dp"
+                app:layout_constraintStart_toEndOf="@+id/law_counseling_state_img"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/ic_lock"
+                />
+
+            <ImageView
+                android:id="@+id/law_counseling_state_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/img_tag_green_expert"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/law_counseling_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/apple_sd"
+                android:lineSpacingExtra="3sp"
+                android:text="초상권 문제는 어떻게 해결하면 될까요?"
+                android:textColor="#000000"
+                android:textFontWeight="500"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/law_counseling_state_img" />
+
+            <TextView
+                android:id="@+id/law_counseling_content_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="28dp"
+                android:fontFamily="@font/apple_sd"
+                android:lineSpacingExtra="7sp"
+                android:maxLines="2"
+                android:text="초상권 문제는 어떻게 해결하면 될까요? 초상권 문제는 어떻게 해결하면 될까요? 초상권 문제는"
+                android:textColor="#000000"
+                android:textFontWeight="200"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/law_counseling_title_tv" />
+
+            <TextView
+                android:id="@+id/law_counseling_state_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp"
+                android:fontFamily="@font/montserrat"
+                android:lineSpacingExtra="7sp"
+                android:text="답변완료"
+                android:textColor="#000000"
+                android:textFontWeight="500"
+                android:textSize="11sp"
+                app:layout_constraintBottom_toBottomOf="@+id/law_counseling_state_img"
+                app:layout_constraintStart_toStartOf="@+id/law_counseling_state_img"
+                app:layout_constraintTop_toTopOf="@+id/law_counseling_state_img" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

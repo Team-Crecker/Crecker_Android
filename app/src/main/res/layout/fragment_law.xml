@@ -1,28 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/law_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/float_writing_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/greenish"
+        android:clickable="true"
+        app:borderWidth="0dp"
+        android:src="@drawable/ic_write"
+        app:layout_constraintBottom_toBottomOf="@id/law_container"
+        app:layout_constraintEnd_toEndOf="@id/law_container" />
 
     <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        android:background="@color/backgroundColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:clipToPadding="false">
 
             <TextView
                 android:id="@+id/expert_title_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="138dp"
-                android:layout_marginTop="42dp"
-                android:layout_marginEnd="138dp"
+                android:layout_marginTop="21dp"
                 android:fontFamily="@font/montserrat"
                 android:lineSpacingExtra="5sp"
                 android:text="Expert"
@@ -120,6 +136,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="16dp"
                 android:background="#ffffff"
+                android:elevation="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/expert_must_read_tv">
@@ -311,12 +328,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="40dp"
-                android:text="전문가 프로필"
                 android:fontFamily="@font/apple_sd"
-                android:textFontWeight="700"
-                android:textColor="#000000"
-                android:textSize="16sp"
                 android:lineSpacingExtra="19sp"
+                android:text="전문가 프로필"
+                android:textColor="#000000"
+                android:textFontWeight="700"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/expert_must_rd_layout" />
 
@@ -332,7 +349,10 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/expert_betelang_tv"
                 tools:itemCount="3"
-                tools:listitem="@layout/expert_betelang_list_item" />
+                tools:listitem="@layout/expert_betelang_list_item">
+
+            </androidx.recyclerview.widget.RecyclerView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

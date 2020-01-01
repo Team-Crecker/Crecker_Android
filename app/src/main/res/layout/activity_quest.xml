@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    tools:context=".law.activity.QuestAcitivy">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="#ffffff"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/question_cancle_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="25dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/clear_24px"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/question_category_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/apple_sd"
+            android:lineSpacingExtra="3sp"
+            android:text="카테고리"
+            android:textColor="#333333"
+            android:textFontWeight="700"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/question_cancle_img" />
+
+        <TextView
+            android:id="@+id/question_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="124dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="164dp"
+            android:fontFamily="@font/montserrat"
+            android:lineSpacingExtra="3sp"
+            android:text="질문"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textFontWeight="600"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/question_cancle_img"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/ct_law_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="Law"
+            android:fontFamily="@font/montserrat"
+            android:textFontWeight="500"
+            android:textSize="13sp"
+            android:lineSpacingExtra="3sp"
+            android:textColor="#000000"
+            android:background="@drawable/btn_category"
+            android:paddingVertical="9dp"
+            android:paddingHorizontal="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/question_category_tv" />
+
+        <TextView
+            android:id="@+id/ct_start_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/btn_category"
+            android:fontFamily="@font/montserrat"
+            android:lineSpacingExtra="3sp"
+            android:paddingHorizontal="18dp"
+            android:paddingVertical="9dp"
+            android:text="Start_up"
+            android:textColor="#000000"
+            android:textFontWeight="500"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@+id/ct_law_tv"
+            app:layout_constraintTop_toTopOf="@+id/ct_law_tv" />
+
+        <TextView
+            android:id="@+id/ct_shooting_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/btn_category"
+            android:text="Shooting"
+            android:fontFamily="@font/montserrat"
+            android:lineSpacingExtra="3sp"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="9dp"
+            android:textColor="#000000"
+            android:textFontWeight="500"
+            android:textSize="13sp"
+            app:layout_constraintStart_toEndOf="@+id/ct_start_tv"
+            app:layout_constraintTop_toTopOf="@+id/ct_start_tv" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_layout">
+
+        <EditText
+            android:id="@+id/quest_title_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#ffffff"
+            android:ems="10"
+            android:fontFamily="@font/apple_sd"
+            android:hint="제목"
+            android:inputType="textPersonName"
+            android:lineSpacingExtra="4sp"
+            android:paddingVertical="20dp"
+            android:paddingLeft="16dp"
+            android:textColor="#000000"
+            android:textFontWeight="500"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/middle_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#ffffff"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_layout">
+
+        <EditText
+            android:id="@+id/quest_content_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:background="@null"
+            android:ems="12"
+            android:fontFamily="@font/apple_sd"
+            android:gravity="top"
+            android:hint="무엇이 궁금한가요? (최대 1000자)"
+            android:imeOptions="normal"
+            android:inputType="textMultiLine"
+            android:lineSpacingExtra="6sp"
+            android:maxLength="1000"
+            android:maxLines="10"
+            android:textFontWeight="400"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        app:layout_constraintBottom_toTopOf="@+id/quest_ok_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <CheckBox
+            android:id="@+id/check_secret"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="21dp"
+            android:layout_marginBottom="19dp"
+            android:button="@drawable/checkbox_custom"
+            android:paddingLeft="6dp"
+            android:fontFamily="@font/apple_sd"
+            android:lineSpacingExtra="3sp"
+            android:text="비밀게시물로 등록하기"
+            android:textColor="#000000"
+            android:textFontWeight="400"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/quest_ok_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#000000"
+        android:fontFamily="@font/apple_sd"
+        android:lineSpacingExtra="3sp"
+        android:paddingHorizontal="160dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:text="확인"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textFontWeight="700"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

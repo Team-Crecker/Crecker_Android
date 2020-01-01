@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -23,6 +22,7 @@ import org.techtown.crecker.home.HomeFragment
 import org.techtown.crecker.main.adapter.MainViewPagerAdapter
 import org.techtown.crecker.ads.category.FragmentCommunicator
 import org.techtown.crecker.ads.fragment.OnBackPressed
+import org.techtown.crecker.ads.fragment.putLog
 
 
 class MainActivity : AppCompatActivity() {
@@ -71,6 +71,14 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onPageSelected(position: Int) {
+//                when (position){
+//                    0 -> refresh()
+//                    1 -> refresh()
+//                    2 -> refresh()
+//                    3 -> refresh()
+//                    4 -> refresh()
+//
+//                }
             }
         })
     }
@@ -106,11 +114,12 @@ class MainActivity : AppCompatActivity() {
             if(i is OnBackPressed){
                 if(!i.onBackPressed()) super.onBackPressed()
             }
-
         }
+    }
+
+    //탭이 변경될 때마다 데이터 갱신
+    private fun refresh(){
+        viewPagerAdapter.notifyDataSetChanged()
     }
 }
 
-fun String.putLog(tag: String = "debugResult"){
-    Log.d(tag, this)
-}

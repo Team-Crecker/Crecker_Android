@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Membership.login.LogInActivity">
+    tools:context=".membership.login.LogInActivity">
 
     <ImageView
         android:id="@+id/img_login_logo"

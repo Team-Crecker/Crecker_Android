@@ -27,14 +27,15 @@ class NewsEduFragment : Fragment() {
         V.news_edu_rv.adapter = newsEduAdapter
 
         V.news_edu_rv.layoutManager = GridLayoutManager(V.context, 2)
-        V.news_edu_rv.addItemDecoration(RcvItemDeco(V.context))
+        V.news_edu_rv.addItemDecoration(RcvItemDeco(V.context, true))
 
         newsEduAdapter.addItem(
             NewsData(
                 img_url = "",
                 company = "company",
                 title = "title",
-                day = "day"
+                day = "day",
+                grid = true
             )
         )
         newsEduAdapter.addItem(
@@ -42,7 +43,8 @@ class NewsEduFragment : Fragment() {
                 img_url = "",
                 company = "company",
                 title = "title",
-                day = "day"
+                day = "day",
+                grid = true
             )
         )
         newsEduAdapter.addItem(
@@ -50,7 +52,8 @@ class NewsEduFragment : Fragment() {
                 img_url = "",
                 company = "company",
                 title = "title",
-                day = "day"
+                day = "day",
+                grid = true
             )
         )
         newsEduAdapter.addItem(
@@ -58,39 +61,8 @@ class NewsEduFragment : Fragment() {
                 img_url = "",
                 company = "company",
                 title = "title",
-                day = "day"
-            )
-        )
-        newsEduAdapter.addItem(
-            NewsData(
-                img_url = "",
-                company = "company",
-                title = "title",
-                day = "day"
-            )
-        )
-        newsEduAdapter.addItem(
-            NewsData(
-                img_url = "",
-                company = "company",
-                title = "title",
-                day = "day"
-            )
-        )
-        newsEduAdapter.addItem(
-            NewsData(
-                img_url = "",
-                company = "company",
-                title = "title",
-                day = "day"
-            )
-        )
-        newsEduAdapter.addItem(
-            NewsData(
-                img_url = "",
-                company = "company",
-                title = "title",
-                day = "day"
+                day = "day",
+                grid = true
             )
         )
         newsEduAdapter.notifyDataSetChanged()

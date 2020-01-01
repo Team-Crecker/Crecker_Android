@@ -7,4 +7,6 @@
     <color name="backgroundColor">#f7f8f9</color>
     <color name="plus">#1ec695</color>
     <color name="minus">#464c53</color>
+    <color name="greenish">#00f6ae</color>
+    <color name="pale_grey">#f7f8f9</color>
 </resources>
