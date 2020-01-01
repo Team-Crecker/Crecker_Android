@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.amn.easysharedpreferences.EasySharedPreference
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.activity_law.*
 import kotlinx.android.synthetic.main.law_bottom_sheet.*
@@ -67,12 +68,13 @@ class LawActivity : AppCompatActivity() {
     }
 
     private fun initListRcv(){
+        var tooken = EasySharedPreference.getString("token", "")
         lawListAdp = ExpertLawRvAdp(this)
         law_qna_rcv.adapter = lawListAdp
         law_qna_rcv.layoutManager = LinearLayoutManager(this)
         law_qna_rcv.addItemDecoration(RcvItemDeco(this,false,14))
 
-        val call : Call<QAdata> = ExpertServiceImpl.service.getLawAnswer()
+        val call : Call<QAdata> = ExpertServiceImpl.service.getLawAnswer(tooken)
         call.enqueue(
             object : Callback<QAdata>{
                 override fun onFailure(call: Call<QAdata>, t: Throwable) {

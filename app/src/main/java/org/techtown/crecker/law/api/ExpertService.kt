@@ -1,6 +1,7 @@
 package org.techtown.crecker.law.api
 
 
+import com.amn.easysharedpreferences.EasySharedPreference
 import org.techtown.crecker.law.data.*
 import retrofit2.Call
 import retrofit2.http.*
@@ -11,12 +12,15 @@ interface ExpertService{
     // Expert 메인 화면 전문가 리스트
     @Headers("token: $sampleToken")
     @GET("expert/profile")
-    fun getBetelang() : Call<BetelangApiData>
+    fun getBetelang(
+    ) : Call<BetelangApiData>
 
     //Law탭에서 보이는 상담내역 리스트
-    @Headers("token: $sampleToken")
+    @Headers("token: {header_token}")
     @GET("expert/qa/law")
-    fun getLawAnswer() : Call<QAdata>
+    fun getLawAnswer(
+        @Path("header_token") header_token : String
+    ) : Call<QAdata>
 
     //상담내역 리스트를 클릭 시 세부사항 내역
     @Headers("token: $sampleToken")
