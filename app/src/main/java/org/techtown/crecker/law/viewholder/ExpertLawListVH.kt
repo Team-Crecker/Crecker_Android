@@ -1,5 +1,6 @@
 package org.techtown.crecker.law.viewholder
 
+import android.content.Intent
 import android.graphics.Color
 import android.view.View
 import android.widget.ImageView
@@ -8,6 +9,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import org.techtown.crecker.R
+import org.techtown.crecker.law.activity.AnswerActivity
 import org.techtown.crecker.law.data.ExpertLawListData
 
 class ExpertLawListVH(view : View) : RecyclerView.ViewHolder(view){
@@ -41,7 +43,8 @@ class ExpertLawListVH(view : View) : RecyclerView.ViewHolder(view){
 
         //클릭리스너 이벤트 구현
         itemView.setOnClickListener {
-                Toast.makeText(itemView.context, "ok", Toast.LENGTH_LONG).show()
+            val intent = Intent(itemView.context, AnswerActivity::class.java)
+            itemView.context.startActivity(intent)
         }
 
     }

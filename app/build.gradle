@@ -27,6 +27,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -63,6 +66,15 @@ dependencies {
 
     //Circle ImageView
     implementation 'de.hdodenhof:circleimageview:3.0.1'
+
+    //스플래시화면을 위한 lottie 사용
+    implementation 'com.airbnb.android:lottie:3.3.1'
+
+    // TimePickerDialog
+    implementation 'com.github.michaldrabik:classicmaterialtimepicker:1.1.0'
+
+    //MPChart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
     //EasySharedPreferences
     implementation 'com.github.AmanpreetYatin:Easy-SharedPreferences:0.1.1'

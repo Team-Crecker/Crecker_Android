@@ -15,21 +15,48 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".membership.register.SignUpActivity" android:exported="true"></activity>
-        <activity android:name="org.techtown.crecker.membership.login.LogInActivity" android:exported="true" >
+
+        <activity android:name=".mypage.report.ReportActivity" android:exported="true"/>
+        <activity
+            android:name=".main.MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".law.activity.ScheduleActivity"
+            android:exported="true" />
+        <activity
+            android:name=".law.activity.AnswerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".mypage.cash.CashActivity"
+            android:exported="true" /> <!-- 광고 -->
+        <activity
+            android:name=".law.activity.LawActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ads.activity.AdsDetailActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ads.category.CategoryActivity"
+            android:exported="true" />
+        <activity
+            android:name=".law.activity.QuestAcitivy"
+            android:exported="true" />
+        <activity
+            android:name=".main.SplashActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ads.activity.AdsDetailActivity" />
-        <activity android:name=".mypage.cash.CashActivity" /> <!-- 광고 -->
-        <activity android:name=".law.activity.LawActivity" android:exported="true"></activity>
-        <activity android:name=".ads.category.CategoryActivity" android:exported="true"/>
-        <activity android:name=".law.activity.QuestAcitivy" android:exported="true" />
-        <activity android:name=".main.MainActivity" android:exported="true">
+
+        <activity android:name=".membership.register.SignUpActivity" android:exported="true"/>
+        <activity android:name="org.techtown.crecker.membership.login.LogInActivity" android:exported="true" >
         </activity>
+
     </application>
 
 </manifest>

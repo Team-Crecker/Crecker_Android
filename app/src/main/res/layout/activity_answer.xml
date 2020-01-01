@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".law.activity.AnswerActivity">
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/counseling_reserv_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false">
+
+            <ImageView
+                android:id="@+id/answer_back_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="25dp"
+                android:src="@drawable/common_back_black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/answer_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/apple_sd"
+                android:gravity="center"
+                android:lineSpacingExtra="3sp"
+                android:text="답변"
+                android:textColor="#000000"
+                android:textFontWeight="600"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/answer_back_img"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/answer_back_img" />
+
+            <TextView
+                android:id="@+id/answer_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="26dp"
+                android:fontFamily="@font/apple_sd"
+                android:lineSpacingExtra="3sp"
+                android:text="전문가 답변"
+                android:textColor="#333333"
+                android:textFontWeight="700"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/answer_question_layout" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/answer_question_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="26dp"
+                android:layout_marginEnd="16dp"
+                android:elevation="3dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/answer_title_tv">
+
+                <ImageView
+                    android:id="@+id/answer_state_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="28dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/img_tag_green_expert"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/answer_state_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="15dp"
+                    android:fontFamily="@font/montserrat"
+                    android:lineSpacingExtra="7sp"
+                    android:text="Shooting"
+                    android:textColor="#000000"
+                    android:textFontWeight="500"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toBottomOf="@id/answer_state_img"
+                    app:layout_constraintEnd_toEndOf="@id/answer_state_img"
+                    app:layout_constraintStart_toStartOf="@+id/answer_state_img"
+                    app:layout_constraintTop_toTopOf="@id/answer_state_img" />
+
+                <TextView
+                    android:id="@+id/answer_quest_title_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="9dp"
+                    android:fontFamily="@font/apple_sd"
+                    android:lineSpacingExtra="3sp"
+                    android:text="초상권 문제는 어떻게 해결하면 될까요?"
+                    android:textColor="#000000"
+                    android:textFontWeight="500"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/answer_state_img" />
+
+                <TextView
+                    android:id="@+id/answer_quest_content_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="15dp"
+                    android:fontFamily="@font/apple_sd"
+                    android:lineSpacingExtra="7sp"
+                    android:text="가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하"
+                    android:textColor="#000000"
+                    android:textFontWeight="200"
+                    android:textSize="13sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/answer_quest_title_tv" />
+
+                <TextView
+                    android:id="@+id/answer_quest_data_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginBottom="28dp"
+                    android:fontFamily="@font/montserrat"
+                    android:lineSpacingExtra="8sp"
+                    android:text="2019.12.28"
+                    android:textColor="#9fa4aa"
+                    android:textFontWeight="500"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/answer_quest_content_tv" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/answer_betelang_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/answer_tv">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/betelang_profile_image"
+                    android:layout_width="70dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="23dp"
+                    android:src="@drawable/profile"
+                    app:layout_constraintDimensionRatio="1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/a_betelang_name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="40dp"
+                    android:fontFamily="@font/apple_sd"
+                    android:lineSpacingExtra="3sp"
+                    android:text="김필원"
+                    android:textColor="#000000"
+                    android:textFontWeight="600"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@+id/betelang_profile_image"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/a_betelang_class_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="40dp"
+                    android:fontFamily="@font/apple_sd"
+                    android:lineSpacingExtra="3sp"
+                    android:text="전문가"
+                    android:textColor="#000000"
+                    android:textFontWeight="200"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@+id/a_betelang_name_tv"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/a_betelang_affiliation_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/apple_sd"
+                    android:lineSpacingExtra="7sp"
+                    android:text="현 태평양 로펌 변호사"
+                    android:textColor="#000000"
+                    android:textFontWeight="200"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toEndOf="@+id/betelang_profile_image"
+                    app:layout_constraintTop_toBottomOf="@+id/a_betelang_name_tv" />
+
+                <TextView
+                    android:id="@+id/a_betelang_answer_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="15dp"
+                    android:fontFamily="@font/apple_sd"
+                    android:lineSpacingExtra="7sp"
+                    android:text="본문내용\n
+본문내용\n
+본문내용\n
+본문내용\n
+본문내용\n
+본문내용\n
+본문내용\n
+본문내용\n
+본문내용\n
+본문내용\n
+본문내용\n
+본문내용\n
+본문내용\n
+본문내용\n
+본문내용\n
+본문내용\n"
+                    android:textColor="#000000"
+                    android:textFontWeight="200"
+                    android:textSize="13sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/a_betelang_affiliation_tv" />
+
+                <TextView
+                    android:id="@+id/a_betelang_answer_date_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginBottom="28dp"
+                    android:fontFamily="@font/apple_sd"
+                    android:lineSpacingExtra="8sp"
+                    android:text="2019.12.25"
+                    android:textColor="#9fa4aa"
+                    android:textFontWeight="500"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/a_betelang_answer_tv" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/counseling_reserv_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#000000"
+        android:fontFamily="@font/apple_sd"
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="3sp"
+        android:paddingVertical="20dp"
+        android:text="상담 신청하기"
+        android:textColor="#ffffff"
+        android:textFontWeight="500"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

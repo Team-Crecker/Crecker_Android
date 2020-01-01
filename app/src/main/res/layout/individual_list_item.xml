@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/indi_category_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/montserrat"
+        android:lineSpacingExtra="9sp"
+        android:text="#Category"
+        android:textColor="@color/charcoal_grey"
+        android:textFontWeight="650"
+        android:textSize="11sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/indi_company_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/montserrat"
+        android:lineSpacingExtra="8sp"
+        android:text="Company"
+        android:textColor="#333333"
+        android:textFontWeight="700"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/indi_category_tv"
+        app:layout_constraintTop_toBottomOf="@+id/indi_category_tv" />
+
+    <TextView
+        android:id="@+id/indi_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/apple_sd"
+        android:lineSpacingExtra="4sp"
+        android:text="시카솔 클레징 워터"
+        android:textColor="#333333"
+        android:textFontWeight="600"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/indi_company_tv"
+        app:layout_constraintTop_toBottomOf="@+id/indi_company_tv" />
+
+    <ImageView
+        android:id="@+id/indi_right_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="62dp"
+        android:layout_marginEnd="16dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/btn_right_arrow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/indi_count_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/apple_sd"
+        android:lineSpacingExtra="7sp"
+        android:text="조회수"
+        android:textColor="@color/charcoal_grey"
+        android:textFontWeight="600"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="@+id/indi_title_tv"
+        app:layout_constraintTop_toBottomOf="@+id/indi_title_tv" />
+
+    <TextView
+        android:id="@+id/indi_like_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/apple_sd"
+        android:lineSpacingExtra="7sp"
+        android:text="좋아요"
+        android:textColor="@color/charcoal_grey"
+        android:textFontWeight="600"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="@+id/indi_count_tv"
+        app:layout_constraintTop_toBottomOf="@+id/indi_count_tv" />
+
+    <TextView
+        android:id="@+id/default_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/apple_sd"
+        android:lineSpacingExtra="7sp"
+        android:text="회"
+        android:textColor="@color/black"
+        android:textFontWeight="200"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/indi_count_tv" />
+
+    <TextView
+        android:id="@+id/default_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/apple_sd"
+        android:lineSpacingExtra="7sp"
+        android:text="회"
+        android:textColor="@color/black"
+        android:textFontWeight="200"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/default_1" />
+
+    <TextView
+        android:id="@+id/indi_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:lineSpacingExtra="7sp"
+        android:text="100000000000000"
+        android:textColor="@color/green_blue"
+        android:textFontWeight="500"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toStartOf="@+id/default_1"
+        app:layout_constraintTop_toTopOf="@+id/indi_count_tv" />
+
+    <TextView
+        android:id="@+id/indi_like"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="28dp"
+        android:fontFamily="@font/montserrat"
+        android:lineSpacingExtra="7sp"
+        android:text="100000000000000"
+        android:textColor="@color/green_blue"
+        android:textFontWeight="500"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/default_2"
+        app:layout_constraintTop_toBottomOf="@+id/indi_count" />
+</androidx.constraintlayout.widget.ConstraintLayout>

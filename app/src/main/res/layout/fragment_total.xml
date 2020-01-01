@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pale_grey"
+    tools:context=".mypage.report.fragment.TotalFragment" >
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/report_bootom_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/cmtp_white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/report_middle_layout">
+
+                <TextView
+                    android:id="@+id/report_top_rating_tv"
+                    style="@style/report_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="28dp"
+                    android:text="조회수 높은 광고 분야"
+                    android:textColor="#333333"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/report_top_rating_2_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="TOP 3"
+                    android:textColor="#333333"
+                    android:textFontWeight="700"
+                    app:layout_constraintStart_toEndOf="@+id/report_top_rating_tv"
+                    app:layout_constraintTop_toTopOf="@+id/report_top_rating_tv" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/report_rating_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="26dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/report_top_rating_2_tv" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/report_top_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/cmtp_white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/total_viewcount_title_tv"
+                    style="@style/report_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="30dp"
+                    android:text="누적 조회수"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/total_viewcount_tv"
+                    style="@style/report_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="100000000"
+                    app:layout_constraintEnd_toStartOf="@+id/total_num1_tv"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/total_viewcount_title_tv"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/total_num1_tv"
+                    style="@style/report_etc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="회"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/total_like_title_tv"
+                    style="@style/report_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="누적 좋아요"
+                    app:layout_constraintStart_toStartOf="@+id/total_viewcount_title_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/total_viewcount_title_tv" />
+
+                <TextView
+                    android:id="@+id/total_num2_tv"
+                    style="@style/report_etc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="회"
+                    app:layout_constraintEnd_toEndOf="@+id/total_num1_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/total_num1_tv" />
+
+                <TextView
+                    android:id="@+id/total_like_tv"
+                    style="@style/report_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="200000"
+                    app:layout_constraintEnd_toStartOf="@+id/total_num2_tv"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/total_like_title_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/total_viewcount_tv" />
+
+                <TextView
+                    android:id="@+id/total_money_title_tv"
+                    style="@style/report_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="누적 광고비"
+                    app:layout_constraintStart_toStartOf="@+id/total_like_title_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/total_like_title_tv" />
+
+                <TextView
+                    android:id="@+id/total_num3_tv"
+                    style="@style/report_etc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="원"
+                    app:layout_constraintEnd_toEndOf="@+id/total_num2_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/total_num2_tv" />
+
+                <TextView
+                    android:id="@+id/total_money_tv"
+                    style="@style/report_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="10000000000"
+                    app:layout_constraintEnd_toStartOf="@+id/total_num3_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/total_like_tv" />
+
+                <TextView
+                    android:id="@+id/total_avr_title_tv"
+                    style="@style/report_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="평균 Engagement Rate"
+                    app:layout_constraintStart_toStartOf="@+id/total_money_title_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/total_money_title_tv" />
+
+                <TextView
+                    android:id="@+id/total_num4_tv"
+                    style="@style/report_etc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="%"
+                    app:layout_constraintEnd_toEndOf="@+id/total_num3_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/total_num3_tv" />
+
+                <TextView
+                    android:id="@+id/total_avr_tv"
+                    style="@style/report_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="50"
+                    app:layout_constraintEnd_toStartOf="@+id/total_num4_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/total_money_tv" />
+
+                <TextView
+                    android:id="@+id/total_explane_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="28dp"
+                    android:fontFamily="@font/apple_sd"
+                    android:lineSpacingExtra="3sp"
+                    android:text="* 평균 ER = 좋아요 + 댓글수 / 조회수 x 100"
+                    android:textColor="@color/cool_grey"
+                    android:textFontWeight="500"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/total_avr_title_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/total_avr_title_tv" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/report_middle_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="#ffffff"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/report_top_layout">
+
+                <TextView
+                    android:id="@+id/report_graph_tv"
+                    style="@style/report_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="28dp"
+                    android:text="조회수 그래프"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/lineChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="15dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/report_graph_tv" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -69,6 +69,7 @@ class LawActivity : AppCompatActivity() {
         lawListAdp.addItem(ExpertLawListData("답변완료",true,"답변 완료 + 비밀글","답변 완료 + 비밀글"))
         lawListAdp.addItem(ExpertLawListData("답변예정",true,"답변 예정 + 비밀글","답변 예정 + 비밀글"))
 
+
         lawListAdp.notifyDataSetChanged()
     }
 

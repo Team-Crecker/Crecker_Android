@@ -16,6 +16,179 @@ Crecker_Android파트 git 장소입니다.
 - [google material](https://github.com/material-components/material-components-android) : google material design 적용을 위해 사용
 - [BannerViewPager](https://github.com/zhpanvip/BannerViewPager) : 자동으로 스크롤되는 뷰페이저 구현을 위해 사용
 - [otto](https://github.com/square/otto) : 컴포넌트 간 통신을 위해 사용(Fragment에서 Activity의 onActivityForResult를 받기 위해)
+- [lottie](https://github.com/airbnb/lottie-android) : 움직이는 이미지로 스플래시 화면 구성을 위해 사용
+- [TedImagePicker](https://github.com/ParkSangGwon/TedImagePicker) : 프로필 이미지 업로드 시 이미지 선택을 위해 사용
+
+# 기능 구현 방법
+* ## lottie를 이용한 스플래시 화면
+	- SplashActivity
+	
+	```
+	val animationView = findViewById<LottieAnimationView>(R.id.splash_img)
+        animationView.setAnimation("splash.json")
+        animationView.playAnimation()
+	```
+	
+	* LotteAnimationView를 생성하고 애니메이션 파일을 적용
+	
+	```
+	private fun startLoading(){
+        	val handler = Handler()
+        	handler.postDelayed(Runnable {
+            	run {
+                	startActivity(Intent(application, MainActivity::class.java))
+                	finish()
+           	 }
+       		},1000)
+    	}
+    	override fun onBackPressed() {}
+	
+	```
+	`startLoading()`함수 안에 핸들러 객체를 생성하고 스플래시 화면 효과를 구성
+	`onBackPressed()`를 오버라이드 함으로서 스플래시 화면이 나오는 중 뒤로가기 버튼이 동작하지 않도록 설정
+
+	- AndroidManifest
+	
+	```
+	<activity
+            android:name=".main.SplashActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:screenOrientation="portrait"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+	```
+	
+	manifest 파일에서 가장 처음 나오는 액티비티 구조 변경
+
+	- activity_splash.xml
+	
+	```
+	<?xml version="1.0" encoding="utf-8"?>
+	<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    	xmlns:app="http://schemas.android.com/apk/res-auto"
+    	xmlns:tools="http://schemas.android.com/tools"
+    	android:layout_width="match_parent"
+    	android:layout_height="match_parent"
+    	tools:context=".main.SplashActivity"
+    	android:background="#000000">
+
+    	<com.airbnb.lottie.LottieAnimationView
+        	android:id="@+id/splash_img"
+        	android:layout_width="0dp"
+        	android:layout_height="0dp"
+        	app:layout_constraintBottom_toBottomOf="parent"
+        	app:layout_constraintEnd_toEndOf="parent"
+        	app:layout_constraintStart_toStartOf="parent"
+        	app:layout_constraintTop_toTopOf="parent" />
+	</androidx.constraintlayout.widget.ConstraintLayout>
+	```
+	
+* ## Custom View로 TabLayout 아이콘 만들기
+	- custom_tab_button.xml
+	
+	```
+	<?xml version="1.0" encoding="utf-8"?>
+	<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    	xmlns:app="http://schemas.android.com/apk/res-auto"
+    	xmlns:tools="http://schemas.android.com/tools"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content">
+
+    	<ImageView
+        android:id="@+id/Tab_ic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+         />
+	</androidx.constraintlayout.widget.ConstraintLayout>
+	```
+	TabLayout에 들어갈 CustomView
+	
+	- MainActivity
+	
+	```
+	override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+	
+	...
+	
+	main_tabLayout.getTabAt(0)?.customView = initCustomView(0) // Home 로고
+        main_tabLayout.getTabAt(1)?.customView = initCustomView(1) // Ads 로고
+        main_tabLayout.getTabAt(2)?.customView = initCustomView(2) // Law 로고
+        main_tabLayout.getTabAt(3)?.customView = initCustomView(3) // News 로고
+        main_tabLayout.getTabAt(4)?.customView = initCustomView(4) // MyPage 로고
+	
+	...
+	
+	}
+	```
+	TabLayout에 커스텀뷰를 넣어준다.
+	
+	```
+	private fun initCustomView(position : Int) : View {
+        val tabView = LayoutInflater.from(mContext).inflate(R.layout.custom_tab_button, null)
+
+        when(position){
+            0 -> tabView.Tab_ic.setImageResource(R.drawable.select_tab_home)
+            1-> tabView.Tab_ic.setImageResource(R.drawable.select_tab_ads)
+            2-> tabView.Tab_ic.setImageResource(R.drawable.select_tab_law)
+            3-> tabView.Tab_ic.setImageResource(R.drawable.select_tab_news)
+            4-> tabView.Tab_ic.setImageResource(R.drawable.select_tab_mypage)
+        }
+        return tabView
+        }
+	
+	```
+	position값에 따라 적절한 이미지를 넣어준다.
+	
+	- select_tab_home.xml
+	
+	```
+	<?xml version="1.0" encoding="utf-8"?>
+	<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    	<item android:drawable="@drawable/tab_home" android:state_selected="false" android:state_focused="false" android:state_pressed="false"/>
+    	<item android:drawable="@drawable/tab_home_filled" android:state_selected="true"/>
+	</selector>
+	
+	```
+	TabLayout에 들어가는 아이콘의 이미지는 drawable객체를 이용해, 체크됨에 따라 이미지를 변경시켜준다.
+
+* ## 키보드가 보여질 때 화면 스크롤 기능
+	- MainActivity.kt
+	
+	```
+	class MainActivity : AppCompatActivity() {
+
+    	private lateinit var keyboardVisibilityUtils: KeyboardVisibilityUtils
+
+    	override fun onCreate(savedInstanceState: Bundle?) {
+        	super.onCreate(savedInstanceState)
+        	setContentView(R.layout.activity_main)
+       		keyboardVisibilityUtils = KeyboardVisibilityUtils(window,
+                onShowKeyboard = { keyboardHeight ->
+                    sv_root.run {
+                        smoothScrollTo(scrollX, scrollY + keyboardHeight)
+                    }
+                })
+    	}
+
+    	override fun onDestroy() {
+        	keyboardVisibilityUtils.detachKeyboardListeners()
+        	super.onDestroy()
+    	}
+	```
+	sv_root -> 스크롤뷰 id 값
+	KeyboardVisibilityUtils클래스를 만들 때 인자로 window를 전달하고 onShowKeyboard를 통해 ScroolView를 키보드 높이만큼 스크롤  
+	onShowKeyboard : 키보드가 보여질 때 해당 코드 호출
 
 # 프로그램 구조
 * ### ads
@@ -25,6 +198,10 @@ Crecker_Android파트 git 장소입니다.
 	* contents : 광고 내용(data class + recycleradapter + viewholder)
 	* fragment : 광고 뷰와 관련된 fragment
 * ### home
+	* adapter : 리사이클러뷰 어댑터 관리 패키지
+	* data : home 탭의 리사이클러뷰에서 사용하는 data class 패키지
+	* viewholder : 리사이클러뷰에 사용하는 뷰 홀더 패키지 
+	* fragment : home 뷰와 관련된 fragment
 * ### law
 	* adapter : 배너 및 리사이클러뷰 어댑터 관리 패키지
 	* data : law 탭에서 사용하는 data class 패키지
