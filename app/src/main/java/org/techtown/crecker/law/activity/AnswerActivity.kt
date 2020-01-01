@@ -38,7 +38,7 @@ class AnswerActivity : AppCompatActivity() {
         counseling_reserv_btn.setOnClickListener {
             val intent = Intent(this, ScheduleActivity::class.java)
             intent.putExtra("Idx",Idx)
-            
+
             startActivity(intent)
         }
     }
