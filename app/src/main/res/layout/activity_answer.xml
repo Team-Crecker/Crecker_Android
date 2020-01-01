@@ -109,7 +109,7 @@
                     android:layout_marginTop="9dp"
                     android:fontFamily="@font/apple_sd"
                     android:lineSpacingExtra="3sp"
-                    android:text="초상권 문제는 어떻게 해결하면 될까요?"
+                    android:text=""
                     android:textColor="#000000"
                     android:textFontWeight="500"
                     android:textSize="16sp"
@@ -125,7 +125,7 @@
                     android:layout_marginEnd="15dp"
                     android:fontFamily="@font/apple_sd"
                     android:lineSpacingExtra="7sp"
-                    android:text="가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하"
+                    android:text=""
                     android:textColor="#000000"
                     android:textFontWeight="200"
                     android:textSize="13sp"
@@ -142,7 +142,7 @@
                     android:layout_marginBottom="28dp"
                     android:fontFamily="@font/montserrat"
                     android:lineSpacingExtra="8sp"
-                    android:text="2019.12.28"
+                    android:text=""
                     android:textColor="#9fa4aa"
                     android:textFontWeight="500"
                     android:textSize="12sp"
@@ -170,7 +170,6 @@
                     android:layout_height="0dp"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="23dp"
-                    android:src="@drawable/profile"
                     app:layout_constraintDimensionRatio="1"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -183,7 +182,7 @@
                     android:layout_marginTop="40dp"
                     android:fontFamily="@font/apple_sd"
                     android:lineSpacingExtra="3sp"
-                    android:text="김필원"
+                    android:text=""
                     android:textColor="#000000"
                     android:textFontWeight="600"
                     android:textSize="16sp"
@@ -213,7 +212,7 @@
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/apple_sd"
                     android:lineSpacingExtra="7sp"
-                    android:text="현 태평양 로펌 변호사"
+                    android:text=""
                     android:textColor="#000000"
                     android:textFontWeight="200"
                     android:textSize="13sp"
@@ -229,22 +228,7 @@
                     android:layout_marginEnd="15dp"
                     android:fontFamily="@font/apple_sd"
                     android:lineSpacingExtra="7sp"
-                    android:text="본문내용\n
-본문내용\n
-본문내용\n
-본문내용\n
-본문내용\n
-본문내용\n
-본문내용\n
-본문내용\n
-본문내용\n
-본문내용\n
-본문내용\n
-본문내용\n
-본문내용\n
-본문내용\n
-본문내용\n
-본문내용\n"
+                    android:text=""
                     android:textColor="#000000"
                     android:textFontWeight="200"
                     android:textSize="13sp"
@@ -261,7 +245,7 @@
                     android:layout_marginBottom="28dp"
                     android:fontFamily="@font/apple_sd"
                     android:lineSpacingExtra="8sp"
-                    android:text="2019.12.25"
+                    android:text=""
                     android:textColor="#9fa4aa"
                     android:textFontWeight="500"
                     android:textSize="12sp"

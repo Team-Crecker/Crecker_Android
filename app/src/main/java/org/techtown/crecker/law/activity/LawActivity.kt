@@ -1,25 +1,32 @@
 package org.techtown.crecker.law.activity
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.graphics.Typeface
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.activity_law.*
-import kotlinx.android.synthetic.main.activity_quest.*
 import kotlinx.android.synthetic.main.law_bottom_sheet.*
 import org.techtown.crecker.R
 import org.techtown.crecker.law.adapter.ExpertBannerAdpater
 import org.techtown.crecker.law.adapter.ExpertLawRvAdp
-import org.techtown.crecker.law.data.ExpertLawListData
+import org.techtown.crecker.law.api.ExpertServiceImpl
+import org.techtown.crecker.law.data.QAdata
 import org.techtown.crecker.module.NavBarSetting
 import org.techtown.crecker.module.RcvItemDeco
+import org.techtown.crecker.module.debugLog
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class LawActivity : AppCompatActivity() {
     private lateinit var lawListAdp : ExpertLawRvAdp
+    private lateinit var pd : ProgressDialog
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,13 +71,25 @@ class LawActivity : AppCompatActivity() {
         law_qna_rcv.adapter = lawListAdp
         law_qna_rcv.layoutManager = LinearLayoutManager(this)
         law_qna_rcv.addItemDecoration(RcvItemDeco(this,false,14))
-        lawListAdp.addItem(ExpertLawListData("답변완료",false,"답변 완료 + 공개글","답변 완료 + 공개글"))
-        lawListAdp.addItem(ExpertLawListData("답변예정",false,"답변 예정 + 공개글","답변 예정 + 공개글"))
-        lawListAdp.addItem(ExpertLawListData("답변완료",true,"답변 완료 + 비밀글","답변 완료 + 비밀글"))
-        lawListAdp.addItem(ExpertLawListData("답변예정",true,"답변 예정 + 비밀글","답변 예정 + 비밀글"))
 
+        val call : Call<QAdata> = ExpertServiceImpl.service.getLawAnswer()
+        call.enqueue(
+            object : Callback<QAdata>{
+                override fun onFailure(call: Call<QAdata>, t: Throwable) {
+                    "${t}".debugLog("CallBackFailed")
+                }
 
-        lawListAdp.notifyDataSetChanged()
+                override fun onResponse(call: Call<QAdata>, response: Response<QAdata>) {
+                    response?.takeIf { it.isSuccessful }
+                        ?.body()
+                        ?.data
+                        ?.let {
+                            lawListAdp.data = it
+                            lawListAdp.notifyDataSetChanged()
+                        }
+                }
+            }
+        )
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
