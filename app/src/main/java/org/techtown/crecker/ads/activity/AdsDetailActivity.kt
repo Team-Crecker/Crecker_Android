@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.view.isGone
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import kotlinx.android.synthetic.main.activity_ads_detail.*
@@ -12,6 +13,7 @@ import kotlinx.android.synthetic.main.ad_campaign_intro.*
 import kotlinx.android.synthetic.main.ad_detail_schedule.*
 import org.techtown.crecker.R
 import org.techtown.crecker.ads.api.AdsServiceImpl
+import org.techtown.crecker.ads.category.EventBus
 import org.techtown.crecker.ads.contents.data.Detail
 import org.techtown.crecker.ads.fragment.putLog
 import retrofit2.Call
@@ -64,6 +66,12 @@ class AdsDetailActivity : AppCompatActivity() {
                             ad_campaign_tv_search_keyword.text = it[0].keyword
                             ad_campaign_tv_mission.text = it[0].campaignMission
                             ad_campaign_tv_additional.text =it[0].addInfo
+
+                            if(it[0].subscribers == ""){
+                                tv_sub.isGone = true
+                                ad_detail_tv_subscriber_cnt.isGone = true
+                            }
+                            ad_detail_tv_subscriber_cnt.text = it[0].subscribers
 
                         } ?: run{
                         Toast.makeText(this@AdsDetailActivity, "서버로부터 정보를 받아올 수 없습니다..", Toast.LENGTH_SHORT).show()

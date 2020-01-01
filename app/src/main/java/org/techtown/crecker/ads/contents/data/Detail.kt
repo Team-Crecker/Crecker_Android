@@ -31,12 +31,16 @@ data class Detail(
         var categoryCode: String,
         @SerializedName("choice")
         var choice: String,
+        @SerializedName("companyName")
+        var companyName: String,
         @SerializedName("completeDate")
         var completeDate: String,
         @SerializedName("createAt")
         var createAt: String,
         @SerializedName("fullPhoto")
         var fullPhoto: String,
+        @SerializedName("isAdd")
+        var isAdd: String,
         @SerializedName("isPick")
         var isPick: Int,
         @SerializedName("keyword")
@@ -45,6 +49,8 @@ data class Detail(
         var preference: String,
         @SerializedName("reward")
         var reward: String,
+        @SerializedName("subscribers")
+        var subscribers: String,
         @SerializedName("subtitle")
         var subtitle: String,
         @SerializedName("summaryPhoto")

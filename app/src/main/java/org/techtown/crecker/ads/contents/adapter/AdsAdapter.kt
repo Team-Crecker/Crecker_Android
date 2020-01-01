@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import org.techtown.crecker.R
-import org.techtown.crecker.ads.contents.AdData
+import org.techtown.crecker.ads.contents.data.Ads
 import org.techtown.crecker.ads.contents.viewholder.AdsVH
 
 class AdsAdapter (private val context : Context) : RecyclerView.Adapter<AdsVH>(){
-    var data = arrayListOf<AdData>()
+    var data = listOf<Ads.Data>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdsVH {
         val view = LayoutInflater.from(context).inflate(R.layout.ads_list_item, parent , false)

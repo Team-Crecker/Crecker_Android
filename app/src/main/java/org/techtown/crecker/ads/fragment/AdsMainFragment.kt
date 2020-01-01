@@ -22,8 +22,11 @@ import org.techtown.crecker.ads.api.AdsServiceImpl
 import org.techtown.crecker.ads.contents.data.AdsRandom
 import org.techtown.crecker.ads.banner.BannerData
 import org.techtown.crecker.ads.banner.BannerVH
+import org.techtown.crecker.ads.contents.adapter.AdsAdapter
 import org.techtown.crecker.ads.contents.adapter.AdsHorizontalAdapter
 import org.techtown.crecker.ads.contents.data.Ads
+import org.techtown.crecker.module.RcvItemDeco
+import org.techtown.crecker.module.RcvItemHoriDeco
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -34,13 +37,14 @@ class AdsMainFragment : Fragment() {
 
     private lateinit var rcmdAdapter: AdsHorizontalAdapter
     private lateinit var popularAdapter: AdsHorizontalAdapter
-    private lateinit var recentAdapter: AdsHorizontalAdapter
+    private lateinit var recentAdapter: AdsAdapter
 
     private lateinit var mContext: Context
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        this.mContext = context.applicationContext
+        if(activity != null)
+            this.mContext = context.applicationContext
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -158,19 +162,32 @@ class AdsMainFragment : Fragment() {
 
     private fun initAdapter(view: View) {
         rcmdAdapter = AdsHorizontalAdapter(mContext)
-        view.rv_ad_recommend.adapter = rcmdAdapter
-        view.rv_ad_recommend.layoutManager =
-            LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
+        view.rv_ad_recommend.apply {
+            adapter = rcmdAdapter
+            layoutManager =
+                LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
+
+            addItemDecoration(RcvItemHoriDeco(mContext, false))
+        }
 
         popularAdapter = AdsHorizontalAdapter(mContext)
-        view.rv_ad_popular.adapter = popularAdapter
-        view.rv_ad_popular.layoutManager =
-            LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
+        view.rv_ad_popular.apply {
+            adapter = popularAdapter
+            layoutManager =
+                LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
 
-        recentAdapter = AdsHorizontalAdapter(mContext)
-        view.rv_ad_recent.adapter = recentAdapter
-        view.rv_ad_recent.layoutManager =
-            GridLayoutManager(mContext, 2, GridLayoutManager.VERTICAL, false)
+            addItemDecoration(RcvItemHoriDeco(mContext, false))
+        }
+
+
+        recentAdapter = AdsAdapter(mContext)
+        view.rv_ad_recent.apply {
+            adapter = recentAdapter
+            layoutManager =
+                GridLayoutManager(mContext, 2, GridLayoutManager.VERTICAL, false)
+
+            addItemDecoration(RcvItemDeco(mContext, true))
+        }
     }
 
     private fun setupIndicator(list: MutableList<BannerData>) {
@@ -179,7 +196,7 @@ class AdsMainFragment : Fragment() {
             .setIndicatorGravity(IndicatorGravity.CENTER)
             .setIndicatorSlideMode(IndicatorSlideMode.SMOOTH)
             .setIndicatorGap(0)
-            .setPageMargin(resources.getDimensionPixelOffset(R.dimen.dp_3))
+            .setPageMargin(mContext.resources.getDimensionPixelOffset(R.dimen.dp_3))
             .setIndicatorWidth(200)
             .setIndicatorColor(
                 Color.parseColor("#c9cdd2"),

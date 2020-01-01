@@ -78,6 +78,7 @@ class ApplyActivity : AppCompatActivity() {
                 put("location", apply_et_addr.text.toString())
                 put("planTitle", apply_et_plan_title.text.toString())
                 put("planContents", apply_et_content.text.toString())
+                put("isAdd", apply_checkBox_additional.isChecked)
             }
         AdsServiceImpl.service.postAdPlan(map).enqueue(object : Callback<PostResponse> {
             override fun onFailure(call: Call<PostResponse>, t: Throwable) {

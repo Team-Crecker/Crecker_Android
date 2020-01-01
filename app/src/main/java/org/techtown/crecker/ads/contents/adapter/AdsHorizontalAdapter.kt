@@ -12,7 +12,7 @@ class AdsHorizontalAdapter (private val context : Context) : RecyclerView.Adapte
     var data = listOf<Ads.Data>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdsHorizontalVH {
-        val view = LayoutInflater.from(context).inflate(R.layout.ads_list_item, parent , false)
+        val view = LayoutInflater.from(context).inflate(R.layout.ads_list_hori_item, parent , false)
         return AdsHorizontalVH(view)
     }
 

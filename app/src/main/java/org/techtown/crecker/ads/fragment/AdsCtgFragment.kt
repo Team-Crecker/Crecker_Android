@@ -14,6 +14,7 @@ import org.techtown.crecker.ads.category.EventBus
 import org.techtown.crecker.ads.contents.AdData
 import org.techtown.crecker.ads.contents.AdsDdayAdapter
 import org.techtown.crecker.ads.contents.data.Ads
+import org.techtown.crecker.module.RcvItemDeco
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -33,6 +34,7 @@ class AdsCtgFragment : Fragment() {
         adapter = AdsDdayAdapter(mContext)
         view.rv_ad_detail.adapter = adapter
         view.rv_ad_detail.layoutManager = GridLayoutManager(mContext, 2, GridLayoutManager.VERTICAL, false)
+        view.rv_ad_detail.addItemDecoration(RcvItemDeco(mContext, true))
 
         val idx = when(EventBus.title){
             "Premium" -> 1
