@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".membership.login.LogInActivity">
+
+    <ImageView
+        android:id="@+id/img_login_logo"
+        android:layout_width="171dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="147dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/tv_login_slogan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:text="Crack the Creator’s Limits!"
+        android:fontFamily="@font/montserrat"
+        android:lineSpacingExtra="18sp"
+        android:textColor="#333333"
+        android:textFontWeight="650"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_login_logo" />
+
+    <EditText
+        android:id="@+id/edt_login_id"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="77dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/edt_login_background"
+        android:ems="10"
+        android:fontFamily="@font/montserrat"
+        android:inputType="textPersonName"
+        android:lineSpacingExtra="19sp"
+        android:paddingLeft="16dp"
+        android:hint="ID (e-mail)"
+        android:textColor="#000000"
+        android:textFontWeight="400"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_login_slogan" />
+
+    <Button
+        android:id="@+id/btn_login_login"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/btn_login_black"
+        android:fontFamily="@font/montserrat"
+        android:lineSpacingExtra="20sp"
+        android:text="Login"
+        android:textColor="#ffffff"
+        android:textFontWeight="500"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+    <TextView
+        android:id="@+id/tv_login_signup"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="@font/apple_sd"
+        android:gravity="center"
+        android:lineSpacingExtra="19sp"
+        android:text="회원가입"
+        android:textColor="#333333"
+        android:textFontWeight="400"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/img_login_line_center"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_login_checkout"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="@font/apple_sd"
+        android:gravity="center"
+        android:lineSpacingExtra="19sp"
+        android:text="둘러보기"
+        android:textColor="#333333"
+        android:textFontWeight="400"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/img_login_line_center" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_login_id">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textInputEdt_login_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/edt_login_background"
+                android:fontFamily="@font/montserrat"
+                android:inputType="textPassword"
+                android:lineSpacingExtra="19sp"
+                android:paddingLeft="16dp"
+                android:singleLine="false"
+                android:hint="Password"
+                android:textColor="#000000"
+                android:textFontWeight="400"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                tools:layout_editor_absoluteX="0dp" />
+
+            <TextView
+                android:id="@+id/tv_login__pwd_forgot"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="3dp"
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:lineSpacingExtra="16sp"
+                android:paddingLeft="21dp"
+                android:paddingRight="21dp"
+                android:singleLine="false"
+                android:text="Forgot"
+                android:textColor="#1ec695"
+                android:textFontWeight="500"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="@+id/textInputEdt_login_pwd"
+                app:layout_constraintEnd_toEndOf="@+id/textInputEdt_login_pwd"
+                app:layout_constraintTop_toTopOf="@+id/textInputEdt_login_pwd" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/img_login_line_center"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginEnd="180dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:srcCompat="@drawable/line_center" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
