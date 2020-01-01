@@ -1,9 +1,6 @@
 package org.techtown.crecker.ads.api
 
-import org.techtown.crecker.ads.contents.data.Ads
-import org.techtown.crecker.ads.contents.data.AdsRandom
-import org.techtown.crecker.ads.contents.data.Detail
-import org.techtown.crecker.ads.contents.data.PersonInfo
+import org.techtown.crecker.ads.contents.data.*
 import retrofit2.Call
 import retrofit2.http.*
 import kotlin.collections.HashMap
@@ -37,11 +34,12 @@ interface AdsService{
     fun getDetailInfo(@Path("idx") idx: Int): Call<Detail>
 
     //Load AdApplyActivity
+    @Headers("token: $TOKEN")
     @GET("advertise/ad/apply")
     fun getPersonInfo(): Call<PersonInfo>
 
     //Post AdApplyActivity
     @FormUrlEncoded
     @POST("advertise/ad/write")
-    fun postAdPlan(@FieldMap payLoad: HashMap<String, Any>)
+    fun postAdPlan(@FieldMap payLoad: HashMap<String, Any>): Call<PostResponse>
 }

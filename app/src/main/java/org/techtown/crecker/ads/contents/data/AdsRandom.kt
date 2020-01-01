@@ -13,6 +13,8 @@ data class AdsRandom(
     var success: Boolean
 ) {
     data class Data(
+        @SerializedName("adIdx")
+        var adIdx: Int,
         @SerializedName("dday")
         var dday: String,
         @SerializedName("subtitle")

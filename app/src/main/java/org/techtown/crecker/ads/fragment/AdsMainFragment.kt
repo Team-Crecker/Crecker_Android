@@ -73,7 +73,7 @@ class AdsMainFragment : Fragment() {
                     response.takeIf { it.isSuccessful }?.body()?.data?.
                         let {
                             val list = ArrayList<BannerData>()
-                            list.add(BannerData(it.title, it.subtitle, it.dday, it.thumbnail))
+                            list.add(BannerData(it.title, it.subtitle, it.dday, it.thumbnail, it.adIdx))
                             setupIndicator(list)
                         } ?: run{
                         Toast.makeText(mContext, "서버로부터 정보를 받아올 수 없습니다..", Toast.LENGTH_SHORT).show()
@@ -143,7 +143,7 @@ class AdsMainFragment : Fragment() {
             bean.imageTitle = title[i]
             bean.imageDescription = des[i]
             bean.imageDday = dday[i]
-            bean.imgLocalUrl = imgs[i]
+            //bean.imgLocalUrl = imgs[i]
             list.add(bean)
         }
         mBannerList = list

@@ -71,7 +71,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/apply_tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -84,7 +84,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView20"
+                android:id="@+id/apply_tv_subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -93,8 +93,8 @@
                 android:text="수정화장은 오직 뽀샵패드"
                 android:textColor="#000000"
                 android:textSize="13sp"
-                app:layout_constraintStart_toStartOf="@+id/textView6"
-                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+                app:layout_constraintStart_toStartOf="@+id/apply_tv_title"
+                app:layout_constraintTop_toBottomOf="@+id/apply_tv_title" />
 
             <TextView
                 android:id="@+id/textView21"
@@ -108,8 +108,8 @@
                 android:text="신청정보"
                 android:textColor="#000000"
                 android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="@+id/textView20"
-                app:layout_constraintTop_toBottomOf="@+id/textView20" />
+                app:layout_constraintStart_toStartOf="@+id/apply_tv_subtitle"
+                app:layout_constraintTop_toBottomOf="@+id/apply_tv_subtitle" />
 
             <TextView
                 android:id="@+id/textView28"
@@ -123,8 +123,8 @@
                 android:text="기획서"
                 android:textColor="#000000"
                 android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="@+id/textView20"
-                app:layout_constraintTop_toBottomOf="@+id/editText2" />
+                app:layout_constraintStart_toStartOf="@+id/apply_tv_subtitle"
+                app:layout_constraintTop_toBottomOf="@+id/apply_et_addr" />
 
             <TextView
                 android:id="@+id/textView22"
@@ -183,7 +183,7 @@
                 app:layout_constraintTop_toTopOf="@+id/textView23" />
 
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/apply_et_addr"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -245,7 +245,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/apply_et_content" />
 
             <EditText
-                android:id="@+id/apply_et_plan_title2"
+                android:id="@+id/apply_et_ref_url"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="31dp"

@@ -10,7 +10,7 @@ data class PersonInfo(
     @SerializedName("statusCode")
     var statusCode: Int,
     @SerializedName("success")
-var success: Boolean
+    var success: Boolean
 ) {
     data class Data(
         @SerializedName("location")

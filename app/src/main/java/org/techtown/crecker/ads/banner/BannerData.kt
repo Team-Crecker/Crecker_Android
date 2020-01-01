@@ -5,5 +5,5 @@ data class BannerData(
     var imageDescription: String? = null,
     var imageDday: String? = null,
     var imgUrl: String? = null,
-    var imgLocalUrl: Int = 0
+    var idx: Int = 1
 )

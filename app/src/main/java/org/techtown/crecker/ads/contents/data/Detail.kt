@@ -16,7 +16,7 @@ data class Detail(
         @SerializedName("adIdx")
         var adIdx: Int,
         @SerializedName("addInfo")
-        var addInfo: Any?,
+        var addInfo: String,
         @SerializedName("applyFrom")
         var applyFrom: String,
         @SerializedName("applyTo")
@@ -37,6 +37,8 @@ data class Detail(
         var createAt: String,
         @SerializedName("fullPhoto")
         var fullPhoto: String,
+        @SerializedName("isPick")
+        var isPick: Int,
         @SerializedName("keyword")
         var keyword: String,
         @SerializedName("preference")
@@ -52,7 +54,7 @@ data class Detail(
         @SerializedName("title")
         var title: String,
         @SerializedName("updateAt")
-        var updateAt: Any?,
+        var updateAt: String,
         @SerializedName("uploadFrom")
         var uploadFrom: String,
         @SerializedName("uploadTo")

@@ -9,8 +9,14 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.fragment_ad_detail.view.*
 import org.techtown.crecker.R
+import org.techtown.crecker.ads.api.AdsServiceImpl
+import org.techtown.crecker.ads.category.EventBus
 import org.techtown.crecker.ads.contents.AdData
 import org.techtown.crecker.ads.contents.AdsDdayAdapter
+import org.techtown.crecker.ads.contents.data.Ads
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class AdsCtgFragment : Fragment() {
     private lateinit var mContext: Context
@@ -24,14 +30,27 @@ class AdsCtgFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_ad_detail, container, false)
 
-        val dummy = AdData("", R.drawable.img_thum1, "모모스 커피", "Momos Coffee",10000, 7)
-        val dummy2 = AdData("", R.drawable.img_thum2, "모모스 커피", "Momos Coffee",10000, 24)
-        val dummy3 = AdData("", R.drawable.img_thum2, "데저트 크림", "Dessert Cream",8000, 30)
-
         adapter = AdsDdayAdapter(mContext)
-        adapter.data = arrayListOf(dummy, dummy2, dummy, dummy3, dummy3, dummy, dummy2)
         view.rv_ad_detail.adapter = adapter
         view.rv_ad_detail.layoutManager = GridLayoutManager(mContext, 2, GridLayoutManager.VERTICAL, false)
+
+        val idx = when(EventBus.title){
+            "Premium" -> 1
+            "Beauty" -> 2
+            "Restaurant" -> 3
+            "Travel" -> 4
+            else -> 5
+        }
+        AdsServiceImpl.service.getCategorizedAds(idx).enqueue(object : Callback<Ads>{
+            override fun onFailure(call: Call<Ads>, t: Throwable) {
+                "실패: $t".putLog("Fail")
+            }
+
+            override fun onResponse(call: Call<Ads>, response: Response<Ads>) {
+                adapter.data = response.takeIf { it.isSuccessful }?.body()?.data!!
+                adapter.notifyDataSetChanged()
+            }
+        })
 
         return view
     }
