@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class AdsRandom(
     @SerializedName("data")
-    var `data`: Data,
+    var `data`: List<Data>,
     @SerializedName("message")
     var message: String,
     @SerializedName("statusCode")
@@ -16,7 +16,7 @@ data class AdsRandom(
         @SerializedName("adIdx")
         var adIdx: Int,
         @SerializedName("dday")
-        var dday: String,
+        var dday: Int,
         @SerializedName("subtitle")
         var subtitle: String,
         @SerializedName("thumbnail")

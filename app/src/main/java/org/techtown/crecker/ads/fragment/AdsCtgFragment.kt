@@ -37,11 +37,11 @@ class AdsCtgFragment : Fragment() {
         view.rv_ad_detail.addItemDecoration(RcvItemDeco(mContext, true))
 
         val idx = when(EventBus.title){
-            "Premium" -> 1
-            "Beauty" -> 2
-            "Restaurant" -> 3
-            "Travel" -> 4
-            else -> 5
+            "Premium" -> "0101"
+            "Beauty" -> "0102"
+            "Restaurant" -> "0103"
+            "Travel" -> "0104"
+            else -> "0105"
         }
         AdsServiceImpl.service.getCategorizedAds(idx).enqueue(object : Callback<Ads>{
             override fun onFailure(call: Call<Ads>, t: Throwable) {

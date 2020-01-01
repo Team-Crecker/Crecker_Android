@@ -27,6 +27,8 @@ class AdsDetailActivity : AppCompatActivity() {
     var shortImg = ""
     var longImg = ""
 
+    var flag = false
+
     private lateinit var glideManager: RequestManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,9 +44,8 @@ class AdsDetailActivity : AppCompatActivity() {
                 }
 
                 override fun onResponse(call: Call<Detail>, response: Response<Detail>) {
-                    response.takeIf { it.isSuccessful }?.body()?.data?.
+                    response.takeIf { it.isSuccessful }?.body()?.data?.ad?.
                         let {
-                            it[0]
                             loadImg(it[0].thumbnail, detail_img_main)
 
                             ad_detail_title.text = it[0].title
@@ -67,11 +68,15 @@ class AdsDetailActivity : AppCompatActivity() {
                             ad_campaign_tv_mission.text = it[0].campaignMission
                             ad_campaign_tv_additional.text =it[0].addInfo
 
-                            if(it[0].subscribers == ""){
+                            if(it[0].categoryCode == "0101"){
                                 tv_sub.isGone = true
                                 ad_detail_tv_subscriber_cnt.isGone = true
+
+                                if(response.body()?.data?.subscribers!! < it[0].subscribersNum)
+                                    flag = true
                             }
                             ad_detail_tv_subscriber_cnt.text = it[0].subscribers
+
 
                         } ?: run{
                         Toast.makeText(this@AdsDetailActivity, "서버로부터 정보를 받아올 수 없습니다..", Toast.LENGTH_SHORT).show()
@@ -93,12 +98,17 @@ class AdsDetailActivity : AppCompatActivity() {
             }
         }
         ad_detail_btn_apply.setOnClickListener {
-            startActivity(
-                Intent(this, ApplyActivity::class.java)
-                .apply {
-                    putExtra("title", ad_detail_title.text.toString())
-                    putExtra("subTitle", ad_detail_desc.text.toString())
-                })
+            if(flag){
+                Toast.makeText(this, "구독자 수가 부족합니다.", Toast.LENGTH_SHORT).show()
+            }
+            else{
+                startActivity(
+                    Intent(this, ApplyActivity::class.java)
+                        .apply {
+                            putExtra("title", ad_detail_title.text.toString())
+                            putExtra("subTitle", ad_detail_desc.text.toString())
+                        })
+            }
         }
     }
 

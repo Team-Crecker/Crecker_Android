@@ -14,7 +14,11 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".main.MainActivity" android:exported="true"/>
+        <activity android:name=".mypage.setting.SelectCtgActivity"></activity>
+        <activity android:name=".mypage.setting.SettingActivity" />
+        <activity
+            android:name=".main.MainActivity"
+            android:exported="true" />
         <activity
             android:name=".law.activity.ScheduleActivity"
             android:exported="true" />
@@ -38,9 +42,9 @@
             android:exported="true" />
         <activity
             android:name=".main.SplashActivity"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:exported="true">
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -49,7 +53,6 @@
         </activity>
         <activity android:name=".ads.activity.ApplyActivity" />
         <activity android:name=".mypage.advertise.MyAdvertiseActivity" />
-
     </application>
 
 </manifest>
