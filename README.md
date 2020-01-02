@@ -23,14 +23,19 @@ Crecker_Android파트 git 장소입니다.
 
 # 평가 기준 충족
 * ## Extension Function
-	fun String.putLog(tag: String = "debugResult"){
-		Log.d(tag, this)
-	}
+
+
+		fun String.putLog(tag: String = "debugResult"){
+			Log.d(tag, this)
+		}
+
+		AdsServiceImpl.service.getLatestAds().enqueue(object : Callback<Ads>{
+		    override fun onFailure(call: Call<Ads>, t: Throwable) {
+			"실패: $t".putLog("Fail")
+		    }
+		    
+	String 클래스를 확장하여 putLog(tag: String)을 String의 메서드로 추가하였다.
 	
-	AdsServiceImpl.service.getLatestAds().enqueue(object : Callback<Ads>{
-            override fun onFailure(call: Call<Ads>, t: Throwable) {
-                "실패: $t".putLog("Fail")
-            }
 
             override fun onResponse(call: Call<Ads>, response: Response<Ads>) {
                 response.takeIf { it.isSuccessful }?.body()?.data?.
@@ -43,12 +48,12 @@ Crecker_Android파트 git 장소입니다.
             }
         })
 	
-String 클래스를 확장하여 putLog(tag: String)을 String의 메서드로 추가하였다. 또 코틀린에서 제공하는 takeIf, let, run 등을 활용하여 if문과 	null처리를 구현해보았다.
+ 	또 코틀린에서 제공하는 takeIf, let, run 등을 활용하여 null과 관련된 상황의 if문을 대체해보았다.
 
 * ## Lambda Expression
 
 		btn_goBack.setOnClickListener { finish() }
-        	apply_btn_plansheet.setOnClickListener { PlanSheetDialog().show() }
+        apply_btn_plansheet.setOnClickListener { PlanSheetDialog().show() }
 	
 	View.OnClickListener를 구현하는 객체를 인자로 넘기는 대신 람다식을 이용하여 짧고 편하게 버튼 클릭 리스너를 달아주었다.   
 
