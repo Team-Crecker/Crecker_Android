@@ -15,7 +15,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".news.activity.NewsDetailActivity"></activity>
+        <activity android:name=".news.activity.NewsMoreActivity"></activity>
+        <activity android:name=".news.activity.NewsDetailActivity" />
         <activity android:name=".mypage.report.activity.IndiviualActivity" />
         <activity
             android:name=".mypage.report.ReportActivity"
@@ -60,7 +61,7 @@
             android:exported="true" />
         <activity
             android:name=".membership.login.LogInActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

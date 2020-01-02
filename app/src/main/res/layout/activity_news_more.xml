@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:id="@+id/scrollView3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="25dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@+id/button_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/news_more_back_img">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".news.activity.NewsMoreActivity">
+
+            <ImageView
+                android:id="@+id/news_more_main_img"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:src="@drawable/img_support_detail_thum"
+                app:layout_constraintDimensionRatio="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/news_more_company_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="17dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/apple_sd"
+                android:lineSpacingExtra="7sp"
+                android:text="TextView"
+                android:textColor="@color/black"
+                android:textFontWeight="700"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/news_more_main_img" />
+
+            <TextView
+                android:id="@+id/news_more_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/apple_sd"
+                android:lineSpacingExtra="13sp"
+                android:text="TextView"
+                android:textColor="@color/black"
+                android:textFontWeight="200"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/news_more_company_tv"
+                app:layout_constraintTop_toBottomOf="@+id/news_more_company_tv" />
+
+            <TextView
+                android:id="@+id/news_more_subtitle_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/apple_sd"
+                android:lineSpacingExtra="5sp"
+                android:text="TextView"
+                android:textColor="@color/cool_grey"
+                android:textFontWeight="400"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@+id/news_more_title_tv"
+                app:layout_constraintTop_toBottomOf="@+id/news_more_title_tv" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginStart="17dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="17dp"
+                android:background="#eeeeee"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/news_more_subtitle_tv" />
+
+            <TextView
+                android:id="@+id/news_more_recurit_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="17dp"
+                android:layout_marginTop="21dp"
+                android:fontFamily="@font/apple_sd"
+                android:lineSpacingExtra="20sp"
+                android:text="모집 기간"
+                android:textColor="@color/black"
+                android:textFontWeight="500"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+            <TextView
+                android:id="@+id/news_more_start_tv"
+                style="@style/news_more_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="52dp"
+                android:text="yy.MM.dd"
+                app:layout_constraintStart_toEndOf="@+id/news_more_recurit_tv"
+                app:layout_constraintTop_toTopOf="@+id/news_more_recurit_tv" />
+
+            <TextView
+                android:id="@+id/textView25"
+                style="@style/news_more_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" - "
+                app:layout_constraintBottom_toBottomOf="@+id/news_more_start_tv"
+                app:layout_constraintStart_toEndOf="@+id/news_more_start_tv"
+                app:layout_constraintTop_toTopOf="@+id/news_more_start_tv" />
+
+            <TextView
+                android:id="@+id/news_more_end_tv"
+                style="@style/news_more_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="yy.MM.dd"
+                app:layout_constraintBottom_toBottomOf="@+id/textView25"
+                app:layout_constraintStart_toEndOf="@+id/textView25"
+                app:layout_constraintTop_toTopOf="@+id/textView25" />
+
+            <TextView
+                android:id="@+id/news_more_place_tv"
+                style="@style/news_more_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:text="장소 입력"
+                app:layout_constraintStart_toStartOf="@+id/news_more_start_tv"
+                app:layout_constraintTop_toBottomOf="@+id/news_more_start_tv" />
+
+            <View
+                android:id="@+id/view4"
+                android:layout_width="0dp"
+                android:layout_height="0.5dp"
+                android:layout_marginStart="17dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="17dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/news_more_place_tv" />
+
+            <TextView
+                android:id="@+id/news_more_program_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="41dp"
+                android:layout_marginBottom="30dp"
+                android:fontFamily="@font/apple_sd"
+                android:lineSpacingExtra="17sp"
+                android:text="본문 내용"
+                android:textColor="@color/black"
+                android:textFontWeight="500"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/news_more_back_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/common_back_black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/button_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/btn_apply"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/news_more_scrap_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="19dp"
+        android:src="@drawable/ic_scrap"
+        app:layout_constraintStart_toStartOf="@+id/button_background"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView3" />
+
+    <TextView
+        android:id="@+id/news_more_sign_tv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="70dp"
+        android:text="신청하기"
+        android:textColor="@color/cmtp_white"
+        android:gravity="center"
+        android:fontFamily="@font/apple_sd"
+        android:textFontWeight="500"
+        android:textSize="18sp"
+        android:lineSpacingExtra="3sp"
+        app:layout_constraintBottom_toBottomOf="@+id/button_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/news_more_scrap_img"
+        app:layout_constraintTop_toTopOf="@+id/button_background" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

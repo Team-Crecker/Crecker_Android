@@ -1,7 +1,6 @@
 package org.techtown.crecker.news.fragment
 
 
-import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -18,36 +17,39 @@ import com.zhpan.bannerview.utils.BannerUtils
 import kotlinx.android.synthetic.main.fragment_news_all.view.*
 
 import org.techtown.crecker.R
-import org.techtown.crecker.news.adapter.NewsAdapter
-import org.techtown.crecker.news.data.NewsData
+import org.techtown.crecker.news.adapter.NewsRecentAdapter
 import org.techtown.crecker.module.RcvItemDeco
 import org.techtown.crecker.module.RcvItemHoriDeco
+import org.techtown.crecker.module.debugLog
+import org.techtown.crecker.news.adapter.NewsPopularAdapter
+import org.techtown.crecker.news.api.NewsServiceImpl
+import org.techtown.crecker.news.data.NewsApiData
 import org.techtown.crecker.news.data.NewsBannerData
 import org.techtown.crecker.news.viewholder.NewsBannerVH
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class NewsAllFragment : Fragment() {
-    private lateinit var newsAdapter : NewsAdapter
-    private lateinit var newsRecentAdapter : NewsAdapter
+    private lateinit var newsAdapter : NewsPopularAdapter
+    private lateinit var newsRecentAdapter : NewsRecentAdapter
+    private lateinit var mView : View
 //    private lateinit var mContext : Context
 
     private var mDrawableList : MutableList<NewsBannerData> = ArrayList()
     private var mViewPager : BannerViewPager<NewsBannerData, NewsBannerVH>? = null
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-//        this.mContext = context.applicationContext
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val V = inflater.inflate(R.layout.fragment_news_all, container, false)
-        val context : Context = V.context
+        mView = V
 
         initBannerData()
         initView(V)
-        initRecycler(V,context)
+        initPopularRcv()
+        initRecentRcv()
         return V
     }
 
@@ -61,66 +63,59 @@ class NewsAllFragment : Fragment() {
         mViewPager?.startLoop()
     }
 
-    private fun initRecycler(V : View, context : Context) {
+    private fun initPopularRcv(){
+        newsAdapter = NewsPopularAdapter(mView.context)
+        mView.news_popular_rv.adapter = newsAdapter
+        mView.news_popular_rv.layoutManager = LinearLayoutManager(mView.context, LinearLayoutManager.HORIZONTAL, false)
+        mView.news_popular_rv.addItemDecoration(RcvItemHoriDeco(mView.context))
+        val call : Call<NewsApiData> = NewsServiceImpl.service.getSupportNews(1)
+        call.enqueue(
+            object : Callback<NewsApiData>{
+                override fun onFailure(call: Call<NewsApiData>, t: Throwable) {
+                    "$t".debugLog("CallBackFailed in News")
+                }
 
-        //인기 지원 활동 리사이클러 뷰
-        newsAdapter = NewsAdapter(context)
-        V.news_popular_rv.adapter = newsAdapter
-        V.news_popular_rv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        V.news_popular_rv.addItemDecoration(RcvItemHoriDeco(context))
-        newsAdapter.addItem(NewsData(img_url = "", company = "company", title = "title", day = "day", grid = false))
-        newsAdapter.addItem(NewsData(img_url = "", company = "company", title = "title", day = "day", grid = false))
-        newsAdapter.addItem(NewsData(img_url = "", company = "company", title = "title", day = "day", grid = false))
-        newsAdapter.addItem(NewsData(img_url = "", company = "company", title = "title", day = "day", grid = false))
-
-//       최신 지원 활동 리사이클러 뷰
-        newsRecentAdapter = NewsAdapter(context)
-        V.news_recent_rv.adapter = newsRecentAdapter
-        V.news_recent_rv.layoutManager = GridLayoutManager(context, 2)
-
-        V.news_recent_rv.addItemDecoration(RcvItemDeco(context,true)) // 여백 설정
-
-        newsRecentAdapter.addItem(
-            NewsData(
-                img_url = "",
-                company = "company",
-                title = "title",
-                day = "day",
-                grid = true
-            )
+                override fun onResponse(call: Call<NewsApiData>, response: Response<NewsApiData>) {
+                    response.takeIf { it.isSuccessful }
+                        ?.body()
+                        ?.data
+                        ?.let {
+                            newsAdapter.data = it
+                            newsAdapter.notifyDataSetChanged()
+                        }
+                }
+            }
         )
-        newsRecentAdapter.addItem(
-            NewsData(
-                img_url = "",
-                company = "company",
-                title = "title",
-                day = "day",
-                grid = true
-            )
-        )
-        newsRecentAdapter.addItem(
-            NewsData(
-                img_url = "",
-                company = "company",
-                title = "title",
-                day = "day",
-                grid = true
-            )
-        )
-        newsRecentAdapter.addItem(
-            NewsData(
-                img_url = "",
-                company = "company",
-                title = "title",
-                day = "day",
-                grid = true
-            )
-        )
-
-
-        newsAdapter.notifyDataSetChanged()
-        newsRecentAdapter.notifyDataSetChanged()
     }
+
+    private fun initRecentRcv(){
+        newsRecentAdapter = NewsRecentAdapter(mView.context)
+        mView.news_recent_rv.adapter = newsRecentAdapter
+        mView.news_recent_rv.layoutManager = GridLayoutManager(mView.context, 2)
+        mView.news_recent_rv.addItemDecoration(RcvItemDeco(mView.context,true)) // 여백 설정
+
+        val call : Call<NewsApiData> = NewsServiceImpl.service.getSupportNews(2)
+        call.enqueue(
+            object : Callback<NewsApiData>{
+                override fun onFailure(call: Call<NewsApiData>, t: Throwable) {
+                    "$t".debugLog("CallBackFailed in Recent News")
+                }
+
+                override fun onResponse(call: Call<NewsApiData>, response: Response<NewsApiData>) {
+                    response.takeIf { it.isSuccessful }
+                        ?.body()
+                        ?.data
+                        ?.let {
+                            newsRecentAdapter.data = it
+                            newsRecentAdapter.notifyDataSetChanged()
+                        }
+                }
+            }
+        )
+
+    }
+
+
 
     private fun initBannerData(){
         val imgs = arrayOf(R.drawable.img_main_banner,R.drawable.img_main_banner,R.drawable.img_main_banner,R.drawable.img_main_banner)
