@@ -14,6 +14,12 @@ import com.github.mikephil.charting.formatter.ValueFormatter
 import kotlinx.android.synthetic.main.activity_indiviual.*
 import kotlinx.android.synthetic.main.fragment_total.*
 import org.techtown.crecker.R
+import org.techtown.crecker.module.debugLog
+import org.techtown.crecker.mypage.report.api.ReportServiceImpl
+import org.techtown.crecker.mypage.report.data.ReportDetailData
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class IndiviualActivity : AppCompatActivity() {
     private var entries = arrayListOf<Entry>()
@@ -23,25 +29,53 @@ class IndiviualActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_indiviual)
         var intent = intent
+        var idx = intent.getIntExtra("Idx",0)
 
-        inre_company_title_tv.text = intent.getStringExtra("company")
-        inre_ad_tv.text = intent.getStringExtra("title")
-        inre_viewcount.text = intent.getStringExtra("view_count")
-        inre_like.text = intent.getStringExtra("like_count")
-        mountingChart()
+        startCommu(idx)
 
         inre_back_img.setOnClickListener {
             finish()
         }
     }
 
-    private fun mountingChart(){
+    private fun startCommu(idx : Int){
+        val call : Call<ReportDetailData> = ReportServiceImpl.service.getDetailReport(idx)
+        call.enqueue(
+            object : Callback<ReportDetailData>{
+                override fun onFailure(call: Call<ReportDetailData>, t: Throwable) {
+                    "${t}".debugLog()
+                }
+
+                override fun onResponse(
+                    call: Call<ReportDetailData>,
+                    response: Response<ReportDetailData>
+                ) {
+                    response?.takeIf { it.isSuccessful }
+                        ?.body()
+                        ?.data
+                        ?.let {
+                            inre_company_title_tv.text = it[0].companyName
+                            inre_ad_tv.text = it[0].title
+                            inre_money.text = it[0].cash
+                            inre_reward_num_tv.text = it[0].cash
+                            inre_viewcount.text = it[0].views1.toString()
+                            inre_like.text = it[0].likes.toString()
+
+                            mountingChart(it[0].views1 ,it[0].views2, it[0].views3,
+                                it[0].views4, it[0].views5)
+                        }
+                }
+            }
+        )
+    }
+
+    private fun mountingChart(y5 : Int, y4 : Int, y3 : Int, y2 : Int, y1 : Int){
         entries = arrayListOf(
-            Entry(0f,5f),
-            Entry(1f,2f),
-            Entry(2f,4f),
-            Entry(3f,3f),
-            Entry(4f,7f)
+            Entry(0f,y1.toFloat()),
+            Entry(1f,y2.toFloat()),
+            Entry(2f,y3.toFloat()),
+            Entry(3f,y4.toFloat()),
+            Entry(4f,y5.toFloat())
         )
         settingDataSet()
     }

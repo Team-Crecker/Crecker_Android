@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import org.techtown.crecker.R
-import org.techtown.crecker.mypage.report.data.RatingData
 import org.techtown.crecker.mypage.report.data.TotalData
 import org.techtown.crecker.mypage.report.viewholder.RatingVH
 

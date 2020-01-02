@@ -18,6 +18,7 @@ class IndividualReportVH (view: View) : RecyclerView.ViewHolder(view){
     fun onBind(data : IndividualData.Data){
         company.text = data.companyName
         title.text = data.title
+        category.text = "#${data.categoryName}"
         view_count.text = data.views1.toString()
         like_count.text = data.likes.toString()
 

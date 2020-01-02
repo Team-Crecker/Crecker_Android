@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import org.techtown.crecker.R
-import org.techtown.crecker.mypage.report.data.RatingData
 import org.techtown.crecker.mypage.report.data.TotalData
 import java.text.DecimalFormat
 
