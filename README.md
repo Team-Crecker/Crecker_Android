@@ -20,6 +20,7 @@ Crecker_Android파트 git 장소입니다.
 - [TedImagePicker](https://github.com/ParkSangGwon/TedImagePicker) : 프로필 이미지 업로드 시 이미지 선택을 위해 사용
 
 
+# 평가 기준 충족
 * ## Extension Function
 	fun String.putLog(tag: String = "debugResult"){
 		Log.d(tag, this)
@@ -57,6 +58,85 @@ View.OnClickListener를 구현하는 객체를 인자로 넘기는 대신 람다
                     }
 		    
 또 확장 함수인 takeIf와 let을 사용할 때도 람다 표현식이 쓰인다.
+
+* ## Constraint Layout
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+		    xmlns:android="http://schemas.android.com/apk/res/android"
+		    xmlns:app="http://schemas.android.com/apk/res-auto"
+		    xmlns:tools="http://schemas.android.com/tools"
+		    android:id="@+id/rectangle"
+		    android:layout_width="match_parent"
+		    android:layout_height="101dp"
+		    android:layout_marginStart="16dp"
+		    android:layout_marginTop="10dp"
+		    android:layout_marginEnd="16dp"
+		    android:background="#ffffff"
+		    android:elevation="2dp"
+		    android:clipToPadding="false"
+		    app:layout_constraintHorizontal_chainStyle="spread">
+
+		    <TextView
+			android:id="@+id/textView2"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:fontFamily="@font/apple_sd_gothic_neo_regular"
+			android:lineSpacingExtra="3sp"
+			android:text="배정"
+			android:textColor="#333333"
+			android:textSize="14sp"
+			app:layout_constraintEnd_toStartOf="@+id/textView3"
+			app:layout_constraintHorizontal_bias="0.5"
+			app:layout_constraintStart_toEndOf="@+id/textView"
+			app:layout_constraintTop_toTopOf="@+id/textView" />
+
+		    <TextView
+			android:id="@+id/textView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="25dp"
+			android:fontFamily="@font/apple_sd_gothic_neo_regular"
+			android:lineSpacingExtra="3sp"
+			android:text="신청"
+			android:textColor="#333333"
+			android:textSize="14sp"
+			app:layout_constraintEnd_toStartOf="@+id/textView2"
+			app:layout_constraintHorizontal_bias="0.5"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+
+					.....
+
+		    <TextView
+			android:id="@+id/my_tv_check"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:fontFamily="@font/montserrat_semibold"
+			android:lineSpacingExtra="3sp"
+			android:textColor="#1ec695"
+			android:textSize="16sp"
+			app:layout_constraintBottom_toBottomOf="@+id/my_tv_ass"
+			app:layout_constraintEnd_toEndOf="@+id/textView3"
+			app:layout_constraintHorizontal_bias="0.5"
+			app:layout_constraintStart_toStartOf="@+id/textView3"
+			android:text="10" />
+
+		    <TextView
+			android:id="@+id/my_tv_fin"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:fontFamily="@font/montserrat_semibold"
+			android:lineSpacingExtra="3sp"
+			android:textColor="#1ec695"
+			android:textSize="16sp"
+			app:layout_constraintBottom_toBottomOf="@+id/my_tv_check"
+			app:layout_constraintEnd_toEndOf="@+id/textView4"
+			app:layout_constraintHorizontal_bias="0.5"
+			app:layout_constraintStart_toStartOf="@+id/textView4"
+			android:text="10" />
+		</androidx.constraintlayout.widget.ConstraintLayout>
+		
+Constraint Layout을 사용하면서 Chain과 Horizontal_bias 등 다양한 속성을 활용해보았다.
 
 # 프로그램 구조
 * ### ads
