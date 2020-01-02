@@ -9,6 +9,7 @@ import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -22,10 +23,13 @@ import org.techtown.crecker.law.activity.LawActivity
 import org.techtown.crecker.law.activity.QuestAcitivy
 import org.techtown.crecker.law.adapter.ExpertBannerAdpater
 import org.techtown.crecker.law.adapter.Expert_Betelang_Rv_Adp
-import org.techtown.crecker.law.data.ExpertBetelangData
-import org.techtown.crecker.main.MainActivity
+import org.techtown.crecker.law.api.ExpertServiceImpl
+import org.techtown.crecker.law.data.BetelangApiData
 import org.techtown.crecker.module.RcvItemDeco
 import org.techtown.crecker.module.debugLog
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class LawFragment : Fragment() {
@@ -95,11 +99,32 @@ class LawFragment : Fragment() {
         V.expert_betelang_rv.adapter = betelangAdapter
         V.expert_betelang_rv.layoutManager = LinearLayoutManager(mContext) as RecyclerView.LayoutManager?
         V.expert_betelang_rv.addItemDecoration(RcvItemDeco(mContext,false, 14))
-        betelangAdapter.addItem(ExpertBetelangData(betelang_profile = "", betelang_Name = "김필원", betelang_aff = "현 태양 로펌 변호사", betelang_Clear_Num = "5"))
-        betelangAdapter.addItem(ExpertBetelangData(betelang_profile = "", betelang_Name = "김필원", betelang_aff = "현 태양 로펌 변호사", betelang_Clear_Num = "5"))
-        betelangAdapter.addItem(ExpertBetelangData(betelang_profile = "", betelang_Name = "김필원", betelang_aff = "현 태양 로펌 변호사", betelang_Clear_Num = "5"))
+//        betelangAdapter.addItem(ExpertBetelangData(betelang_profile = "", betelang_Name = "김필원", betelang_aff = "현 태양 로펌 변호사", betelang_Clear_Num = "5"))
+//        betelangAdapter.addItem(ExpertBetelangData(betelang_profile = "", betelang_Name = "김필원", betelang_aff = "현 태양 로펌 변호사", betelang_Clear_Num = "5"))
+//        betelangAdapter.addItem(ExpertBetelangData(betelang_profile = "", betelang_Name = "김필원", betelang_aff = "현 태양 로펌 변호사", betelang_Clear_Num = "5"))
 
-        betelangAdapter.notifyDataSetChanged()
+        val call : Call<BetelangApiData> = ExpertServiceImpl.service.getBetelang()
+        call.enqueue(
+            object : Callback<BetelangApiData>{
+                override fun onFailure(call: Call<BetelangApiData>, t: Throwable) {
+                    Log.d("error","${t}")
+                    Log.d("error","${call}")
+                }
+
+                override fun onResponse(
+                    call: Call<BetelangApiData>,
+                    response: Response<BetelangApiData>
+                ) {
+                    response?.takeIf { it.isSuccessful }
+                        ?.body()
+                        ?.takeIf { it.success == true }
+                        ?.let {
+                            betelangAdapter.data = it.data
+                            betelangAdapter.notifyDataSetChanged()
+                        }
+                }
+            }
+        )
         "initBetelang".debugLog()
     }
 

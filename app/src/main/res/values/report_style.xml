@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="report_num">
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:fontWeight">500</item>
+        <item name="android:textColor">@color/green_blue</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineSpacingExtra">5sp</item>
+    </style>
+
+    <style name="report_title">
+        <item name="android:fontFamily">@font/apple_sd</item>
+        <item name="android:fontWeight">600</item>
+        <item name="android:textColor">@color/charcoal_grey</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineSpacingExtra">5sp</item>
+    </style>
+
+    <style name="report_etc">
+        <item name="android:fontFamily">@font/apple_sd</item>
+        <item name="android:fontWeight">200</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineSpacingExtra">5sp</item>
+    </style>
+</resources>

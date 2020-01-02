@@ -81,4 +81,10 @@ dependencies {
 
     // TimePickerDialog
     implementation 'com.github.michaldrabik:classicmaterialtimepicker:1.1.0'
+
+    //MPChart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    //EasySharedPreferences
+    implementation 'com.github.AmanpreetYatin:Easy-SharedPreferences:0.1.1'
 }

@@ -31,7 +31,7 @@ class SplashActivity : Activity() {
                 startActivity(Intent(application, MainActivity::class.java))
                 finish()
             }
-        },1000)
+        },2000)
     }
 
     override fun onBackPressed() {

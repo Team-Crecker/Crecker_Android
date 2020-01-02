@@ -13,7 +13,7 @@ class UsageVH(view : View) : RecyclerView.ViewHolder(view){
     private val tvMoney : TextView = view.findViewById(R.id.usage_money)
     private val tvDate : TextView = view.findViewById(R.id.usage_date)
 
-    fun bind(data : UsageRecord) {
+    fun bind(data : CashData.Data.History) {
         tvTitle.text = data.title
         tvIO.text = data.io
 

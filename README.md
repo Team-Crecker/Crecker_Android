@@ -17,6 +17,7 @@ Crecker_Android파트 git 장소입니다.
 - [BannerViewPager](https://github.com/zhpanvip/BannerViewPager) : 자동으로 스크롤되는 뷰페이저 구현을 위해 사용
 - [otto](https://github.com/square/otto) : 컴포넌트 간 통신을 위해 사용(Fragment에서 Activity의 onActivityForResult를 받기 위해)
 - [lottie](https://github.com/airbnb/lottie-android) : 움직이는 이미지로 스플래시 화면 구성을 위해 사용
+- [TedImagePicker](https://github.com/ParkSangGwon/TedImagePicker) : 프로필 이미지 업로드 시 이미지 선택을 위해 사용
 
 # 기능 구현 방법
 * ## lottie를 이용한 스플래시 화면
@@ -160,6 +161,34 @@ Crecker_Android파트 git 장소입니다.
 	
 	```
 	TabLayout에 들어가는 아이콘의 이미지는 drawable객체를 이용해, 체크됨에 따라 이미지를 변경시켜준다.
+
+* ## 키보드가 보여질 때 화면 스크롤 기능
+	- MainActivity.kt
+	
+	```
+	class MainActivity : AppCompatActivity() {
+
+    	private lateinit var keyboardVisibilityUtils: KeyboardVisibilityUtils
+
+    	override fun onCreate(savedInstanceState: Bundle?) {
+        	super.onCreate(savedInstanceState)
+        	setContentView(R.layout.activity_main)
+       		keyboardVisibilityUtils = KeyboardVisibilityUtils(window,
+                onShowKeyboard = { keyboardHeight ->
+                    sv_root.run {
+                        smoothScrollTo(scrollX, scrollY + keyboardHeight)
+                    }
+                })
+    	}
+
+    	override fun onDestroy() {
+        	keyboardVisibilityUtils.detachKeyboardListeners()
+        	super.onDestroy()
+    	}
+	```
+	sv_root -> 스크롤뷰 id 값
+	KeyboardVisibilityUtils클래스를 만들 때 인자로 window를 전달하고 onShowKeyboard를 통해 ScroolView를 키보드 높이만큼 스크롤  
+	onShowKeyboard : 키보드가 보여질 때 해당 코드 호출
 
 # 프로그램 구조
 * ### ads

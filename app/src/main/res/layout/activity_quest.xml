@@ -42,6 +42,75 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/question_cancle_img" />
 
+        <RadioGroup
+            android:id="@+id/ct_radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/question_category_tv"
+            android:orientation="horizontal">
+
+
+                <RadioButton
+                    android:id="@+id/ct_law_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_category"
+                    android:button="@null"
+                    android:fontFamily="@font/montserrat"
+                    android:lineSpacingExtra="3sp"
+                    android:paddingHorizontal="32dp"
+                    android:paddingVertical="9dp"
+                    android:text="Law"
+                    android:textColor="#000000"
+                    android:textFontWeight="500"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <RadioButton
+                    android:id="@+id/ct_start_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/btn_category"
+                    android:button="@null"
+                    android:fontFamily="@font/montserrat"
+                    android:lineSpacingExtra="3sp"
+                    android:paddingHorizontal="18dp"
+                    android:paddingVertical="9dp"
+                    android:text="Start_up"
+                    android:textColor="#000000"
+                    android:textFontWeight="500"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toEndOf="@+id/ct_law_tv"
+                    app:layout_constraintTop_toTopOf="@+id/ct_law_tv" />
+
+                <RadioButton
+                    android:id="@+id/ct_shooting_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/btn_category"
+                    android:button="@null"
+                    android:fontFamily="@font/montserrat"
+                    android:lineSpacingExtra="3sp"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="9dp"
+                    android:text="Shooting"
+                    android:textColor="#000000"
+                    android:textFontWeight="500"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toEndOf="@+id/ct_start_tv"
+                    app:layout_constraintTop_toTopOf="@+id/ct_start_tv" />
+
+        </RadioGroup>
+
         <TextView
             android:id="@+id/question_tv"
             android:layout_width="wrap_content"
@@ -60,59 +129,7 @@
             app:layout_constraintStart_toEndOf="@+id/question_cancle_img"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/ct_law_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:text="Law"
-            android:fontFamily="@font/montserrat"
-            android:textFontWeight="500"
-            android:textSize="13sp"
-            android:lineSpacingExtra="3sp"
-            android:textColor="#000000"
-            android:background="@drawable/btn_category"
-            android:paddingVertical="9dp"
-            android:paddingHorizontal="32dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/question_category_tv" />
 
-        <TextView
-            android:id="@+id/ct_start_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:background="@drawable/btn_category"
-            android:fontFamily="@font/montserrat"
-            android:lineSpacingExtra="3sp"
-            android:paddingHorizontal="18dp"
-            android:paddingVertical="9dp"
-            android:text="Start_up"
-            android:textColor="#000000"
-            android:textFontWeight="500"
-            android:textSize="13sp"
-            app:layout_constraintStart_toEndOf="@+id/ct_law_tv"
-            app:layout_constraintTop_toTopOf="@+id/ct_law_tv" />
-
-        <TextView
-            android:id="@+id/ct_shooting_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:background="@drawable/btn_category"
-            android:text="Shooting"
-            android:fontFamily="@font/montserrat"
-            android:lineSpacingExtra="3sp"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="9dp"
-            android:textColor="#000000"
-            android:textFontWeight="500"
-            android:textSize="13sp"
-            app:layout_constraintStart_toEndOf="@+id/ct_start_tv"
-            app:layout_constraintTop_toTopOf="@+id/ct_start_tv" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

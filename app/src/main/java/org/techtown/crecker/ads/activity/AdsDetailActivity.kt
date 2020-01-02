@@ -67,15 +67,15 @@ class AdsDetailActivity : AppCompatActivity() {
                             ad_campaign_tv_mission.text = it[0].campaignMission
                             ad_campaign_tv_additional.text =it[0].addInfo
 
-                            if(it[0].categoryCode == "0101"){
+                            if(it[0].categoryCode != "0101"){
                                 tv_sub.isGone = true
                                 ad_detail_tv_subscriber_cnt.isGone = true
-
+                            }
+                            else{
+                                ad_detail_tv_subscriber_cnt.text = it[0].subscribers
                                 if(response.body()?.data?.subscribers!! < it[0].subscribersNum)
                                     flag = true
                             }
-                            ad_detail_tv_subscriber_cnt.text = it[0].subscribers
-
 
                         } ?: run{
                         Toast.makeText(this@AdsDetailActivity, "서버로부터 정보를 받아올 수 없습니다..", Toast.LENGTH_SHORT).show()
