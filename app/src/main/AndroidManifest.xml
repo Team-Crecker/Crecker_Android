@@ -7,22 +7,23 @@
 
     <application
         android:name=".App"
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-
-        <activity android:name=".mypage.report.ReportActivity" android:exported="true"/>
+        <activity android:name=".mypage.advertise.CertificationActivity"></activity>
+        <activity
+            android:name=".mypage.report.ReportActivity"
+            android:exported="true" />
         <activity
             android:name=".main.MainActivity"
             android:exported="true" />
-        <activity android:name=".mypage.setting.SelectCtgActivity"></activity>
+        <activity android:name=".mypage.setting.SelectCtgActivity" />
         <activity android:name=".mypage.setting.SettingActivity" />
-
         <activity
             android:name=".law.activity.ScheduleActivity"
             android:exported="true" />
@@ -46,20 +47,21 @@
             android:exported="true" />
         <activity
             android:name=".main.SplashActivity"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:exported="true">
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".membership.register.SignUpActivity" android:exported="true"/>
-        <activity android:name="org.techtown.crecker.membership.login.LogInActivity" android:exported="true" >
-        </activity>
-
+        <activity
+            android:name=".membership.register.SignUpActivity"
+            android:exported="true" />
+        <activity
+            android:name=".membership.login.LogInActivity"
+            android:exported="true"></activity>
         <activity android:name=".ads.activity.ApplyActivity" />
         <activity android:name=".mypage.advertise.MyAdvertiseActivity" />
     </application>

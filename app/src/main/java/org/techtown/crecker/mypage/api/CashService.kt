@@ -13,7 +13,6 @@ interface CashService {
 
     //인출하기
     @Headers("token: $TOKEN")
-    @FormUrlEncoded
     @POST("cash/withdraw")
-    fun postAdPlan(@FieldMap payLoad: HashMap<String, Any>): Call<Response>
+    fun postWithdraw(): Call<Response>
 }

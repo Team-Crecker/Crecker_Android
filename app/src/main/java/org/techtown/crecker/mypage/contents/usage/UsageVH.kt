@@ -15,17 +15,17 @@ class UsageVH(view : View) : RecyclerView.ViewHolder(view){
 
     fun bind(data : CashData.Data.History) {
         tvTitle.text = data.title
-        tvIO.text = data.io
+        tvIO.text = data.isIn
 
-        if(data.io == "입금"){
-            tvMoney.text = "+${data.money}"
+        if(data.isIn == "적립"){
+            tvMoney.text = "+${data.price}"
             tvMoney.setTextColor(itemView.context.resources.getColor(R.color.plus))
         }
-        else if(data.io == "출금"){
-            tvMoney.text = "-${data.money}"
+        else if(data.isIn == "출금"){
+            tvMoney.text = "-${data.price}"
             tvMoney.setTextColor(itemView.context.resources.getColor(R.color.minus))
         }
 
-        tvDate.text = SimpleDateFormat("yyyy.MM.dd").format(data.date)
+        tvDate.text = data.date
     }
 }

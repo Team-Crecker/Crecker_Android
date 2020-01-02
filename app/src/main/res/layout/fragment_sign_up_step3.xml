@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="104dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RadioGroup
+                android:id="@+id/rg_register_step3_support"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="19dp"
+                android:paddingLeft="35dp"
+                android:paddingRight="35dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_register_step3_support">
+
+                <RadioButton
+                    android:id="@+id/rb_register_step3_support_edu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/checkbox_register_category_custom"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="교육" />
+
+                <RadioButton
+                    android:id="@+id/rb_register_step3_support_contest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/checkbox_register_category_custom"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="공모전" />
+
+                <RadioButton
+                    android:id="@+id/rb_register_step3_support_fund"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/checkbox_register_category_custom"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="지원금" />
+
+            </RadioGroup>
+
+            <RadioGroup
+                android:id="@+id/rg_register_step3_expert"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="19dp"
+                android:layout_marginBottom="40dp"
+                android:orientation="horizontal"
+                android:paddingLeft="35dp"
+                android:paddingRight="35dp"
+                app:layout_constraintBottom_toTopOf="@id/tv_register_step3_support"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_register_step3_expert">
+
+
+
+                <RadioButton
+                    android:id="@+id/rb_register_step3_expert_law"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/checkbox_register_category_custom"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="법률"
+                    app:layout_constraintHorizontal_chainStyle="packed" />
+
+                <RadioButton
+                    android:id="@+id/rb_register_step3_expert_found"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/checkbox_register_category_custom"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="창업" />
+
+                <RadioButton
+                    android:id="@+id/rb_register_step3_expert_shoot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/checkbox_register_category_custom"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="촬영" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/tv_register_step3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/apple_sd"
+                android:lineSpacingExtra="20sp"
+                android:text="흥미있는 카테고리를 말해주세요"
+                android:textColor="#333333"
+                android:textFontWeight="400"
+                android:textSize="17sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_register_step3" />
+
+            <ImageView
+                android:id="@+id/img_register_step3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@drawable/img_step3" />
+
+            <TextView
+                android:id="@+id/tv_register_step3_ads"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:fontFamily="@font/apple_sd"
+                android:lineSpacingExtra="19sp"
+                android:text="광고"
+                android:textColor="#333333"
+                android:textFontWeight="700"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_register_step3" />
+
+            <RadioGroup
+                android:id="@+id/rg_register_step3_ads"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="19dp"
+                android:layout_marginBottom="40dp"
+                android:paddingRight="35dp"
+                android:paddingLeft="35dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@id/tv_register_step3_expert"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_register_step3_ads">
+
+
+                <RadioButton
+                    android:id="@+id/rb_register_step3_ads_beauty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/checkbox_register_category_custom"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="뷰티" />
+
+                <RadioButton
+                    android:id="@+id/rb_register_step3_ads_restu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/checkbox_register_category_custom"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="맛집" />
+
+                <RadioButton
+                    android:id="@+id/rb_register_step3_ads_travel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/checkbox_register_category_custom"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="여행" />
+
+            </RadioGroup>
+
+
+            <TextView
+                android:id="@+id/tv_register_step3_expert"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:layout_marginBottom="19dp"
+                android:fontFamily="@font/apple_sd"
+                android:lineSpacingExtra="19sp"
+                android:text="전문가"
+                android:textColor="#333333"
+                android:textFontWeight="700"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@id/rg_register_step3_expert"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rg_register_step3_ads" />
+
+            <TextView
+                android:id="@+id/tv_register_step3_support"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:layout_marginBottom="19dp"
+                android:fontFamily="@font/apple_sd"
+                android:lineSpacingExtra="19sp"
+                android:text="지원활동"
+                android:textColor="#333333"
+                android:textFontWeight="700"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@id/rg_register_step3_support"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rg_register_step3_expert" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

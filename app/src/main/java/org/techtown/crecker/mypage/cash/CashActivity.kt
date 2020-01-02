@@ -4,6 +4,7 @@ import android.graphics.Typeface
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.activity_cash.*
@@ -37,8 +38,8 @@ class CashActivity : AppCompatActivity() {
                 initRV(response)
 
                 response.takeIf { it.isSuccessful }?.body()?.data?.let {
-                    tv_cash_have.setText(it.cash)
-                    tv_cash_available.setText(it.cashAllowed)
+                    tv_cash_have.text = it.cash.toString()
+                    tv_cash_available.text = it.cashAllowed.toString()
                 }
 
             }
@@ -65,6 +66,27 @@ class CashActivity : AppCompatActivity() {
         imageView4.setOnClickListener { showFilter() }
 
         btn_info.setOnClickListener { InfoDialog(this).show() }
+
+        btn_register_acc.setOnClickListener {
+            CashServiceImpl.service.postWithdraw().enqueue(object : Callback<org.techtown.crecker.mypage.api.Response>{
+                override fun onFailure(
+                    call: Call<org.techtown.crecker.mypage.api.Response>,
+                    t: Throwable
+                ) {
+                    "실패: $t".putLog("Fail")
+                }
+
+                override fun onResponse(
+                    call: Call<org.techtown.crecker.mypage.api.Response>,
+                    response: Response<org.techtown.crecker.mypage.api.Response>
+                ) {
+                    val msg = response.takeIf { it.isSuccessful }?.body()?.message
+                    Toast.makeText(this@CashActivity, msg, Toast.LENGTH_SHORT).show()
+                }
+
+            })
+        }
+
     }
 
     private fun showFilter() {
