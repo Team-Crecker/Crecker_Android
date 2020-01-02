@@ -18,7 +18,8 @@ Crecker_Android파트 git 장소입니다.
 - [otto](https://github.com/square/otto) : 컴포넌트 간 통신을 위해 사용(Fragment에서 Activity의 onActivityForResult를 받기 위해)
 - [lottie](https://github.com/airbnb/lottie-android) : 움직이는 이미지로 스플래시 화면 구성을 위해 사용
 - [TedImagePicker](https://github.com/ParkSangGwon/TedImagePicker) : 프로필 이미지 업로드 시 이미지 선택을 위해 사용
-
+- [Easy-SharedPreferences](https://github.com/AmanpreetYatin/Easy-SharedPreferences) : SharedPreferences에 쉽고 빠르게 접근하기 위해 채택
+		
 
 # 평가 기준 충족
 * ## Extension Function
@@ -42,22 +43,23 @@ Crecker_Android파트 git 장소입니다.
             }
         })
 	
-String 클래스를 확장하여 putLog(tag: String)을 String의 메서드로 추가하였다. 또 코틀린에서 제공하는 takeIf, let, run 등을 활용하여 if문과 null처리를 구현해보았다.
+String 클래스를 확장하여 putLog(tag: String)을 String의 메서드로 추가하였다. 또 코틀린에서 제공하는 takeIf, let, run 등을 활용하여 if문과 	null처리를 구현해보았다.
 
 * ## Lambda Expression
-	btn_goBack.setOnClickListener { finish() }
-        apply_btn_plansheet.setOnClickListener { PlanSheetDialog().show() }
-	
-View.OnClickListener를 구현하는 객체를 인자로 넘기는 대신 람다식을 이용하여 짧고 편하게 버튼 클릭 리스너를 달아주었다.   
 
-	response.takeIf { it.isSuccessful }
-                    ?.body()?.message.takeIf { it.equals("resMessage.INSERT_AD_SUCCESS") }
-                    .let {
-                        Toast.makeText(this@ApplyActivity, "신청 완료!", Toast.LENGTH_SHORT).show()
-                        this@ApplyActivity.finish()
-                    }
+		btn_goBack.setOnClickListener { finish() }
+        	apply_btn_plansheet.setOnClickListener { PlanSheetDialog().show() }
+	
+	View.OnClickListener를 구현하는 객체를 인자로 넘기는 대신 람다식을 이용하여 짧고 편하게 버튼 클릭 리스너를 달아주었다.   
+
+		response.takeIf { it.isSuccessful }
+			    ?.body()?.message.takeIf { it.equals("resMessage.INSERT_AD_SUCCESS") }
+			    .let {
+				Toast.makeText(this@ApplyActivity, "신청 완료!", Toast.LENGTH_SHORT).show()
+				this@ApplyActivity.finish()
+			    }
 		    
-또 확장 함수인 takeIf와 let을 사용할 때도 람다 표현식이 쓰인다.
+	또 확장 함수인 takeIf와 let을 사용할 때도 람다 표현식이 쓰인다.
 
 * ## Constraint Layout
 
