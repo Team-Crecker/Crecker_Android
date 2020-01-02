@@ -38,7 +38,7 @@ class NewsEduFragment : Fragment() {
         V.news_edu_rv.layoutManager = GridLayoutManager(V.context, 2)
         V.news_edu_rv.addItemDecoration(RcvItemDeco(V.context, true))
 
-        val call : Call<NewsApiData> = NewsServiceImpl.service.getSupportNews(2)
+        val call : Call<NewsApiData> = NewsServiceImpl.service.getSupportAllNews()
         call.enqueue(
             object : Callback<NewsApiData>{
                 override fun onFailure(call: Call<NewsApiData>, t: Throwable) {

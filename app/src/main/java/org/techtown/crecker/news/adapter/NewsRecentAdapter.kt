@@ -6,8 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import org.techtown.crecker.R
 import org.techtown.crecker.news.data.NewsApiData
-import org.techtown.crecker.news.data.NewsData
-import org.techtown.crecker.news.viewholder.NewsHoriVH
 import org.techtown.crecker.news.viewholder.NewsViewHolder
 
 class NewsRecentAdapter (private val context : Context) : RecyclerView.Adapter<NewsViewHolder>(){

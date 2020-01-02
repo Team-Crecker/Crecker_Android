@@ -11,8 +11,13 @@ import kotlinx.android.synthetic.main.fragment_news_daily.view.*
 
 import org.techtown.crecker.R
 import org.techtown.crecker.module.RcvItemDeco
+import org.techtown.crecker.module.debugLog
 import org.techtown.crecker.news.adapter.NewsDailyAdapter
-import org.techtown.crecker.news.data.NewsDailyData
+import org.techtown.crecker.news.api.NewsServiceImpl
+import org.techtown.crecker.news.data.NewsDailyApiData
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class NewsDailyFragment : Fragment() {
     private lateinit var adapter : NewsDailyAdapter
@@ -40,26 +45,27 @@ class NewsDailyFragment : Fragment() {
             it.addItemDecoration(RcvItemDeco(mView.context))
         }
 
-        adapter.data = listOf(
-            NewsDailyData(
-                thumbnail = "",
-                title = "데일리 뉴스 제목",
-                upload = 1000
-            ),
-            NewsDailyData(
-                thumbnail = "",
-                title = "데일리 뉴스 제목",
-                upload = 1000
-            ),
-            NewsDailyData(
-                thumbnail = "",
-                title = "데일리 뉴스 제목",
-                upload = 1000
-            )
+        val call : Call<NewsDailyApiData> = NewsServiceImpl.service.getDailyAllNews()
+        call.enqueue(
+            object : Callback<NewsDailyApiData>{
+                override fun onFailure(call: Call<NewsDailyApiData>, t: Throwable) {
+                    "${t}".debugLog("CallBackFailed in DailyNews")
+                }
+
+                override fun onResponse(
+                    call: Call<NewsDailyApiData>,
+                    response: Response<NewsDailyApiData>
+                ) {
+                    response.takeIf { it.isSuccessful }
+                        ?.body()
+                        ?.data
+                        ?.let {
+                            adapter.data = it
+                            adapter.notifyDataSetChanged()
+                        }
+                }
+            }
         )
-
-        adapter.notifyDataSetChanged()
-
     }
 
 

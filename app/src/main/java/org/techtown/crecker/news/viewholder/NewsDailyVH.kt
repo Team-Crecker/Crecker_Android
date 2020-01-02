@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import org.techtown.crecker.R
 import org.techtown.crecker.news.activity.NewsDetailActivity
-import org.techtown.crecker.news.data.NewsDailyData
+import org.techtown.crecker.news.data.NewsDailyApiData
 
 class NewsDailyVH (view : View) : RecyclerView.ViewHolder(view){
     private val glideManager : RequestManager = Glide.with(itemView)
@@ -18,12 +18,14 @@ class NewsDailyVH (view : View) : RecyclerView.ViewHolder(view){
     private val title : TextView = view.findViewById(R.id.daily_news_title_tv)
     private val upload : TextView = view.findViewById(R.id.daily_upload_tv)
 
-    fun onBind(data : NewsDailyData){
+    fun onBind(data : NewsDailyApiData.Data){
         title.text = data.title
-        upload.text = data.upload.toString()
+        upload.text = data.createAt
+        loading(data.thumbnail, thumbnail)
 
         itemView.setOnClickListener {
             val intent = Intent(itemView.context, NewsDetailActivity::class.java)
+            intent.putExtra("Idx",data.dailyIdx)
             itemView.context.startActivity(intent)
         }
     }

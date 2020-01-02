@@ -10,7 +10,6 @@ import com.bumptech.glide.RequestManager
 import org.techtown.crecker.R
 import org.techtown.crecker.news.activity.NewsMoreActivity
 import org.techtown.crecker.news.data.NewsApiData
-import org.techtown.crecker.news.data.NewsData
 
 
 class NewsViewHolder(view : View) : RecyclerView.ViewHolder(view){
