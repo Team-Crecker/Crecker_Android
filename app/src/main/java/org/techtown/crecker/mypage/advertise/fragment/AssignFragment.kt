@@ -1,5 +1,6 @@
 package org.techtown.crecker.mypage.advertise.fragment
 
+import android.app.ProgressDialog
 import android.graphics.Typeface
 import android.os.Build
 import android.os.Bundle
@@ -12,31 +13,47 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.filtering_my_ad_dialog.*
 import kotlinx.android.synthetic.main.fragment_my_ad_assign.view.*
 import org.techtown.crecker.R
-import org.techtown.crecker.ads.contents.AdData
 import org.techtown.crecker.module.NavBarSetting
 import org.techtown.crecker.module.RcvItemDeco
+import org.techtown.crecker.module.putLog
+import org.techtown.crecker.mypage.advertise.data.UserAdData
+import org.techtown.crecker.mypage.api.UserAdServiceImpl
 import org.techtown.crecker.mypage.contents.myAd.MyAdAdapter
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class AssignFragment : Fragment() {
     lateinit var adapter: MyAdAdapter
+    lateinit var loading: ProgressDialog
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.fragment_my_ad_assign, container, false)
 
+        loading = ProgressDialog(v.context)
+        loading.show()
+
         v.ad_apply_filter.setOnClickListener { showFilter(v) }
 
-        val dummy = AdData("", R.drawable.img_thum2, "모모스 커피", "Momos Coffee",10000, 7)
-        val dummy2 = AdData("", R.drawable.img_thum_1, "시카솔 클렌징 워터", "Sol Theraphy",10000, 24)
-        val dummy3 = AdData("", R.drawable.img_thum1, "데저트 크림", "Desert Cream",8000, 30)
+        UserAdServiceImpl.service.getUserAds(2).enqueue(object : Callback<UserAdData> {
+            override fun onFailure(call: Call<UserAdData>, t: Throwable) {
+                "UserAdService 실패".putLog()
+            }
 
-        val data = arrayListOf(dummy, dummy2, dummy3, dummy)
-        adapter = MyAdAdapter(v.context, data)
+            override fun onResponse(call: Call<UserAdData>, response: Response<UserAdData>) {
+                val data = response.takeIf { it.isSuccessful }?.body()?.data
+                adapter = MyAdAdapter(v.context, data as ArrayList<UserAdData.Data>, 2)
 
-        v.rv_ad_apply_list.apply {
-            this.adapter = this@AssignFragment.adapter
-            layoutManager = LinearLayoutManager(v.context, LinearLayoutManager.VERTICAL, false)
-            addItemDecoration(RcvItemDeco(v.context, false, 20))
-        }
+                v.rv_ad_apply_list.apply {
+                    this.adapter = this@AssignFragment.adapter
+                    layoutManager = LinearLayoutManager(v.context, LinearLayoutManager.VERTICAL, false)
+                    addItemDecoration(RcvItemDeco(v.context, false, 20))
+                }
+
+                loading.dismiss()
+            }
+        })
+
         return v
     }
 

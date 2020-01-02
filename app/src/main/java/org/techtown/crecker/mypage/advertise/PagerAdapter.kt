@@ -14,12 +14,12 @@ const val TAB_COUNT = 4
 class PagerAdapter (fm : FragmentManager, val context: Context)
     : FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
-    private val titles = arrayOf("배정", "신청", "검토", "완료")
+    private val titles = arrayOf("신청", "배정", "검토", "완료")
 
     override fun getItem(position: Int): Fragment{
         return when(position){
-            0 -> AssignFragment()
-            1 -> ApplyFragment()
+            0 -> ApplyFragment()
+            1 -> AssignFragment()
             2 -> CheckFragment()
             else -> FinFragment()
         }

@@ -8,14 +8,15 @@ import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import org.techtown.crecker.R
 import org.techtown.crecker.ads.contents.AdData
+import org.techtown.crecker.mypage.advertise.data.UserAdData
 
-class MyAdAdapter (private val context : Context, var data: ArrayList<AdData>) : RecyclerView.Adapter<MyAdsVH>(), Filterable{
+class MyAdAdapter (private val context : Context, var data: ArrayList<UserAdData.Data>, val flag: Int) : RecyclerView.Adapter<MyAdsVH>(), Filterable{
     val backup = data
-    lateinit var filtered: ArrayList<AdData>
+    lateinit var filtered: ArrayList<UserAdData.Data>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyAdsVH {
         val view = LayoutInflater.from(context).inflate(R.layout.my_ad_item_list, parent , false)
-        return MyAdsVH(view)
+        return MyAdsVH(view, flag)
     }
 
     override fun getItemCount(): Int = data.size
@@ -33,7 +34,7 @@ class MyAdAdapter (private val context : Context, var data: ArrayList<AdData>) :
         }
 
         override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
-            data = p1?.values as ArrayList<AdData>
+            data = p1?.values as ArrayList<UserAdData.Data>
             notifyDataSetChanged()
         }
 

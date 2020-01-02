@@ -1,4 +1,4 @@
-package org.techtown.crecker.mypage.advertise
+package org.techtown.crecker.mypage.advertise.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

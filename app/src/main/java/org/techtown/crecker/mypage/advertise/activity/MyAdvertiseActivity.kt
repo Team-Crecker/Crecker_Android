@@ -1,11 +1,11 @@
-package org.techtown.crecker.mypage.advertise
+package org.techtown.crecker.mypage.advertise.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_my_advertise.*
 import org.techtown.crecker.R
+import org.techtown.crecker.mypage.advertise.PagerAdapter
 
 class MyAdvertiseActivity : AppCompatActivity() {
 
@@ -17,7 +17,8 @@ class MyAdvertiseActivity : AppCompatActivity() {
 
         btn_goBack.setOnClickListener { finish() }
 
-        viewPagerAdapter = PagerAdapter(supportFragmentManager, this)
+        viewPagerAdapter =
+            PagerAdapter(supportFragmentManager, this)
 
         ad_pager.apply {
             adapter = viewPagerAdapter

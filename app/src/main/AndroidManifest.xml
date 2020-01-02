@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".mypage.advertise.CertificationActivity"></activity>
+        <activity android:name=".mypage.advertise.activity.CertificationActivity"></activity>
         <activity
             android:name=".mypage.report.ReportActivity"
             android:exported="true" />
@@ -63,7 +63,8 @@
             android:name=".membership.login.LogInActivity"
             android:exported="true"></activity>
         <activity android:name=".ads.activity.ApplyActivity" />
-        <activity android:name=".mypage.advertise.MyAdvertiseActivity" />
+        <activity android:name=".mypage.advertise.activity.MyAdvertiseActivity" />
+        <activity android:name=".mypage.advertise.activity.MyAdsDetailActivity" />
     </application>
 
 </manifest>

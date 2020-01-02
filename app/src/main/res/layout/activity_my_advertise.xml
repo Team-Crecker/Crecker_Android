@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    tools:context=".mypage.advertise.MyAdvertiseActivity">
+    tools:context=".mypage.advertise.activity.MyAdvertiseActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar5"
