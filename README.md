@@ -19,7 +19,28 @@ Crecker_Android파트 git 장소입니다.
 - [lottie](https://github.com/airbnb/lottie-android) : 움직이는 이미지로 스플래시 화면 구성을 위해 사용
 - [TedImagePicker](https://github.com/ParkSangGwon/TedImagePicker) : 프로필 이미지 업로드 시 이미지 선택을 위해 사용
 
-# 기능 구현 방법
+
+# Extension Function
+	fun String.putLog(tag: String = "debugResult"){
+		Log.d(tag, this)
+	}
+	
+	
+	override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        "Get!!".putLog()
+        if(requestCode == 7777){
+            if(resultCode == Activity.RESULT_OK){
+                if(EventBus.title != "Advertise"){
+                    changeFragment(AdsCtgFragment())
+                    EventBus.isCtgSelected = true
+                }
+            }
+        }
+    }
+    
+    
+
+# 핵심 기능 구현
 * ## lottie를 이용한 스플래시 화면
 	- SplashActivity
 	
