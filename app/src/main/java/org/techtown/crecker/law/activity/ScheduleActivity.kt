@@ -88,10 +88,12 @@ class ScheduleActivity : AppCompatActivity() {
 
 
 
-//        상담신청 완료버튼 (현재는 토스트 출력 후 종료)
+//        상담신청 완료버튼
         schedule_ok_btn.setOnClickListener {
-            val pass : Boolean = checkingFill()
-            if(pass == true) {
+
+            if(schedule_name_edit.text.toString() == null || schedule_date_edit.text.toString() == null
+                || schedule_time_edit.text.toString() == null
+                || schedule_content_edit.text.toString() == null) {
                 parsingSchedule()
                 Toast.makeText(this,"상담신청이 완료 되었습니다.",
                     Toast.LENGTH_LONG).show()
@@ -126,14 +128,6 @@ class ScheduleActivity : AppCompatActivity() {
         schedule_time_edit.setText(changeFormat.format(mCurrentTime.time))
     }
 
-    private fun checkingFill() : Boolean{
-        if (schedule_name_edit.text.toString() == null || schedule_date_edit.text.toString() == null
-            || schedule_time_edit.text.toString() == null
-            || schedule_content_edit.text.toString() == null)
-            return false
-        else
-            return true
-    }
 
     override fun onDestroy() {
         keyboardVisibilityUtils.detachKeyboardListeners()

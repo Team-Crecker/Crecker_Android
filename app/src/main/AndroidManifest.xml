@@ -7,16 +7,19 @@
 
     <application
         android:name=".App"
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".mypage.report.activity.IndiviualActivity"></activity>
-        <activity android:name=".mypage.report.ReportActivity" android:exported="true"/>
+        <activity android:name=".news.activity.NewsDetailActivity"></activity>
+        <activity android:name=".mypage.report.activity.IndiviualActivity" />
+        <activity
+            android:name=".mypage.report.ReportActivity"
+            android:exported="true" />
         <activity
             android:name=".main.MainActivity"
             android:exported="true" />
@@ -52,11 +55,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".membership.register.SignUpActivity" android:exported="true"/>
-        <activity android:name="org.techtown.crecker.membership.login.LogInActivity" android:exported="true" >
-        </activity>
-
+        <activity
+            android:name=".membership.register.SignUpActivity"
+            android:exported="true" />
+        <activity
+            android:name=".membership.login.LogInActivity"
+            android:exported="true"></activity>
     </application>
 
 </manifest>

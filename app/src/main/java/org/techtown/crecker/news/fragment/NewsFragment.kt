@@ -1,9 +1,7 @@
-package org.techtown.crecker.news
+package org.techtown.crecker.news.fragment
 
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,11 +9,10 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_news.view.*
 
 import org.techtown.crecker.R
-import org.techtown.crecker.news.adapter.NewsDailyAdapter
 import org.techtown.crecker.news.adapter.NewsViewPagerAdapter
-import org.techtown.crecker.news.feature.NewsAllFragment
-import org.techtown.crecker.news.feature.NewsDailyFragment
-import org.techtown.crecker.news.feature.NewsEduFragment
+import org.techtown.crecker.news.fragment.NewsAllFragment
+import org.techtown.crecker.news.fragment.NewsDailyFragment
+import org.techtown.crecker.news.fragment.NewsEduFragment
 
 class NewsFragment : Fragment() {
 

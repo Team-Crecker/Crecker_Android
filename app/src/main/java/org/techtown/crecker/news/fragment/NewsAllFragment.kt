@@ -1,10 +1,9 @@
-package org.techtown.crecker.news.feature
+package org.techtown.crecker.news.fragment
 
 
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -19,12 +18,10 @@ import com.zhpan.bannerview.utils.BannerUtils
 import kotlinx.android.synthetic.main.fragment_news_all.view.*
 
 import org.techtown.crecker.R
-import org.techtown.crecker.news.adapter.BannerAdapter
 import org.techtown.crecker.news.adapter.NewsAdapter
 import org.techtown.crecker.news.data.NewsData
 import org.techtown.crecker.module.RcvItemDeco
 import org.techtown.crecker.module.RcvItemHoriDeco
-import org.techtown.crecker.module.debugLog
 import org.techtown.crecker.news.data.NewsBannerData
 import org.techtown.crecker.news.viewholder.NewsBannerVH
 

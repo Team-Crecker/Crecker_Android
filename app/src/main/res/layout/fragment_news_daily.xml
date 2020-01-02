@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cmtp_white"
-    tools:context=".news.feature.NewsDailyFragment">
+    tools:context=".news.fragment.NewsDailyFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/daily_rv"

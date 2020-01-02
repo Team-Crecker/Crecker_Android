@@ -38,12 +38,22 @@ class ExpertLawListVH(view : View) : RecyclerView.ViewHolder(view){
             stateTitle.text = "답변완료"
             loading(R.drawable.img_tag_green_expert,stateImage)
 
-            //클릭리스너 이벤트 구현
-            itemView.setOnClickListener {
-                val intent = Intent(itemView.context, AnswerActivity::class.java)
-                intent.putExtra("Idx",data.expertConsultIdx)
-                itemView.context.startActivity(intent)
+            if(data.isSecret == 1 ){
+                itemView.setOnClickListener {
+                    Toast.makeText(itemView.context, "비밀 글 입니다.", Toast.LENGTH_LONG)
+                        .show()
+                }
+
             }
+            else{
+                //클릭리스너 이벤트 구현
+                itemView.setOnClickListener {
+                    val intent = Intent(itemView.context, AnswerActivity::class.java)
+                    intent.putExtra("Idx",data.expertConsultIdx)
+                    itemView.context.startActivity(intent)
+                }
+            }
+
         }
         else{
             loading(R.drawable.img_tag_gray_expert,stateImage)

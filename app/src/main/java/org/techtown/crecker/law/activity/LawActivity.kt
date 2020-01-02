@@ -96,8 +96,8 @@ class LawActivity : AppCompatActivity() {
                             lawListAdp.notifyDataSetChanged()
 
                         }
-                    Toast.makeText(this@LawActivity, "${response.body()?.statusCode}",
-                        Toast.LENGTH_LONG).show()
+//                    Toast.makeText(this@LawActivity, "${response.body()?.statusCode}",
+//                        Toast.LENGTH_LONG).show()
                 }
             }
         )

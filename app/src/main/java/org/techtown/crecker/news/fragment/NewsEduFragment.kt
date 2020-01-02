@@ -1,4 +1,4 @@
-package org.techtown.crecker.news.feature
+package org.techtown.crecker.news.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

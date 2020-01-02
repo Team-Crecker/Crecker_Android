@@ -1,5 +1,6 @@
 package org.techtown.crecker.news.viewholder
 
+import android.content.Intent
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import org.techtown.crecker.R
+import org.techtown.crecker.news.activity.NewsDetailActivity
 import org.techtown.crecker.news.data.NewsDailyData
 
 class NewsDailyVH (view : View) : RecyclerView.ViewHolder(view){
@@ -19,6 +21,11 @@ class NewsDailyVH (view : View) : RecyclerView.ViewHolder(view){
     fun onBind(data : NewsDailyData){
         title.text = data.title
         upload.text = data.upload.toString()
+
+        itemView.setOnClickListener {
+            val intent = Intent(itemView.context, NewsDetailActivity::class.java)
+            itemView.context.startActivity(intent)
+        }
     }
 
     private fun loading(url : String, view : ImageView){
