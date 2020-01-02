@@ -9,7 +9,7 @@ import org.techtown.crecker.law.data.QAdata
 import org.techtown.crecker.law.viewholder.ExpertLawListVH
 
 class ExpertLawRvAdp (private  val context : Context) : RecyclerView.Adapter<ExpertLawListVH>(){
-    var data = listOf<QAdata.Data>()
+    var data = mutableListOf<QAdata.Data>()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExpertLawListVH {

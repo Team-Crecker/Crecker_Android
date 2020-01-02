@@ -1,6 +1,5 @@
 package org.techtown.crecker.law.activity
 
-import android.app.ProgressDialog
 import android.content.Intent
 import android.graphics.Typeface
 import android.os.Build
@@ -25,14 +24,18 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+
 class LawActivity : AppCompatActivity() {
     private lateinit var lawListAdp : ExpertLawRvAdp
-    private lateinit var pd : ProgressDialog
+    private lateinit var answerList: List<QAdata.Data>
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_law)
+
+        initBanner() // 배너 생성 및 오른쪽에만 이미지 살짝 보이게 하기
+        initListRcv() // 하단 리사이클러 뷰 생성
 
         law_back_img.setOnClickListener{
             finish()
@@ -47,13 +50,11 @@ class LawActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        initBanner() // 배너 생성 및 오른쪽에만 이미지 살짝 보이게 하기
-        initListRcv() // 하단 리사이클러 뷰 생성
-
     }
 
     private fun initBanner(){
         val bannerAdp = ExpertBannerAdpater(this)
+        bannerAdp.img_resource = listOf(R.drawable.img_law_banner, R.drawable.img_law_banner, R.drawable.img_law_banner)
         law_banner_vp.adapter = bannerAdp
 
         var dpValue = 30
@@ -68,13 +69,16 @@ class LawActivity : AppCompatActivity() {
     }
 
     private fun initListRcv(){
-        var tooken = EasySharedPreference.getString("token", "")
+        var tooken = EasySharedPreference.getString("token", "") // 영속성 데이터
         lawListAdp = ExpertLawRvAdp(this)
         law_qna_rcv.adapter = lawListAdp
         law_qna_rcv.layoutManager = LinearLayoutManager(this)
         law_qna_rcv.addItemDecoration(RcvItemDeco(this,false,14))
+        startCommu()
+    }
 
-        val call : Call<QAdata> = ExpertServiceImpl.service.getLawAnswer(tooken)
+    private fun startCommu(){
+        val call : Call<QAdata> = ExpertServiceImpl.service.getLawAnswer()
         call.enqueue(
             object : Callback<QAdata>{
                 override fun onFailure(call: Call<QAdata>, t: Throwable) {
@@ -86,9 +90,14 @@ class LawActivity : AppCompatActivity() {
                         ?.body()
                         ?.data
                         ?.let {
-                            lawListAdp.data = it
+                            lawListAdp.data = it.sortedBy { it.answerUpdateAt }.reversed()
+                                    as MutableList<QAdata.Data>
+                            answerList = it
                             lawListAdp.notifyDataSetChanged()
+
                         }
+                    Toast.makeText(this@LawActivity, "${response.body()?.statusCode}",
+                        Toast.LENGTH_LONG).show()
                 }
             }
         )
@@ -104,16 +113,31 @@ class LawActivity : AppCompatActivity() {
 
         bottomSheetDialog.bottom_answer_tv.setOnClickListener {
             bottom_category_tv.text = "답변순"
+            lawListAdp.data.clear()
+            law_qna_rcv.adapter = lawListAdp
+            lawListAdp.data = answerList.sortedBy { it.answerUpdateAt }.reversed()
+                    as MutableList<QAdata.Data>
+            lawListAdp.notifyDataSetChanged()
             bottomSheetDialog.dismiss()
         }
 
         bottomSheetDialog.bottom_regi_tv.setOnClickListener {
             bottom_category_tv.text = "등록순"
+            lawListAdp.data.clear()
+            law_qna_rcv.adapter = lawListAdp
+            lawListAdp.data = answerList.sortedBy { it.createAt }.reversed()
+                    as MutableList<QAdata.Data>
+            lawListAdp.notifyDataSetChanged()
             bottomSheetDialog.dismiss()
         }
 
         bottomSheetDialog.bottom_inquery_tv.setOnClickListener {
             bottom_category_tv.text = "조회순"
+            lawListAdp.data.clear()
+            law_qna_rcv.adapter = lawListAdp
+            lawListAdp.data = answerList.sortedBy { it.views }.reversed()
+                    as MutableList<QAdata.Data>
+            lawListAdp.notifyDataSetChanged()
             bottomSheetDialog.dismiss()
         }
 

@@ -16,10 +16,10 @@ interface ExpertService{
     ) : Call<BetelangApiData>
 
     //Law탭에서 보이는 상담내역 리스트
-    @Headers("token: {header_token}")
+    @Headers("token: $sampleToken")
     @GET("expert/qa/law")
     fun getLawAnswer(
-        @Path("header_token") header_token : String
+//        @Path("header_token") header_token : String
     ) : Call<QAdata>
 
     //상담내역 리스트를 클릭 시 세부사항 내역

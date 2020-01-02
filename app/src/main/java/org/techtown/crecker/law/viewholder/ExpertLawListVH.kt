@@ -24,13 +24,15 @@ class ExpertLawListVH(view : View) : RecyclerView.ViewHolder(view){
 
     fun onBind(data : QAdata.Data, positon : Int){
         if (data.isSecret == 1){
+            content.text = data.Qcontent
             content.setTextColor(Color.parseColor("#00ffffff"))
         }
         else{
             lockImage.visibility = View.GONE
+            content.text = data.Qcontent
         }
+
         title.text = data.Qtitle
-        content.text = data.Qcontent
 
         if (data.isComplete == 1) {
             stateTitle.text = "답변완료"
