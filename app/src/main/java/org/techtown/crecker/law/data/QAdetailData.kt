@@ -20,6 +20,8 @@ data class QAdetailData(
         val isSecret: Int,
         val name: String,
         val photo: String,
-        val views: Int
+        val views: Int,
+        val email : String,
+        val isOkConsult : Boolean
     )
 }

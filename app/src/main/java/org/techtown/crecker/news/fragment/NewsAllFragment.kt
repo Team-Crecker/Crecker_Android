@@ -1,6 +1,7 @@
 package org.techtown.crecker.news.fragment
 
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,6 +11,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zhpan.bannerview.BannerViewPager
+import com.zhpan.bannerview.adapter.OnPageChangeListenerAdapter
 import com.zhpan.bannerview.constants.IndicatorGravity
 import com.zhpan.bannerview.constants.IndicatorSlideMode
 import com.zhpan.bannerview.constants.IndicatorStyle
@@ -21,10 +23,11 @@ import org.techtown.crecker.news.adapter.NewsRecentAdapter
 import org.techtown.crecker.module.RcvItemDeco
 import org.techtown.crecker.module.RcvItemHoriDeco
 import org.techtown.crecker.module.debugLog
+import org.techtown.crecker.news.activity.NewsDetailActivity
 import org.techtown.crecker.news.adapter.NewsPopularAdapter
 import org.techtown.crecker.news.api.NewsServiceImpl
 import org.techtown.crecker.news.data.NewsApiData
-import org.techtown.crecker.news.data.NewsBannerData
+import org.techtown.crecker.news.data.NewsBannerApiData
 import org.techtown.crecker.news.viewholder.NewsBannerVH
 import retrofit2.Call
 import retrofit2.Callback
@@ -36,8 +39,8 @@ class NewsAllFragment : Fragment() {
     private lateinit var mView : View
 //    private lateinit var mContext : Context
 
-    private var mDrawableList : MutableList<NewsBannerData> = ArrayList()
-    private var mViewPager : BannerViewPager<NewsBannerData, NewsBannerVH>? = null
+    private var mDrawableList : List<NewsBannerApiData.Data> = listOf()
+    private var mViewPager : BannerViewPager<NewsBannerApiData.Data, NewsBannerVH>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,7 +50,6 @@ class NewsAllFragment : Fragment() {
         mView = V
 
         initBannerData()
-        initView(V)
         initPopularRcv()
         initRecentRcv()
         return V
@@ -118,11 +120,33 @@ class NewsAllFragment : Fragment() {
 
 
     private fun initBannerData(){
-        val imgs = arrayOf(R.drawable.img_main_banner,R.drawable.img_main_banner,R.drawable.img_main_banner,R.drawable.img_main_banner)
+//        val imgs = arrayOf(R.drawable.img_main_banner,R.drawable.img_main_banner,R.drawable.img_main_banner,R.drawable.img_main_banner)
+//
+//        for (i in imgs){
+//            mDrawableList.add(NewsBannerData(img_url =  i))
+//        }
 
-        for (i in imgs){
-            mDrawableList.add(NewsBannerData(img_url =  i))
-        }
+        val call : Call<NewsBannerApiData> = NewsServiceImpl.service.getBannerNews()
+        call.enqueue(
+            object : Callback<NewsBannerApiData> {
+                override fun onFailure(call: Call<NewsBannerApiData>, t: Throwable) {
+                    "$t".debugLog("CallBackFailed in NewsBanner")
+                }
+
+                override fun onResponse(
+                    call: Call<NewsBannerApiData>,
+                    response: Response<NewsBannerApiData>
+                ) {
+                    response.takeIf { it.isSuccessful }
+                        ?.body()
+                        ?.data
+                        ?.let {
+                            mDrawableList = it
+                            initView(mView)
+                        }
+                }
+            }
+        )
     }
 
     private fun initView(V : View){
@@ -145,9 +169,8 @@ class NewsAllFragment : Fragment() {
             .setIndicatorColor(
                 Color.parseColor("#c9cdd2"),
                 Color.parseColor("#000000")
-            ).create(mDrawableList)
+            )
+            .create(mDrawableList)
     }
-
-
 
 }

@@ -1,13 +1,18 @@
 package org.techtown.crecker.law.activity
 
 import android.content.Intent
+import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import kotlinx.android.synthetic.main.activity_answer.*
+import kotlinx.android.synthetic.main.activity_news_detail.*
+import kotlinx.android.synthetic.main.law_counseling_list_item.*
 import org.techtown.crecker.R
 import org.techtown.crecker.law.api.ExpertServiceImpl
 import org.techtown.crecker.law.data.QAdetailData
@@ -21,6 +26,8 @@ import java.util.*
 class AnswerActivity : AppCompatActivity() {
     private var Idx : Int = 0
     private lateinit var glideManager : RequestManager
+    private var isComplete : Int = 1
+    private var isUser : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,17 +35,22 @@ class AnswerActivity : AppCompatActivity() {
         glideManager  = Glide.with(this)
         val intent = intent
         Idx = intent.getIntExtra("Idx",1)
-        "Idx".debugLog("Idx")
-
-        startCommu()
+        isComplete = intent.getIntExtra("isComplete",0)
 
         answer_back_img.setOnClickListener{
             finish()
         }
+
+        if(isComplete == 0){
+            counseling_reserv_btn.isVisible = false
+            answer_state_img.setImageResource(R.drawable.img_tag_gray_expert)
+        }
+
+        startCommu()
+
         counseling_reserv_btn.setOnClickListener {
             val intent = Intent(this, ScheduleActivity::class.java)
             intent.putExtra("Idx",Idx)
-
             startActivity(intent)
         }
     }

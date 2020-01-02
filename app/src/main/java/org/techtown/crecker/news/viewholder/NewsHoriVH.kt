@@ -28,6 +28,7 @@ class NewsHoriVH(view : View) : RecyclerView.ViewHolder(view){
 
         itemView.setOnClickListener {
             val intent = Intent(itemView.context, NewsMoreActivity::class.java)
+            intent.putExtra("Idx",data.newsIdx)
             itemView.context.startActivity(intent)
         }
     }
