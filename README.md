@@ -25,20 +25,38 @@ Crecker_Android파트 git 장소입니다.
 		Log.d(tag, this)
 	}
 	
-	
-	override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        "Get!!".putLog()
-        if(requestCode == 7777){
-            if(resultCode == Activity.RESULT_OK){
-                if(EventBus.title != "Advertise"){
-                    changeFragment(AdsCtgFragment())
-                    EventBus.isCtgSelected = true
+	AdsServiceImpl.service.getLatestAds().enqueue(object : Callback<Ads>{
+            override fun onFailure(call: Call<Ads>, t: Throwable) {
+                "실패: $t".putLog("Fail")
+            }
+
+            override fun onResponse(call: Call<Ads>, response: Response<Ads>) {
+                response.takeIf { it.isSuccessful }?.body()?.data?.
+                    let {
+                        recentAdapter.data = it
+                        recentAdapter.notifyDataSetChanged()
+                    } ?: run{
+                    Toast.makeText(mContext, "서버로부터 정보를 받아올 수 없습니다..", Toast.LENGTH_SHORT).show()
                 }
             }
-        }
-    }
-    
-    
+        })
+	
+String 클래스를 확장하여 putLog(tag: String)을 String의 메서드로 추가하였다. 또 코틀린에서 제공하는 takeIf, let, run 등을 활용하여 if문과 null처리를 구현해보았다.
+
+# Lambda Expression
+	btn_goBack.setOnClickListener { finish() }
+        apply_btn_plansheet.setOnClickListener { PlanSheetDialog().show() }
+	
+View.OnClickListener를 구현하는 객체를 인자로 넘기는 대신 람다식을 이용하여 짧고 편하게 버튼 클릭 리스너를 달아주었다.   
+
+	response.takeIf { it.isSuccessful }
+                    ?.body()?.message.takeIf { it.equals("resMessage.INSERT_AD_SUCCESS") }
+                    .let {
+                        Toast.makeText(this@ApplyActivity, "신청 완료!", Toast.LENGTH_SHORT).show()
+                        this@ApplyActivity.finish()
+                    }
+		    
+또 확장 함수인 takeIf와 let을 사용할 때도 람다 표현식이 쓰인다.
 
 # 핵심 기능 구현
 * ## lottie를 이용한 스플래시 화면
