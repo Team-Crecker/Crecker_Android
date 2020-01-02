@@ -4,7 +4,6 @@ package org.techtown.crecker.mypage.report.fragment
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
-import android.renderscript.Sampler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -21,12 +20,14 @@ import kotlinx.android.synthetic.main.fragment_total.view.*
 import org.techtown.crecker.R
 import org.techtown.crecker.module.debugLog
 import com.github.mikephil.charting.formatter.ValueFormatter
-import kotlinx.android.synthetic.main.fragment_total.*
 import org.techtown.crecker.module.RcvItemDeco
 import org.techtown.crecker.module.formatMoney
 import org.techtown.crecker.mypage.report.adapter.RatingRvAdp
-import org.techtown.crecker.mypage.report.data.RatingData
-import java.text.DecimalFormat
+import org.techtown.crecker.mypage.report.api.ReportServiceImpl
+import org.techtown.crecker.mypage.report.data.TotalData
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class TotalFragment : Fragment() {
 
@@ -40,31 +41,56 @@ class TotalFragment : Fragment() {
     ): View? {
         var v = inflater.inflate(R.layout.fragment_total, container, false)
         mView = v
-        formattingNum()
-        initGraphData()
-        mountingRv(v.context)
+        startCommu()
         return v
     }
 
+    private fun startCommu(){
+        val call : Call<TotalData> = ReportServiceImpl.service.getTotalReport()
+        call.enqueue(
+            object : Callback<TotalData>{
+                override fun onFailure(call: Call<TotalData>, t: Throwable) {
+                    "${t}".debugLog("CallBackFailed")
+                }
+
+                override fun onResponse(call: Call<TotalData>, response: Response<TotalData>) {
+                    response?.takeIf { it.isSuccessful }
+                        ?.body()
+                        ?.takeIf { it.success == true }
+                        ?.data
+                        ?.let{
+                            formattingNum(it.totalViews, it.totalLikes, it.totalCosts
+                                ,it.er)
+
+                            initGraphData(it.totalViews1, it.totalViews2, it.totalViews3,
+                                it.totalViews4, it.totalViews5)
+
+                            mountingRv(mView.context, it.top)
+                        }
+                }
+            }
+        )
+    }
 
     companion object {
 
         @JvmStatic
         fun newInstance() = TotalFragment()
     }
-    private fun formattingNum(){
-         mView.total_viewcount_tv.text = 100000.formatMoney()
-         mView.total_like_tv.text = 200000.formatMoney()
-         mView.total_money_tv.text = 130000.formatMoney()
+    private fun formattingNum(viewCount : Int, like : Int, cost: Int, er: Int){
+         mView.total_viewcount_tv.text = viewCount.formatMoney()
+         mView.total_like_tv.text = like.formatMoney()
+         mView.total_money_tv.text = cost.formatMoney()
+         mView.total_avr_tv.text = er.toString()
 
     }
 
-    private fun initGraphData() {
-        entries.add(Entry(0f,5f))
-        entries.add(Entry(1f,2f))
-        entries.add(Entry(2f,4f))
-        entries.add(Entry(3f,3f))
-        entries.add(Entry(4f,7f))
+    private fun initGraphData(y1 : Int, y2 : Int, y3 : Int, y4 : Int, y5 : Int) {
+        entries.add(Entry(0f,y1.toFloat()))
+        entries.add(Entry(1f,y2.toFloat()))
+        entries.add(Entry(2f,y3.toFloat()))
+        entries.add(Entry(3f,y4.toFloat()))
+        entries.add(Entry(4f,y5.toFloat()))
         settingDataSet()
     }
 
@@ -131,30 +157,14 @@ class TotalFragment : Fragment() {
 //        mView.lineChart.invalidate()
     }
 
-    private fun mountingRv(context : Context){
+    private fun mountingRv(context : Context, data : List<TotalData.Data.Top>){
         ratingAdp = RatingRvAdp(context)
         mView.report_rating_rv.let {
             it.adapter = ratingAdp
             it.layoutManager = LinearLayoutManager(context)
             it.addItemDecoration(RcvItemDeco(context))
         }
-        ratingAdp.data = arrayListOf(
-            RatingData(
-                rate = 1,
-                title = "뷰티",
-                viewCount = 186743
-            ),
-            RatingData(
-                rate = 2,
-                title = "맛집",
-                viewCount = 109849
-            ),
-            RatingData(
-                rate = 3,
-                title = "여행",
-                viewCount = 98315
-            )
-        )
+        ratingAdp.data = data
         ratingAdp.notifyDataSetChanged()
     }
 }

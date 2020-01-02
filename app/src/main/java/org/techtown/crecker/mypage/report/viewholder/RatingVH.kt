@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import org.techtown.crecker.R
 import org.techtown.crecker.mypage.report.data.RatingData
+import org.techtown.crecker.mypage.report.data.TotalData
 import java.text.DecimalFormat
 
 class RatingVH (view : View) : RecyclerView.ViewHolder(view){
@@ -19,10 +20,10 @@ class RatingVH (view : View) : RecyclerView.ViewHolder(view){
     val rating_title : TextView = view.findViewById(R.id.rating_category_title_tv)
     val viewCount : TextView = view.findViewById(R.id.rating_view)
 
-    public fun onBind (data : RatingData){
-        rate.text = data.rate.toString()
-        rating_title.text = data.title
-        viewCount.text = formatter.format(data.viewCount)
+    public fun onBind (data : TotalData.Data.Top, position : Int){
+        rate.text = position.toString()
+        rating_title.text = data.name
+        viewCount.text = formatter.format(data.views)
     }
 
     private fun loading(url :String, view: ImageView){
