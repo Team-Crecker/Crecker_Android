@@ -1,12 +1,8 @@
 package org.techtown.crecker.news.api
 
-import org.techtown.crecker.news.data.NewsApiData
-import org.techtown.crecker.news.data.NewsBannerApiData
-import org.techtown.crecker.news.data.NewsDailyApiData
+import org.techtown.crecker.news.data.*
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Headers
-import retrofit2.http.Path
+import retrofit2.http.*
 
 const val sampleToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjU5LCJ0eXBlQWQiOiIwMTAyIiwidHlwZUV4cGVydCI6IjAyMDEiLCJ0eXBlTmV3cyI6IjAzMDEiLCJpYXQiOjE1Nzc4OTI3OTMsImV4cCI6MTU3OTEwMjM5MywiaXNzIjoiaWcifQ.4lygL-0-oMqSXDQj5FSq25WPPuFNQ8ZdsjfqZy2w-mM"
 interface NewsService {
@@ -44,6 +40,21 @@ interface NewsService {
     @Headers("token: $sampleToken")
     @GET("news/card")
     fun getBannerNews() : Call<NewsBannerApiData>
+
+//    스크랩 등록
+    @Headers("token: $sampleToken")
+    @POST("news/scrap")
+    fun postScrap(
+    @Body
+    newsIdx : NewsIdx
+    ) : Call<ScrapResultData>
+
+    //    스크랩 삭제
+    @Headers("token: $sampleToken")
+    @HTTP(method = "DELETE", path = "news/scrap", hasBody = true)
+    fun deleteScrap(
+        @Body newIdx : NewsIdx
+    ) : Call<ScrapResultData>
 
 
 }

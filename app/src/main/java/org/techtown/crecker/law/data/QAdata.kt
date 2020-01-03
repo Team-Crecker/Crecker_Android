@@ -9,11 +9,14 @@ data class QAdata(
     data class Data(
         val Qcontent: String,
         val Qtitle: String,
-        val answerUpdateAt: Int?,
+        val answerUpdateAt: Int,
+        val categoryCode: String,
         val createAt: Int,
         val expertConsultIdx: Int,
         val isComplete: Int,
+        val isUser: Boolean,
         val isSecret: Int,
+        val userIdx: Int,
         val views: Int
     )
 }
