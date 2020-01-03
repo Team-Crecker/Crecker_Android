@@ -13,7 +13,6 @@
         app:layout_constraintBottom_toTopOf="@+id/btn_register_next"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
         tools:layout_editor_absoluteX="16dp">
-
     </FrameLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -23,12 +23,16 @@ import android.text.style.StyleSpan
 import android.util.Log
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.fragment_home_content.*
+import kotlinx.android.synthetic.main.fragment_home_content.view.img_home_law01
 import org.techtown.crecker.R
 import org.techtown.crecker.home.api.HomeFragServiceImpl
 import org.techtown.crecker.home.data.*
 import org.techtown.crecker.membership.api.SignUpServiceImpl
 import org.techtown.crecker.membership.data.SignUpResultData
 import org.techtown.crecker.membership.login.LogInActivity
+import org.techtown.crecker.module.RcvItemHoriDeco
+import org.techtown.crecker.news.activity.NewsMoreActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -49,7 +53,7 @@ class HomeFragment : Fragment() {
         val V = inflater.inflate(R.layout.fragment_home, container, false)
         mContext = V.context
 
-        val content = V.tv_home_user_recom.text.toString()
+      /*  val content = V.tv_home_user_recom.text.toString()
         val spannableString = SpannableString(content)
 
         val word = "소식"
@@ -58,7 +62,7 @@ class HomeFragment : Fragment() {
 
         spannableString.setSpan( StyleSpan(Typeface.BOLD), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
 
-        V.tv_home_user_recom.setText(spannableString)
+        V.tv_home_user_recom.setText(spannableString) */
 
         initHomeAdsList(V)
         initHomeSupportList(V)
@@ -68,6 +72,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun initBannerImg(view: View) {
+        var bannerIdx : Int = 0
         HomeFragServiceImpl.bannerService.getBannerImgData().enqueue(object :
             Callback<HomeBannerImgData> {
             override fun onFailure(call: Call<HomeBannerImgData>, t: Throwable) {
@@ -88,6 +93,8 @@ class HomeFragment : Fragment() {
                                 Glide.with(view)
                                     .load(response.body()!!.data)
                                     .into(view.img_home_user_recom)
+
+                                bannerIdx = response.body()!!.homeBannerIdx
                             }
                             else
                                 Toast.makeText(mContext, "데이터를 가져오는데 실패했습니다.", Toast.LENGTH_SHORT).show()
@@ -99,6 +106,23 @@ class HomeFragment : Fragment() {
                 }
             }
         })
+
+        view.img_home_user_recom.setOnClickListener {
+            when (bannerIdx) {
+                0 -> {
+                    it.context.startActivity(
+                        Intent(it.context, NewsMoreActivity::class.java))
+                }
+                1-> {
+                    it.context.startActivity(
+                        Intent(it.context, NewsMoreActivity::class.java))
+                }
+                2 ->{
+                    it.context.startActivity(
+                        Intent(it.context, NewsMoreActivity::class.java))
+                }
+            }
+        }
 
     }
 
@@ -140,6 +164,7 @@ class HomeFragment : Fragment() {
         homeAdsAdapter = HomeAdsListAdapter(mContext)
         view.rv_list_home_ads.adapter = homeAdsAdapter
         view.rv_list_home_ads.layoutManager = LinearLayoutManager(mContext, RecyclerView.HORIZONTAL , false)
+        view.rv_list_home_ads.addItemDecoration(RcvItemHoriDeco(mContext,false, 8))
         homeAdsAdapter.notifyDataSetChanged()
 
     }

@@ -22,7 +22,7 @@ data class HomeSupportListData(
         val host : String,
         @SerializedName("dday")
         val dday : Int,
-        @SerializedName("adIdx")
-        val adIdx: Int
+        @SerializedName("newsIdx")
+        val newsIdx: Int
     )
 }

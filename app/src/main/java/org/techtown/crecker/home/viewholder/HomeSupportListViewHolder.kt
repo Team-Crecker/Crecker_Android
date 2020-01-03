@@ -1,5 +1,6 @@
 package org.techtown.crecker.home.viewholder
 
+import android.content.Intent
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -8,8 +9,10 @@ import com.bumptech.glide.Glide
 import com.google.gson.JsonParser.parseString
 import kotlinx.android.synthetic.main.home_support_item.view.*
 import org.techtown.crecker.R
+import org.techtown.crecker.ads.activity.AdsDetailActivity
 import org.techtown.crecker.home.data.HomeSupportItem
 import org.techtown.crecker.home.data.HomeSupportListData
+import org.techtown.crecker.news.activity.NewsMoreActivity
 
 class HomeSupportListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val img :ImageView = view.findViewById(R.id.img_list_item_home_support)
@@ -24,5 +27,13 @@ class HomeSupportListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         company.text = data.host
         title.text = data.title
         date.text =  "D" + data.dday
+
+        itemView.setOnClickListener{
+            it.context.startActivity(
+                Intent(it.context, NewsMoreActivity::class.java)
+                    .apply {
+                        this.putExtra("idx", data.newsIdx)
+                    })
+        }
     }
 }

@@ -198,29 +198,6 @@
                         android:text="여행" />
 
 
-                    <RadioButton
-                        android:id="@+id/rb_register_step3_ads_culture"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/checkbox_register_category_custom"
-                        android:button="@null"
-                        android:gravity="center"
-                        android:text="문화" />
-
-                    <RadioButton
-                        android:id="@+id/rb_register_step3_ads_etc"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/checkbox_register_category_custom"
-                        android:button="@null"
-                        android:gravity="center"
-                        android:text="기타" />
-
-
             </RadioGroup>
 
 

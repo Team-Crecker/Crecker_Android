@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.RadioGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
+import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.Fragment
 import com.amn.easysharedpreferences.EasySharedPreference
 import kotlinx.android.synthetic.main.activity_sign_up.*
@@ -19,6 +21,7 @@ import org.techtown.crecker.membership.api.SignUpServiceImpl
 import org.techtown.crecker.membership.data.LoginResultData
 import org.techtown.crecker.membership.data.SignUpResultData
 import org.techtown.crecker.membership.login.LogInActivity
+import org.techtown.crecker.module.debugLog
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -41,16 +44,6 @@ class SignUpActivity : AppCompatActivity() {
         var tmpStr = "first"
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
-        email = edt_register_step1_id.text.toString()
-        pw = edt_register_step1_pwd.text.toString()
-        phone = edt_register_step1_phone.text.toString()
-        loc = edt_register_step1_addr.text.toString()
-        name = edt_register_step2_name.text.toString()
-        chName = edt_register_step2_chname.text.toString()
-        url = edt_register_step2_churl.text.toString()
-        agreement = if((cb_register_step2_01.isChecked() && cb_register_step2_02.isChecked()
-                && cb_register_step2_03.isChecked() && cb_register_step2_04.isChecked())) 1 else 0
-        notRegUrl = edt_register_step4_notRegUrl.text.toString()
 
         supportFragmentManager.beginTransaction().add(R.id.fl_signup_container, SignUpStep1Frag()).commit()
 
@@ -71,20 +64,24 @@ class SignUpActivity : AppCompatActivity() {
 
         when(frag) {
             is SignUpStep1Frag -> {
+
+                /*
                 regUserInfoMap.put("email", email)
                 regUserInfoMap.put("password",pw)
                 regUserInfoMap.put("phone",phone)
-                regUserInfoMap.put("location", loc)
+                regUserInfoMap.put("location", loc)*/
+
 
                 supportFragmentManager.beginTransaction().replace(R.id.fl_signup_container, SignUpStep2Frag()).commit()
                 btn_register_next.text = "다음"
 
             }
             is SignUpStep2Frag -> {
+                /*
                 regUserInfoMap.put("name", name)
                 regUserInfoMap.put("channelName", chName)
                 regUserInfoMap.put("youtubeUrl", url)
-                regUserInfoMap.put("agreement", agreement)
+                regUserInfoMap.put("agreement", agreement)*/
                 supportFragmentManager.beginTransaction().replace(R.id.fl_signup_container, SignUpStep3Frag()).commit()
                 btn_register_next.text = "다음"
             }
@@ -174,5 +171,6 @@ class SignUpActivity : AppCompatActivity() {
             }
         }
     }
+
 
 }

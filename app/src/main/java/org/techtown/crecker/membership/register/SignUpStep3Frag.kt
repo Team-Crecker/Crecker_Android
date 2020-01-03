@@ -38,46 +38,22 @@ class SignUpStep3Frag : Fragment() {
                 R.id.rb_register_step3_ads_beauty  -> {
                     rb_register_step3_ads_beauty.setTextColor(Color.parseColor("#f7f8f9"))
                     rb_register_step3_ads_beauty.setTypeface(Typeface.DEFAULT_BOLD)
-                    rb_register_step3_ads_culture.setTextColor(Color.parseColor("#000000"))
                     rb_register_step3_ads_restu.setTextColor(Color.parseColor("#000000"))
                     rb_register_step3_ads_travel.setTextColor(Color.parseColor("#000000"))
-                    rb_register_step3_ads_etc.setTextColor(Color.parseColor("#000000"))
                 }
 
                 R.id.rb_register_step3_ads_restu  -> {
                     rb_register_step3_ads_restu.setTextColor(Color.parseColor("#f7f8f9"))
                     rb_register_step3_ads_restu.setTypeface(Typeface.DEFAULT_BOLD)
-                    rb_register_step3_ads_culture.setTextColor(Color.parseColor("#000000"))
                     rb_register_step3_ads_beauty.setTextColor(Color.parseColor("#000000"))
                     rb_register_step3_ads_travel.setTextColor(Color.parseColor("#000000"))
-                    rb_register_step3_ads_etc.setTextColor(Color.parseColor("#000000"))
                 }
 
                 R.id.rb_register_step3_ads_travel  -> {
                     rb_register_step3_ads_travel.setTextColor(Color.parseColor("#f7f8f9"))
                     rb_register_step3_ads_travel.setTypeface(Typeface.DEFAULT_BOLD)
-                    rb_register_step3_ads_culture.setTextColor(Color.parseColor("#000000"))
                     rb_register_step3_ads_beauty.setTextColor(Color.parseColor("#000000"))
                     rb_register_step3_ads_restu.setTextColor(Color.parseColor("#000000"))
-                    rb_register_step3_ads_etc.setTextColor(Color.parseColor("#000000"))
-                }
-
-                R.id.rb_register_step3_ads_culture  -> {
-                    rb_register_step3_ads_culture.setTextColor(Color.parseColor("#f7f8f9"))
-                    rb_register_step3_ads_culture.setTypeface(Typeface.DEFAULT_BOLD)
-                    rb_register_step3_ads_travel.setTextColor(Color.parseColor("#000000"))
-                    rb_register_step3_ads_beauty.setTextColor(Color.parseColor("#000000"))
-                    rb_register_step3_ads_restu.setTextColor(Color.parseColor("#000000"))
-                    rb_register_step3_ads_etc.setTextColor(Color.parseColor("#000000"))
-                }
-
-                R.id.rb_register_step3_ads_etc  -> {
-                    rb_register_step3_ads_etc.setTextColor(Color.parseColor("#f7f8f9"))
-                    rb_register_step3_ads_etc.setTypeface(Typeface.DEFAULT_BOLD)
-                    rb_register_step3_ads_travel.setTextColor(Color.parseColor("#000000"))
-                    rb_register_step3_ads_beauty.setTextColor(Color.parseColor("#000000"))
-                    rb_register_step3_ads_restu.setTextColor(Color.parseColor("#000000"))
-                    rb_register_step3_ads_culture.setTextColor(Color.parseColor("#000000"))
                 }
 
 

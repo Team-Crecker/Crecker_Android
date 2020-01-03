@@ -11,5 +11,7 @@ data class HomeBannerImgData(
     @SerializedName("success")
     val success: Boolean,
     @SerializedName("data")
-    val data : String
+    val data : String,
+    @SerializedName("homeBannerIdx")
+    val homeBannerIdx : Int
 )

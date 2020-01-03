@@ -20,7 +20,9 @@ data class HomeAdsListData (
         @SerializedName("title")
         val title : String,
         @SerializedName("cash")
-        val cash : String
+        val cash : String,
+        @SerializedName("adIdx")
+        val adIdx : Int
 
     )
 }
