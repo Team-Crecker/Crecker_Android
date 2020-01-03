@@ -40,16 +40,16 @@ class SignUpActivity : AppCompatActivity() {
     private fun changeFragment() {
         val frag = supportFragmentManager.findFragmentById(R.id.fl_signup_container) as Fragment
 
-        when(frag) {
+        /*when(frag) {
             is SignUpStep1Frag -> {
                 supportFragmentManager.beginTransaction().replace(R.id.fl_signup_container, SignUpStep2Frag()).commit()
                 btn_register_next.text = "다음"
                 "ok".debugLog()
             }
             is SignUpStep2Frag -> {
-                supportFragmentManager.beginTransaction().replace(R.id.fl_signup_container, SignUpStep3Frag()).commit()
-                btn_register_next.text = "다음"
-            }
+            supportFragmentManager.beginTransaction().replace(R.id.fl_signup_container, SignUpStep3Frag()).commit()
+            btn_register_next.text = "다음"
+        }
             is SignUpStep3Frag -> {
                 supportFragmentManager.beginTransaction().replace(R.id.fl_signup_container, SignUpStep4Frag()).commit()
                 btn_register_next.text = "인증하기"
@@ -57,13 +57,13 @@ class SignUpActivity : AppCompatActivity() {
             is SignUpStep4Frag -> {
                 finish()
             }
-        }
+        }*/
     }
 
     private fun changeFragmentBackBtn() {
         val frag = supportFragmentManager.findFragmentById(R.id.fl_signup_container) as Fragment
 
-        when(frag) {
+        /*when(frag) {
             is SignUpStep1Frag -> {
                 btn_register_next.text = "신청하기"
                 finish()
@@ -80,7 +80,7 @@ class SignUpActivity : AppCompatActivity() {
                 supportFragmentManager.beginTransaction().replace(R.id.fl_signup_container, SignUpStep3Frag()).commit()
                 btn_register_next.text = "다음"
             }
-        }
+        }*/
     }
 
 }

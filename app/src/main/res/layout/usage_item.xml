@@ -38,6 +38,7 @@
         android:layout_marginEnd="16dp"
         android:lineSpacingExtra="3sp"
         android:textSize="16sp"
+        android:fontFamily="@font/montserrat_medium"
         app:layout_constraintBottom_toBottomOf="@+id/usage_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/usage_title"

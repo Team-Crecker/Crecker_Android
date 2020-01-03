@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#f7f8f9">
+
+    <ImageView
+        android:id="@+id/my_ad_item_img"
+        android:layout_width="154dp"
+        android:layout_height="140dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_thum_1" />
+
+    <TextView
+        android:id="@+id/my_ad_kor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="45dp"
+        android:fontFamily="@font/apple_sd_gothic_neo_semibold"
+        android:lineSpacingExtra="4sp"
+        android:text="시카솔 클렌징 워터"
+        android:textColor="#333333"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/my_ad_item_img"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/my_ad_tv_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:lineSpacingExtra="6sp"
+        android:text="제품 · 10,000"
+        android:textColor="#1ec695"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/my_ad_kor"
+        app:layout_constraintTop_toBottomOf="@+id/my_ad_kor" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        app:layout_constraintBottom_toBottomOf="@+id/my_ad_tv_price"
+        app:layout_constraintStart_toEndOf="@+id/my_ad_tv_price"
+        app:layout_constraintTop_toTopOf="@+id/my_ad_tv_price"
+        app:srcCompat="@drawable/img_cash" />
+
+    <TextView
+        android:id="@+id/need_upload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/img_tag_red"
+        android:text="업로드 요망"
+        android:visibility="invisible"
+        android:textColor="#ffffff"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
