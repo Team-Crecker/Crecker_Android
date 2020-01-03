@@ -1,6 +1,5 @@
 package org.techtown.crecker.news.api
 
-import org.techtown.crecker.mypage.scrap.api.token
 import org.techtown.crecker.news.data.*
 import retrofit2.Call
 import retrofit2.http.*
