@@ -91,16 +91,20 @@ class ScheduleActivity : AppCompatActivity() {
 //        상담신청 완료버튼
         schedule_ok_btn.setOnClickListener {
 
-            if(schedule_name_edit.text.toString() == null || schedule_date_edit.text.toString() == null
-                || schedule_time_edit.text.toString() == null
-                || schedule_content_edit.text.toString() == null) {
+            if(schedule_name_edit.text.toString() == ""
+                || schedule_date_edit.text.toString() == ""
+                || schedule_time_edit.text.toString() == ""
+                || schedule_content_edit.text.toString() == "") {
+
+                Toast.makeText(this,"빈 칸없이 작성해주세요.",Toast.LENGTH_LONG).show()
+            }
+            else{
                 parsingSchedule()
                 Toast.makeText(this,"상담신청이 완료 되었습니다.",
                     Toast.LENGTH_LONG).show()
                 finish()
             }
-            else
-                Toast.makeText(this,"빈 칸없이 작성해주세요.",Toast.LENGTH_LONG).show()
+
         }
 
         keyboardVisibilityUtils = KeyboardVisibilityUtils(window,

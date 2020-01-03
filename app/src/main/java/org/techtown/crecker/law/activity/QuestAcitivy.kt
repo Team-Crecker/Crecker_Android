@@ -25,7 +25,7 @@ class QuestAcitivy : AppCompatActivity() {
     private lateinit var law : RadioButton
     private lateinit var start : RadioButton
     private lateinit var shooting : RadioButton
-    private lateinit var category : String
+    private  var category : String = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -79,7 +79,8 @@ class QuestAcitivy : AppCompatActivity() {
         }
 
         quest_ok_tv.setOnClickListener {
-            if (category == null || quest_title_tv.text == null || quest_content_tv.text == null){
+            if (category == "" || quest_title_tv.text.toString() == ""
+                || quest_content_tv.text.toString() == ""){
                 Toast.makeText(this,"빈 칸 없이 작성해주세요.",Toast.LENGTH_LONG).show()
             }
             else {

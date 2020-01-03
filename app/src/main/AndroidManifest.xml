@@ -15,7 +15,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".news.activity.NewsMoreActivity"></activity>
+        <activity android:name=".mypage.scrap.ScrapActivity" android:exported="true"></activity>
+        <activity android:name=".news.activity.NewsMoreActivity" />
         <activity android:name=".news.activity.NewsDetailActivity" />
         <activity android:name=".mypage.report.activity.IndiviualActivity" />
         <activity
