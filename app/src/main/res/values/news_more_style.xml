@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="news_more_title">
+        <item name="android:fontFamily">@font/apple_sd_gothic_neo_bold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">16sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="news_more_subtitle">
+        <item name="android:fontFamily">@font/apple_sd_gothic_neo_semibold</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:lineSpacingExtra">17sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="news_more_content">
+        <item name="android:fontFamily">@font/apple_sd_gothic_neo_medium</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:lineSpacingExtra">17sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+</resources>

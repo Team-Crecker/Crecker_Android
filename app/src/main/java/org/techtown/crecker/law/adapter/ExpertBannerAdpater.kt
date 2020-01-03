@@ -13,7 +13,7 @@ import org.techtown.crecker.R
 class ExpertBannerAdpater(context : Context) : PagerAdapter(){
 
     private var mContext = context
-    private var img_resource : ArrayList<Int> = arrayListOf(R.drawable.img_home_law1,R.drawable.img_home_law1,R.drawable.img_home_law1)
+    var img_resource : List<Int> = listOf()
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
 

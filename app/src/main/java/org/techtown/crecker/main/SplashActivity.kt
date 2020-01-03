@@ -10,6 +10,7 @@ import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_splash.*
 import org.techtown.crecker.R
+import org.techtown.crecker.membership.login.LogInActivity
 
 class SplashActivity : Activity() {
 
@@ -28,7 +29,7 @@ class SplashActivity : Activity() {
         val handler = Handler()
         handler.postDelayed(Runnable {
             run {
-                startActivity(Intent(application, MainActivity::class.java))
+                startActivity(Intent(application, LogInActivity::class.java))
                 finish()
             }
         },2000)

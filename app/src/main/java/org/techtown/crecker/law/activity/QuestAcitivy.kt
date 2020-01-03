@@ -10,8 +10,15 @@ import android.widget.TextView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_quest.*
 import org.techtown.crecker.R
+import org.techtown.crecker.law.api.ExpertServiceImpl
+import org.techtown.crecker.law.data.QuestionData
+import org.techtown.crecker.law.data.QuestionResult
 import org.techtown.crecker.module.KeyboardVisibilityUtils
+import org.techtown.crecker.module.debugLog
 import org.w3c.dom.Text
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import kotlin.properties.Delegates
 
 class QuestAcitivy : AppCompatActivity() {
@@ -71,15 +78,46 @@ class QuestAcitivy : AppCompatActivity() {
             }
         }
 
-        quest_ok_tv.setOnClickListener { checkingResult() }
+        quest_ok_tv.setOnClickListener {
+            if (category == null || quest_title_tv.text == null || quest_content_tv.text == null){
+                Toast.makeText(this,"빈 칸 없이 작성해주세요.",Toast.LENGTH_LONG).show()
+            }
+            else {
+                checkingResult()
+                finish()
+            }
+        }
 
         quest_content_tv.setHorizontallyScrolling(false) // 본문 컨텐츠 가로 스크롤 방지
     }
     private fun checkingResult(){
-        if (check_secret.isChecked == false)
-            Toast.makeText(this, "${category} + 공개글", Toast.LENGTH_LONG).show()
-        else{
-            Toast.makeText(this, "${category} + 비밀글", Toast.LENGTH_LONG).show()
-        }
+        val title = quest_title_tv.text.toString()
+        val content = quest_content_tv.text.toString()
+        var check : Int = 0
+        if(check_secret.isChecked)
+            check = 1
+
+        val call : Call<QuestionResult> = ExpertServiceImpl.service
+            .postLawQuestion(QuestionData(title,content,"0201",check))
+
+        call.enqueue(
+            object : Callback<QuestionResult>{
+                override fun onFailure(call: Call<QuestionResult>, t: Throwable) {
+                    "${t}".debugLog("CallBackFailed")
+                }
+
+                override fun onResponse(
+                    call: Call<QuestionResult>,
+                    response: Response<QuestionResult>
+                ) {
+                    response?.takeIf { it.isSuccessful }
+                        ?.body()
+                        ?.takeIf { it.success == true }
+                        ?.let{
+                            Toast.makeText(this@QuestAcitivy,"글이 저장되었습니다.",Toast.LENGTH_LONG).show()
+                        }
+                }
+            }
+        )
     }
 }

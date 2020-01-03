@@ -9,7 +9,14 @@ import com.michaldrabik.classicmaterialtimepicker.CmtpTimeDialogFragment
 import com.michaldrabik.classicmaterialtimepicker.utilities.setOnTime24PickedListener
 import kotlinx.android.synthetic.main.activity_schedule.*
 import org.techtown.crecker.R
+import org.techtown.crecker.law.api.ExpertServiceImpl
+import org.techtown.crecker.law.data.CounselingData
+import org.techtown.crecker.law.data.CounselingResult
 import org.techtown.crecker.module.KeyboardVisibilityUtils
+import org.techtown.crecker.module.debugLog
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -23,10 +30,8 @@ class ScheduleActivity : AppCompatActivity() {
         updateLabel()
     }
 
-    private  var sName : String = ""// 이름
-    private  var sDate : String = ""// 날짜
-    private  var sTime : String = ""// 시간
-    private  var sContent : String = "" // 내용
+
+    private  var Idx : Int = 0 // 통신에 필요한 Idx 값
 
     private lateinit var keyboardVisibilityUtils: KeyboardVisibilityUtils
 
@@ -34,9 +39,11 @@ class ScheduleActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_schedule)
 
+        Idx = intent.getIntExtra("Idx",0)
+
+
 //        이름
         schedule_name_edit.setOnClickListener {
-            sName = schedule_name_edit.text.toString()
         }
 
 //        DatePickerDialog 사용
@@ -50,7 +57,6 @@ class ScheduleActivity : AppCompatActivity() {
                 myCalendar.get(Calendar.DAY_OF_MONTH)
             ).show()
 
-            sDate = schedule_date_edit.text.toString()
         }
 
 //        TimePickerDialog 사용
@@ -67,12 +73,12 @@ class ScheduleActivity : AppCompatActivity() {
 
             timePicker.show(supportFragmentManager,"Tag")
 
-            sTime = schedule_time_edit.text.toString()
+
         }
 
 //        내용
         schedule_content_edit.setOnClickListener {
-            sContent = schedule_content_edit.text.toString()
+
         }
 
 //        뒤로가기
@@ -82,11 +88,17 @@ class ScheduleActivity : AppCompatActivity() {
 
 
 
-//        상담신청 완료버튼 (현재는 토스트 출력 후 종료)
+//        상담신청 완료버튼
         schedule_ok_btn.setOnClickListener {
-            val pass : Boolean = checkingFill()
-            if(pass == true)
-                Toast.makeText(this,"상담 신청이 완료되었습니다.",Toast.LENGTH_LONG).show()
+
+            if(schedule_name_edit.text.toString() == null || schedule_date_edit.text.toString() == null
+                || schedule_time_edit.text.toString() == null
+                || schedule_content_edit.text.toString() == null) {
+                parsingSchedule()
+                Toast.makeText(this,"상담신청이 완료 되었습니다.",
+                    Toast.LENGTH_LONG).show()
+                finish()
+            }
             else
                 Toast.makeText(this,"빈 칸없이 작성해주세요.",Toast.LENGTH_LONG).show()
         }
@@ -116,15 +128,36 @@ class ScheduleActivity : AppCompatActivity() {
         schedule_time_edit.setText(changeFormat.format(mCurrentTime.time))
     }
 
-    private fun checkingFill() : Boolean{
-        if (sName != null && sTime != null && sDate != null && sContent != null)  return true
-
-        else return false
-    }
 
     override fun onDestroy() {
         keyboardVisibilityUtils.detachKeyboardListeners()
         super.onDestroy()
+    }
+
+    private fun parsingSchedule(){
+        val call : Call<CounselingResult> = ExpertServiceImpl.service.putCounseling(
+            CounselingData(schedule_name_edit.text.toString(),schedule_date_edit.text.toString()
+                ,schedule_time_edit.text.toString(),Idx,schedule_content_edit.text.toString()))
+
+        call.enqueue(
+            object : Callback<CounselingResult>{
+                override fun onFailure(call: Call<CounselingResult>, t: Throwable) {
+                    "${t}".debugLog("CallBackFailed")
+                }
+
+                override fun onResponse(
+                    call: Call<CounselingResult>,
+                    response: Response<CounselingResult>
+                ) {
+                    response?.takeIf { it.isSuccessful }
+                        ?.body()
+                        ?.takeIf { it.success == true }
+                        ?.let{
+                            "${it.message}".debugLog()
+                        }
+                }
+            }
+        )
     }
 
 

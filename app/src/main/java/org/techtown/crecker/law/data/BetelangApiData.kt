@@ -16,6 +16,8 @@ data class BetelangApiData(
         val betelang_Clear_Num: Int,
         val expertIdx: Int,
         @SerializedName("name")
-        val betelang_Name: String
+        val betelang_Name: String,
+        @SerializedName("photo")
+        val profile : String
     )
 }

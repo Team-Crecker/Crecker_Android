@@ -92,6 +92,7 @@ class LawFragment : Fragment() {
     }
     private fun initBanner(V: View){
         val bannerAdp = ExpertBannerAdpater(V.context)
+        bannerAdp.img_resource = listOf(R.drawable.img_law_banner,R.drawable.img_law_banner,R.drawable.img_law_banner)
         V.expert_viewpager.adapter = bannerAdp
     }
     private fun initBetelangRv(V : View, mContext : Context){
@@ -99,9 +100,6 @@ class LawFragment : Fragment() {
         V.expert_betelang_rv.adapter = betelangAdapter
         V.expert_betelang_rv.layoutManager = LinearLayoutManager(mContext) as RecyclerView.LayoutManager?
         V.expert_betelang_rv.addItemDecoration(RcvItemDeco(mContext,false, 14))
-//        betelangAdapter.addItem(ExpertBetelangData(betelang_profile = "", betelang_Name = "김필원", betelang_aff = "현 태양 로펌 변호사", betelang_Clear_Num = "5"))
-//        betelangAdapter.addItem(ExpertBetelangData(betelang_profile = "", betelang_Name = "김필원", betelang_aff = "현 태양 로펌 변호사", betelang_Clear_Num = "5"))
-//        betelangAdapter.addItem(ExpertBetelangData(betelang_profile = "", betelang_Name = "김필원", betelang_aff = "현 태양 로펌 변호사", betelang_Clear_Num = "5"))
 
         val call : Call<BetelangApiData> = ExpertServiceImpl.service.getBetelang()
         call.enqueue(
