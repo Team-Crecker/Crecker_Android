@@ -2,6 +2,7 @@ package org.techtown.crecker.home
 
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,14 +15,23 @@ import kotlinx.android.synthetic.main.fragment_home_content.view.*
 
 import org.techtown.crecker.home.adapter.HomeAdsListAdapter
 import org.techtown.crecker.home.adapter.HomeSupportListAdapter
-import org.techtown.crecker.home.data.HomeAdsItem
-import org.techtown.crecker.home.data.HomeSupportItem
 import org.techtown.crecker.module.RcvItemDeco
 import android.text.SpannableString
 import android.graphics.Typeface
 import android.text.Spannable
 import android.text.style.StyleSpan
+import android.util.Log
+import android.widget.Toast
+import com.bumptech.glide.Glide
 import org.techtown.crecker.R
+import org.techtown.crecker.home.api.HomeFragServiceImpl
+import org.techtown.crecker.home.data.*
+import org.techtown.crecker.membership.api.SignUpServiceImpl
+import org.techtown.crecker.membership.data.SignUpResultData
+import org.techtown.crecker.membership.login.LogInActivity
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 /**
@@ -52,42 +62,126 @@ class HomeFragment : Fragment() {
 
         initHomeAdsList(V)
         initHomeSupportList(V)
+        initBannerImg(V)
 
         return V
     }
 
+    private fun initBannerImg(view: View) {
+        HomeFragServiceImpl.bannerService.getBannerImgData().enqueue(object :
+            Callback<HomeBannerImgData> {
+            override fun onFailure(call: Call<HomeBannerImgData>, t: Throwable) {
+                //네트워크 통신에 실패했을 때
+                Log.e("cre__", "error : $t")
+            }
+
+            override fun onResponse(
+                call: Call<HomeBannerImgData>,
+                response: Response<HomeBannerImgData>
+            ) {
+                Log.d("cre__", "get user info success ${response.isSuccessful}")
+                //네트워크 통신에 성공했을때, response 에 서버에서 받아온 데이터가 있을 것이다.
+                if (response.isSuccessful) {
+                    when (response.code()) {
+                        200 -> {
+                            if(response.body()!!.success) {
+                                Glide.with(view)
+                                    .load(response.body()!!.data)
+                                    .into(view.img_home_user_recom)
+                            }
+                            else
+                                Toast.makeText(mContext, "데이터를 가져오는데 실패했습니다.", Toast.LENGTH_SHORT).show()
+                        }
+
+                        600 -> Toast.makeText(mContext , "서버 연결 실패", Toast.LENGTH_SHORT).show()
+                    }
+
+                }
+            }
+        })
+
+    }
+
     private fun initHomeAdsList(view : View) {
+
+        HomeFragServiceImpl.adsService.getAdsListData().enqueue(object :
+            Callback<HomeAdsListData> {
+            override fun onFailure(call: Call<HomeAdsListData>, t: Throwable) {
+                //네트워크 통신에 실패했을 때
+                Log.e("cre__", "error : $t")
+            }
+
+            override fun onResponse(
+                call: Call<HomeAdsListData>,
+                response: Response<HomeAdsListData>
+            ) {
+                Log.d("cre__", "get user info success ${response.isSuccessful}")
+                //네트워크 통신에 성공했을때, response 에 서버에서 받아온 데이터가 있을 것이다.
+                if (response.isSuccessful) {
+                    when (response.code()) {
+                        200 -> {
+                            if(response.body()!!.success) {
+
+                                homeAdsAdapter.data = response.body()!!.data
+                                homeSupportAdapter.notifyDataSetChanged()
+                            }
+                            else
+                                Toast.makeText(mContext, "데이터를 가져오는데 실패했습니다.", Toast.LENGTH_SHORT).show()
+                        }
+
+                        600 -> Toast.makeText(mContext , "서버 연결 실패", Toast.LENGTH_SHORT).show()
+                    }
+
+                }
+            }
+        })
 
 
         homeAdsAdapter = HomeAdsListAdapter(mContext)
         view.rv_list_home_ads.adapter = homeAdsAdapter
         view.rv_list_home_ads.layoutManager = LinearLayoutManager(mContext, RecyclerView.HORIZONTAL , false)
-        homeAdsAdapter.data = listOf<HomeAdsItem>(
-            HomeAdsItem(img = "", name = "모모스 커피", price = "제품 10,000", cash = ""),
-            HomeAdsItem(img = "", name = "모모스 커피", price = "제품 10,000", cash = ""),
-            HomeAdsItem(img = "", name = "모모스 커피", price = "제품 10,000", cash = ""),
-            HomeAdsItem(img = "", name = "모모스 커피", price = "제품 10,000", cash = ""),
-            HomeAdsItem(img = "", name = "모모스 커피", price = "제품 10,000", cash = "")
-        )
-
         homeAdsAdapter.notifyDataSetChanged()
 
     }
 
     private fun initHomeSupportList(view : View) {
 
+
+        HomeFragServiceImpl.supportService.getSupportListData().enqueue(object :
+            Callback<HomeSupportListData> {
+            override fun onFailure(call: Call<HomeSupportListData>, t: Throwable) {
+                //네트워크 통신에 실패했을 때
+                Log.e("cre__", "error : $t")
+            }
+
+            override fun onResponse(
+                call: Call<HomeSupportListData>,
+                response: Response<HomeSupportListData>
+            ) {
+                Log.d("cre__", "get user info success ${response.isSuccessful}")
+                //네트워크 통신에 성공했을때, response 에 서버에서 받아온 데이터가 있을 것이다.
+                if (response.isSuccessful) {
+                    when (response.code()) {
+                        200 -> {
+                            if(response.body()!!.success) {
+
+                                homeSupportAdapter.data = response.body()!!.data
+                            }
+                            else
+                                Toast.makeText(mContext, "데이터를 가져오는데 실패했습니다.", Toast.LENGTH_SHORT).show()
+                        }
+
+                        600 -> Toast.makeText(mContext , "서버 연결 실패", Toast.LENGTH_SHORT).show()
+                    }
+
+                }
+            }
+        })
+
         homeSupportAdapter = HomeSupportListAdapter(mContext)
         view.rv_list_home_support.adapter = homeSupportAdapter
         view.rv_list_home_support.layoutManager = GridLayoutManager(mContext, 2)
         view.rv_list_home_support.addItemDecoration(RcvItemDeco(mContext))
-        homeSupportAdapter.data = listOf<HomeSupportItem>(
-            HomeSupportItem(img = "", company = "wework", title = "유튜브 크리에이터 모집", date = "D-7"),
-            HomeSupportItem(img = "", company = "wework", title = "유튜브 크리에이터 모집", date = "D-7"),
-            HomeSupportItem(img = "", company = "wework", title = "유튜브 크리에이터 모집", date = "D-7"),
-            HomeSupportItem(img = "", company = "wework", title = "유튜브 크리에이터 모집", date = "D-7"),
-            HomeSupportItem(img = "", company = "wework", title = "유튜브 크리에이터 모집", date = "D-7"),
-            HomeSupportItem(img = "", company = "wework", title = "유튜브 크리에이터 모집", date = "D-7")
-        )
 
         homeSupportAdapter.notifyDataSetChanged()
 

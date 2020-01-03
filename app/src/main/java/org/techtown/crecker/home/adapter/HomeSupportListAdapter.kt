@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import org.techtown.crecker.R
 import org.techtown.crecker.home.data.HomeAdsItem
 import org.techtown.crecker.home.data.HomeSupportItem
+import org.techtown.crecker.home.data.HomeSupportListData
 import org.techtown.crecker.home.viewholder.HomeAdsListViewHolder
 import org.techtown.crecker.home.viewholder.HomeSupportListViewHolder
 
@@ -14,7 +15,7 @@ class HomeSupportListAdapter(
     private val context: Context
 ) : RecyclerView.Adapter<HomeSupportListViewHolder>() {
 
-    var data: List<HomeSupportItem> = listOf()
+    var data: List<HomeSupportListData.Data> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeSupportListViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.home_support_item, parent, false)

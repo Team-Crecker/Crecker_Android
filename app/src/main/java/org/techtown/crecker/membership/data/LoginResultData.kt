@@ -14,13 +14,13 @@ data class LoginResultData(
 ) {
     data class Data(
         @SerializedName("tokens")
-        val tokens: Tokens
-    ) {
-        data class Tokens(
-            @SerializedName("refreshToken")
-            val refreshToken: String,
+        val tokens : Tokens
+    ){
+        data class Tokens (
             @SerializedName("token")
-            val token: String
+            val token : String,
+            @SerializedName("refreshToken")
+            val refreshToken : String
         )
     }
 }

@@ -24,49 +24,38 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <RadioGroup
-                android:id="@+id/rg_register_step3_support"
+                android:id="@+id/rg_register_step3_news"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="19dp"
-                android:paddingLeft="35dp"
-                android:paddingRight="35dp"
+                android:paddingLeft="84dp"
+                android:paddingRight="84dp"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_register_step3_support">
+                app:layout_constraintTop_toBottomOf="@id/tv_register_step3_news">
 
-                    <RadioButton
-                        android:id="@+id/rb_register_step3_support_edu"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/checkbox_register_category_custom"
-                        android:button="@null"
-                        android:gravity="center"
-                        android:text="교육" />
+                <RadioButton
+                    android:id="@+id/rb_register_step3_news_daily"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/checkbox_register_category_custom"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="데일리" />
 
-                    <RadioButton
-                        android:id="@+id/rb_register_step3_support_contest"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/checkbox_register_category_custom"
-                        android:button="@null"
-                        android:gravity="center"
-                        android:text="공모전" />
-
-                    <RadioButton
-                        android:id="@+id/rb_register_step3_support_fund"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/checkbox_register_category_custom"
-                        android:button="@null"
-                        android:gravity="center"
-                        android:text="지원금" />
+                <RadioButton
+                    android:id="@+id/rb_register_step3_new_support"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/checkbox_register_category_custom"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="지원활동" />
 
             </RadioGroup>
 
@@ -79,7 +68,7 @@
                 android:orientation="horizontal"
                 android:paddingLeft="35dp"
                 android:paddingRight="35dp"
-                app:layout_constraintBottom_toTopOf="@id/tv_register_step3_support"
+                app:layout_constraintBottom_toTopOf="@id/tv_register_step3_news"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_register_step3_expert">
@@ -98,7 +87,7 @@
                         app:layout_constraintHorizontal_chainStyle="packed" />
 
                     <RadioButton
-                        android:id="@+id/rb_register_step3_expert_found"
+                        android:id="@+id/rb_register_step3_expert_brand"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
@@ -106,7 +95,7 @@
                         android:background="@drawable/checkbox_register_category_custom"
                         android:button="@null"
                         android:gravity="center"
-                        android:text="창업" />
+                        android:text="브랜딩" />
 
                     <RadioButton
                         android:id="@+id/rb_register_step3_expert_shoot"
@@ -253,18 +242,18 @@
                 app:layout_constraintTop_toBottomOf="@+id/rg_register_step3_ads" />
 
             <TextView
-                android:id="@+id/tv_register_step3_support"
+                android:id="@+id/tv_register_step3_news"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="35dp"
                 android:layout_marginBottom="19dp"
                 android:fontFamily="@font/apple_sd"
                 android:lineSpacingExtra="19sp"
-                android:text="지원활동"
+                android:text="뉴스"
                 android:textColor="#333333"
                 android:textFontWeight="700"
                 android:textSize="15sp"
-                app:layout_constraintBottom_toTopOf="@id/rg_register_step3_support"
+                app:layout_constraintBottom_toTopOf="@id/rg_register_step3_news"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/rg_register_step3_expert" />

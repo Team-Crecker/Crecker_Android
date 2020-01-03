@@ -32,11 +32,11 @@
                 android:id="@+id/tv_register_step4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="110dp"
                 android:fontFamily="@font/apple_sd"
                 android:gravity="center"
                 android:lineSpacingExtra="17sp"
-                android:text="본인의 유튜브 채널 중 광고 역량이 뛰어난\n영상에 해당 해시코드를 삽입해주세요"
+                android:text="본인의 채널에 미등록 영상을\n등록해 주시고 URL을 입력해주세요."
                 android:textColor="#333333"
                 android:textFontWeight="400"
                 android:textSize="17sp"
@@ -45,38 +45,40 @@
                 app:layout_constraintTop_toBottomOf="@+id/img_register_step4" />
 
             <TextView
-                android:id="@+id/tv_register_step4_hash"
-                android:layout_width="0dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="25dp"
-                android:layout_marginTop="80dp"
-                android:layout_marginEnd="25dp"
-                android:background="@drawable/btn_bg"
-                android:fontFamily="@font/montserrat"
-                android:gravity="center"
-                android:lineSpacingExtra="17sp"
-                android:text="ADF34423"
-                android:textColor="#333333"
-                android:textFontWeight="500"
-                android:textSize="17sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_register_step4" />
-
-            <TextView
                 android:id="@+id/tv_register_step4_hash_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="172dp"
+                android:layout_marginEnd="51dp"
+                android:layout_marginBottom="28dp"
                 android:fontFamily="@font/apple_sd"
-                android:lineSpacingExtra="16sp"
-                android:text="인증 후 가입 완료됩니다"
-                android:textColor="#333333"
-                android:textFontWeight="500"
+                android:lineSpacingExtra="20sp"
+                android:text="· 본인 채널 확인 절차를 거쳐 인증이 확인되면 회원가입이\n   완료됩니다.
+                \n· 회원가입 완료전까지 영상을 유지해주셔야 채널 인증이\n   가능하고 최대 3일안에 승인된 후 알림을 보내드립니다."
+                android:textColor="#464c53"
+                android:textFontWeight="400"
                 android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_register_step4_hash" />
+                app:layout_constraintTop_toBottomOf="@+id/edt_register_step4_notRegUrl" />
+
+            <EditText
+                android:id="@+id/edt_register_step4_notRegUrl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/btn_bg"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="URL을 입력하세요"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_register_step4" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

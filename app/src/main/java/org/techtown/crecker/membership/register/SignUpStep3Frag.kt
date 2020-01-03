@@ -3,7 +3,6 @@ package org.techtown.crecker.membership.register
 import android.content.Context
 import android.graphics.Color
 import android.graphics.Typeface
-import android.icu.lang.UCharacter.GraphemeClusterBreak.V
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,12 +10,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_sign_up_step3.view.*
 import org.techtown.crecker.R
-import android.widget.RadioButton
-import android.widget.RadioGroup
-import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_sign_up_step3.*
 import kotlinx.android.synthetic.main.fragment_sign_up_step3.view.rg_register_step3_ads
-import kotlinx.android.synthetic.main.rectangle.*
 
 
 class SignUpStep3Frag : Fragment() {
@@ -95,13 +90,13 @@ class SignUpStep3Frag : Fragment() {
                 R.id.rb_register_step3_expert_law  -> {
                     rb_register_step3_expert_law.setTextColor(Color.parseColor("#f7f8f9"))
                     rb_register_step3_expert_law.setTypeface(Typeface.DEFAULT_BOLD)
-                    rb_register_step3_expert_found.setTextColor(Color.parseColor("#000000"))
+                    rb_register_step3_expert_brand.setTextColor(Color.parseColor("#000000"))
                     rb_register_step3_expert_shoot.setTextColor(Color.parseColor("#000000"))
                 }
 
-                R.id.rb_register_step3_expert_found  -> {
-                    rb_register_step3_expert_found.setTextColor(Color.parseColor("#f7f8f9"))
-                    rb_register_step3_expert_found.setTypeface(Typeface.DEFAULT_BOLD)
+                R.id.rb_register_step3_expert_brand  -> {
+                    rb_register_step3_expert_brand.setTextColor(Color.parseColor("#f7f8f9"))
+                    rb_register_step3_expert_brand.setTypeface(Typeface.DEFAULT_BOLD)
                     rb_register_step3_expert_law.setTextColor(Color.parseColor("#000000"))
                     rb_register_step3_expert_shoot.setTextColor(Color.parseColor("#000000"))
                 }
@@ -109,35 +104,26 @@ class SignUpStep3Frag : Fragment() {
                 R.id.rb_register_step3_expert_shoot  -> {
                     rb_register_step3_expert_shoot.setTextColor(Color.parseColor("#f7f8f9"))
                     rb_register_step3_expert_shoot.setTypeface(Typeface.DEFAULT_BOLD)
-                    rb_register_step3_expert_found.setTextColor(Color.parseColor("#000000"))
+                    rb_register_step3_expert_brand.setTextColor(Color.parseColor("#000000"))
                     rb_register_step3_expert_law.setTextColor(Color.parseColor("#000000"))
                 }
 
             }
         }
 
-        v.rg_register_step3_support.setOnCheckedChangeListener{group, checkedId ->
+        v.rg_register_step3_news.setOnCheckedChangeListener{ group, checkedId ->
             when(checkedId){
 
-                R.id.rb_register_step3_support_edu  -> {
-                    rb_register_step3_support_edu.setTextColor(Color.parseColor("#f7f8f9"))
-                    rb_register_step3_support_edu.setTypeface(Typeface.DEFAULT_BOLD)
-                    rb_register_step3_support_fund.setTextColor(Color.parseColor("#000000"))
-                    rb_register_step3_support_contest.setTextColor(Color.parseColor("#000000"))
+                R.id.rb_register_step3_news_daily  -> {
+                    rb_register_step3_news_daily.setTextColor(Color.parseColor("#f7f8f9"))
+                    rb_register_step3_news_daily.setTypeface(Typeface.DEFAULT_BOLD)
+                    rb_register_step3_new_support.setTextColor(Color.parseColor("#000000"))
                 }
 
-                R.id.rb_register_step3_support_fund  -> {
-                    rb_register_step3_support_fund.setTextColor(Color.parseColor("#f7f8f9"))
-                    rb_register_step3_support_fund.setTypeface(Typeface.DEFAULT_BOLD)
-                    rb_register_step3_support_edu.setTextColor(Color.parseColor("#000000"))
-                    rb_register_step3_support_contest.setTextColor(Color.parseColor("#000000"))
-                }
-
-                R.id.rb_register_step3_support_contest  -> {
-                    rb_register_step3_support_contest.setTextColor(Color.parseColor("#f7f8f9"))
-                    rb_register_step3_support_contest.setTypeface(Typeface.DEFAULT_BOLD)
-                    rb_register_step3_support_edu.setTextColor(Color.parseColor("#000000"))
-                    rb_register_step3_support_fund.setTextColor(Color.parseColor("#000000"))
+                R.id.rb_register_step3_new_support  -> {
+                    rb_register_step3_new_support.setTextColor(Color.parseColor("#f7f8f9"))
+                    rb_register_step3_new_support.setTypeface(Typeface.DEFAULT_BOLD)
+                    rb_register_step3_news_daily.setTextColor(Color.parseColor("#000000"))
                 }
 
             }
