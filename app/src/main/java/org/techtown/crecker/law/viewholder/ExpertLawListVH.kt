@@ -53,6 +53,7 @@ class ExpertLawListVH(view : View) : RecyclerView.ViewHolder(view) {
                 val intent = Intent(itemView.context,AnswerActivity::class.java)
                 intent.putExtra("Idx",data.expertConsultIdx)
                 intent.putExtra("isComplete",data.isComplete)
+                intent.putExtra("isUser",data.isUser)
                 itemView.context.startActivity(intent)
             }
         }

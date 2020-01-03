@@ -11,17 +11,18 @@ data class QAdetailData(
         val Qcontent: String,
         val Qtitle: String,
         val answerUpdateAt: String,
-        val category: String,
+        val categoryCode: String,
         val createAt: String,
         val description: String,
+        val email: String,
         val expertConsultIdx: Int,
         val expertIdx: Int,
         val isComplete: Int,
         val isSecret: Int,
+        val isUser: Boolean,
         val name: String,
         val photo: String,
-        val views: Int,
-        val email : String,
-        val isOkConsult : Boolean
+        val userIdx: Int,
+        val views: Int
     )
 }

@@ -98,7 +98,7 @@ class QuestAcitivy : AppCompatActivity() {
             check = 1
 
         val call : Call<QuestionResult> = ExpertServiceImpl.service
-            .postLawQuestion(QuestionData(title,content,"0201",check))
+            .postLawQuestion(QuestionData(title,content,category,check))
 
         call.enqueue(
             object : Callback<QuestionResult>{

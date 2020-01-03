@@ -25,28 +25,32 @@ import java.util.*
 
 class AnswerActivity : AppCompatActivity() {
     private var Idx : Int = 0
+    private  var isComplete: Int = 1
     private lateinit var glideManager : RequestManager
-    private var isComplete : Int = 1
-    private var isUser : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_answer)
         glideManager  = Glide.with(this)
-        val intent = intent
         Idx = intent.getIntExtra("Idx",1)
-        isComplete = intent.getIntExtra("isComplete",0)
+        isComplete = intent.getIntExtra("isComplete",1)
+        val isUser = intent.getBooleanExtra("isUser",true)
 
         answer_back_img.setOnClickListener{
             finish()
         }
 
         if(isComplete == 0){
-            counseling_reserv_btn.isVisible = false
+            counseling_reserv_btn.visibility = View.INVISIBLE
             answer_state_img.setImageResource(R.drawable.img_tag_gray_expert)
         }
 
-        startCommu()
+        if(isUser == false){
+            counseling_reserv_btn.visibility = View.GONE
+        }
+
+            startCommu()
+
 
         counseling_reserv_btn.setOnClickListener {
             val intent = Intent(this, ScheduleActivity::class.java)
@@ -55,10 +59,11 @@ class AnswerActivity : AppCompatActivity() {
         }
     }
 
-    private fun startCommu(){
-        val call : Call<QAdetailData> = ExpertServiceImpl.service.getLawDetail(Idx)
+    private fun startCommu() {
+
+        val call: Call<QAdetailData> = ExpertServiceImpl.service.getLawDetail(Idx)
         call.enqueue(
-            object : Callback<QAdetailData>{
+            object : Callback<QAdetailData> {
                 override fun onFailure(call: Call<QAdetailData>, t: Throwable) {
                     "${t}".debugLog("CallBackFailed")
                 }
@@ -72,12 +77,13 @@ class AnswerActivity : AppCompatActivity() {
                         ?.takeIf { it.success == true }
                         ?.data
                         ?.let {
-                            initView(it[0])
+                                initView(it[0])
                         } ?: "null"
                 }
             }
         )
     }
+
 
     private fun initProfile(url : String, view : ImageView){
         view.post{
@@ -88,11 +94,20 @@ class AnswerActivity : AppCompatActivity() {
     private fun initView(data : QAdetailData.Data){
         answer_quest_title_tv.text = data.Qtitle
         answer_quest_content_tv.text = data.Qcontent
-        a_betelang_answer_tv.text = data.Acontent
         answer_quest_data_tv.text = data.createAt
-        a_betelang_name_tv.text = data.name
-        a_betelang_answer_date_tv.text = data.answerUpdateAt
-        a_betelang_affiliation_tv.text = data.description
-        initProfile(data.photo, betelang_profile_image)
+        answer_state_tv.text = data.categoryCode
+        if(isComplete == 0){
+            readyView()
+        }
+        else {
+            a_betelang_name_tv.text = data.name
+            a_betelang_answer_tv.text = data.Acontent
+            a_betelang_answer_date_tv.text = data.answerUpdateAt
+            a_betelang_affiliation_tv.text = data.description
+            initProfile(data.photo, betelang_profile_image)
+        }
+    }
+    private fun readyView(){
+        a_betelang_class_tv.visibility = View.INVISIBLE
     }
 }

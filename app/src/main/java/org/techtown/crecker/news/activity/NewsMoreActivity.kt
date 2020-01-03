@@ -1,6 +1,8 @@
 package org.techtown.crecker.news.activity
 
+import android.content.Intent
 import android.media.Image
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
@@ -49,10 +51,6 @@ class NewsMoreActivity : AppCompatActivity() {
             }
         }
 
-        news_more_sign_tv.setOnClickListener {
-            Toast.makeText(this,"신청 되었습니다.", Toast.LENGTH_LONG).show()
-            finish()
-        }
     }
 
     private fun startCommu(idx : Int){
@@ -77,6 +75,7 @@ class NewsMoreActivity : AppCompatActivity() {
                                 news_more_end_tv.text = it.calendarEnd
                                 news_more_program_tv.text = it.contents
                                 news_more_place_tv.text = it.host
+                                moveToUrl(it.url)
                             }
                         }
                 }
@@ -87,6 +86,12 @@ class NewsMoreActivity : AppCompatActivity() {
     private fun loading(url : String, view: ImageView){
         view.post {
             glideManager.load(url).into(view)
+        }
+    }
+
+    private fun moveToUrl(url : String){
+        this.news_more_sign_tv.setOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("http://${url}")))
         }
     }
 }
