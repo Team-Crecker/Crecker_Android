@@ -2,6 +2,7 @@ package org.techtown.crecker.home.data
 
 import androidx.core.app.NotificationCompat
 import com.google.gson.annotations.SerializedName
+import org.techtown.crecker.news.data.NewsIdx
 
 data class HomeBannerImgData(
     @SerializedName("message")
@@ -11,7 +12,10 @@ data class HomeBannerImgData(
     @SerializedName("success")
     val success: Boolean,
     @SerializedName("data")
-    val data : String,
+    val data : Data
+) {data class Data(
     @SerializedName("homeBannerIdx")
-    val homeBannerIdx : Int
-)
+    val homeBannerIdx : Int,
+    @SerializedName("url")
+    val url : String
+)}
