@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     tools:context=".main.MainActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -37,7 +38,7 @@
                 app:layout_constraintVertical_bias="0.494" />
 
             <ImageView
-                android:id="@+id/btn_goBack"
+                android:id="@+id/btn_setting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="21dp"
@@ -176,6 +177,7 @@
                 android:background="#ffffff"
                 android:fontFamily="@font/apple_sd_gothic_neo_regular"
                 android:text="광고 리포트 보기"
+                android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/include" />

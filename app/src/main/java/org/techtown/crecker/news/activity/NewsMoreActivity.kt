@@ -1,6 +1,8 @@
 package org.techtown.crecker.news.activity
 
+import android.content.Intent
 import android.media.Image
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
@@ -12,14 +14,16 @@ import org.techtown.crecker.R
 import org.techtown.crecker.module.debugLog
 import org.techtown.crecker.news.api.NewsServiceImpl
 import org.techtown.crecker.news.data.NewsApiData
+import org.techtown.crecker.news.data.NewsIdx
+import org.techtown.crecker.news.data.ScrapResultData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class NewsMoreActivity : AppCompatActivity() {
 
-    private var scrap : Int = 0
     private lateinit var glideManager : RequestManager
+    private  var currentScrap : Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,26 +37,11 @@ class NewsMoreActivity : AppCompatActivity() {
         news_more_back_img.setOnClickListener {
             finish()
         }
-        //스크랩 버튼
+
         news_more_scrap_img.setOnClickListener {
-            if(scrap == 0){
-                Toast.makeText(this,"스크랩 되었습니다.",Toast.LENGTH_LONG)
-                    .show()
-                news_more_scrap_img.setImageResource(R.drawable.ic_scrapped)
-                scrap=1
-            }
-            else{
-                Toast.makeText(this,"스크랩 해제되었습니다.",Toast.LENGTH_LONG)
-                    .show()
-                news_more_scrap_img.setImageResource(R.drawable.ic_scrap)
-                scrap=0
-            }
+            clickScrap(currentScrap, idx)
         }
 
-        news_more_sign_tv.setOnClickListener {
-            Toast.makeText(this,"신청 되었습니다.", Toast.LENGTH_LONG).show()
-            finish()
-        }
     }
 
     private fun startCommu(idx : Int){
@@ -77,6 +66,11 @@ class NewsMoreActivity : AppCompatActivity() {
                                 news_more_end_tv.text = it.calendarEnd
                                 news_more_program_tv.text = it.contents
                                 news_more_place_tv.text = it.host
+                                moveToUrl(it.url)
+                                if(it.isScrapped == true){
+                                   news_more_scrap_img.setImageResource(R.drawable.ic_scrapped)
+                                }
+                                currentScrap = it.isScrapped
                             }
                         }
                 }
@@ -84,9 +78,73 @@ class NewsMoreActivity : AppCompatActivity() {
         )
     }
 
+    private fun clickScrap(scrap: Boolean, idx : Int){
+            if(scrap == false){
+                news_more_scrap_img.setImageResource(R.drawable.ic_scrapped)
+                currentScrap= true
+                scrapOn(idx)
+            }
+            else{
+                news_more_scrap_img.setImageResource(R.drawable.ic_scrap)
+                currentScrap = false
+                scrapOff(idx)
+            }
+    }
+
     private fun loading(url : String, view: ImageView){
         view.post {
             glideManager.load(url).into(view)
         }
+    }
+
+    private fun moveToUrl(url : String){
+        this.news_more_sign_tv.setOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("http://${url}")))
+        }
+    }
+
+    private fun scrapOn(idx : Int){
+        val call = NewsServiceImpl.service.postScrap(NewsIdx(idx))
+        call.enqueue(
+            object : Callback<ScrapResultData>{
+                override fun onFailure(call: Call<ScrapResultData>, t: Throwable) {
+                    "${t}".debugLog("CallBackFailed in ScrapOff")
+                }
+
+                override fun onResponse(
+                    call: Call<ScrapResultData>,
+                    response: Response<ScrapResultData>
+                ) {
+                    response.takeIf { it.isSuccessful }
+                        ?.body()
+                        ?.let {
+                            Toast.makeText(this@NewsMoreActivity,"스크랩 되었습니다."
+                                ,Toast.LENGTH_LONG).show()
+                        }
+                }
+            }
+        )
+    }
+
+    private fun scrapOff(idx : Int){
+        val call2 = NewsServiceImpl.service.deleteScrap(NewsIdx(idx))
+        call2.enqueue(
+            object : Callback<ScrapResultData>{
+                override fun onFailure(call: Call<ScrapResultData>, t: Throwable) {
+                }
+                override fun onResponse(
+                    call: Call<ScrapResultData>,
+                    response: Response<ScrapResultData>
+                ) {
+                    response.takeIf { it.isSuccessful }
+                        ?.body()
+                        ?.let {
+                            Toast.makeText(this@NewsMoreActivity,
+                                "스크랩 해제 되었습니다.",Toast.LENGTH_LONG).show()
+                        }
+                }
+            }
+        )
+
     }
 }

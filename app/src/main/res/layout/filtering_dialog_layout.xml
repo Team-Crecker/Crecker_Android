@@ -26,7 +26,7 @@
         android:fontFamily="@font/apple_sd_gothic_neo_regular"
         android:lineSpacingExtra="4sp"
         android:gravity="center"
-        android:text="입금" />
+        android:text="적립" />
 
     <TextView
         android:id="@+id/category_withdraw"

@@ -134,10 +134,7 @@ class TotalFragment : Fragment() {
             it.xAxis.axisLineColor =  Color.parseColor("#1EC695")
             it.xAxis.textColor = Color.parseColor("#1EC695")
             it.xAxis.setDrawGridLines(false)
-////            it.xAxis.setDrawLabels(false)
-////            it.xAxis.setDrawAxisLine(false)
             it.xAxis.granularity = 1f
-//            it.xAxis.labelCount = 4
             it.xAxis.valueFormatter = formatter
 
             it.axisLeft.setDrawLabels(false)
@@ -154,7 +151,6 @@ class TotalFragment : Fragment() {
             it.legend.setDrawInside(false)
 
         }
-//        mView.lineChart.invalidate()
     }
 
     private fun mountingRv(context : Context, data : List<TotalData.Data.Top>){

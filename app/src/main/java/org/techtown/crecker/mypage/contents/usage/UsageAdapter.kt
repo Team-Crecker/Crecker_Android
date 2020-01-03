@@ -8,10 +8,10 @@ import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import org.techtown.crecker.R
 
-class UsageAdapter (private val context : Context, var data: ArrayList<UsageRecord>) : RecyclerView.Adapter<UsageVH>(), Filterable{
+class UsageAdapter (private val context : Context, var data: ArrayList<CashData.Data.History>) : RecyclerView.Adapter<UsageVH>(), Filterable{
     val backup = data
 
-    lateinit var filtered: ArrayList<UsageRecord>
+    lateinit var filtered: ArrayList<CashData.Data.History>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsageVH {
         val view = LayoutInflater.from(context).inflate(R.layout.usage_item, parent , false)
@@ -32,9 +32,9 @@ class UsageAdapter (private val context : Context, var data: ArrayList<UsageReco
             filtered =
                 if(str.isEmpty()) backup
                 else{
-                    val filtering = ArrayList<UsageRecord>()
+                    val filtering = ArrayList<CashData.Data.History>()
                     for(i in backup){
-                        if(i.io == str)
+                        if(i.isIn == str)
                             filtering.add(i)
                     }
                 filtering
@@ -43,7 +43,7 @@ class UsageAdapter (private val context : Context, var data: ArrayList<UsageReco
         }
 
         override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
-            data = p1?.values as ArrayList<UsageRecord>
+            data = p1?.values as ArrayList<CashData.Data.History>
             notifyDataSetChanged()
         }
 

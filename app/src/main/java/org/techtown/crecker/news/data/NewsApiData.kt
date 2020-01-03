@@ -19,6 +19,7 @@ data class NewsApiData(
         val title: String,
         val updateAt: String,
         val url: String,
-        val views: Int
+        val views: Int,
+        val isScrapped : Boolean
     )
 }
