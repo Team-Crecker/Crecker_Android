@@ -6,9 +6,28 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <Button
+        android:id="@+id/step_3_btn_register_next"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#000000"
+        android:fontFamily="@font/apple_sd"
+        android:lineSpacingExtra="22sp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:text="다음"
+        android:textColor="#ffffff"
+        android:textFontWeight="700"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@+id/step_3_btn_register_next"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,9 +47,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="19dp"
+                android:orientation="horizontal"
                 android:paddingLeft="84dp"
                 android:paddingRight="84dp"
-                android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -74,7 +93,6 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_register_step3_expert">
 
 
-
                 <RadioButton
                     android:id="@+id/rb_register_step3_expert_law"
                     android:layout_width="wrap_content"
@@ -86,19 +104,19 @@
                     android:text="법률"
                     app:layout_constraintHorizontal_chainStyle="packed" />
 
-                    <RadioButton
-                        android:id="@+id/rb_register_step3_expert_brand"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/checkbox_register_category_custom"
-                        android:button="@null"
-                        android:gravity="center"
-                        android:text="브랜딩" />
+                <RadioButton
+                    android:id="@+id/rb_register_step3_expert_brand"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/checkbox_register_category_custom"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="브랜딩" />
 
                 <RadioButton
-                    android:id="@+id/rb_register_step3_expert_shoot"
+                    android:id="@+id/rb_register_step3_expert_shooting"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -155,10 +173,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="19dp"
                 android:layout_marginBottom="40dp"
-                android:paddingRight="35dp"
-                android:paddingLeft="35dp"
                 android:gravity="center"
                 android:orientation="horizontal"
+                android:paddingLeft="35dp"
+                android:paddingRight="35dp"
                 app:layout_constraintBottom_toTopOf="@id/tv_register_step3_expert"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
