@@ -8,6 +8,6 @@ object SignData {
      var realName : String = ""
      var youName : String = ""
      var youAddress : String = ""
-     lateinit var interest : List<String>
+     var interest : List<String> = listOf()
      var notRegUrl : String = ""
 }

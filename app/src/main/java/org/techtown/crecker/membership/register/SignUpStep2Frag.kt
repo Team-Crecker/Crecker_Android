@@ -24,8 +24,7 @@ class SignUpStep2Frag  : Fragment() {
         val V = inflater.inflate(R.layout.fragment_sign_up_step2, container, false)
         mContext = V.context
         mView = V
-
-        checkboxStatus(V)
+        
         activateCheckBoxListener(V)
         V.step_2_btn_register_next2.setOnClickListener {
             if (checking()) {
@@ -60,15 +59,6 @@ class SignUpStep2Frag  : Fragment() {
             else{
                 return true
             }
-        }
-    }
-
-    fun checkboxStatus(v : View) {
-        if (v.cb_register_step2_01.isChecked && v.cb_register_step2_02.isChecked
-            && v.cb_register_step2_03.isChecked) {
-
-        } else {
-            Toast.makeText(mContext, "필수 이용약관에 모두 동의해주세요", Toast.LENGTH_SHORT).show()
         }
     }
 

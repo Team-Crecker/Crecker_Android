@@ -23,7 +23,7 @@ class NewsHoriVH(view : View) : RecyclerView.ViewHolder(view){
     fun onBind(data : NewsApiData.Data) {
         news_item_company.text = data.host
         news_item_title.text = data.title
-        news_item_day.text = "7"
+        news_item_day.text = data.createAt
         loading(data.poster, news_item_img)
 
         itemView.setOnClickListener {

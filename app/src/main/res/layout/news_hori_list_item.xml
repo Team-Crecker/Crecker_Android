@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:background="@drawable/custom_layout_box"
     android:orientation="vertical">
 
     <ImageView
@@ -18,29 +19,33 @@
 
     <TextView
         android:id="@+id/news_hori_item_company_tv"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="9dp"
         android:fontFamily="@font/montserrat"
         android:lineSpacingExtra="8sp"
         android:text="Company"
         android:textColor="#333333"
         android:textFontWeight="700"
         android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/news_hori_item_img" />
 
     <TextView
         android:id="@+id/news_hori_item_title_tv"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:layout_marginEnd="9dp"
         android:fontFamily="@font/apple_sd"
         android:lineSpacingExtra="6sp"
         android:text="Title"
         android:textColor="#333333"
         android:textFontWeight="200"
         android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/news_hori_item_company_tv" />
 
@@ -49,12 +54,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:fontFamily="@font/montserrat"
         android:lineSpacingExtra="8sp"
         android:text="D_day"
         android:textColor="@color/darkMint"
         android:textFontWeight="500"
         android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/news_hori_item_title_tv" />
 
