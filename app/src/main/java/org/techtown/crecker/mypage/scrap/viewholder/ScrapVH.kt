@@ -1,4 +1,4 @@
-package org.techtown.crecker.mypage.scrap.ViewHolder
+package org.techtown.crecker.mypage.scrap.viewholder
 
 import android.content.Intent
 import android.view.View
@@ -6,7 +6,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.daily_list_item.view.*
 import org.techtown.crecker.R
 import org.techtown.crecker.mypage.scrap.data.ScrapApiData
 import org.techtown.crecker.news.activity.NewsMoreActivity
