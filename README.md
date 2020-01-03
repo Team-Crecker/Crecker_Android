@@ -156,7 +156,8 @@ Constraint Layout을 사용하면서 Chain과 Horizontal_bias 등 다양한 속�
 	* fragment : 광고 뷰와 관련된 fragment
 * ### home
 	* adapter : 리사이클러뷰 어댑터 관리 패키지
-	* data : home 탭의 리사이클러뷰에서 사용하는 data class 패키지
+	* api : home 탭 관련 통신 패키지
+	* data : 1. home 탭의 data class 패키지
 	* viewholder : 리사이클러뷰에 사용하는 뷰 홀더 패키지 
 	* fragment : home 뷰와 관련된 fragment
 * ### law
@@ -185,6 +186,12 @@ Constraint Layout을 사용하면서 Chain과 Horizontal_bias 등 다양한 속�
 	* data : news 탭에서 사용하는 data class 패키지
 	* feature : news 프래그먼트 내부 탭에 사용할 프래그먼트 패키지
 	* viewholder : 리사이클러뷰에 사용하는 뷰 홀더 패키지
+	
+* ### membership
+	* api : 로그인과 회원가입의 서버 통신을 위한 Retrofit 인터페이스와 구현체 보관
+	* data : 서버와의 통신 결과로 받은 데이터에 대한 data class들 모음 패키지
+	* login : 로그인 창의 activity 포함한 패키지
+	* register : 회원가입 메인 activity와 총 4개 단계의 회원가입 fragment 모음 패키지
 
 # 핵심 기능 구현
 * ## lottie를 이용한 스플래시 화면
