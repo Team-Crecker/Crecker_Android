@@ -18,8 +18,163 @@ Crecker_Android파트 git 장소입니다.
 - [otto](https://github.com/square/otto) : 컴포넌트 간 통신을 위해 사용(Fragment에서 Activity의 onActivityForResult를 받기 위해)
 - [lottie](https://github.com/airbnb/lottie-android) : 움직이는 이미지로 스플래시 화면 구성을 위해 사용
 - [TedImagePicker](https://github.com/ParkSangGwon/TedImagePicker) : 프로필 이미지 업로드 시 이미지 선택을 위해 사용
+- [Easy-SharedPreferences](https://github.com/AmanpreetYatin/Easy-SharedPreferences) : SharedPreferences에 쉽고 빠르게 접근하기 위해 채택
+		
 
-# 기능 구현 방법
+# 평가 기준 충족
+* ## Extension Function
+
+
+		fun String.putLog(tag: String = "debugResult"){
+			Log.d(tag, this)
+		}
+
+		AdsServiceImpl.service.getLatestAds().enqueue(object : Callback<Ads>{
+		    override fun onFailure(call: Call<Ads>, t: Throwable) {
+			"실패: $t".putLog("Fail")
+		    }
+		    
+	String 클래스를 확장하여 putLog(tag: String)을 String의 메서드로 추가하였다.
+	
+
+            override fun onResponse(call: Call<Ads>, response: Response<Ads>) {
+                response.takeIf { it.isSuccessful }?.body()?.data?.
+                    let {
+                        recentAdapter.data = it
+                        recentAdapter.notifyDataSetChanged()
+                    } ?: run{
+                    Toast.makeText(mContext, "서버로부터 정보를 받아올 수 없습니다..", Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
+	
+ 	또 코틀린에서 제공하는 takeIf, let, run 등을 활용하여 null과 관련된 상황의 if문을 대체해보았다.
+
+* ## Lambda Expression
+
+		btn_goBack.setOnClickListener { finish() }
+        apply_btn_plansheet.setOnClickListener { PlanSheetDialog().show() }
+	
+	View.OnClickListener를 구현하는 객체를 인자로 넘기는 대신 람다식을 이용하여 짧고 편하게 버튼 클릭 리스너를 달아주었다.   
+
+		response.takeIf { it.isSuccessful }
+			    ?.body()?.message.takeIf { it.equals("resMessage.INSERT_AD_SUCCESS") }
+			    .let {
+				Toast.makeText(this@ApplyActivity, "신청 완료!", Toast.LENGTH_SHORT).show()
+				this@ApplyActivity.finish()
+			    }
+		    
+	또 확장 함수인 takeIf와 let을 사용할 때도 람다 표현식이 쓰인다.
+
+* ## Constraint Layout
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+		    xmlns:android="http://schemas.android.com/apk/res/android"
+		    xmlns:app="http://schemas.android.com/apk/res-auto"
+		    xmlns:tools="http://schemas.android.com/tools"
+		    android:id="@+id/rectangle"
+		    android:layout_width="match_parent"
+		    android:layout_height="101dp"
+		    android:layout_marginStart="16dp"
+		    android:layout_marginTop="10dp"
+		    android:layout_marginEnd="16dp"
+		    android:background="#ffffff"
+		    android:elevation="2dp"
+		    android:clipToPadding="false"
+		    app:layout_constraintHorizontal_chainStyle="spread">
+
+		    <TextView
+			android:id="@+id/textView2"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:fontFamily="@font/apple_sd_gothic_neo_regular"
+			android:lineSpacingExtra="3sp"
+			android:text="배정"
+			android:textColor="#333333"
+			android:textSize="14sp"
+			app:layout_constraintEnd_toStartOf="@+id/textView3"
+			app:layout_constraintHorizontal_bias="0.5"
+			app:layout_constraintStart_toEndOf="@+id/textView"
+			app:layout_constraintTop_toTopOf="@+id/textView" />
+
+		    <TextView
+			android:id="@+id/textView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="25dp"
+			android:fontFamily="@font/apple_sd_gothic_neo_regular"
+			android:lineSpacingExtra="3sp"
+			android:text="신청"
+			android:textColor="#333333"
+			android:textSize="14sp"
+			app:layout_constraintEnd_toStartOf="@+id/textView2"
+			app:layout_constraintHorizontal_bias="0.5"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+
+					.....
+
+		    <TextView
+			android:id="@+id/my_tv_check"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:fontFamily="@font/montserrat_semibold"
+			android:lineSpacingExtra="3sp"
+			android:textColor="#1ec695"
+			android:textSize="16sp"
+			app:layout_constraintBottom_toBottomOf="@+id/my_tv_ass"
+			app:layout_constraintEnd_toEndOf="@+id/textView3"
+			app:layout_constraintHorizontal_bias="0.5"
+			app:layout_constraintStart_toStartOf="@+id/textView3"
+			android:text="10" />
+
+		    <TextView
+			android:id="@+id/my_tv_fin"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:fontFamily="@font/montserrat_semibold"
+			android:lineSpacingExtra="3sp"
+			android:textColor="#1ec695"
+			android:textSize="16sp"
+			app:layout_constraintBottom_toBottomOf="@+id/my_tv_check"
+			app:layout_constraintEnd_toEndOf="@+id/textView4"
+			app:layout_constraintHorizontal_bias="0.5"
+			app:layout_constraintStart_toStartOf="@+id/textView4"
+			android:text="10" />
+		</androidx.constraintlayout.widget.ConstraintLayout>
+		
+Constraint Layout을 사용하면서 Chain과 Horizontal_bias 등 다양한 속성을 활용해보았다.
+
+# 프로그램 구조
+* ### ads
+	* activity : 광고 뷰와 관련된 activity
+	* banner : 오토스크롤 뷰페이저(배너) 구현과 관련된 것들
+	* category : 광고 카테고리 전환과 관련된 것들
+	* contents : 광고 내용(data class + recycleradapter + viewholder)
+	* fragment : 광고 뷰와 관련된 fragment
+* ### home
+	* adapter : 리사이클러뷰 어댑터 관리 패키지
+	* data : home 탭의 리사이클러뷰에서 사용하는 data class 패키지
+	* viewholder : 리사이클러뷰에 사용하는 뷰 홀더 패키지 
+	* fragment : home 뷰와 관련된 fragment
+* ### law
+	* adapter : 배너 및 리사이클러뷰 어댑터 관리 패키지
+	* data : law 탭에서 사용하는 data class 패키지
+	* viewholder : 리사이클러뷰에 사용하는 뷰 홀더 패키지
+* ### main
+* ### module
+	- 리사이클러뷰 여백설정 기능, 커스텀뷰페이저, 바텀시트 컨트롤러, 익스텐션 함수 등을 보관
+* ### mypage
+	* activity : 마이페이지 뷰와 관련된 activity
+	* contents : 각종 데이터(data class + recycleradapter + viewholder) ex)이용내역
+	* fragment : 마이페이지 뷰와 관련된 fragment
+* ### news
+	* adapter : 배너 및 리사이클러뷰 어댑터 관리 패키지
+	* data : news 탭에서 사용하는 data class 패키지
+	* feature : news 프래그먼트 내부 탭에 사용할 프래그먼트 패키지
+	* viewholder : 리사이클러뷰에 사용하는 뷰 홀더 패키지
+
+# 핵심 기능 구현
 * ## lottie를 이용한 스플래시 화면
 	- SplashActivity
 	
@@ -189,35 +344,6 @@ Crecker_Android파트 git 장소입니다.
 	sv_root -> 스크롤뷰 id 값
 	KeyboardVisibilityUtils클래스를 만들 때 인자로 window를 전달하고 onShowKeyboard를 통해 ScroolView를 키보드 높이만큼 스크롤  
 	onShowKeyboard : 키보드가 보여질 때 해당 코드 호출
-
-# 프로그램 구조
-* ### ads
-	* activity : 광고 뷰와 관련된 activity
-	* banner : 오토스크롤 뷰페이저(배너) 구현과 관련된 것들
-	* category : 광고 카테고리 전환과 관련된 것들
-	* contents : 광고 내용(data class + recycleradapter + viewholder)
-	* fragment : 광고 뷰와 관련된 fragment
-* ### home
-	* adapter : 리사이클러뷰 어댑터 관리 패키지
-	* data : home 탭의 리사이클러뷰에서 사용하는 data class 패키지
-	* viewholder : 리사이클러뷰에 사용하는 뷰 홀더 패키지 
-	* fragment : home 뷰와 관련된 fragment
-* ### law
-	* adapter : 배너 및 리사이클러뷰 어댑터 관리 패키지
-	* data : law 탭에서 사용하는 data class 패키지
-	* viewholder : 리사이클러뷰에 사용하는 뷰 홀더 패키지
-* ### main
-* ### module
-	- 리사이클러뷰 여백설정 기능, 커스텀뷰페이저, 바텀시트 컨트롤러, 익스텐션 함수 등을 보관
-* ### mypage
-	* activity : 마이페이지 뷰와 관련된 activity
-	* contents : 각종 데이터(data class + recycleradapter + viewholder) ex)이용내역
-	* fragment : 마이페이지 뷰와 관련된 fragment
-* ### news
-	* adapter : 배너 및 리사이클러뷰 어댑터 관리 패키지
-	* data : news 탭에서 사용하는 data class 패키지
-	* feature : news 프래그먼트 내부 탭에 사용할 프래그먼트 패키지
-	* viewholder : 리사이클러뷰에 사용하는 뷰 홀더 패키지
 
 # 기타
 

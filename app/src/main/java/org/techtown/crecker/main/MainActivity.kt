@@ -16,7 +16,7 @@ import org.techtown.crecker.ads.category.CtgResultEvent
 import org.techtown.crecker.ads.category.EventBus
 import org.techtown.crecker.mypage.main.MyPageFragment
 import org.techtown.crecker.law.LawFragment
-import org.techtown.crecker.news.NewsFragment
+import org.techtown.crecker.news.fragment.NewsFragment
 
 import org.techtown.crecker.home.HomeFragment
 import org.techtown.crecker.main.adapter.MainViewPagerAdapter
@@ -47,7 +47,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initViewPager() {
-        fragments = arrayListOf(HomeFragment(), AdsFragment(), LawFragment(), NewsFragment(),
+        fragments = arrayListOf(HomeFragment(), AdsFragment(), LawFragment(),
+            NewsFragment(),
             MyPageFragment()
         )
 
@@ -71,14 +72,6 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onPageSelected(position: Int) {
-//                when (position){
-//                    0 -> refresh()
-//                    1 -> refresh()
-//                    2 -> refresh()
-//                    3 -> refresh()
-//                    4 -> refresh()
-//
-//                }
             }
         })
     }

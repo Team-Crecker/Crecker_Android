@@ -8,13 +8,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.filtering_dialog_layout.*
 import kotlinx.android.synthetic.main.fragment_individual.view.*
 
 import org.techtown.crecker.R
 import org.techtown.crecker.module.RcvItemDeco
+import org.techtown.crecker.module.debugLog
 import org.techtown.crecker.mypage.report.adapter.IndividualRvAdp
-import org.techtown.crecker.mypage.report.data.IndividualReportData
+import org.techtown.crecker.mypage.report.api.ReportServiceImpl
+import org.techtown.crecker.mypage.report.data.IndividualData
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class IndividualFragment : Fragment() {
@@ -42,32 +46,30 @@ class IndividualFragment : Fragment() {
             it.addItemDecoration(RcvItemDeco(context))
         }
 
-        listAdp.data = arrayListOf(
-            IndividualReportData(
-                category = "Beauty",
-                company = "Sol Theraphy",
-                ad_name = "시카솔 클렌징 워터",
-                view_count = 200000,
-                like_count = 3000
-            ),
-            IndividualReportData(
-                category = "Beauty",
-                company = "Sol Theraphy",
-                ad_name = "시카솔 클렌징 워터",
-                view_count = 200000,
-                like_count = 3000
-            ),
-            IndividualReportData(
-                category = "Beauty",
-                company = "Sol Theraphy",
-                ad_name = "시카솔 클렌징 워터",
-                view_count = 200000,
-                like_count = 3000
-            )
-        )
-        listAdp.notifyDataSetChanged()
-    }
+        val call : Call<IndividualData> = ReportServiceImpl.service.getIndividual()
+        call.enqueue(
+            object : Callback<IndividualData>{
+                override fun onFailure(call: Call<IndividualData>, t: Throwable) {
+                    "${t}".debugLog("CallBackFailed")
+                }
 
+                override fun onResponse(
+                    call: Call<IndividualData>,
+                    response: Response<IndividualData>
+                ) {
+                    response?.takeIf { it.isSuccessful }
+                        ?.body()
+                        ?.takeIf { it.success == true }
+                        ?.data
+                        ?.let{
+                            listAdp.data = it
+                            "ok".debugLog()
+                            listAdp.notifyDataSetChanged()
+                        }
+                }
+            }
+        )
+    }
 
     companion object {
 

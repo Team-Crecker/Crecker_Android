@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="tab_resource" parent="@android:style/TextAppearance.Widget.TabWidget">
-        <item name = "android:fontFamily">@font/apple_sd_gothic_neo_bold</item>
+        <item name = "android:font">@font/apple_sd_gothic_neo_bold</item>
         <item name = "android:textSize">14sp</item>
         <item name = "android:lineSpacingExtra">3sp</item>
+        <item name = "android:textColor">#c9cdd2</item>
+    </style>
+
+    <style name="news_tab_resource" parent="@android:style/TextAppearance.Widget.TabWidget">
+        <item name="android:fontFamily">@font/montserrat_semibolditalic</item>
+        <item name = "android:textSize">14sp</item>
+        <item name = "android:lineSpacingExtra">4sp</item>
         <item name = "android:textColor">#c9cdd2</item>
     </style>
 </resources>

@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mypage.report.activity.IndiviualActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/inre_top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cmtp_white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/inre_back_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="25dp"
+            android:src="@drawable/common_back_black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/inre_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/montserrat"
+            android:gravity="center_horizontal"
+            android:lineSpacingExtra="4sp"
+            android:text="Report"
+            android:textColor="#000000"
+            android:textFontWeight="650"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/inre_company_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/montserrat"
+            android:lineSpacingExtra="8sp"
+            android:text="company"
+            android:textColor="#333333"
+            android:textFontWeight="700"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/inre_back_img"
+            app:layout_constraintTop_toBottomOf="@+id/inre_back_img" />
+
+        <TextView
+            android:id="@+id/inre_ad_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/apple_sd"
+            android:lineSpacingExtra="2sp"
+            android:text="광고 이름"
+            android:textColor="#333333"
+            android:textFontWeight="600"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/inre_company_title_tv"
+            app:layout_constraintTop_toBottomOf="@+id/inre_company_title_tv" />
+
+        <TextView
+            android:id="@+id/inre_date_tv"
+            style="@style/individual_report_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:text="일시"
+            app:layout_constraintStart_toStartOf="@+id/inre_ad_tv"
+            app:layout_constraintTop_toBottomOf="@+id/inre_ad_tv" />
+
+        <TextView
+            android:id="@+id/inre_reward_tv"
+            style="@style/individual_report_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="59dp"
+            android:text="리워드"
+            app:layout_constraintStart_toStartOf="@+id/inre_date_tv"
+            app:layout_constraintTop_toBottomOf="@+id/inre_date_tv" />
+
+        <TextView
+            android:id="@+id/inre_viewcount_tv"
+            style="@style/individual_report_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="조회수"
+            app:layout_constraintStart_toStartOf="@+id/inre_reward_tv"
+            app:layout_constraintTop_toBottomOf="@+id/inre_reward_tv" />
+
+        <TextView
+            android:id="@+id/inre_like_tv"
+            style="@style/individual_report_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="좋아요"
+            app:layout_constraintStart_toStartOf="@+id/inre_viewcount_tv"
+            app:layout_constraintTop_toBottomOf="@+id/inre_viewcount_tv" />
+
+        <TextView
+            android:id="@+id/inre_money_tv"
+            style="@style/individual_report_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="31dp"
+            android:text="광고비"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/inre_like_tv"
+            app:layout_constraintTop_toBottomOf="@+id/inre_like_tv" />
+
+        <TextView
+            android:id="@+id/inre_deadline_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="175dp"
+            android:fontFamily="@font/apple_sd"
+            android:lineSpacingExtra="7sp"
+            android:text="데드라인"
+            android:textColor="@color/black"
+            android:textFontWeight="400"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@+id/inre_date_tv"
+            app:layout_constraintStart_toEndOf="@+id/inre_date_tv"
+            app:layout_constraintTop_toTopOf="@+id/inre_date_tv" />
+
+        <TextView
+            android:id="@+id/inre_deadline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:fontFamily="@font/montserrat"
+            android:lineSpacingExtra="6sp"
+            android:text="2019.12.25"
+            android:textColor="@color/black"
+            android:textFontWeight="500"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/inre_deadline_tv"
+            app:layout_constraintStart_toEndOf="@+id/inre_deadline_tv" />
+
+        <TextView
+            android:id="@+id/inre_upload_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="23dp"
+            android:fontFamily="@font/apple_sd"
+            android:lineSpacingExtra="7sp"
+            android:text="등록일시"
+            android:textColor="@color/black"
+            android:textFontWeight="400"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@+id/inre_deadline_tv"
+            app:layout_constraintTop_toBottomOf="@+id/inre_deadline_tv" />
+
+        <TextView
+            android:id="@+id/inre_upload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:fontFamily="@font/montserrat"
+            android:lineSpacingExtra="6sp"
+            android:text="2019.12.24"
+            android:textColor="@color/black"
+            android:textFontWeight="500"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/inre_upload_tv"
+            app:layout_constraintStart_toEndOf="@+id/inre_upload_tv" />
+
+        <TextView
+            android:id="@+id/inre_reward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="193dp"
+            android:text="제품 ·"
+            android:fontFamily="@font/apple_sd"
+            android:textFontWeight="400"
+            android:textSize="14sp"
+            android:lineSpacingExtra="6sp"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/inre_reward_tv"
+            app:layout_constraintStart_toEndOf="@+id/inre_reward_tv"
+            app:layout_constraintTop_toTopOf="@+id/inre_reward_tv" />
+
+        <TextView
+            android:id="@+id/inre_default_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp"
+            android:layout_marginEnd="16dp"
+            android:text="회"
+            style="@style/individual_report_etc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inre_reward" />
+
+        <TextView
+            android:id="@+id/inre_viewcount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10000"
+            style="@style/individual_report_num"
+            app:layout_constraintEnd_toStartOf="@+id/inre_default_1"
+            app:layout_constraintTop_toTopOf="@+id/inre_default_1" />
+
+        <TextView
+            android:id="@+id/inre_default_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="회"
+            style="@style/individual_report_etc"
+            app:layout_constraintEnd_toEndOf="@+id/inre_default_1"
+            app:layout_constraintTop_toBottomOf="@+id/inre_default_1" />
+
+        <TextView
+            android:id="@+id/inre_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1000"
+            style="@style/individual_report_num"
+            app:layout_constraintEnd_toStartOf="@+id/inre_default_2"
+            app:layout_constraintTop_toTopOf="@+id/inre_default_2" />
+
+        <TextView
+            android:id="@+id/inre_default_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="원"
+            style="@style/individual_report_etc"
+            app:layout_constraintEnd_toEndOf="@+id/inre_default_2"
+            app:layout_constraintTop_toBottomOf="@+id/inre_default_2" />
+
+        <TextView
+            android:id="@+id/inre_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1000000"
+            style="@style/individual_report_num"
+            app:layout_constraintEnd_toStartOf="@+id/inre_default_3"
+            app:layout_constraintTop_toTopOf="@+id/inre_default_3" />
+
+        <TextView
+            android:id="@+id/inre_reward_num_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10000"
+            style="@style/individual_report_num"
+            android:drawableRight="@drawable/ic_coin"
+            android:drawablePadding="3dp"
+            app:layout_constraintBottom_toBottomOf="@+id/inre_reward"
+            app:layout_constraintEnd_toEndOf="@+id/inre_upload"
+            app:layout_constraintStart_toEndOf="@+id/inre_reward"
+            app:layout_constraintTop_toTopOf="@+id/inre_reward" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/inre_bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="36dp"
+        android:background="@color/cmtp_white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inre_top_layout"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/inre_graph_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="조회수 증가 추이"
+            style="@style/individual_report_title"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/inre_graph"
+            android:layout_width="match_parent"
+            android:layout_height="206dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inre_graph_title_tv" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
