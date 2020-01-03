@@ -199,14 +199,16 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="21dp"
                 android:ems="10"
-                android:textSize="14sp"
                 android:hint="간단히 광고 후기를 작성해주세요.\n
 ex) 제품 마감처리가 잘 안 되어있어요.\n 광고를 찍는데 이런 어려운 점이 있었어요."
                 android:inputType="textPersonName"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+                app:layout_constraintTop_toBottomOf="@+id/textView6"
+                app:layout_constraintVertical_bias="1.0" />
 
             <Button
                 android:id="@+id/btn_check"
