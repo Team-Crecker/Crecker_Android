@@ -11,7 +11,6 @@ import androidx.viewpager.widget.ViewPager
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.custom_tab_button.view.*
 import org.techtown.crecker.R
-import org.techtown.crecker.ads.api.AdsServiceImpl
 import org.techtown.crecker.ads.fragment.AdsFragment
 import org.techtown.crecker.ads.category.CtgResultEvent
 import org.techtown.crecker.ads.category.EventBus
@@ -22,12 +21,8 @@ import org.techtown.crecker.news.fragment.NewsFragment
 import org.techtown.crecker.home.HomeFragment
 import org.techtown.crecker.main.adapter.MainViewPagerAdapter
 import org.techtown.crecker.ads.category.FragmentCommunicator
-import org.techtown.crecker.ads.contents.data.AdsRandom
 import org.techtown.crecker.ads.fragment.OnBackPressed
 import org.techtown.crecker.ads.fragment.putLog
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 class MainActivity : AppCompatActivity() {
@@ -115,5 +110,6 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
+
 }
 
