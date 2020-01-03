@@ -4,16 +4,22 @@ import android.graphics.Typeface
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.activity_cash.*
 import kotlinx.android.synthetic.main.filtering_dialog_layout.*
+import kotlinx.android.synthetic.main.layout_cash.*
 import org.techtown.crecker.R
+import org.techtown.crecker.ads.fragment.putLog
 import org.techtown.crecker.module.NavBarSetting
+import org.techtown.crecker.mypage.api.CashServiceImpl
+import org.techtown.crecker.mypage.contents.usage.CashData
 import org.techtown.crecker.mypage.contents.usage.UsageAdapter
-import org.techtown.crecker.mypage.contents.usage.UsageRecord
-import java.util.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import kotlin.collections.ArrayList
 
 class CashActivity : AppCompatActivity() {
     private lateinit var adapter: UsageAdapter
@@ -23,46 +29,64 @@ class CashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cash)
 
-        val init = arrayListOf(
-            UsageRecord(
-                "시카솔 클렌징 워터",
-                "입금",
-                5000,
-                Date()
-            ),
-            UsageRecord(
-                "계좌 출금",
-                "출금",
-                5000,
-                Date()
-            ),
-            UsageRecord(
-                "시카솔 클렌징 워터",
-                "입금",
-                5000,
-                Date()
-            ),
-            UsageRecord(
-                "계좌 출금",
-                "출금",
-                5000,
-                Date()
-            )
-        )
+        CashServiceImpl.service.getCashData().enqueue(object : Callback<CashData>{
+            override fun onFailure(call: Call<CashData>, t: Throwable) {
+                "실패: $t".putLog("Fail")
+            }
 
-        adapter = UsageAdapter(this, init)
+            override fun onResponse(call: Call<CashData>, response: Response<CashData>) {
+                initRV(response)
 
-        rv_usage.adapter = this.adapter
-        rv_usage.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+                response.takeIf { it.isSuccessful }?.body()?.data?.let {
+                    tv_cash_have.text = it.cash.toString()
+                    tv_cash_available.text = it.cashAllowed.toString()
+                }
 
+            }
+
+            private fun initRV(response: Response<CashData>) {
+                val l = response.takeIf { it.isSuccessful }
+                    ?.body()?.data?.history as ArrayList<CashData.Data.History>
+
+                adapter = UsageAdapter(this@CashActivity, l)
+                rv_usage.adapter = adapter
+                rv_usage.layoutManager =
+                    LinearLayoutManager(this@CashActivity, LinearLayoutManager.VERTICAL, false)
+            }
+        })
+
+
+        initListener()
+    }
+
+    private fun initListener() {
         btn_goBack.setOnClickListener { finish() }
 
         textView7.setOnClickListener { showFilter() }
         imageView4.setOnClickListener { showFilter() }
 
-        btn_info.setOnClickListener {
-            //커스텀 다이얼로그
+        btn_info.setOnClickListener { InfoDialog(this).show() }
+
+        btn_register_acc.setOnClickListener {
+            CashServiceImpl.service.postWithdraw().enqueue(object : Callback<org.techtown.crecker.mypage.api.Response>{
+                override fun onFailure(
+                    call: Call<org.techtown.crecker.mypage.api.Response>,
+                    t: Throwable
+                ) {
+                    "실패: $t".putLog("Fail")
+                }
+
+                override fun onResponse(
+                    call: Call<org.techtown.crecker.mypage.api.Response>,
+                    response: Response<org.techtown.crecker.mypage.api.Response>
+                ) {
+                    val msg = response.takeIf { it.isSuccessful }?.body()?.message
+                    Toast.makeText(this@CashActivity, msg, Toast.LENGTH_SHORT).show()
+                }
+
+            })
         }
+
     }
 
     private fun showFilter() {
@@ -75,8 +99,8 @@ class CashActivity : AppCompatActivity() {
                     dismiss()
                 }
                 category_deposit.setOnClickListener {
-                    adapter.filter.filter("입금")
-                    this@CashActivity.textView7.text = "입금"
+                    adapter.filter.filter("적립")
+                    this@CashActivity.textView7.text = "적립"
                     dismiss()
                 }
                 category_withdraw.setOnClickListener {
@@ -91,7 +115,7 @@ class CashActivity : AppCompatActivity() {
                         category_deposit.typeface = Typeface.DEFAULT
                         category_withdraw.typeface = Typeface.DEFAULT
                     }
-                    "입금" -> {
+                    "적립" -> {
                         category_all.typeface = Typeface.DEFAULT
                         category_deposit.typeface = Typeface.DEFAULT_BOLD
                         category_withdraw.typeface = Typeface.DEFAULT

@@ -103,7 +103,7 @@ class AdsFragment : Fragment(), OnBackPressed {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        "나도 받음".putLog()
+        "Get!!".putLog()
         if(requestCode == 7777){
             if(resultCode == Activity.RESULT_OK){
                 if(EventBus.title != "Advertise"){

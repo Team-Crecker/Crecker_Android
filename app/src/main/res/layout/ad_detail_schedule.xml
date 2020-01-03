@@ -6,6 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/tv_sub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/apple_sd_gothic_neo_medium"
+        android:lineSpacingExtra="20sp"
+        android:text="구독자 수"
+        android:textColor="#000000"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="@+id/imageView5"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="0dp"
@@ -45,6 +58,19 @@
         app:layout_constraintTop_toTopOf="@+id/textView8" />
 
     <TextView
+        android:id="@+id/ad_detail_tv_subscriber_cnt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/apple_sd_gothic_neo_medium"
+        android:lineSpacingExtra="20sp"
+        android:text="1만명 이상"
+        android:textColor="#000000"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_sub"
+        app:layout_constraintStart_toStartOf="@+id/ad_detail_tv_apply_period"
+        app:layout_constraintTop_toTopOf="@+id/tv_sub" />
+
+    <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -55,7 +81,7 @@
         android:textColor="#9fa4aa"
         android:textSize="13sp"
         app:layout_constraintStart_toStartOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_sub" />
 
     <TextView
         android:id="@+id/ad_detail_tv_select_day"

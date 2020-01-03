@@ -44,14 +44,14 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/detail_img_main"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/img_thum" />
+                app:srcCompat="@drawable/loading" />
 
             <TextView
                 android:id="@+id/ad_detail_title"
@@ -65,7 +65,7 @@
                 android:textColor="#000000"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                app:layout_constraintTop_toBottomOf="@+id/detail_img_main" />
 
             <TextView
                 android:id="@+id/ad_detail_desc"
@@ -134,7 +134,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/include3"
-                app:srcCompat="@drawable/img_detail" />
+                app:srcCompat="@drawable/loading" />
 
             <TextView
                 android:id="@+id/ad_detail_see_more"
@@ -162,7 +162,7 @@
     <Button
         android:id="@+id/ad_detail_btn_apply"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:background="#000000"
         android:fontFamily="@font/apple_sd_gothic_neo_bold"
         android:text="신청하기"
