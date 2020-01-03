@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
 import android.widget.Toast
+import com.amn.easysharedpreferences.EasySharedPreference
 import com.michaldrabik.classicmaterialtimepicker.CmtpTimeDialogFragment
 import com.michaldrabik.classicmaterialtimepicker.utilities.setOnTime24PickedListener
 import kotlinx.android.synthetic.main.activity_schedule.*
@@ -13,6 +14,7 @@ import org.techtown.crecker.law.api.ExpertServiceImpl
 import org.techtown.crecker.law.data.CounselingData
 import org.techtown.crecker.law.data.CounselingResult
 import org.techtown.crecker.module.KeyboardVisibilityUtils
+import org.techtown.crecker.module.TokenObject
 import org.techtown.crecker.module.debugLog
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,7 +25,7 @@ import java.util.*
 class ScheduleActivity : AppCompatActivity() {
     private lateinit var mCurrentTime : Calendar
     private  var myCalendar = Calendar.getInstance()
-    val datePicker = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+    val datePicker = DatePickerDialog.OnDateSetListener {_, year, month, dayOfMonth ->
         myCalendar.set(Calendar.YEAR, year)
         myCalendar.set(Calendar.MONTH, month)
         myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
@@ -153,7 +155,7 @@ class ScheduleActivity : AppCompatActivity() {
                     call: Call<CounselingResult>,
                     response: Response<CounselingResult>
                 ) {
-                    response?.takeIf { it.isSuccessful }
+                    response.takeIf { it.isSuccessful }
                         ?.body()
                         ?.takeIf { it.success == true }
                         ?.let{

@@ -7,10 +7,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.Toast
+import com.amn.easysharedpreferences.EasySharedPreference
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import kotlinx.android.synthetic.main.activity_news_more.*
 import org.techtown.crecker.R
+import org.techtown.crecker.module.TokenObject
 import org.techtown.crecker.module.debugLog
 import org.techtown.crecker.news.api.NewsServiceImpl
 import org.techtown.crecker.news.data.NewsApiData
@@ -104,6 +106,7 @@ class NewsMoreActivity : AppCompatActivity() {
     }
 
     private fun scrapOn(idx : Int){
+
         val call = NewsServiceImpl.service.postScrap(NewsIdx(idx))
         call.enqueue(
             object : Callback<ScrapResultData>{

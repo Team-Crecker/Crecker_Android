@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
+import com.amn.easysharedpreferences.EasySharedPreference
 import kotlinx.android.synthetic.main.fragment_news_edu.view.*
 
 import org.techtown.crecker.R
@@ -37,7 +38,6 @@ class NewsEduFragment : Fragment() {
         V.news_edu_rv.adapter = newsEduRecentAdapter
         V.news_edu_rv.layoutManager = GridLayoutManager(V.context, 2)
         V.news_edu_rv.addItemDecoration(RcvItemDeco(V.context, true))
-
         val call : Call<NewsApiData> = NewsServiceImpl.service.getSupportAllNews()
         call.enqueue(
             object : Callback<NewsApiData>{

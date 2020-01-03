@@ -7,10 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.amn.easysharedpreferences.EasySharedPreference
 import kotlinx.android.synthetic.main.fragment_news_daily.view.*
 
 import org.techtown.crecker.R
 import org.techtown.crecker.module.RcvItemDeco
+import org.techtown.crecker.module.TokenObject
 import org.techtown.crecker.module.debugLog
 import org.techtown.crecker.news.adapter.NewsDailyAdapter
 import org.techtown.crecker.news.api.NewsServiceImpl
@@ -44,7 +46,6 @@ class NewsDailyFragment : Fragment() {
             it.layoutManager = LinearLayoutManager(mView.context)
             it.addItemDecoration(RcvItemDeco(mView.context))
         }
-
         val call : Call<NewsDailyApiData> = NewsServiceImpl.service.getDailyAllNews()
         call.enqueue(
             object : Callback<NewsDailyApiData>{

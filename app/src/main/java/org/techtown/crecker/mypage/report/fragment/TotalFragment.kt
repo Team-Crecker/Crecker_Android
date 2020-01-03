@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.amn.easysharedpreferences.EasySharedPreference
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.Description
@@ -21,6 +22,7 @@ import org.techtown.crecker.R
 import org.techtown.crecker.module.debugLog
 import com.github.mikephil.charting.formatter.ValueFormatter
 import org.techtown.crecker.module.RcvItemDeco
+import org.techtown.crecker.module.TokenObject
 import org.techtown.crecker.module.formatMoney
 import org.techtown.crecker.mypage.report.adapter.RatingRvAdp
 import org.techtown.crecker.mypage.report.api.ReportServiceImpl
@@ -54,7 +56,7 @@ class TotalFragment : Fragment() {
                 }
 
                 override fun onResponse(call: Call<TotalData>, response: Response<TotalData>) {
-                    response?.takeIf { it.isSuccessful }
+                    response.takeIf { it.isSuccessful }
                         ?.body()
                         ?.takeIf { it.success == true }
                         ?.data

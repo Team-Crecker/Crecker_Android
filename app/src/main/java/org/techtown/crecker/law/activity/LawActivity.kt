@@ -19,6 +19,7 @@ import org.techtown.crecker.law.api.ExpertServiceImpl
 import org.techtown.crecker.law.data.QAdata
 import org.techtown.crecker.module.NavBarSetting
 import org.techtown.crecker.module.RcvItemDeco
+import org.techtown.crecker.module.TokenObject
 import org.techtown.crecker.module.debugLog
 import retrofit2.Call
 import retrofit2.Callback
@@ -28,6 +29,7 @@ import retrofit2.Response
 class LawActivity : AppCompatActivity() {
     private lateinit var lawListAdp : ExpertLawRvAdp
     private lateinit var answerList: List<QAdata.Data>
+    var token = EasySharedPreference.getString("token", "") // 영속성 데이터
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,7 +71,6 @@ class LawActivity : AppCompatActivity() {
     }
 
     private fun initListRcv(){
-        var tooken = EasySharedPreference.getString("token", "") // 영속성 데이터
         lawListAdp = ExpertLawRvAdp(this)
         law_qna_rcv.adapter = lawListAdp
         law_qna_rcv.layoutManager = LinearLayoutManager(this)
@@ -78,6 +79,7 @@ class LawActivity : AppCompatActivity() {
     }
 
     private fun startCommu(){
+
         val call : Call<QAdata> = ExpertServiceImpl.service.getLawAnswer()
         call.enqueue(
             object : Callback<QAdata>{
@@ -86,7 +88,7 @@ class LawActivity : AppCompatActivity() {
                 }
 
                 override fun onResponse(call: Call<QAdata>, response: Response<QAdata>) {
-                    response?.takeIf { it.isSuccessful }
+                    response.takeIf { it.isSuccessful }
                         ?.body()
                         ?.data
                         ?.let {
@@ -152,7 +154,7 @@ class LawActivity : AppCompatActivity() {
                 bottomSheetDialog.bottom_regi_tv.typeface = Typeface.DEFAULT_BOLD
                 bottomSheetDialog.bottom_inquery_tv.typeface = Typeface.DEFAULT
             }
-            "등록순" ->{
+            "조회순" ->{
                 bottomSheetDialog.bottom_answer_tv.typeface = Typeface.DEFAULT
                 bottomSheetDialog.bottom_regi_tv.typeface = Typeface.DEFAULT
                 bottomSheetDialog.bottom_inquery_tv.typeface = Typeface.DEFAULT_BOLD

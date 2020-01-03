@@ -12,15 +12,15 @@ const val sampleToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjU5LCJ0eX
 
 interface HomeFragService {
 
-    @Headers("token: ${org.techtown.crecker.law.api.sampleToken}")
+    @Headers("token: ${sampleToken}")
     @GET("advertise/ad/interest")
     fun getAdsListData() : Call<HomeAdsListData>
 
-    @Headers("token: ${org.techtown.crecker.law.api.sampleToken}")
+    @Headers("token: ${sampleToken}")
     @GET("news/recommand/2")
     fun getSupportListData() : Call<HomeSupportListData>
 
-    @Headers("token: ${org.techtown.crecker.law.api.sampleToken}")
+    @Headers("token: ${sampleToken}")
     @GET("home/")
     fun getBannerImgData() : Call<HomeBannerImgData>
 }

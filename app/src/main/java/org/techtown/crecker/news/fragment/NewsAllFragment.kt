@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.amn.easysharedpreferences.EasySharedPreference
 import com.zhpan.bannerview.BannerViewPager
 import com.zhpan.bannerview.adapter.OnPageChangeListenerAdapter
 import com.zhpan.bannerview.constants.IndicatorGravity
@@ -22,6 +23,7 @@ import org.techtown.crecker.R
 import org.techtown.crecker.news.adapter.NewsRecentAdapter
 import org.techtown.crecker.module.RcvItemDeco
 import org.techtown.crecker.module.RcvItemHoriDeco
+import org.techtown.crecker.module.TokenObject
 import org.techtown.crecker.module.debugLog
 import org.techtown.crecker.news.activity.NewsDetailActivity
 import org.techtown.crecker.news.adapter.NewsPopularAdapter
@@ -95,7 +97,6 @@ class NewsAllFragment : Fragment() {
         mView.news_recent_rv.adapter = newsRecentAdapter
         mView.news_recent_rv.layoutManager = GridLayoutManager(mView.context, 2)
         mView.news_recent_rv.addItemDecoration(RcvItemDeco(mView.context,true)) // 여백 설정
-
         val call : Call<NewsApiData> = NewsServiceImpl.service.getSupportNews(2)
         call.enqueue(
             object : Callback<NewsApiData>{
@@ -120,12 +121,6 @@ class NewsAllFragment : Fragment() {
 
 
     private fun initBannerData(){
-//        val imgs = arrayOf(R.drawable.img_main_banner,R.drawable.img_main_banner,R.drawable.img_main_banner,R.drawable.img_main_banner)
-//
-//        for (i in imgs){
-//            mDrawableList.add(NewsBannerData(img_url =  i))
-//        }
-
         val call : Call<NewsBannerApiData> = NewsServiceImpl.service.getBannerNews()
         call.enqueue(
             object : Callback<NewsBannerApiData> {

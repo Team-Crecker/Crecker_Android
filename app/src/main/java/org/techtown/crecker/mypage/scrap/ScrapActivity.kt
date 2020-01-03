@@ -3,9 +3,11 @@ package org.techtown.crecker.mypage.scrap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.amn.easysharedpreferences.EasySharedPreference
 import kotlinx.android.synthetic.main.activity_scrap.*
 import org.techtown.crecker.R
 import org.techtown.crecker.module.RcvItemDeco
+import org.techtown.crecker.module.TokenObject
 import org.techtown.crecker.module.debugLog
 import org.techtown.crecker.mypage.scrap.adapter.ScrapAdp
 import org.techtown.crecker.mypage.scrap.api.ScrapServiceImpl
@@ -35,7 +37,6 @@ class ScrapActivity : AppCompatActivity() {
             it.layoutManager = LinearLayoutManager(this)
             it.addItemDecoration(RcvItemDeco(this))
         }
-
         val call = ScrapServiceImpl.service.getTotalScrap()
         call.enqueue(
             object : Callback<ScrapApiData>{

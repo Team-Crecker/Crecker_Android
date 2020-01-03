@@ -8,12 +8,14 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
+import com.amn.easysharedpreferences.EasySharedPreference
 import kotlinx.android.synthetic.main.activity_quest.*
 import org.techtown.crecker.R
 import org.techtown.crecker.law.api.ExpertServiceImpl
 import org.techtown.crecker.law.data.QuestionData
 import org.techtown.crecker.law.data.QuestionResult
 import org.techtown.crecker.module.KeyboardVisibilityUtils
+import org.techtown.crecker.module.TokenObject
 import org.techtown.crecker.module.debugLog
 import org.w3c.dom.Text
 import retrofit2.Call
@@ -40,7 +42,7 @@ class QuestAcitivy : AppCompatActivity() {
             finish()
         }
 
-        ct_radio_group.setOnCheckedChangeListener { group, checkedId ->
+        ct_radio_group.setOnCheckedChangeListener {_, checkedId ->
             when(checkedId){
                 R.id.ct_law_tv -> {
                     law.setBackgroundResource(R.drawable.btn_filled_category)
@@ -97,9 +99,8 @@ class QuestAcitivy : AppCompatActivity() {
         var check : Int = 0
         if(check_secret.isChecked)
             check = 1
-
         val call : Call<QuestionResult> = ExpertServiceImpl.service
-            .postLawQuestion(QuestionData(title,content,category,check))
+            .postLawQuestion( QuestionData(title,content,category,check))
 
         call.enqueue(
             object : Callback<QuestionResult>{
@@ -111,7 +112,7 @@ class QuestAcitivy : AppCompatActivity() {
                     call: Call<QuestionResult>,
                     response: Response<QuestionResult>
                 ) {
-                    response?.takeIf { it.isSuccessful }
+                    response.takeIf { it.isSuccessful }
                         ?.body()
                         ?.takeIf { it.success == true }
                         ?.let{

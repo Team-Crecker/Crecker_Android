@@ -3,6 +3,7 @@ package org.techtown.crecker.mypage.report.activity
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.amn.easysharedpreferences.EasySharedPreference
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.Description
@@ -14,6 +15,7 @@ import com.github.mikephil.charting.formatter.ValueFormatter
 import kotlinx.android.synthetic.main.activity_indiviual.*
 import kotlinx.android.synthetic.main.fragment_total.*
 import org.techtown.crecker.R
+import org.techtown.crecker.module.TokenObject
 import org.techtown.crecker.module.debugLog
 import org.techtown.crecker.mypage.report.api.ReportServiceImpl
 import org.techtown.crecker.mypage.report.data.ReportDetailData
@@ -50,7 +52,7 @@ class IndiviualActivity : AppCompatActivity() {
                     call: Call<ReportDetailData>,
                     response: Response<ReportDetailData>
                 ) {
-                    response?.takeIf { it.isSuccessful }
+                    response.takeIf { it.isSuccessful }
                         ?.body()
                         ?.data
                         ?.let {
