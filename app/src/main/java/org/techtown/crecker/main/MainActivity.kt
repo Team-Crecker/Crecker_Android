@@ -43,11 +43,6 @@ class MainActivity : AppCompatActivity() {
         initViewPager()
     }
 
-    override fun onDestroy() {
-        android.os.Process.killProcess(android.os.Process.myPid())
-        super.onDestroy()
-    }
-
     private fun initViewPager() {
         fragments = arrayListOf(HomeFragment(), AdsFragment(), LawFragment(),
             NewsFragment(),

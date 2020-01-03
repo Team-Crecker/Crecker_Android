@@ -1,5 +1,9 @@
 package org.techtown.crecker.membership.api
 
+import com.amn.easysharedpreferences.EasySharedPreference
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
+import okhttp3.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
