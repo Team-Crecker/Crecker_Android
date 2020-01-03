@@ -149,6 +149,7 @@ Constraint Layout을 사용하면서 Chain과 Horizontal_bias 등 다양한 속�
 # 프로그램 구조
 * ### ads
 	* activity : 광고 뷰와 관련된 activity
+	* api : 광고 관련 통신 패키지
 	* banner : 오토스크롤 뷰페이저(배너) 구현과 관련된 것들
 	* category : 광고 카테고리 전환과 관련된 것들
 	* contents : 광고 내용(data class + recycleradapter + viewholder)
@@ -159,6 +160,8 @@ Constraint Layout을 사용하면서 Chain과 Horizontal_bias 등 다양한 속�
 	* viewholder : 리사이클러뷰에 사용하는 뷰 홀더 패키지 
 	* fragment : home 뷰와 관련된 fragment
 * ### law
+	* activity : 법률 관련 activity 모음 패키지
+	* api : 법률 관련 통신 패키지
 	* adapter : 배너 및 리사이클러뷰 어댑터 관리 패키지
 	* data : law 탭에서 사용하는 data class 패키지
 	* viewholder : 리사이클러뷰에 사용하는 뷰 홀더 패키지
@@ -169,6 +172,19 @@ Constraint Layout을 사용하면서 Chain과 Horizontal_bias 등 다양한 속�
 	* activity : 마이페이지 뷰와 관련된 activity
 	* contents : 각종 데이터(data class + recycleradapter + viewholder) ex)이용내역
 	* fragment : 마이페이지 뷰와 관련된 fragment
+	* report : 리포트 관련 패키지
+		* activity : 리포트 관련 액티비티 패키지
+		* adapter : 리포트 관련 어댑터 패키지
+		* api : 리포트 관련 통신 패키지
+		* data : 리포트 관련 데이터 패키지
+		* fragment :리포트 관련 프래그먼트 패키지
+		* viewholder : 리포트 관련 뷰홀더 패키지
+	* scrap : 스크랩 활동 관련 패키지
+		* adapter : 스크랩 관련 어댑터 패키지
+		* api : 스크랩 통신 관련 패키지
+		* data : 스크랩 데이터 패키지
+		* viewholder : 스크랩 뷰홀더 패키지
+		
 * ### news
 	* adapter : 배너 및 리사이클러뷰 어댑터 관리 패키지
 	* data : news 탭에서 사용하는 data class 패키지
