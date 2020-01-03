@@ -183,7 +183,7 @@
             android:text="창업" />
 
         <RadioButton
-            android:id="@+id/rb_register_step3_expert_shoot"
+            android:id="@+id/rb_register_step3_expert_shooting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"

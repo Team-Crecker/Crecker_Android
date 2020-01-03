@@ -6,15 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".membership.register.SignUpActivity">
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/fl_signup_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_register_next"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
-        tools:layout_editor_absoluteX="16dp">
-
-    </FrameLayout>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"></androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
@@ -52,20 +51,4 @@
             android:src="@drawable/common_back_black" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <Button
-        android:id="@+id/btn_register_next"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="#000000"
-        android:fontFamily="@font/apple_sd"
-        android:lineSpacingExtra="22sp"
-        android:text="신청하기"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
-        android:textColor="#ffffff"
-        android:textFontWeight="700"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

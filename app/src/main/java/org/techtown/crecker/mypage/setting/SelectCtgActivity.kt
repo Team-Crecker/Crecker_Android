@@ -112,19 +112,19 @@ class SelectCtgActivity : AppCompatActivity() {
                     rb_register_step3_expert_law.setTextColor(Color.parseColor("#f7f8f9"))
                     rb_register_step3_expert_law.setTypeface(Typeface.DEFAULT_BOLD)
                     rb_register_step3_expert_found.setTextColor(Color.parseColor("#000000"))
-                    rb_register_step3_expert_shoot.setTextColor(Color.parseColor("#000000"))
+                    rb_register_step3_expert_shooting.setTextColor(Color.parseColor("#000000"))
                 }
 
                 R.id.rb_register_step3_expert_found  -> {
                     rb_register_step3_expert_found.setTextColor(Color.parseColor("#f7f8f9"))
                     rb_register_step3_expert_found.setTypeface(Typeface.DEFAULT_BOLD)
                     rb_register_step3_expert_law.setTextColor(Color.parseColor("#000000"))
-                    rb_register_step3_expert_shoot.setTextColor(Color.parseColor("#000000"))
+                    rb_register_step3_expert_shooting.setTextColor(Color.parseColor("#000000"))
                 }
 
-                R.id.rb_register_step3_expert_shoot  -> {
-                    rb_register_step3_expert_shoot.setTextColor(Color.parseColor("#f7f8f9"))
-                    rb_register_step3_expert_shoot.setTypeface(Typeface.DEFAULT_BOLD)
+                R.id.rb_register_step3_expert_shooting  -> {
+                    rb_register_step3_expert_shooting.setTextColor(Color.parseColor("#f7f8f9"))
+                    rb_register_step3_expert_shooting.setTypeface(Typeface.DEFAULT_BOLD)
                     rb_register_step3_expert_found.setTextColor(Color.parseColor("#000000"))
                     rb_register_step3_expert_law.setTextColor(Color.parseColor("#000000"))
                 }

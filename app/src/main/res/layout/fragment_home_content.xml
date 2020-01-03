@@ -9,31 +9,15 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/tv_home_user_recom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="23dp"
-                android:layout_marginEnd="190dp"
-                android:fontFamily="@font/apple_sd"
-                android:lineSpacingExtra="37sp"
-                android:text="필원님을 위한 크래커 소식"
-                android:textColor="#1f1f1f"
-                android:textFontWeight="200"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.509"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_home_ads"
@@ -57,7 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="11dp"
+                android:layout_marginTop="10dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_home_ads" />
 
@@ -65,12 +49,12 @@
                 android:id="@+id/tv_home_law"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="103dp"
                 android:fontFamily="@font/apple_sd"
                 android:lineSpacingExtra="19sp"
-                android:text="크리에이터라면 꼭 알아야 할 법률 상식"
+                android:text="크리에이터라면 꼭 알아야 할 전문가 상식"
                 android:textColor="#333333"
                 android:textFontWeight="700"
                 android:textSize="16sp"
@@ -93,11 +77,11 @@
             <ImageView
                 android:id="@+id/img_home_user_recom"
                 android:layout_width="0dp"
-                android:layout_height="190dp"
+                android:layout_height="238dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.686"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_home_user_recom"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:src="@tools:sample/avatars" />
 
             <ImageView
