@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import org.techtown.crecker.mypage.advertise.data.UserAdData
+import org.techtown.crecker.mypage.contents.notice.NoticeVH
 import java.util.*
 import kotlin.Comparator
 import kotlin.collections.ArrayList

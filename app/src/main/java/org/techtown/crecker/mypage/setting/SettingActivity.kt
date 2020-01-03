@@ -63,7 +63,7 @@ class SettingActivity : AppCompatActivity() {
             val location = setting_et_addr.text.toString()
 
             val map = HashMap<String, RequestBody>()
-            map["\"profileImage\\\"; filename=\\\"pp.jpeg\\\"\""] = RequestBody.create("image/jpeg".toMediaTypeOrNull(), file)
+            map["profileImage"] = RequestBody.create("image/jpeg".toMediaTypeOrNull(), file)
             map["phone"] = RequestBody.create("text/plain".toMediaTypeOrNull(), phone)
             map["location"] = RequestBody.create("text/plain".toMediaTypeOrNull(), location)
 

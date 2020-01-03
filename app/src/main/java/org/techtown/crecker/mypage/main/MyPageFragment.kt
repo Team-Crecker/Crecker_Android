@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_mypage.view.*
 import kotlinx.android.synthetic.main.fragment_mypage.view.my_tv_cash
 import kotlinx.android.synthetic.main.mypage_menu.view.*
@@ -18,6 +19,7 @@ import org.techtown.crecker.mypage.advertise.activity.MyAdvertiseActivity
 import org.techtown.crecker.mypage.advertise.data.BasicInfo
 import org.techtown.crecker.mypage.api.UserAdServiceImpl
 import org.techtown.crecker.mypage.cash.CashActivity
+import org.techtown.crecker.mypage.notice.NoticeActivity
 import org.techtown.crecker.mypage.report.ReportActivity
 import org.techtown.crecker.mypage.scrap.ScrapActivity
 import org.techtown.crecker.mypage.setting.SettingActivity
@@ -82,7 +84,23 @@ class MyPageFragment : Fragment() {
         }
 
         v.my_menu_q.setOnClickListener {
-            startActivity(Intent(mContext, ScrapActivity::class.java))
+            Toast.makeText(mContext, "준비중인 기능입니다", Toast.LENGTH_SHORT).show()
+        }
+
+        v.my_menu_q2.setOnClickListener {
+            Toast.makeText(mContext, "준비중인 기능입니다", Toast.LENGTH_SHORT).show()
+        }
+
+        v.my_menu_consult_history.setOnClickListener {
+            Toast.makeText(mContext, "준비중인 기능입니다", Toast.LENGTH_SHORT).show()
+        }
+
+        v.my_menu_faq.setOnClickListener {
+            Toast.makeText(mContext, "준비중인 기능입니다", Toast.LENGTH_SHORT).show()
+        }
+
+        v.my_menu_notice.setOnClickListener {
+            startActivity(Intent(mContext, NoticeActivity::class.java))
         }
     }
 

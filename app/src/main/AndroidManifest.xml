@@ -15,11 +15,15 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".mypage.scrap.ScrapActivity" android:exported="true"></activity>
+        <activity android:name=".mypage.notice.NoticeDetailActivity"></activity>
+        <activity android:name=".mypage.notice.NoticeActivity" />
+        <activity
+            android:name=".mypage.scrap.ScrapActivity"
+            android:exported="true" />
         <activity android:name=".news.activity.NewsMoreActivity" />
         <activity android:name=".news.activity.NewsDetailActivity" />
         <activity android:name=".mypage.report.activity.IndiviualActivity" />
-        <activity android:name=".mypage.advertise.activity.CertificationActivity"/>
+        <activity android:name=".mypage.advertise.activity.CertificationActivity" />
         <activity
             android:name=".mypage.report.ReportActivity"
             android:exported="true" />
@@ -66,7 +70,6 @@
         <activity
             android:name=".membership.login.LogInActivity"
             android:exported="true" />
-
         <activity android:name=".ads.activity.ApplyActivity" />
         <activity android:name=".mypage.advertise.activity.MyAdvertiseActivity" />
         <activity android:name=".mypage.advertise.activity.MyAdsDetailActivity" />
