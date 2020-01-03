@@ -127,15 +127,15 @@
             <EditText
                 android:id="@+id/cert_et_url"
                 android:layout_width="0dp"
-                android:layout_height="39dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="16dp"
                 android:ems="10"
-                android:hint="영상 URL"
+                android:hint="업로드 URL을 입력해주세요"
                 android:inputType="textPersonName"
-                app:layout_constraintBottom_toBottomOf="@+id/textView47"
                 app:layout_constraintEnd_toStartOf="@+id/btn_check"
-                app:layout_constraintStart_toStartOf="@+id/tv_cert_dueDate"
-                app:layout_constraintTop_toTopOf="@+id/textView47" />
+                app:layout_constraintStart_toStartOf="@+id/textView47"
+                app:layout_constraintTop_toBottomOf="@+id/textView47" />
 
             <TextView
                 android:id="@+id/textView50"
@@ -158,11 +158,10 @@
                 android:enabled="false"
                 android:hint="YYYY/MM/DD"
                 android:inputType="textPersonName"
-                app:layout_constraintBottom_toBottomOf="@+id/textView50"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/cert_et_url"
-                app:layout_constraintTop_toTopOf="@+id/textView50" />
+                app:layout_constraintTop_toBottomOf="@+id/textView50" />
 
             <ImageView
                 android:id="@+id/img_thumnail"
@@ -188,7 +187,7 @@
                 android:textColor="#000000"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@+id/textView50"
-                app:layout_constraintTop_toBottomOf="@+id/textView50" />
+                app:layout_constraintTop_toBottomOf="@+id/cert_et_date" />
 
             <EditText
                 android:id="@+id/editText3"
@@ -199,20 +198,25 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="21dp"
                 android:ems="10"
-                android:textSize="14sp"
                 android:hint="간단히 광고 후기를 작성해주세요.\n
 ex) 제품 마감처리가 잘 안 되어있어요.\n 광고를 찍는데 이런 어려운 점이 있었어요."
                 android:inputType="textPersonName"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+                app:layout_constraintTop_toBottomOf="@+id/textView6"
+                app:layout_constraintVertical_bias="1.0" />
 
             <Button
                 android:id="@+id/btn_check"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="25dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/white"
                 android:text="확인"
+                android:fontFamily=""
                 app:layout_constraintBottom_toBottomOf="@+id/cert_et_url"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/cert_et_url" />

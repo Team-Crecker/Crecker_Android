@@ -17,7 +17,7 @@ data class TagAdData(
         @SerializedName("cash")
         var cash: String,
         @SerializedName("createAt")
-        var createAt: String?,
+        var createAt: Int,
         @SerializedName("isWarn")
         var isWarn: Int,
         @SerializedName("thumbnail")
@@ -25,7 +25,7 @@ data class TagAdData(
         @SerializedName("title")
         var title: String,
         @SerializedName("uploadTo")
-        var uploadTo: String,
+        var uploadTo: Int,
         @SerializedName("userAdIdx")
         var userAdIdx: Int
     )

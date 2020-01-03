@@ -124,6 +124,7 @@ class MyAdsDetailActivity : AppCompatActivity() {
                             val text = ad_detail_tv_upload_period.text
                             val t =  "20" + text.substring(text.indexOf('-') + 1).trim()
                             putExtra("t", t)
+                            putExtra("idx", intent.getIntExtra("idx", 1))
                         })
                 }
             }

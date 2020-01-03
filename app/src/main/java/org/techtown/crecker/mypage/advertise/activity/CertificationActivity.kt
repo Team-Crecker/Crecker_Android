@@ -22,6 +22,8 @@ class CertificationActivity : AppCompatActivity() {
 
         tv_cert_dueDate.text = intent.getStringExtra("t")
 
+        btn_goBack.setOnClickListener { finish() }
+
         btn_check.setOnClickListener {
             val pd = ProgressDialog(this).apply {
                 setTitle("URL을 확인하는 중입니다..")
@@ -45,6 +47,33 @@ class CertificationActivity : AppCompatActivity() {
                     cert_et_date.setText(d.publishedAt)
 
                     pd.dismiss()
+                }
+            })
+        }
+
+        cert_btn_complete.setOnClickListener {
+            val map = HashMap<String, Any>()
+            map["review"] = editText3.text.toString()
+            map["adIdx"] = intent.getIntExtra("idx", 1)
+            map["url"] = cert_et_url.text.toString()
+
+            UserAdServiceImpl.service.postVideoInfo(map).enqueue(object : Callback<org.techtown.crecker.mypage.api.Response>{
+                override fun onFailure(
+                    call: Call<org.techtown.crecker.mypage.api.Response>,
+                    t: Throwable
+                ) {
+                    Toast.makeText(this@CertificationActivity, "실패", Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onResponse(
+                    call: Call<org.techtown.crecker.mypage.api.Response>,
+                    response: Response<org.techtown.crecker.mypage.api.Response>
+                ) {
+                    response.takeIf { it.isSuccessful }?.body()?.message?.
+                        let {
+                            Toast.makeText(this@CertificationActivity, it, Toast.LENGTH_SHORT).show()
+                            finish()
+                        }
                 }
             })
         }

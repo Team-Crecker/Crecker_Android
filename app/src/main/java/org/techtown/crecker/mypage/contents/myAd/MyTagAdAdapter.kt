@@ -8,11 +8,12 @@ import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import org.techtown.crecker.R
 import org.techtown.crecker.mypage.advertise.data.TagAdData
+import org.techtown.crecker.mypage.advertise.data.UserAdData
+import java.util.*
+import kotlin.Comparator
+import kotlin.collections.ArrayList
 
-class MyTagAdAdapter (private val context : Context, var data: ArrayList<TagAdData.Data>, val flag: Int) : RecyclerView.Adapter<MyTagAdsVH>(), Filterable{
-    val backup = data
-    lateinit var filtered: ArrayList<TagAdData.Data>
-
+class MyTagAdAdapter (private val context : Context, var data: ArrayList<TagAdData.Data>, val flag: Int) : RecyclerView.Adapter<MyTagAdsVH>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyTagAdsVH {
         val view = LayoutInflater.from(context).inflate(R.layout.my_ad_item_list, parent , false)
         return MyTagAdsVH(view, flag)
@@ -24,18 +25,23 @@ class MyTagAdAdapter (private val context : Context, var data: ArrayList<TagAdDa
         holder.bind(data[position])
     }
 
-    override fun getFilter()
-            = object : Filter(){
-        override fun performFiltering(p0: CharSequence?): FilterResults {
-            val str = p0.toString()
-            filtered = backup
-            return FilterResults().apply { values = filtered }
+    fun sort(flag: String){
+        when(flag){
+            "최신순" -> Collections.sort(data, sortByLatest)
+            "마감순" -> Collections.sort(data, sortByDead)
         }
-
-        override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
-            data = p1?.values as ArrayList<TagAdData.Data>
-            notifyDataSetChanged()
-        }
-
+        notifyDataSetChanged()
     }
+
+    private val sortByLatest =
+        Comparator<TagAdData.Data> {
+                object1, object2 ->
+            object1.createAt.compareTo(object2.createAt)
+        }
+
+    private val sortByDead =
+        Comparator<TagAdData.Data> {
+                object1, object2 ->
+            object1.uploadTo.compareTo(object2.uploadTo)
+        }
 }

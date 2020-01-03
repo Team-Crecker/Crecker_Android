@@ -1,7 +1,6 @@
 package org.techtown.crecker.membership.login
 
 import android.content.Intent
-import android.media.session.MediaSession
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -10,22 +9,21 @@ import android.widget.Toast
 import com.amn.easysharedpreferences.EasySharedPreference
 import kotlinx.android.synthetic.main.activity_log_in.*
 import org.techtown.crecker.membership.register.SignUpActivity
-import org.techtown.crecker.R
 import org.techtown.crecker.main.MainActivity
 import org.techtown.crecker.membership.api.LoginServiceImpl
 import org.techtown.crecker.membership.data.LoginResultData
-import org.techtown.crecker.module.TokenObject
-import org.techtown.crecker.module.debugLog
-import org.techtown.crecker.module.putLog
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import com.google.android.material.snackbar.Snackbar
+
+
 
 class LogInActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_log_in)
+        setContentView(org.techtown.crecker.R.layout.activity_log_in)
 
         tv_login_signup.setOnClickListener{
             it.context.startActivity(Intent(it.context, SignUpActivity::class.java))
@@ -86,8 +84,6 @@ class LogInActivity : AppCompatActivity() {
                             200 -> {
                                 if(response.body()!!.success) {
                                     EasySharedPreference.putString("token", response.body()!!.data.tokens.token)
-                                    TokenObject.token = response.body()!!.data.tokens.token
-                                    "${TokenObject.token}".debugLog()
                                     startActivity(Intent(this@LogInActivity, MainActivity::class.java))
                                 }
                                 else
@@ -101,6 +97,13 @@ class LogInActivity : AppCompatActivity() {
                 }
             })
         }
+    }
+
+    override fun onBackPressed() {
+        Snackbar.make(findViewById(android.R.id.content), "종료하시겠습니까?", Snackbar.LENGTH_SHORT).setAction("예") { view ->
+            finish()
+            android.os.Process.killProcess(android.os.Process.myPid())
+        }.show()
     }
 }
 

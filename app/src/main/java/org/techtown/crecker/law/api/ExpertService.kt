@@ -3,10 +3,9 @@ package org.techtown.crecker.law.api
 
 import com.amn.easysharedpreferences.EasySharedPreference
 import org.techtown.crecker.law.data.*
+import org.techtown.crecker.mypage.scrap.api.token
 import retrofit2.Call
 import retrofit2.http.*
-
-const val token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjU5LCJ0eXBlQWQiOiIwMTAyIiwidHlwZUV4cGVydCI6IjAyMDEiLCJ0eXBlTmV3cyI6IjAzMDEiLCJpYXQiOjE1Nzc4OTI3OTMsImV4cCI6MTU3OTEwMjM5MywiaXNzIjoiaWcifQ.4lygL-0-oMqSXDQj5FSq25WPPuFNQ8ZdsjfqZy2w-mM"
 
 interface ExpertService{
     // Expert 메인 화면 전문가 리스트

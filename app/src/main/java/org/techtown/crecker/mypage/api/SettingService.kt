@@ -6,11 +6,8 @@ import org.techtown.crecker.mypage.setting.ProfileInfo
 import retrofit2.Call
 import retrofit2.http.*
 import okhttp3.RequestBody
+import org.techtown.crecker.mypage.contents.notice.NoticeData
 import retrofit2.http.Multipart
-
-
-
-
 
 interface SettingService{
     @Headers("token: $TOKEN")
@@ -26,4 +23,12 @@ interface SettingService{
     @PUT("user")
     fun updateProfileInfo(@PartMap params: HashMap<String, RequestBody>)
             : Call<Response>
+
+    @Headers("token: $TOKEN")
+    @GET("notice")
+    fun getNotice(): Call<NoticeData>
+
+    @Headers("token: $TOKEN")
+    @GET("notice/{idx}")
+    fun getDetailNotice(@Path("idx") idx: Int): Call<NoticeData>
 }

@@ -12,11 +12,9 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.filtering_my_ad_dialog.*
 import kotlinx.android.synthetic.main.fragment_my_ad_assign.view.*
 import org.techtown.crecker.R
-import org.techtown.crecker.ads.contents.AdData
 import org.techtown.crecker.module.NavBarSetting
 import org.techtown.crecker.module.RcvItemDeco
 import org.techtown.crecker.module.putLog
-import org.techtown.crecker.mypage.advertise.data.BasicInfo
 import org.techtown.crecker.mypage.advertise.data.UserAdData
 import org.techtown.crecker.mypage.api.UserAdServiceImpl
 import org.techtown.crecker.mypage.contents.myAd.MyAdAdapter
@@ -58,12 +56,12 @@ class ApplyFragment : Fragment() {
             .apply {
                 setContentView(R.layout.filtering_my_ad_dialog)
                 category_latest.setOnClickListener {
-                    adapter.filter.filter("")
+                    adapter.sort("최신순")
                     v.textView39.text = "최신순"
                     dismiss()
                 }
                 category_dead.setOnClickListener {
-                    adapter.filter.filter("")
+                    adapter.sort("마감순")
                     v.textView39.text = "마감순"
                     dismiss()
                 }

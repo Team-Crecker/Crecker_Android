@@ -1,9 +1,9 @@
 package org.techtown.crecker.news.api
 
+import org.techtown.crecker.mypage.scrap.api.token
 import org.techtown.crecker.news.data.*
 import retrofit2.Call
 import retrofit2.http.*
-const val token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZHgiOjU5LCJ0eXBlQWQiOiIwMTAyIiwidHlwZUV4cGVydCI6IjAyMDEiLCJ0eXBlTmV3cyI6IjAzMDEiLCJpYXQiOjE1Nzc4OTI3OTMsImV4cCI6MTU3OTEwMjM5MywiaXNzIjoiaWcifQ.4lygL-0-oMqSXDQj5FSq25WPPuFNQ8ZdsjfqZy2w-mM"
 
 interface NewsService {
     // 정렬방식에 따른 뉴스 불러오기

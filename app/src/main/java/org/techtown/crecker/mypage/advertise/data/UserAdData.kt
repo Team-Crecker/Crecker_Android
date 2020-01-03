@@ -17,10 +17,14 @@ data class UserAdData(
         var adIdx: Int,
         @SerializedName("cash")
         var cash: String,
+        @SerializedName("createAt")
+        var createAt: Int,
         @SerializedName("thumbnail")
         var thumbnail: String,
         @SerializedName("title")
         var title: String,
+        @SerializedName("uploadTo")
+        var uploadTo: Int,
         @SerializedName("userAdIdx")
         var userAdIdx: Int
     )

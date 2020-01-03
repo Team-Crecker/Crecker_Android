@@ -39,6 +39,6 @@ interface UserAdService {
     //영상 인증
     @Headers("token: $TOKEN")
     @FormUrlEncoded
-    @POST("auth")
+    @POST("userad/auth")
     fun postVideoInfo(@FieldMap payLoad: HashMap<String, Any>): Call<Response>
 }
