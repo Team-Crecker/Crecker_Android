@@ -1,11 +1,13 @@
 package org.techtown.crecker.main
 
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import kotlinx.android.synthetic.main.activity_main.*
@@ -110,7 +112,21 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         for(i in fragments){
             if(i is OnBackPressed){
-                if(!i.onBackPressed()) super.onBackPressed()
+                if(!i.onBackPressed()){
+                    AlertDialog.Builder(this)
+                        .setTitle("종료")
+                        .setMessage("로그아웃하시겠습니까?")
+                        .setPositiveButton("예"
+                        ) { p0, p1 ->
+                            finish()
+                        }
+                        .setNegativeButton("아니오"){
+                            p0, _ ->
+                            p0.dismiss()
+                        }
+                        .create()
+                        .show()
+                }
             }
 
         }

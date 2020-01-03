@@ -58,12 +58,12 @@ class ApplyFragment : Fragment() {
             .apply {
                 setContentView(R.layout.filtering_my_ad_dialog)
                 category_latest.setOnClickListener {
-                    adapter.filter.filter("")
+                    adapter.sort("최신순")
                     v.textView39.text = "최신순"
                     dismiss()
                 }
                 category_dead.setOnClickListener {
-                    adapter.filter.filter("")
+                    adapter.sort("마감순")
                     v.textView39.text = "마감순"
                     dismiss()
                 }

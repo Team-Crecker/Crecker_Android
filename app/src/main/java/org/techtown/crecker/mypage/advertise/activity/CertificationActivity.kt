@@ -22,6 +22,8 @@ class CertificationActivity : AppCompatActivity() {
 
         tv_cert_dueDate.text = intent.getStringExtra("t")
 
+        btn_goBack.setOnClickListener { finish() }
+
         btn_check.setOnClickListener {
             val pd = ProgressDialog(this).apply {
                 setTitle("URL을 확인하는 중입니다..")
