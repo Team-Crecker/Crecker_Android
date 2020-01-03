@@ -154,13 +154,13 @@
         app:layout_constraintTop_toBottomOf="@+id/textView45" />
 
     <EditText
-        android:id="@+id/setting_et_phone"
+        android:id="@+id/setting_et_p"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="010-3944-0195"
+        android:text=""
         android:textColor="#464c53"
         android:fontFamily="@font/montserrat_regular"
         app:layout_constraintBottom_toBottomOf="@+id/textView45"
@@ -177,7 +177,7 @@
         android:text="서울시 마포구 포은로 65"
         android:textColor="#464c53"
         app:layout_constraintBottom_toBottomOf="@+id/textView46"
-        app:layout_constraintStart_toStartOf="@+id/setting_et_phone"
+        app:layout_constraintStart_toStartOf="@+id/setting_et_p"
         app:layout_constraintTop_toTopOf="@+id/textView46"
         app:layout_constraintVertical_bias="0.0" />
 

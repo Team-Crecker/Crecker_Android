@@ -28,6 +28,8 @@ class SelectCtgActivity : AppCompatActivity() {
 
         radioGroupChangeLogic()
 
+        btn_goBack.setOnClickListener { finish() }
+
         btn_complete.setOnClickListener {
             SettingServiceImpl.service.putUserInterest(getInterest()).enqueue(object : Callback<Response> {
                 override fun onFailure(call: Call<Response>, t: Throwable) {

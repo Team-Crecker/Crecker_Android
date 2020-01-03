@@ -17,6 +17,7 @@ import org.techtown.crecker.mypage.advertise.activity.MyAdvertiseActivity
 import org.techtown.crecker.mypage.advertise.data.BasicInfo
 import org.techtown.crecker.mypage.api.UserAdServiceImpl
 import org.techtown.crecker.mypage.cash.CashActivity
+import org.techtown.crecker.mypage.report.ReportActivity
 import org.techtown.crecker.mypage.setting.SettingActivity
 import retrofit2.Call
 import retrofit2.Callback
@@ -53,6 +54,9 @@ class MyPageFragment : Fragment() {
     }
 
     private fun initListener(v: View) {
+        v.btn_go_report.setOnClickListener {
+            startActivity(Intent(mContext, ReportActivity::class.java))
+        }
         v.btn_setting.setOnClickListener {
             startActivity(Intent(mContext, SettingActivity::class.java))
         }
