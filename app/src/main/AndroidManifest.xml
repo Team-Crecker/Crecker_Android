@@ -15,7 +15,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".mypage.notice.NoticeDetailActivity"></activity>
+        <activity android:name=".law.activity.VideoActivity"></activity>
+        <activity android:name=".law.activity.BrandingActivity" />
+        <activity android:name=".mypage.notice.NoticeDetailActivity" />
         <activity android:name=".mypage.notice.NoticeActivity" />
         <activity
             android:name=".mypage.scrap.ScrapActivity"
