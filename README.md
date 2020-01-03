@@ -19,6 +19,7 @@ Crecker_Android파트 git 장소입니다.
 - [lottie](https://github.com/airbnb/lottie-android) : 움직이는 이미지로 스플래시 화면 구성을 위해 사용
 - [TedImagePicker](https://github.com/ParkSangGwon/TedImagePicker) : 프로필 이미지 업로드 시 이미지 선택을 위해 사용
 - [Easy-SharedPreferences](https://github.com/AmanpreetYatin/Easy-SharedPreferences) : SharedPreferences에 쉽고 빠르게 접근하기 위해 채택
+- [MPchart](https://github.com/PhilJay/MPAndroidChart) : 그래프 표현을 위한 라이브러리
 		
 
 # 평가 기준 충족
@@ -344,6 +345,96 @@ Constraint Layout을 사용하면서 Chain과 Horizontal_bias 등 다양한 속�
 	sv_root -> 스크롤뷰 id 값
 	KeyboardVisibilityUtils클래스를 만들 때 인자로 window를 전달하고 onShowKeyboard를 통해 ScroolView를 키보드 높이만큼 스크롤  
 	onShowKeyboard : 키보드가 보여질 때 해당 코드 호출
+	
+* ## MPchart를 이용한 그래프 구현
+	- fragment_total.xml
+	```
+	<com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/lineChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="15dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/report_graph_tv" />
+	```
+	xml에 LineChart 뷰 입력
+	
+	- data setting
+	```
+	entries.add(Entry(0f,y1.toFloat()))
+        entries.add(Entry(1f,y2.toFloat()))
+        entries.add(Entry(2f,y3.toFloat()))
+        entries.add(Entry(3f,y4.toFloat()))
+        entries.add(Entry(4f,y5.toFloat()))
+	```
+	그래프 x축 y축 값 설정
+	
+	- DataSet setting
+	```
+	val lineDataSet: LineDataSet = LineDataSet(entries,"조회수")
+
+        lineDataSet.let {
+            it.lineWidth = 4F
+            it.circleRadius = 8F
+            it.circleHoleRadius = 4F
+            it.setCircleColor(Color.parseColor("#1EC695"))
+            it.setColor(Color.parseColor("#1EC695"))
+            it.fillColor = Color.parseColor("#1EC695")
+            it.mode = LineDataSet.Mode.CUBIC_BEZIER
+            it.setDrawFilled(true) // 밑에 색깔 칠하기
+            it.setDrawValues(false)
+            it.setDrawCircleHole(false)
+            it.setDrawCircles(false)
+        }
+        lineData = LineData(lineDataSet)
+	```
+	DataSet. 즉, 라인을 표시하기 위한 작업. 각각의 속성을 커스터마이징 해준다.
+	
+	- Chart setting
+	```
+	val description = Description()
+        description.text =""
+
+        var formatter : ValueFormatter = object : ValueFormatter(){
+            val mTime = arrayOf("00:00","5:00","10:00","15:00","23:59")
+            override fun getAxisLabel(value: Float, axis: AxisBase?): String {
+                return mTime[value.toInt()]
+            }
+
+        }
+
+        mView.lineChart.data = lineData
+
+        mView.lineChart.let {
+            it.xAxis.position = XAxis.XAxisPosition.BOTTOM
+            it.xAxis.axisLineColor =  Color.parseColor("#1EC695")
+            it.xAxis.textColor = Color.parseColor("#1EC695")
+            it.xAxis.setDrawGridLines(false)
+            it.xAxis.granularity = 1f
+            it.xAxis.valueFormatter = formatter
+
+            it.axisLeft.setDrawLabels(false)
+            it.axisLeft.setDrawAxisLine(false)
+            it.axisLeft.setDrawGridLines(false)
+
+            it.axisRight.setDrawLabels(false)
+            it.axisRight.setDrawAxisLine(false)
+            it.axisRight.setDrawGridLines(false)
+
+            it.description = description
+            it.isDoubleTapToZoomEnabled = false
+            it.animateY(1000, Easing.EaseInCubic)
+            it.legend.setDrawInside(false)
+
+        }
+	```
+	실제 화면에 보여주기 위한 x축 y축 설정 밑 Label 설정. ValueFormatter 함수를 오버라이딩하여  
+	내가 원하는 x축 label로 설정.  
+	그 후, 뷰에 맞게 y축과 x축의 표시 여부 등을 설정하고 DataSet을 장착.
+
 
 # 기타
 
