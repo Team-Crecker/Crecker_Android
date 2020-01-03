@@ -166,24 +166,19 @@ Constraint Layout을 사용하면서 Chain과 Horizontal_bias 등 다양한 속�
 	* data : law 탭에서 사용하는 data class 패키지
 	* viewholder : 리사이클러뷰에 사용하는 뷰 홀더 패키지
 * ### main
+	- MainActivity + MainTabPagerAdapter + SplashActivity
 * ### module
 	- 리사이클러뷰 여백설정 기능, 커스텀뷰페이저, 바텀시트 컨트롤러, 익스텐션 함수 등을 보관
 * ### mypage
-	* activity : 마이페이지 뷰와 관련된 activity
+	* advertise : My Advertisement와 관련된 패키지
+	* api : 서버 통신을 위한 Retrofit 인터페이스와 구현체를 보관
+	* cash : Cash와 관련된 패키지
 	* contents : 각종 데이터(data class + recycleradapter + viewholder) ex)이용내역
-	* fragment : 마이페이지 뷰와 관련된 fragment
+	* main: 메인 프래그먼트
+	* notice: Notice와 관련된 패키지
 	* report : 리포트 관련 패키지
-		* activity : 리포트 관련 액티비티 패키지
-		* adapter : 리포트 관련 어댑터 패키지
-		* api : 리포트 관련 통신 패키지
-		* data : 리포트 관련 데이터 패키지
-		* fragment :리포트 관련 프래그먼트 패키지
-		* viewholder : 리포트 관련 뷰홀더 패키지
 	* scrap : 스크랩 활동 관련 패키지
-		* adapter : 스크랩 관련 어댑터 패키지
-		* api : 스크랩 통신 관련 패키지
-		* data : 스크랩 데이터 패키지
-		* viewholder : 스크랩 뷰홀더 패키지
+	* setting : 각종 설정 관련 패키지
 		
 * ### news
 	* adapter : 배너 및 리사이클러뷰 어댑터 관리 패키지
