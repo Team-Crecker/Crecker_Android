@@ -82,10 +82,10 @@ class SignUpActivity : AppCompatActivity() {
                 regUserInfoMap.put("channelName", chName)
                 regUserInfoMap.put("youtubeUrl", url)
                 regUserInfoMap.put("agreement", agreement)*/
-                supportFragmentManager.beginTransaction().replace(R.id.fl_signup_container, SignUpStep3Frag()).commit()
+                supportFragmentManager.beginTransaction().replace(R.id.fl_signup_container, SignUpStep4Frag()).commit()
                 btn_register_next.text = "다음"
             }
-            is SignUpStep3Frag -> {
+           /* is SignUpStep3Frag -> {
                 when(findViewById<RadioGroup>(R.id.rg_register_step3_ads).checkedRadioButtonId){
                      R.id.rb_register_step3_ads_beauty -> interest.add("0101")
                      R.id.rb_register_step3_ads_restu -> interest.add("0102")
@@ -107,7 +107,7 @@ class SignUpActivity : AppCompatActivity() {
 
                 supportFragmentManager.beginTransaction().replace(R.id.fl_signup_container, SignUpStep4Frag()).commit()
                 btn_register_next.text = "인증하기"
-            }
+            }*/
             is SignUpStep4Frag -> {
 
                 regUserInfoMap.put("notRegisterUrl", notRegUrl)
@@ -161,12 +161,13 @@ class SignUpActivity : AppCompatActivity() {
                 supportFragmentManager.beginTransaction().replace(R.id.fl_signup_container, SignUpStep1Frag()).commit()
                 btn_register_next.text = "신청하기"
             }
+            /*
             is SignUpStep3Frag -> {
                 supportFragmentManager.beginTransaction().replace(R.id.fl_signup_container, SignUpStep2Frag()).commit()
                 btn_register_next.text = "다음"
-            }
+            }*/
             is SignUpStep4Frag -> {
-                supportFragmentManager.beginTransaction().replace(R.id.fl_signup_container, SignUpStep3Frag()).commit()
+                supportFragmentManager.beginTransaction().replace(R.id.fl_signup_container, SignUpStep2Frag()).commit()
                 btn_register_next.text = "다음"
             }
         }
