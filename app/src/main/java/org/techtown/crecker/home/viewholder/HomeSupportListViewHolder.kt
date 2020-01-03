@@ -32,7 +32,7 @@ class HomeSupportListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             it.context.startActivity(
                 Intent(it.context, NewsMoreActivity::class.java)
                     .apply {
-                        this.putExtra("idx", data.newsIdx)
+                        this.putExtra("Idx", data.newsIdx)
                     })
         }
     }

@@ -28,6 +28,7 @@ import kotlinx.android.synthetic.main.fragment_home_content.view.img_home_law01
 import org.techtown.crecker.R
 import org.techtown.crecker.home.api.HomeFragServiceImpl
 import org.techtown.crecker.home.data.*
+import org.techtown.crecker.main.MainActivity
 import org.techtown.crecker.membership.api.SignUpServiceImpl
 import org.techtown.crecker.membership.data.SignUpResultData
 import org.techtown.crecker.membership.login.LogInActivity
@@ -36,7 +37,6 @@ import org.techtown.crecker.news.activity.NewsMoreActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
 
 /**
  * A simple [Fragment] subclass.
@@ -52,17 +52,6 @@ class HomeFragment : Fragment() {
     ): View? {
         val V = inflater.inflate(R.layout.fragment_home, container, false)
         mContext = V.context
-
-      /*  val content = V.tv_home_user_recom.text.toString()
-        val spannableString = SpannableString(content)
-
-        val word = "소식"
-        val start = content.indexOf(word)
-        val end = start + word.length
-
-        spannableString.setSpan( StyleSpan(Typeface.BOLD), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-
-        V.tv_home_user_recom.setText(spannableString) */
 
         initHomeAdsList(V)
         initHomeSupportList(V)
@@ -91,10 +80,10 @@ class HomeFragment : Fragment() {
                         200 -> {
                             if(response.body()!!.success) {
                                 Glide.with(view)
-                                    .load(response.body()!!.data)
+                                    .load(response.body()!!.data.url)
                                     .into(view.img_home_user_recom)
 
-                                bannerIdx = response.body()!!.homeBannerIdx
+                               bannerIdx = response.body()!!.data.homeBannerIdx
                             }
                             else
                                 Toast.makeText(mContext, "데이터를 가져오는데 실패했습니다.", Toast.LENGTH_SHORT).show()
@@ -106,24 +95,6 @@ class HomeFragment : Fragment() {
                 }
             }
         })
-
-        view.img_home_user_recom.setOnClickListener {
-            when (bannerIdx) {
-                0 -> {
-                    it.context.startActivity(
-                        Intent(it.context, NewsMoreActivity::class.java))
-                }
-                1-> {
-                    it.context.startActivity(
-                        Intent(it.context, NewsMoreActivity::class.java))
-                }
-                2 ->{
-                    it.context.startActivity(
-                        Intent(it.context, NewsMoreActivity::class.java))
-                }
-            }
-        }
-
     }
 
     private fun initHomeAdsList(view : View) {
