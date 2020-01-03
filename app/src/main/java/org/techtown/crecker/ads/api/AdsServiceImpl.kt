@@ -9,21 +9,21 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 const val BASE_URL = "http://54.180.197.215:3000/api/"
 
-private val interceptor = object : Interceptor {
-    override fun intercept(chain: Interceptor.Chain): Response {
-        val token = EasySharedPreference.getString("token", "")
-
-        val newRequest = chain.request().newBuilder().addHeader("token", token).build()
-
-        return chain.proceed(newRequest)
-    }
-}
-
-private val client = OkHttpClient.Builder().apply {
-    interceptors().add(interceptor)
-}.build()
-
 object AdsServiceImpl {
+    private val interceptor = object : Interceptor {
+        override fun intercept(chain: Interceptor.Chain): Response {
+            val token = EasySharedPreference.getString("token", "")
+
+            val newRequest = chain.request().newBuilder().addHeader("token", token).build()
+
+            return chain.proceed(newRequest)
+        }
+    }
+
+    private val client = OkHttpClient.Builder().apply {
+        interceptors().add(interceptor)
+    }.build()
+
     val service: AdsService = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())

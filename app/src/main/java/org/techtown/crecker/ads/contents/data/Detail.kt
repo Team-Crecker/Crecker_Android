@@ -36,8 +36,6 @@ data class Detail(
             var categoryCode: String,
             @SerializedName("choice")
             var choice: String,
-            @SerializedName("companyName")
-            var companyName: String,
             @SerializedName("completeDate")
             var completeDate: String,
             @SerializedName("createAt")
