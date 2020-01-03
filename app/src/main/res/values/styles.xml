@@ -21,4 +21,10 @@
         <item name="android:fontWeight">400</item>
         <item name="android:textColor">@color/charcoal_grey</item>
     </style>
+
+    <style name="radioText">
+        <item name="android:textColor">@color/darkMint</item>
+        <item name="android:textColorHighlight">@color/selected_color</item>
+        <item name="android:textColorLink">@color/selected_color</item>
+    </style>
 </resources>

@@ -47,9 +47,12 @@
     </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
-        app:layout_constraintTop_toBottomOf="@id/toolbar9"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/cert_btn_complete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar9">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -99,8 +102,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:lineSpacingExtra="19sp"
                 android:fontFamily="@font/montserrat_regular"
+                android:lineSpacingExtra="19sp"
                 android:text="2019 / 12 / 26"
                 android:textColor="@color/charcoal_grey"
                 android:textSize="14sp"
@@ -124,12 +127,13 @@
             <EditText
                 android:id="@+id/cert_et_url"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="39dp"
+                android:layout_marginEnd="16dp"
                 android:ems="10"
-                android:hint="업로드 URL을 입력해주세요"
+                android:hint="영상 URL"
                 android:inputType="textPersonName"
                 app:layout_constraintBottom_toBottomOf="@+id/textView47"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btn_check"
                 app:layout_constraintStart_toStartOf="@+id/tv_cert_dueDate"
                 app:layout_constraintTop_toTopOf="@+id/textView47" />
 
@@ -144,13 +148,14 @@
                 android:textColor="#000000"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@+id/textView47"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                app:layout_constraintTop_toBottomOf="@+id/img_thumnail" />
 
             <EditText
                 android:id="@+id/cert_et_date"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:enabled="false"
                 android:hint="YYYY/MM/DD"
                 android:inputType="textPersonName"
                 app:layout_constraintBottom_toBottomOf="@+id/textView50"
@@ -160,7 +165,7 @@
                 app:layout_constraintTop_toTopOf="@+id/textView50" />
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/img_thumnail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -192,14 +197,25 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginBottom="21dp"
                 android:ems="10"
-                android:hint="간단히 광고 후기를 작성해주세요.
-ex) 제품 마감처리가 잘 안 되어있어요.
-      광고를 찍는데 이런 어려운 점이 있었어요."
+                android:textSize="14sp"
+                android:hint="간단히 광고 후기를 작성해주세요.\n
+ex) 제품 마감처리가 잘 안 되어있어요.\n 광고를 찍는데 이런 어려운 점이 있었어요."
                 android:inputType="textPersonName"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+            <Button
+                android:id="@+id/btn_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="확인"
+                app:layout_constraintBottom_toBottomOf="@+id/cert_et_url"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/cert_et_url" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

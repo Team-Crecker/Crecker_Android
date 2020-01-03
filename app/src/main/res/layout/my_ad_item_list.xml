@@ -50,4 +50,16 @@
         app:layout_constraintStart_toEndOf="@+id/my_ad_tv_price"
         app:layout_constraintTop_toTopOf="@+id/my_ad_tv_price"
         app:srcCompat="@drawable/img_cash" />
+
+    <TextView
+        android:id="@+id/need_upload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/img_tag_red"
+        android:text="업로드 요망"
+        android:visibility="invisible"
+        android:textColor="#ffffff"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

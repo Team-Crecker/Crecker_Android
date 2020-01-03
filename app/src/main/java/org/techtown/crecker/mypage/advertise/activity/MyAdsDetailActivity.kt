@@ -1,5 +1,6 @@
 package org.techtown.crecker.mypage.advertise.activity
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
@@ -30,10 +31,16 @@ class MyAdsDetailActivity : AppCompatActivity() {
     var flag = false
 
     private lateinit var glideManager: RequestManager
+    lateinit var loading: ProgressDialog
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ads_detail)
+
+        loading = ProgressDialog(this)
+        loading.setTitle("데이터를 불러오는 중입니다..")
+        loading.show()
 
         glideManager = Glide.with(this)
 
@@ -41,6 +48,8 @@ class MyAdsDetailActivity : AppCompatActivity() {
             .enqueue(object : Callback<Detail> {
                 override fun onFailure(call: Call<Detail>, t: Throwable) {
                     "실패: $t".putLog("Fail")
+                    loading.dismiss()
+                    Toast.makeText(this@MyAdsDetailActivity, "데이터 로딩에 실패했습니다", Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onResponse(call: Call<Detail>, response: Response<Detail>) {
@@ -81,6 +90,8 @@ class MyAdsDetailActivity : AppCompatActivity() {
                         } ?: run{
                         Toast.makeText(this@MyAdsDetailActivity, "서버로부터 정보를 받아올 수 없습니다..", Toast.LENGTH_SHORT).show()
                     }
+
+                    loading.dismiss()
                 }
             })
 
@@ -108,7 +119,18 @@ class MyAdsDetailActivity : AppCompatActivity() {
             2 -> {
                 ad_detail_btn_apply.text = "인증하기"
                 ad_detail_btn_apply.setOnClickListener {
-                    startActivity(Intent(this, CertificationActivity::class.java))
+                    startActivity(Intent(this, CertificationActivity::class.java)
+                        .apply {
+                            val text = ad_detail_tv_upload_period.text
+                            val t =  "20" + text.substring(text.indexOf('-') + 1).trim()
+                            putExtra("t", t)
+                        })
+                }
+            }
+            3 -> {
+                ad_detail_btn_apply.apply {
+                    text = "검토중"
+                    setBackgroundColor(Color.GRAY)
                 }
             }
         }

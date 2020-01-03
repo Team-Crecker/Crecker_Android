@@ -1,5 +1,6 @@
 package org.techtown.crecker.mypage.advertise.activity
 
+import android.app.ProgressDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.material.tabs.TabLayout

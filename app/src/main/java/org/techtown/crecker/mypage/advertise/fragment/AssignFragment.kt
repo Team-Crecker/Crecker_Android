@@ -16,33 +16,34 @@ import org.techtown.crecker.R
 import org.techtown.crecker.module.NavBarSetting
 import org.techtown.crecker.module.RcvItemDeco
 import org.techtown.crecker.module.putLog
-import org.techtown.crecker.mypage.advertise.data.UserAdData
+import org.techtown.crecker.mypage.advertise.data.TagAdData
 import org.techtown.crecker.mypage.api.UserAdServiceImpl
-import org.techtown.crecker.mypage.contents.myAd.MyAdAdapter
+import org.techtown.crecker.mypage.contents.myAd.MyTagAdAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class AssignFragment : Fragment() {
-    lateinit var adapter: MyAdAdapter
+    lateinit var adapter: MyTagAdAdapter
     lateinit var loading: ProgressDialog
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.fragment_my_ad_assign, container, false)
 
         loading = ProgressDialog(v.context)
+        loading.setTitle("데이터를 불러오는 중입니다..")
         loading.show()
 
         v.ad_apply_filter.setOnClickListener { showFilter(v) }
 
-        UserAdServiceImpl.service.getUserAds(2).enqueue(object : Callback<UserAdData> {
-            override fun onFailure(call: Call<UserAdData>, t: Throwable) {
+        UserAdServiceImpl.service.getTagAds(2).enqueue(object : Callback<TagAdData> {
+            override fun onFailure(call: Call<TagAdData>, t: Throwable) {
                 "UserAdService 실패".putLog()
             }
 
-            override fun onResponse(call: Call<UserAdData>, response: Response<UserAdData>) {
+            override fun onResponse(call: Call<TagAdData>, response: Response<TagAdData>) {
                 val data = response.takeIf { it.isSuccessful }?.body()?.data
-                adapter = MyAdAdapter(v.context, data as ArrayList<UserAdData.Data>, 2)
+                adapter = MyTagAdAdapter(v.context, data as ArrayList<TagAdData.Data>, 2)
 
                 v.rv_ad_apply_list.apply {
                     this.adapter = this@AssignFragment.adapter
