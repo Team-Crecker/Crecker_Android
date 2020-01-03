@@ -101,7 +101,7 @@ class NewsMoreActivity : AppCompatActivity() {
 
     private fun moveToUrl(url : String){
         this.news_more_sign_tv.setOnClickListener {
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("http://${url}")))
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("${url}")))
         }
     }
 
