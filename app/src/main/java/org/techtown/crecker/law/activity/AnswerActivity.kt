@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.view.isVisible
+import com.amn.easysharedpreferences.EasySharedPreference
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import kotlinx.android.synthetic.main.activity_answer.*
@@ -16,6 +17,7 @@ import kotlinx.android.synthetic.main.law_counseling_list_item.*
 import org.techtown.crecker.R
 import org.techtown.crecker.law.api.ExpertServiceImpl
 import org.techtown.crecker.law.data.QAdetailData
+import org.techtown.crecker.module.TokenObject
 import org.techtown.crecker.module.debugLog
 import retrofit2.Call
 import retrofit2.Callback
@@ -27,6 +29,7 @@ class AnswerActivity : AppCompatActivity() {
     private var Idx : Int = 0
     private  var isComplete: Int = 1
     private lateinit var glideManager : RequestManager
+    private var token = EasySharedPreference.getString("token", "") // 영속성 데이터
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,13 +75,13 @@ class AnswerActivity : AppCompatActivity() {
                     call: Call<QAdetailData>,
                     response: Response<QAdetailData>
                 ) {
-                    response?.takeIf { it.isSuccessful }
+                    response.takeIf { it.isSuccessful }
                         ?.body()
                         ?.takeIf { it.success == true }
                         ?.data
                         ?.let {
                                 initView(it[0])
-                        } ?: "null"
+                        }
                 }
             }
         )

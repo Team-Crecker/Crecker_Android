@@ -8,10 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.amn.easysharedpreferences.EasySharedPreference
 import kotlinx.android.synthetic.main.fragment_individual.view.*
 
 import org.techtown.crecker.R
 import org.techtown.crecker.module.RcvItemDeco
+import org.techtown.crecker.module.TokenObject
 import org.techtown.crecker.module.debugLog
 import org.techtown.crecker.mypage.report.adapter.IndividualRvAdp
 import org.techtown.crecker.mypage.report.api.ReportServiceImpl
@@ -57,7 +59,7 @@ class IndividualFragment : Fragment() {
                     call: Call<IndividualData>,
                     response: Response<IndividualData>
                 ) {
-                    response?.takeIf { it.isSuccessful }
+                    response.takeIf { it.isSuccessful }
                         ?.body()
                         ?.takeIf { it.success == true }
                         ?.data

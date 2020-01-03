@@ -3,10 +3,12 @@ package org.techtown.crecker.news.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
+import com.amn.easysharedpreferences.EasySharedPreference
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
 import kotlinx.android.synthetic.main.activity_news_detail.*
 import org.techtown.crecker.R
+import org.techtown.crecker.module.TokenObject
 import org.techtown.crecker.module.debugLog
 import org.techtown.crecker.news.api.NewsServiceImpl
 import org.techtown.crecker.news.data.NewsDailyApiData

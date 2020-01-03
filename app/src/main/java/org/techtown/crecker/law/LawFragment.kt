@@ -16,6 +16,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.amn.easysharedpreferences.EasySharedPreference
 import kotlinx.android.synthetic.main.fragment_law.view.*
 
 import org.techtown.crecker.R
@@ -26,6 +27,7 @@ import org.techtown.crecker.law.adapter.Expert_Betelang_Rv_Adp
 import org.techtown.crecker.law.api.ExpertServiceImpl
 import org.techtown.crecker.law.data.BetelangApiData
 import org.techtown.crecker.module.RcvItemDeco
+import org.techtown.crecker.module.TokenObject
 import org.techtown.crecker.module.debugLog
 import retrofit2.Call
 import retrofit2.Callback
@@ -34,6 +36,7 @@ import retrofit2.Response
 
 class LawFragment : Fragment() {
     private lateinit var betelangAdapter : Expert_Betelang_Rv_Adp
+    var token = EasySharedPreference.getString("token", "") // 영속성 데이터
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -96,9 +99,10 @@ class LawFragment : Fragment() {
         V.expert_viewpager.adapter = bannerAdp
     }
     private fun initBetelangRv(V : View, mContext : Context){
+        "$token".debugLog("TokenFind")
         betelangAdapter = Expert_Betelang_Rv_Adp(mContext)
         V.expert_betelang_rv.adapter = betelangAdapter
-        V.expert_betelang_rv.layoutManager = LinearLayoutManager(mContext) as RecyclerView.LayoutManager?
+        V.expert_betelang_rv.layoutManager = LinearLayoutManager(mContext)
         V.expert_betelang_rv.addItemDecoration(RcvItemDeco(mContext,false, 14))
 
         val call : Call<BetelangApiData> = ExpertServiceImpl.service.getBetelang()
@@ -113,7 +117,7 @@ class LawFragment : Fragment() {
                     call: Call<BetelangApiData>,
                     response: Response<BetelangApiData>
                 ) {
-                    response?.takeIf { it.isSuccessful }
+                    response.takeIf { it.isSuccessful }
                         ?.body()
                         ?.takeIf { it.success == true }
                         ?.let {

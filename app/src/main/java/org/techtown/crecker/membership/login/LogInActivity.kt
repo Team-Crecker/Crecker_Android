@@ -1,6 +1,7 @@
 package org.techtown.crecker.membership.login
 
 import android.content.Intent
+import android.media.session.MediaSession
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -13,6 +14,8 @@ import org.techtown.crecker.R
 import org.techtown.crecker.main.MainActivity
 import org.techtown.crecker.membership.api.LoginServiceImpl
 import org.techtown.crecker.membership.data.LoginResultData
+import org.techtown.crecker.module.TokenObject
+import org.techtown.crecker.module.debugLog
 import org.techtown.crecker.module.putLog
 import retrofit2.Call
 import retrofit2.Callback
@@ -83,6 +86,8 @@ class LogInActivity : AppCompatActivity() {
                             200 -> {
                                 if(response.body()!!.success) {
                                     EasySharedPreference.putString("token", response.body()!!.data.tokens.token)
+                                    TokenObject.token = response.body()!!.data.tokens.token
+                                    "${TokenObject.token}".debugLog()
                                     startActivity(Intent(this@LogInActivity, MainActivity::class.java))
                                 }
                                 else

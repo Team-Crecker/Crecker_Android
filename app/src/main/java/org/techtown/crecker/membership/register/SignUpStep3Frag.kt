@@ -43,7 +43,7 @@ class SignUpStep3Frag : Fragment() {
     }
 
     private fun initRadio(v : View){
-        v.rg_register_step3_ads.setOnCheckedChangeListener { group, checkedId ->
+        v.rg_register_step3_ads.setOnCheckedChangeListener { _, checkedId ->
             when(checkedId){
                 R.id.rb_register_step3_ads_beauty -> {
                     v.rb_register_step3_ads_beauty.setTextColor(Color.parseColor("#ffffff"))
@@ -67,7 +67,7 @@ class SignUpStep3Frag : Fragment() {
             }
             }
 
-        v.rg_register_step3_expert.setOnCheckedChangeListener { group, checkedId ->
+        v.rg_register_step3_expert.setOnCheckedChangeListener { _, checkedId ->
             when(checkedId){
                 R.id.rb_register_step3_expert_law -> {
                     v.rb_register_step3_expert_law.setTextColor(Color.parseColor("#ffffff"))
@@ -95,7 +95,7 @@ class SignUpStep3Frag : Fragment() {
             }
         }
 
-        v.rg_register_step3_news.setOnCheckedChangeListener { group, checkedId ->
+        v.rg_register_step3_news.setOnCheckedChangeListener { _, checkedId ->
             when(checkedId){
                 R.id.rb_register_step3_new_support -> {
                     v.rb_register_step3_new_support.setTextColor(Color.parseColor("#ffffff"))

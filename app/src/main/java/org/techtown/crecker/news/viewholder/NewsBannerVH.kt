@@ -22,7 +22,6 @@ class NewsBannerVH  : ViewHolder<NewsBannerApiData.Data>{
         Glide.with(itemView)
             .load(data?.thumbnail)
             .into(image)
-        "bannerBindOk".debugLog()
 
         image.setOnClickListener {
             val intent = Intent(itemView.context, NewsDetailActivity::class.java)
