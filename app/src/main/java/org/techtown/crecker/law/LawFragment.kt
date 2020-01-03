@@ -20,8 +20,10 @@ import com.amn.easysharedpreferences.EasySharedPreference
 import kotlinx.android.synthetic.main.fragment_law.view.*
 
 import org.techtown.crecker.R
+import org.techtown.crecker.law.activity.BrandingActivity
 import org.techtown.crecker.law.activity.LawActivity
 import org.techtown.crecker.law.activity.QuestAcitivy
+import org.techtown.crecker.law.activity.VideoActivity
 import org.techtown.crecker.law.adapter.ExpertBannerAdpater
 import org.techtown.crecker.law.adapter.Expert_Betelang_Rv_Adp
 import org.techtown.crecker.law.api.ExpertServiceImpl
@@ -52,6 +54,14 @@ class LawFragment : Fragment() {
         V.expert_subtitle_law_tv.setOnClickListener {
             var intent = Intent(activity, LawActivity::class.java)
             startActivity(intent)
+        }
+
+        V.expert_subtitle_start_tv.setOnClickListener {
+            startActivity(Intent(activity, BrandingActivity::class.java))
+        }
+        
+        V.expert_subtitle_shooting_tv.setOnClickListener {
+            startActivity(Intent(activity, VideoActivity::class.java))
         }
 
         V.float_writing_btn.setOnClickListener {
