@@ -12,13 +12,6 @@ object HomeFragServiceImpl {
         override fun intercept(chain: Interceptor.Chain): Response {
             val token = EasySharedPreference.getString("token", "")
             val newRequest = chain.request().newBuilder().addHeader("token", token).build()
-
-            /*val newRequest =
-                if(token.isEmpty())
-                    chain.request().newBuilder().addHeader("token", token).build()
-                else
-                    chain.request()*/
-
             return chain.proceed(newRequest)
         }
     }

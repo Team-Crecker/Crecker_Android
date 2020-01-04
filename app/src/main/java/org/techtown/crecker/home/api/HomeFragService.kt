@@ -17,6 +17,6 @@ interface HomeFragService {
     @GET("news/recommand/2")
     fun getSupportListData() : Call<HomeSupportListData>
 
-    @GET("home/")
+    @GET("home")
     fun getBannerImgData() : Call<HomeBannerImgData>
 }

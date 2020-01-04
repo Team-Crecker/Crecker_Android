@@ -88,7 +88,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
                     android:fontFamily="@font/montserrat"
-                    android:text="100000000"
+                    android:text="0"
                     app:layout_constraintEnd_toStartOf="@+id/total_num1_tv"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/total_viewcount_title_tv"
@@ -131,7 +131,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="200000"
+                    android:text="0"
                     app:layout_constraintEnd_toStartOf="@+id/total_num2_tv"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/total_like_title_tv"
@@ -163,7 +163,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="10000000000"
+                    android:text="0"
                     app:layout_constraintEnd_toStartOf="@+id/total_num3_tv"
                     app:layout_constraintTop_toBottomOf="@+id/total_like_tv" />
 
@@ -193,7 +193,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="50"
+                    android:text="0"
                     app:layout_constraintEnd_toStartOf="@+id/total_num4_tv"
                     app:layout_constraintTop_toBottomOf="@+id/total_money_tv" />
 

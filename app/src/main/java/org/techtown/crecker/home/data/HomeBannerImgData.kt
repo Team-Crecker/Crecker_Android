@@ -13,7 +13,8 @@ data class HomeBannerImgData(
     val success: Boolean,
     @SerializedName("data")
     val data : Data
-) {data class Data(
+) {
+    data class Data(
     @SerializedName("homeBannerIdx")
     val homeBannerIdx : Int,
     @SerializedName("url")

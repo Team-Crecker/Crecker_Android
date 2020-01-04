@@ -5,10 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import org.techtown.crecker.R
-import org.techtown.crecker.home.data.HomeAdsItem
-import org.techtown.crecker.home.data.HomeSupportItem
 import org.techtown.crecker.home.data.HomeSupportListData
-import org.techtown.crecker.home.viewholder.HomeAdsListViewHolder
 import org.techtown.crecker.home.viewholder.HomeSupportListViewHolder
 
 class HomeSupportListAdapter(

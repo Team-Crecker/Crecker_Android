@@ -6,11 +6,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.google.gson.JsonParser.parseString
-import kotlinx.android.synthetic.main.home_support_item.view.*
 import org.techtown.crecker.R
-import org.techtown.crecker.ads.activity.AdsDetailActivity
-import org.techtown.crecker.home.data.HomeSupportItem
 import org.techtown.crecker.home.data.HomeSupportListData
 import org.techtown.crecker.news.activity.NewsMoreActivity
 

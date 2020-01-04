@@ -75,29 +75,26 @@ class HomeFragment : Fragment() {
             ) {
                 Log.d("cre__", "get user info success ${response.isSuccessful}")
                 //네트워크 통신에 성공했을때, response 에 서버에서 받아온 데이터가 있을 것이다.
-                if (response.isSuccessful) {
-                    when (response.code()) {
-                        200 -> {
-                            if(response.body()!!.success) {
-                                Glide.with(view)
-                                    .load(response.body()!!.data.url)
-                                    .into(view.img_home_user_recom)
-
-                               bannerIdx = response.body()!!.data.homeBannerIdx
-                            }
-                            else
-                                Toast.makeText(mContext, "데이터를 가져오는데 실패했습니다.", Toast.LENGTH_SHORT).show()
-                        }
-
-                        600 -> Toast.makeText(mContext , "서버 연결 실패", Toast.LENGTH_SHORT).show()
+                response.takeIf { it.isSuccessful }
+                    ?.body()
+                    ?.data
+                    ?.let {
+                        Glide.with(view)
+                            .load(it.url)
+                            .into(view.img_home_user_recom)
+                        bannerIdx = it.homeBannerIdx
                     }
-
-                }
             }
         })
     }
 
     private fun initHomeAdsList(view : View) {
+
+        homeAdsAdapter = HomeAdsListAdapter(mContext)
+        view.rv_list_home_ads.adapter = homeAdsAdapter
+        view.rv_list_home_ads.layoutManager = LinearLayoutManager(mContext, RecyclerView.HORIZONTAL
+            , false)
+        view.rv_list_home_ads.addItemDecoration(RcvItemHoriDeco(mContext,false, 8))
 
         HomeFragServiceImpl.adsService.getAdsListData().enqueue(object :
             Callback<HomeAdsListData> {
@@ -111,37 +108,23 @@ class HomeFragment : Fragment() {
                 response: Response<HomeAdsListData>
             ) {
                 Log.d("cre__", "get user info success ${response.isSuccessful}")
-                //네트워크 통신에 성공했을때, response 에 서버에서 받아온 데이터가 있을 것이다.
-                if (response.isSuccessful) {
-                    when (response.code()) {
-                        200 -> {
-                            if(response.body()!!.success) {
-
-                                homeAdsAdapter.data = response.body()!!.data
-                                homeSupportAdapter.notifyDataSetChanged()
-                            }
-                            else
-                                Toast.makeText(mContext, "데이터를 가져오는데 실패했습니다.", Toast.LENGTH_SHORT).show()
-                        }
-
-                        600 -> Toast.makeText(mContext , "서버 연결 실패", Toast.LENGTH_SHORT).show()
+                response.takeIf { it.isSuccessful }
+                    ?.body()
+                    ?.data
+                    ?.let {
+                        homeAdsAdapter.data = it
+                        homeAdsAdapter.notifyDataSetChanged()
                     }
 
-                }
             }
         })
-
-
-        homeAdsAdapter = HomeAdsListAdapter(mContext)
-        view.rv_list_home_ads.adapter = homeAdsAdapter
-        view.rv_list_home_ads.layoutManager = LinearLayoutManager(mContext, RecyclerView.HORIZONTAL , false)
-        view.rv_list_home_ads.addItemDecoration(RcvItemHoriDeco(mContext,false, 8))
-        homeAdsAdapter.notifyDataSetChanged()
-
     }
 
     private fun initHomeSupportList(view : View) {
-
+        homeSupportAdapter = HomeSupportListAdapter(mContext)
+        view.rv_list_home_support.adapter = homeSupportAdapter
+        view.rv_list_home_support.layoutManager = GridLayoutManager(mContext, 2)
+        view.rv_list_home_support.addItemDecoration(RcvItemDeco(mContext,true,8))
 
         HomeFragServiceImpl.supportService.getSupportListData().enqueue(object :
             Callback<HomeSupportListData> {
@@ -154,32 +137,15 @@ class HomeFragment : Fragment() {
                 call: Call<HomeSupportListData>,
                 response: Response<HomeSupportListData>
             ) {
-                Log.d("cre__", "get user info success ${response.isSuccessful}")
-                //네트워크 통신에 성공했을때, response 에 서버에서 받아온 데이터가 있을 것이다.
-                if (response.isSuccessful) {
-                    when (response.code()) {
-                        200 -> {
-                            if(response.body()!!.success) {
-
-                                homeSupportAdapter.data = response.body()!!.data
-                            }
-                            else
-                                Toast.makeText(mContext, "데이터를 가져오는데 실패했습니다.", Toast.LENGTH_SHORT).show()
-                        }
-
-                        600 -> Toast.makeText(mContext , "서버 연결 실패", Toast.LENGTH_SHORT).show()
+                response.takeIf { it.isSuccessful }
+                    ?.body()
+                    ?.data
+                    ?.let {
+                        homeSupportAdapter.data = it
+                        homeSupportAdapter.notifyDataSetChanged()
                     }
-
-                }
             }
         })
-
-        homeSupportAdapter = HomeSupportListAdapter(mContext)
-        view.rv_list_home_support.adapter = homeSupportAdapter
-        view.rv_list_home_support.layoutManager = GridLayoutManager(mContext, 2)
-        view.rv_list_home_support.addItemDecoration(RcvItemDeco(mContext))
-
-        homeSupportAdapter.notifyDataSetChanged()
 
     }
 
