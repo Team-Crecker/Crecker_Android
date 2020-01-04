@@ -88,11 +88,11 @@ class TotalFragment : Fragment() {
     }
 
     private fun initGraphData(y1 : Int, y2 : Int, y3 : Int, y4 : Int, y5 : Int) {
-        entries.add(Entry(0f,y1.toFloat()))
-        entries.add(Entry(1f,y2.toFloat()))
+        entries.add(Entry(0f,y5.toFloat()))
+        entries.add(Entry(1f,y4.toFloat()))
         entries.add(Entry(2f,y3.toFloat()))
-        entries.add(Entry(3f,y4.toFloat()))
-        entries.add(Entry(4f,y5.toFloat()))
+        entries.add(Entry(3f,y2.toFloat()))
+        entries.add(Entry(4f,y1.toFloat()))
         settingDataSet()
     }
 

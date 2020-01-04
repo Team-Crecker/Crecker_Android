@@ -39,16 +39,18 @@
 
             <TextView
                 android:id="@+id/law_counseling_title_tv"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
                 android:fontFamily="@font/apple_sd"
                 android:lineSpacingExtra="3sp"
                 android:text="초상권 문제는 어떻게 해결하면 될까요?"
                 android:textColor="#000000"
                 android:textFontWeight="500"
                 android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/law_counseling_state_img" />
 

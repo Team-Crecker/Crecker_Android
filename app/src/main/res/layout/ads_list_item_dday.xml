@@ -20,14 +20,19 @@
 
     <TextView
         android:id="@+id/ad_item_tv_title"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:lineSpacingExtra="6sp"
-        android:text="모모스 커피"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
         android:ellipsize="end"
-        android:textColor="#333333"
         android:fontFamily="@font/apple_sd_gothic_neo_regular"
+        android:lineSpacingExtra="6sp"
+        android:lines="1"
+        android:text="모모스 커피"
+        android:textColor="#333333"
         android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ad_item_img" />
 
@@ -38,6 +43,8 @@
         android:text="제품 · 10000"
         android:fontFamily="@font/montserrat_regular"
         android:textSize="12sp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"
         android:lineSpacingExtra="8sp"
         android:textColor="@color/darkMint"
         app:layout_constraintStart_toStartOf="parent"

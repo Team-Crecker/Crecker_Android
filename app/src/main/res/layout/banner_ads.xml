@@ -18,7 +18,7 @@
         android:id="@+id/dday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="29dp"
+        android:layout_marginStart="20dp"
         android:layout_marginBottom="5dp"
         android:background="@drawable/img_tag_green_expert"
         android:fontFamily="@font/montserrat"

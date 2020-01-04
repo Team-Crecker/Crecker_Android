@@ -2,16 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="140dp"
-    android:layout_height="187dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <ImageView
         android:id="@+id/img_list_item_home_ads"
         android:layout_width="140dp"
         android:layout_height="140dp"
-        android:layout_marginBottom="47dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -19,17 +17,23 @@
 
     <TextView
         android:id="@+id/tv_list_item_home_ads_name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="3dp"
         android:layout_marginBottom="19dp"
-        android:text="TextView"
         android:fontFamily="@font/apple_sd"
-        android:lineSpacingExtra="20sp"
+        android:lineSpacingExtra="5sp"
+        android:lines="2"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:text="TextView"
         android:textColor="#333333"
         android:textFontWeight="400"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_list_item_home_ads"
         app:layout_constraintVertical_bias="0.0" />
@@ -38,25 +42,26 @@
         android:id="@+id/tv_list_item_home_ads_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="TextView"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:fontFamily="@font/apple_sd"
         android:lineSpacingExtra="20sp"
+        android:text="TextView"
         android:textColor="#1ec695"
         android:textFontWeight="400"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_list_item_home_ads" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_list_item_home_ads_name" />
 
     <ImageView
         android:id="@+id/img_list_item_home_ads_cash"
         android:layout_width="12dp"
         android:layout_height="12dp"
         android:layout_marginStart="3dp"
-        android:layout_marginEnd="43dp"
         android:src="@drawable/img_cash"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_list_item_home_ads_price" />
+        app:layout_constraintBottom_toBottomOf="@+id/tv_list_item_home_ads_price"
+        app:layout_constraintStart_toEndOf="@+id/tv_list_item_home_ads_price"
+        app:layout_constraintTop_toTopOf="@+id/tv_list_item_home_ads_price" />
 </androidx.constraintlayout.widget.ConstraintLayout>
