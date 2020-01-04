@@ -101,8 +101,10 @@ class NewsMoreActivity : AppCompatActivity() {
 
     private fun moveToUrl(url : String){
         this.news_more_sign_tv.setOnClickListener {
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("${url}")))
+//            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("${url}")))
+            Toast.makeText(this,"URL 준비 중입니다.",Toast.LENGTH_LONG).show()
         }
+
     }
 
     private fun scrapOn(idx : Int){
