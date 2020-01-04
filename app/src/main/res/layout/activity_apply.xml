@@ -175,7 +175,7 @@
                 android:ems="10"
                 android:fontFamily="@font/apple_sd_gothic_neo_regular"
                 android:hint="01012345678"
-                android:inputType="textPersonName"
+                android:inputType="phone"
                 app:layout_constraintBottom_toBottomOf="@+id/textView23"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -313,6 +313,19 @@
                 app:layout_constraintEnd_toEndOf="@+id/apply_checkBox_campaign"
                 app:layout_constraintStart_toStartOf="@+id/textView31"
                 app:layout_constraintTop_toBottomOf="@+id/textView32" />
+
+            <TextView
+                android:id="@+id/textView51"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:fontFamily="@font/apple_sd_gothic_neo_medium"
+                android:text="주소"
+                android:textSize="14sp"
+                android:lineSpacingExtra="19sp"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@+id/textView23"
+                app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

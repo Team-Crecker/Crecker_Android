@@ -117,6 +117,7 @@ class AdsDetailActivity : AppCompatActivity() {
                         .apply {
                             putExtra("title", ad_detail_title.text.toString())
                             putExtra("subTitle", ad_detail_desc.text.toString())
+                            putExtra("Idx", intent.getIntExtra("idx",0))
                         })
             }
         }
