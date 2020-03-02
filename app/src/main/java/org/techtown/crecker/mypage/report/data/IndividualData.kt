@@ -8,7 +8,7 @@ data class IndividualData(
 ) {
     data class Data(
         val categoryName : String,
-        val companyName: String,
+//        val companyName: String,
         val likes: Int,
         val title: String,
         val userAdIdx: Int,

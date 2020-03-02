@@ -8,15 +8,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_mypage.view.*
 import kotlinx.android.synthetic.main.fragment_mypage.view.my_tv_cash
 import kotlinx.android.synthetic.main.mypage_menu.view.*
 import kotlinx.android.synthetic.main.rectangle.view.*
 
 import org.techtown.crecker.R
+import org.techtown.crecker.module.debugLog
+import org.techtown.crecker.module.formatMoney
 import org.techtown.crecker.module.putLog
 import org.techtown.crecker.mypage.advertise.activity.MyAdvertiseActivity
 import org.techtown.crecker.mypage.advertise.data.BasicInfo
+import org.techtown.crecker.mypage.api.SettingServiceImpl
 import org.techtown.crecker.mypage.api.UserAdServiceImpl
 import org.techtown.crecker.mypage.cash.CashActivity
 import org.techtown.crecker.mypage.notice.NoticeActivity
@@ -39,6 +43,7 @@ class MyPageFragment : Fragment() {
         val v = inflater.inflate(R.layout.fragment_mypage, container, false)
 
         initListener(v)
+        settingProfile(v)
 
         UserAdServiceImpl.service.getBasicInfo().enqueue(object : Callback<BasicInfo> {
             override fun onFailure(call: Call<BasicInfo>, t: Throwable) {
@@ -55,6 +60,33 @@ class MyPageFragment : Fragment() {
             }
         })
         return v
+    }
+
+    private fun settingProfile(v : View){
+        SettingServiceImpl.service.getPageProfile().enqueue(object : Callback<ProfileApiData> {
+            override fun onFailure(call: Call<ProfileApiData>, t: Throwable) {
+                "$t".debugLog("CallbackFailed in Profile")
+            }
+
+            override fun onResponse(
+                call: Call<ProfileApiData>,
+                response: Response<ProfileApiData>
+            ) {
+                response.takeIf { it.isSuccessful }
+                    ?.body()
+                    ?.data
+                    ?.let{
+                        Glide.with(v)
+                            .load(it[0].profileImage)
+                            .into(v.img_profile)
+
+                        v.my_tv_nick.text = it[0].name
+                        v.my_tv_channel.text = it[0].channelName
+                        v.my_tv_cash.text = it[0].cash.formatMoney()
+//                        Toast.makeText(v.context,"${it.channelName}",Toast.LENGTH_LONG).show()
+                    }
+            }
+        })
     }
 
     private fun initListener(v: View) {

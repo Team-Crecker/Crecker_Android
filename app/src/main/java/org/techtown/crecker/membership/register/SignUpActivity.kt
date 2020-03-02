@@ -36,13 +36,25 @@ class SignUpActivity : AppCompatActivity() {
 
         when(frag) {
             is SignUpStep1Frag -> {
-                supportFragmentManager.beginTransaction().replace(R.id.fl_signup_container, SignUpStep2Frag()).commit()
+                supportFragmentManager.beginTransaction()
+                    .setCustomAnimations(R.anim.fragment_enter_from_right,R.anim.fragment_exit_to_left
+                        ,R.anim.fragment_enter_from_left,R.anim.fragment_exit_to_right)
+                    .addToBackStack(null)
+                    .replace(R.id.fl_signup_container, SignUpStep2Frag()).commit()
             }
             is SignUpStep2Frag -> {
-                supportFragmentManager.beginTransaction().replace(R.id.fl_signup_container, SignUpStep3Frag()).commit()
+                supportFragmentManager.beginTransaction()
+                    .setCustomAnimations(R.anim.fragment_enter_from_right,R.anim.fragment_exit_to_left
+                        ,R.anim.fragment_enter_from_left,R.anim.fragment_exit_to_right)
+                    .addToBackStack(null)
+                    .replace(R.id.fl_signup_container, SignUpStep3Frag()).commit()
             }
             is SignUpStep3Frag->{
-                supportFragmentManager.beginTransaction().replace(R.id.fl_signup_container, SignUpStep4Frag()).commit()
+                supportFragmentManager.beginTransaction()
+                    .setCustomAnimations(R.anim.fragment_enter_from_right,R.anim.fragment_exit_to_left
+                        ,R.anim.fragment_enter_from_left,R.anim.fragment_exit_to_right)
+                    .addToBackStack(null)
+                    .replace(R.id.fl_signup_container, SignUpStep4Frag()).commit()
             }
             is SignUpStep4Frag -> {
                 finish()

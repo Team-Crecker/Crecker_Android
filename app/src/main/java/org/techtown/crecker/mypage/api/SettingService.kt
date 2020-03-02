@@ -6,6 +6,7 @@ import retrofit2.Call
 import retrofit2.http.*
 import okhttp3.RequestBody
 import org.techtown.crecker.mypage.contents.notice.NoticeData
+import org.techtown.crecker.mypage.main.ProfileApiData
 import retrofit2.http.Multipart
 
 interface SettingService{
@@ -25,4 +26,7 @@ interface SettingService{
 
     @GET("notice/{idx}")
     fun getDetailNotice(@Path("idx") idx: Int): Call<NoticeData>
+
+    @GET("user/profile")
+    fun getPageProfile() : Call<ProfileApiData>
 }

@@ -16,7 +16,8 @@ class IndividualReportVH (view: View) : RecyclerView.ViewHolder(view){
     private val like_count : TextView = view.findViewById(R.id.indi_like)
 
     fun onBind(data : IndividualData.Data){
-        company.text = data.companyName
+//        company.text = data.companyName
+        company.visibility = View.GONE
         title.text = data.title
         category.text = "#${data.categoryName}"
         view_count.text = data.views1.toString()

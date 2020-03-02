@@ -3,6 +3,7 @@ package org.techtown.crecker.mypage.report.activity
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.amn.easysharedpreferences.EasySharedPreference
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.components.AxisBase
@@ -17,6 +18,7 @@ import kotlinx.android.synthetic.main.fragment_total.*
 import org.techtown.crecker.R
 import org.techtown.crecker.module.TokenObject
 import org.techtown.crecker.module.debugLog
+import org.techtown.crecker.module.formatMoney
 import org.techtown.crecker.mypage.report.api.ReportServiceImpl
 import org.techtown.crecker.mypage.report.data.ReportDetailData
 import retrofit2.Call
@@ -34,18 +36,19 @@ class IndiviualActivity : AppCompatActivity() {
         var idx = intent.getIntExtra("Idx",0)
 
         startCommu(idx)
-
+        "StrartCommu1".debugLog("Passed")
         inre_back_img.setOnClickListener {
             finish()
         }
     }
 
     private fun startCommu(idx : Int){
+        "StrartCommu2".debugLog("Passed")
         val call : Call<ReportDetailData> = ReportServiceImpl.service.getDetailReport(idx)
         call.enqueue(
             object : Callback<ReportDetailData>{
                 override fun onFailure(call: Call<ReportDetailData>, t: Throwable) {
-                    "${t}".debugLog()
+                    "${t}".debugLog("CallBackFailed in IndiReport")
                 }
 
                 override fun onResponse(
@@ -56,28 +59,32 @@ class IndiviualActivity : AppCompatActivity() {
                         ?.body()
                         ?.data
                         ?.let {
-                            inre_company_title_tv.text = it[0].companyName
+//                            inre_company_title_tv.text = it[0].companyName
+                            "StrartCommu3".debugLog("Passed")
                             inre_ad_tv.text = it[0].title
                             inre_money.text = it[0].cash
                             inre_reward_num_tv.text = it[0].cash
-                            inre_viewcount.text = it[0].views1.toString()
-                            inre_like.text = it[0].likes.toString()
-
+                            inre_upload.text = it[0].uploadTo
+                            inre_deadline.text = it[0].updateAt
+                            inre_viewcount.text = it[0].views1.formatMoney()
+                            inre_like.text = it[0].likes.formatMoney()
                             mountingChart(it[0].views1 ,it[0].views2, it[0].views3,
                                 it[0].views4, it[0].views5)
+                            Toast.makeText(this@IndiviualActivity,"${it[0].title}",Toast.LENGTH_LONG).show()
                         }
+                    "${response.body()?.message}".debugLog("WhyWhy")
                 }
             }
         )
     }
 
-    private fun mountingChart(y5 : Int, y4 : Int, y3 : Int, y2 : Int, y1 : Int){
+    private fun mountingChart(y1 : Int, y2 : Int, y3 : Int, y4 : Int, y5 : Int){
         entries = arrayListOf(
-            Entry(0f,y1.toFloat()),
-            Entry(1f,y2.toFloat()),
+            Entry(0f,y5.toFloat()),
+            Entry(1f,y4.toFloat()),
             Entry(2f,y3.toFloat()),
-            Entry(3f,y4.toFloat()),
-            Entry(4f,y5.toFloat())
+            Entry(3f,y2.toFloat()),
+            Entry(4f,y1.toFloat())
         )
         settingDataSet()
     }

@@ -8,12 +8,11 @@ data class ReportDetailData(
 ) {
     data class Data(
         val cash: String,
-        val companyName: String,
         val likes: Int,
         val title: String,
         val updateAt: String,
         val uploadTo: String,
-        val userAdIdx: Int,
+//        val userAdIdx: Int,
         val views1: Int,
         val views2: Int,
         val views3: Int,
